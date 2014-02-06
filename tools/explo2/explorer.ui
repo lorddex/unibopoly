@@ -1,0 +1,353 @@
+<ui version="4.0" >
+ <class>MainUI</class>
+ <widget class="QWidget" name="MainUI" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>875</width>
+    <height>674</height>
+   </rect>
+  </property>
+  <property name="windowTitle" >
+   <string>SIB Explorer</string>
+  </property>
+  <widget class="QPushButton" name="exitButton" >
+   <property name="geometry" >
+    <rect>
+     <x>780</x>
+     <y>640</y>
+     <width>83</width>
+     <height>27</height>
+    </rect>
+   </property>
+   <property name="text" >
+    <string>Exit</string>
+   </property>
+  </widget>
+  <widget class="Line" name="line" >
+   <property name="geometry" >
+    <rect>
+     <x>10</x>
+     <y>620</y>
+     <width>851</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="orientation" >
+    <enum>Qt::Horizontal</enum>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_2" >
+   <property name="geometry" >
+    <rect>
+     <x>10</x>
+     <y>530</y>
+     <width>121</width>
+     <height>18</height>
+    </rect>
+   </property>
+   <property name="text" >
+    <string>WQL Query Frame</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_3" >
+   <property name="geometry" >
+    <rect>
+     <x>10</x>
+     <y>560</y>
+     <width>101</width>
+     <height>18</height>
+    </rect>
+   </property>
+   <property name="text" >
+    <string>WQL Query Body</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEditWQLFrame" >
+   <property name="geometry" >
+    <rect>
+     <x>130</x>
+     <y>530</y>
+     <width>731</width>
+     <height>23</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEditWQLBody" >
+   <property name="geometry" >
+    <rect>
+     <x>130</x>
+     <y>560</y>
+     <width>731</width>
+     <height>23</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="Line" name="line_2" >
+   <property name="geometry" >
+    <rect>
+     <x>10</x>
+     <y>510</y>
+     <width>851</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="orientation" >
+    <enum>Qt::Horizontal</enum>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButtonListAllAsTriples" >
+   <property name="geometry" >
+    <rect>
+     <x>10</x>
+     <y>480</y>
+     <width>102</width>
+     <height>27</height>
+    </rect>
+   </property>
+   <property name="text" >
+    <string>List All (Triples)</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButtonListClassesOnly" >
+   <property name="geometry" >
+    <rect>
+     <x>120</x>
+     <y>480</y>
+     <width>113</width>
+     <height>27</height>
+    </rect>
+   </property>
+   <property name="text" >
+    <string>List Classes Only</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButtonListPropertiesOnly" >
+   <property name="geometry" >
+    <rect>
+     <x>240</x>
+     <y>480</y>
+     <width>130</width>
+     <height>27</height>
+    </rect>
+   </property>
+   <property name="text" >
+    <string>List Properties Only</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButtonQuery" >
+   <property name="geometry" >
+    <rect>
+     <x>10</x>
+     <y>590</y>
+     <width>83</width>
+     <height>27</height>
+    </rect>
+   </property>
+   <property name="text" >
+    <string>Query...</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButtonCloseQueryWindows" >
+   <property name="geometry" >
+    <rect>
+     <x>260</x>
+     <y>590</y>
+     <width>160</width>
+     <height>27</height>
+    </rect>
+   </property>
+   <property name="text" >
+    <string>Close All Query Windows</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButtonConnect" >
+   <property name="geometry" >
+    <rect>
+     <x>510</x>
+     <y>640</y>
+     <width>83</width>
+     <height>27</height>
+    </rect>
+   </property>
+   <property name="text" >
+    <string>Connect</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButtonConnectionDetails" >
+   <property name="geometry" >
+    <rect>
+     <x>730</x>
+     <y>480</y>
+     <width>128</width>
+     <height>27</height>
+    </rect>
+   </property>
+   <property name="text" >
+    <string>Connection Details</string>
+   </property>
+  </widget>
+  <widget class="QTreeWidget" name="treeWidgetState" >
+   <property name="geometry" >
+    <rect>
+     <x>10</x>
+     <y>10</y>
+     <width>841</width>
+     <height>461</height>
+    </rect>
+   </property>
+   <column>
+    <property name="text" >
+     <string>1</string>
+    </property>
+   </column>
+  </widget>
+  <widget class="QPushButton" name="pushButtonFullList" >
+   <property name="geometry" >
+    <rect>
+     <x>380</x>
+     <y>480</y>
+     <width>110</width>
+     <height>27</height>
+    </rect>
+   </property>
+   <property name="text" >
+    <string>Full List by Class</string>
+   </property>
+  </widget>
+  <widget class="QComboBox" name="comboCommon" >
+   <property name="geometry" >
+    <rect>
+     <x>631</x>
+     <y>590</y>
+     <width>231</width>
+     <height>26</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_4" >
+   <property name="geometry" >
+    <rect>
+     <x>510</x>
+     <y>590</y>
+     <width>109</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text" >
+    <string>Common queries:</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButtonMakeTransaction" >
+   <property name="geometry" >
+    <rect>
+     <x>10</x>
+     <y>640</y>
+     <width>119</width>
+     <height>27</height>
+    </rect>
+   </property>
+   <property name="text" >
+    <string>Make Transaction</string>
+   </property>
+  </widget>
+  <widget class="Line" name="line_3" >
+   <property name="geometry" >
+    <rect>
+     <x>590</x>
+     <y>630</y>
+     <width>20</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="orientation" >
+    <enum>Qt::Vertical</enum>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButtonSubscribe" >
+   <property name="geometry" >
+    <rect>
+     <x>100</x>
+     <y>590</y>
+     <width>91</width>
+     <height>27</height>
+    </rect>
+   </property>
+   <property name="text" >
+    <string>Subscribe...</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButtonShowAsGraph" >
+   <property name="geometry" >
+    <rect>
+     <x>619</x>
+     <y>480</y>
+     <width>104</width>
+     <height>27</height>
+    </rect>
+   </property>
+   <property name="text" >
+    <string>Show As Graph</string>
+   </property>
+  </widget>
+  <widget class="Line" name="line_4" >
+   <property name="geometry" >
+    <rect>
+     <x>490</x>
+     <y>630</y>
+     <width>20</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="orientation" >
+    <enum>Qt::Vertical</enum>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButtonHelp" >
+   <property name="geometry" >
+    <rect>
+     <x>610</x>
+     <y>640</y>
+     <width>83</width>
+     <height>27</height>
+    </rect>
+   </property>
+   <property name="text" >
+    <string>Help!</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButtonComplexQuery" >
+   <property name="geometry" >
+    <rect>
+     <x>140</x>
+     <y>640</y>
+     <width>102</width>
+     <height>27</height>
+    </rect>
+   </property>
+   <property name="text" >
+    <string>Complex Query</string>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>exitButton</sender>
+   <signal>clicked()</signal>
+   <receiver>MainUI</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>851</x>
+     <y>559</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>174</x>
+     <y>77</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

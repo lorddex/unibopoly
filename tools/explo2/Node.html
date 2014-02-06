@@ -1,0 +1,1123 @@
+
+<!doctype html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module Node</title>
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>Node</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/juhonkol/sofia_release_110509/Node.py">/home/juhonkol/sofia_release_110509/Node.py</a></font></td></tr></table>
+    <p></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#fffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="StringIO.html">StringIO</a><br>
+<a href="discovery.html">discovery</a><br>
+</td><td width="25%" valign=top><a href="xml.sax.saxutils.html">xml.sax.saxutils</a><br>
+<a href="socket.html">socket</a><br>
+</td><td width="25%" valign=top><a href="threading.html">threading</a><br>
+<a href="uuid.html">uuid</a><br>
+</td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="Node.html#Connector">Connector</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="Node.html#TCPConnector">TCPConnector</a>
+</font></dt></dl>
+</dd>
+<dt><font face="helvetica, arial"><a href="Node.html#Node">Node</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="Node.html#ParticipantNode">ParticipantNode</a>
+</font></dt></dl>
+</dd>
+<dt><font face="helvetica, arial"><a href="Node.html#Transaction">Transaction</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="Node.html#Insert">Insert</a>
+</font></dt><dt><font face="helvetica, arial"><a href="Node.html#Query">Query</a>
+</font></dt><dt><font face="helvetica, arial"><a href="Node.html#Remove">Remove</a>
+</font></dt><dt><font face="helvetica, arial"><a href="Node.html#Subscribe">Subscribe</a>
+</font></dt><dt><font face="helvetica, arial"><a href="Node.html#Update">Update</a>
+</font></dt></dl>
+</dd>
+<dt><font face="helvetica, arial"><a href="threading.html#Thread">threading.Thread</a>(<a href="threading.html#_Verbose">threading._Verbose</a>)
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="Node.html#RDFSubscribeHandler">RDFSubscribeHandler</a>
+</font></dt><dt><font face="helvetica, arial"><a href="Node.html#WQLBooleanSubscribeHandler">WQLBooleanSubscribeHandler</a>
+</font></dt><dt><font face="helvetica, arial"><a href="Node.html#WQLNodeSubscribeHandler">WQLNodeSubscribeHandler</a>
+</font></dt></dl>
+</dd>
+<dt><font face="helvetica, arial"><a href="xml.sax.handler.html#ContentHandler">xml.sax.handler.ContentHandler</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="Node.html#BNodeUriListHandler">BNodeUriListHandler</a>
+</font></dt><dt><font face="helvetica, arial"><a href="Node.html#NodeM3RDFHandler">NodeM3RDFHandler</a>
+</font></dt><dt><font face="helvetica, arial"><a href="Node.html#SSAPMsgHandler">SSAPMsgHandler</a>
+</font></dt><dt><font face="helvetica, arial"><a href="Node.html#UriListHandler">UriListHandler</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="BNodeUriListHandler">class <strong>BNodeUriListHandler</strong></a>(<a href="xml.sax.handler.html#ContentHandler">xml.sax.handler.ContentHandler</a>)</font></td></tr>
+    
+<tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="BNodeUriListHandler-__init__"><strong>__init__</strong></a>(self, bnode_map)</dt></dl>
+
+<dl><dt><a name="BNodeUriListHandler-characters"><strong>characters</strong></a>(self, ch)</dt></dl>
+
+<dl><dt><a name="BNodeUriListHandler-endElement"><strong>endElement</strong></a>(self, name)</dt></dl>
+
+<dl><dt><a name="BNodeUriListHandler-startElement"><strong>startElement</strong></a>(self, name, attrs)</dt></dl>
+
+<hr>
+Methods inherited from <a href="xml.sax.handler.html#ContentHandler">xml.sax.handler.ContentHandler</a>:<br>
+<dl><dt><a name="BNodeUriListHandler-endDocument"><strong>endDocument</strong></a>(self)</dt><dd><tt>Receive&nbsp;notification&nbsp;of&nbsp;the&nbsp;end&nbsp;of&nbsp;a&nbsp;document.<br>
+&nbsp;<br>
+The&nbsp;SAX&nbsp;parser&nbsp;will&nbsp;invoke&nbsp;this&nbsp;method&nbsp;only&nbsp;once,&nbsp;and&nbsp;it&nbsp;will<br>
+be&nbsp;the&nbsp;last&nbsp;method&nbsp;invoked&nbsp;during&nbsp;the&nbsp;parse.&nbsp;The&nbsp;parser&nbsp;shall<br>
+not&nbsp;invoke&nbsp;this&nbsp;method&nbsp;until&nbsp;it&nbsp;has&nbsp;either&nbsp;abandoned&nbsp;parsing<br>
+(because&nbsp;of&nbsp;an&nbsp;unrecoverable&nbsp;error)&nbsp;or&nbsp;reached&nbsp;the&nbsp;end&nbsp;of<br>
+input.</tt></dd></dl>
+
+<dl><dt><a name="BNodeUriListHandler-endElementNS"><strong>endElementNS</strong></a>(self, name, qname)</dt><dd><tt>Signals&nbsp;the&nbsp;end&nbsp;of&nbsp;an&nbsp;element&nbsp;in&nbsp;namespace&nbsp;mode.<br>
+&nbsp;<br>
+The&nbsp;name&nbsp;parameter&nbsp;contains&nbsp;the&nbsp;name&nbsp;of&nbsp;the&nbsp;element&nbsp;type,&nbsp;just<br>
+as&nbsp;with&nbsp;the&nbsp;startElementNS&nbsp;event.</tt></dd></dl>
+
+<dl><dt><a name="BNodeUriListHandler-endPrefixMapping"><strong>endPrefixMapping</strong></a>(self, prefix)</dt><dd><tt>End&nbsp;the&nbsp;scope&nbsp;of&nbsp;a&nbsp;prefix-URI&nbsp;mapping.<br>
+&nbsp;<br>
+See&nbsp;startPrefixMapping&nbsp;for&nbsp;details.&nbsp;This&nbsp;event&nbsp;will&nbsp;always<br>
+occur&nbsp;after&nbsp;the&nbsp;corresponding&nbsp;endElement&nbsp;event,&nbsp;but&nbsp;the&nbsp;order<br>
+of&nbsp;endPrefixMapping&nbsp;events&nbsp;is&nbsp;not&nbsp;otherwise&nbsp;guaranteed.</tt></dd></dl>
+
+<dl><dt><a name="BNodeUriListHandler-ignorableWhitespace"><strong>ignorableWhitespace</strong></a>(self, whitespace)</dt><dd><tt>Receive&nbsp;notification&nbsp;of&nbsp;ignorable&nbsp;whitespace&nbsp;in&nbsp;element&nbsp;content.<br>
+&nbsp;<br>
+Validating&nbsp;Parsers&nbsp;must&nbsp;use&nbsp;this&nbsp;method&nbsp;to&nbsp;report&nbsp;each&nbsp;chunk<br>
+of&nbsp;ignorable&nbsp;whitespace&nbsp;(see&nbsp;the&nbsp;W3C&nbsp;XML&nbsp;1.0&nbsp;recommendation,<br>
+section&nbsp;2.10):&nbsp;non-validating&nbsp;parsers&nbsp;may&nbsp;also&nbsp;use&nbsp;this&nbsp;method<br>
+if&nbsp;they&nbsp;are&nbsp;capable&nbsp;of&nbsp;parsing&nbsp;and&nbsp;using&nbsp;content&nbsp;models.<br>
+&nbsp;<br>
+SAX&nbsp;parsers&nbsp;may&nbsp;return&nbsp;all&nbsp;contiguous&nbsp;whitespace&nbsp;in&nbsp;a&nbsp;single<br>
+chunk,&nbsp;or&nbsp;they&nbsp;may&nbsp;split&nbsp;it&nbsp;into&nbsp;several&nbsp;chunks;&nbsp;however,&nbsp;all<br>
+of&nbsp;the&nbsp;characters&nbsp;in&nbsp;any&nbsp;single&nbsp;event&nbsp;must&nbsp;come&nbsp;from&nbsp;the&nbsp;same<br>
+external&nbsp;entity,&nbsp;so&nbsp;that&nbsp;the&nbsp;Locator&nbsp;provides&nbsp;useful<br>
+information.</tt></dd></dl>
+
+<dl><dt><a name="BNodeUriListHandler-processingInstruction"><strong>processingInstruction</strong></a>(self, target, data)</dt><dd><tt>Receive&nbsp;notification&nbsp;of&nbsp;a&nbsp;processing&nbsp;instruction.<br>
+&nbsp;<br>
+The&nbsp;Parser&nbsp;will&nbsp;invoke&nbsp;this&nbsp;method&nbsp;once&nbsp;for&nbsp;each&nbsp;processing<br>
+instruction&nbsp;found:&nbsp;note&nbsp;that&nbsp;processing&nbsp;instructions&nbsp;may&nbsp;occur<br>
+before&nbsp;or&nbsp;after&nbsp;the&nbsp;main&nbsp;document&nbsp;element.<br>
+&nbsp;<br>
+A&nbsp;SAX&nbsp;parser&nbsp;should&nbsp;never&nbsp;report&nbsp;an&nbsp;XML&nbsp;declaration&nbsp;(XML&nbsp;1.0,<br>
+section&nbsp;2.8)&nbsp;or&nbsp;a&nbsp;text&nbsp;declaration&nbsp;(XML&nbsp;1.0,&nbsp;section&nbsp;4.3.1)<br>
+using&nbsp;this&nbsp;method.</tt></dd></dl>
+
+<dl><dt><a name="BNodeUriListHandler-setDocumentLocator"><strong>setDocumentLocator</strong></a>(self, locator)</dt><dd><tt>Called&nbsp;by&nbsp;the&nbsp;parser&nbsp;to&nbsp;give&nbsp;the&nbsp;application&nbsp;a&nbsp;locator&nbsp;for<br>
+locating&nbsp;the&nbsp;origin&nbsp;of&nbsp;document&nbsp;events.<br>
+&nbsp;<br>
+SAX&nbsp;parsers&nbsp;are&nbsp;strongly&nbsp;encouraged&nbsp;(though&nbsp;not&nbsp;absolutely<br>
+required)&nbsp;to&nbsp;supply&nbsp;a&nbsp;locator:&nbsp;if&nbsp;it&nbsp;does&nbsp;so,&nbsp;it&nbsp;must&nbsp;supply<br>
+the&nbsp;locator&nbsp;to&nbsp;the&nbsp;application&nbsp;by&nbsp;invoking&nbsp;this&nbsp;method&nbsp;before<br>
+invoking&nbsp;any&nbsp;of&nbsp;the&nbsp;other&nbsp;methods&nbsp;in&nbsp;the&nbsp;DocumentHandler<br>
+interface.<br>
+&nbsp;<br>
+The&nbsp;locator&nbsp;allows&nbsp;the&nbsp;application&nbsp;to&nbsp;determine&nbsp;the&nbsp;end<br>
+position&nbsp;of&nbsp;any&nbsp;document-related&nbsp;event,&nbsp;even&nbsp;if&nbsp;the&nbsp;parser&nbsp;is<br>
+not&nbsp;reporting&nbsp;an&nbsp;error.&nbsp;Typically,&nbsp;the&nbsp;application&nbsp;will&nbsp;use<br>
+this&nbsp;information&nbsp;for&nbsp;reporting&nbsp;its&nbsp;own&nbsp;errors&nbsp;(such&nbsp;as<br>
+character&nbsp;content&nbsp;that&nbsp;does&nbsp;not&nbsp;match&nbsp;an&nbsp;application's<br>
+business&nbsp;rules).&nbsp;The&nbsp;information&nbsp;returned&nbsp;by&nbsp;the&nbsp;locator&nbsp;is<br>
+probably&nbsp;not&nbsp;sufficient&nbsp;for&nbsp;use&nbsp;with&nbsp;a&nbsp;search&nbsp;engine.<br>
+&nbsp;<br>
+Note&nbsp;that&nbsp;the&nbsp;locator&nbsp;will&nbsp;return&nbsp;correct&nbsp;information&nbsp;only<br>
+during&nbsp;the&nbsp;invocation&nbsp;of&nbsp;the&nbsp;events&nbsp;in&nbsp;this&nbsp;interface.&nbsp;The<br>
+application&nbsp;should&nbsp;not&nbsp;attempt&nbsp;to&nbsp;use&nbsp;it&nbsp;at&nbsp;any&nbsp;other&nbsp;time.</tt></dd></dl>
+
+<dl><dt><a name="BNodeUriListHandler-skippedEntity"><strong>skippedEntity</strong></a>(self, name)</dt><dd><tt>Receive&nbsp;notification&nbsp;of&nbsp;a&nbsp;skipped&nbsp;entity.<br>
+&nbsp;<br>
+The&nbsp;Parser&nbsp;will&nbsp;invoke&nbsp;this&nbsp;method&nbsp;once&nbsp;for&nbsp;each&nbsp;entity<br>
+skipped.&nbsp;Non-validating&nbsp;processors&nbsp;may&nbsp;skip&nbsp;entities&nbsp;if&nbsp;they<br>
+have&nbsp;not&nbsp;seen&nbsp;the&nbsp;declarations&nbsp;(because,&nbsp;for&nbsp;example,&nbsp;the<br>
+entity&nbsp;was&nbsp;declared&nbsp;in&nbsp;an&nbsp;external&nbsp;DTD&nbsp;subset).&nbsp;All&nbsp;processors<br>
+may&nbsp;skip&nbsp;external&nbsp;entities,&nbsp;depending&nbsp;on&nbsp;the&nbsp;values&nbsp;of&nbsp;the<br>
+<a href="http://xml.org/sax/features/external-general-entities">http://xml.org/sax/features/external-general-entities</a>&nbsp;and&nbsp;the<br>
+<a href="http://xml.org/sax/features/external-parameter-entities">http://xml.org/sax/features/external-parameter-entities</a><br>
+properties.</tt></dd></dl>
+
+<dl><dt><a name="BNodeUriListHandler-startDocument"><strong>startDocument</strong></a>(self)</dt><dd><tt>Receive&nbsp;notification&nbsp;of&nbsp;the&nbsp;beginning&nbsp;of&nbsp;a&nbsp;document.<br>
+&nbsp;<br>
+The&nbsp;SAX&nbsp;parser&nbsp;will&nbsp;invoke&nbsp;this&nbsp;method&nbsp;only&nbsp;once,&nbsp;before&nbsp;any<br>
+other&nbsp;methods&nbsp;in&nbsp;this&nbsp;interface&nbsp;or&nbsp;in&nbsp;DTDHandler&nbsp;(except&nbsp;for<br>
+setDocumentLocator).</tt></dd></dl>
+
+<dl><dt><a name="BNodeUriListHandler-startElementNS"><strong>startElementNS</strong></a>(self, name, qname, attrs)</dt><dd><tt>Signals&nbsp;the&nbsp;start&nbsp;of&nbsp;an&nbsp;element&nbsp;in&nbsp;namespace&nbsp;mode.<br>
+&nbsp;<br>
+The&nbsp;name&nbsp;parameter&nbsp;contains&nbsp;the&nbsp;name&nbsp;of&nbsp;the&nbsp;element&nbsp;type&nbsp;as&nbsp;a<br>
+(uri,&nbsp;localname)&nbsp;tuple,&nbsp;the&nbsp;qname&nbsp;parameter&nbsp;the&nbsp;raw&nbsp;XML&nbsp;1.0<br>
+name&nbsp;used&nbsp;in&nbsp;the&nbsp;source&nbsp;document,&nbsp;and&nbsp;the&nbsp;attrs&nbsp;parameter<br>
+holds&nbsp;an&nbsp;instance&nbsp;of&nbsp;the&nbsp;Attributes&nbsp;class&nbsp;containing&nbsp;the<br>
+attributes&nbsp;of&nbsp;the&nbsp;element.<br>
+&nbsp;<br>
+The&nbsp;uri&nbsp;part&nbsp;of&nbsp;the&nbsp;name&nbsp;tuple&nbsp;is&nbsp;None&nbsp;for&nbsp;elements&nbsp;which&nbsp;have<br>
+no&nbsp;namespace.</tt></dd></dl>
+
+<dl><dt><a name="BNodeUriListHandler-startPrefixMapping"><strong>startPrefixMapping</strong></a>(self, prefix, uri)</dt><dd><tt>Begin&nbsp;the&nbsp;scope&nbsp;of&nbsp;a&nbsp;prefix-URI&nbsp;Namespace&nbsp;mapping.<br>
+&nbsp;<br>
+The&nbsp;information&nbsp;from&nbsp;this&nbsp;event&nbsp;is&nbsp;not&nbsp;necessary&nbsp;for&nbsp;normal<br>
+Namespace&nbsp;processing:&nbsp;the&nbsp;SAX&nbsp;XML&nbsp;reader&nbsp;will&nbsp;automatically<br>
+replace&nbsp;prefixes&nbsp;for&nbsp;element&nbsp;and&nbsp;attribute&nbsp;names&nbsp;when&nbsp;the<br>
+<a href="http://xml.org/sax/features/namespaces">http://xml.org/sax/features/namespaces</a>&nbsp;feature&nbsp;is&nbsp;true&nbsp;(the<br>
+default).<br>
+&nbsp;<br>
+There&nbsp;are&nbsp;cases,&nbsp;however,&nbsp;when&nbsp;applications&nbsp;need&nbsp;to&nbsp;use<br>
+prefixes&nbsp;in&nbsp;character&nbsp;data&nbsp;or&nbsp;in&nbsp;attribute&nbsp;values,&nbsp;where&nbsp;they<br>
+cannot&nbsp;safely&nbsp;be&nbsp;expanded&nbsp;automatically;&nbsp;the<br>
+start/endPrefixMapping&nbsp;event&nbsp;supplies&nbsp;the&nbsp;information&nbsp;to&nbsp;the<br>
+application&nbsp;to&nbsp;expand&nbsp;prefixes&nbsp;in&nbsp;those&nbsp;contexts&nbsp;itself,&nbsp;if<br>
+necessary.<br>
+&nbsp;<br>
+Note&nbsp;that&nbsp;start/endPrefixMapping&nbsp;events&nbsp;are&nbsp;not&nbsp;guaranteed&nbsp;to<br>
+be&nbsp;properly&nbsp;nested&nbsp;relative&nbsp;to&nbsp;each-other:&nbsp;all<br>
+startPrefixMapping&nbsp;events&nbsp;will&nbsp;occur&nbsp;before&nbsp;the&nbsp;corresponding<br>
+startElement&nbsp;event,&nbsp;and&nbsp;all&nbsp;endPrefixMapping&nbsp;events&nbsp;will&nbsp;occur<br>
+after&nbsp;the&nbsp;corresponding&nbsp;endElement&nbsp;event,&nbsp;but&nbsp;their&nbsp;order&nbsp;is<br>
+not&nbsp;guaranteed.</tt></dd></dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Connector">class <strong>Connector</strong></a></font></td></tr>
+    
+<tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="Connector-close"><strong>close</strong></a>(self)</dt><dd><tt>Close&nbsp;the&nbsp;connection&nbsp;to&nbsp;SIB</tt></dd></dl>
+
+<dl><dt><a name="Connector-connect"><strong>connect</strong></a>(self)</dt><dd><tt>Open&nbsp;a&nbsp;connection&nbsp;to&nbsp;SIB</tt></dd></dl>
+
+<dl><dt><a name="Connector-receive"><strong>receive</strong></a>(self)</dt><dd><tt>Receives&nbsp;a&nbsp;message&nbsp;from&nbsp;SIB.&nbsp;Returns&nbsp;a&nbsp;parsed&nbsp;message</tt></dd></dl>
+
+<dl><dt><a name="Connector-send"><strong>send</strong></a>(self, msg)</dt><dd><tt>Sends&nbsp;a&nbsp;message&nbsp;to&nbsp;SIB.&nbsp;Parameter&nbsp;msg&nbsp;is&nbsp;the<br>
+XML&nbsp;serialization&nbsp;of&nbsp;the&nbsp;message</tt></dd></dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Insert">class <strong>Insert</strong></a>(<a href="Node.html#Transaction">Transaction</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Class&nbsp;handling&nbsp;<a href="#Insert">Insert</a>&nbsp;transactions.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="Insert-close"><strong>close</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Insert-send"><strong>send</strong></a>(self, payload, pl_type<font color="#909090">='python'</font>, encoding<font color="#909090">='rdf-m3'</font>, confirm<font color="#909090">=True</font>, expire_time<font color="#909090">=None</font>)</dt><dd><tt>Accepted&nbsp;format&nbsp;for&nbsp;payload&nbsp;is&nbsp;determined&nbsp;by&nbsp;the&nbsp;parameter&nbsp;pl_type.<br>
+-&nbsp;pl_type&nbsp;==&nbsp;'python':&nbsp;payload&nbsp;is&nbsp;a&nbsp;list&nbsp;of&nbsp;tuples<br>
+&nbsp;&nbsp;(('s',&nbsp;'p',&nbsp;'o'),&nbsp;subject_type,&nbsp;object_type)<br>
+&nbsp;&nbsp;where&nbsp;subject_type&nbsp;specifies&nbsp;the&nbsp;type&nbsp;of&nbsp;subject:&nbsp;'uri'&nbsp;for<br>
+&nbsp;&nbsp;a&nbsp;resource&nbsp;(uri)&nbsp;subject&nbsp;and&nbsp;'bnode'&nbsp;for&nbsp;blank&nbsp;node&nbsp;subject<br>
+&nbsp;&nbsp;(bnode&nbsp;can&nbsp;be&nbsp;an&nbsp;empty&nbsp;string),&nbsp;and&nbsp;object_type&nbsp;specifies&nbsp;the<br>
+&nbsp;&nbsp;type&nbsp;of&nbsp;object:&nbsp;'uri'&nbsp;for&nbsp;a&nbsp;resource&nbsp;(uri)&nbsp;object&nbsp;and&nbsp;'literal'&nbsp;<br>
+&nbsp;&nbsp;for&nbsp;a&nbsp;literal&nbsp;object.<br>
+&nbsp;<br>
+-&nbsp;pl_type&nbsp;!=&nbsp;'python':&nbsp;payload&nbsp;is&nbsp;given&nbsp;in&nbsp;encoded&nbsp;form,<br>
+&nbsp;&nbsp;either&nbsp;rdf-xml&nbsp;or&nbsp;rdf-m3.&nbsp;The&nbsp;encoding&nbsp;parameter&nbsp;has&nbsp;to&nbsp;be<br>
+&nbsp;&nbsp;set&nbsp;accordingly.&nbsp;NOTE:&nbsp;Current&nbsp;SIB&nbsp;implementation&nbsp;does&nbsp;not<br>
+&nbsp;&nbsp;support&nbsp;RDF/XML&nbsp;at&nbsp;the&nbsp;moment.&nbsp;This&nbsp;will&nbsp;be&nbsp;supported&nbsp;in&nbsp;the&nbsp;<br>
+&nbsp;&nbsp;future.<br>
+&nbsp;<br>
+&nbsp;&nbsp;If&nbsp;confirmation&nbsp;is&nbsp;requested,&nbsp;the&nbsp;return&nbsp;value&nbsp;will&nbsp;be&nbsp;a&nbsp;<br>
+&nbsp;&nbsp;dictionary&nbsp;associating&nbsp;named&nbsp;blank&nbsp;nodes&nbsp;in&nbsp;the&nbsp;insert&nbsp;graph&nbsp;<br>
+&nbsp;&nbsp;to&nbsp;the&nbsp;actual&nbsp;URIs&nbsp;stored&nbsp;in&nbsp;the&nbsp;SIB&nbsp;(works&nbsp;for&nbsp;rdf-m3&nbsp;<br>
+&nbsp;&nbsp;encoding&nbsp;only)</tt></dd></dl>
+
+<hr>
+Methods inherited from <a href="Node.html#Transaction">Transaction</a>:<br>
+<dl><dt><a name="Insert-__init__"><strong>__init__</strong></a>(self, dest, node_id)</dt></dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Node">class <strong>Node</strong></a></font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Base&nbsp;class&nbsp;for&nbsp;Smart&nbsp;Space&nbsp;Nodes<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="Node-CloseInsertTransaction"><strong>CloseInsertTransaction</strong></a>(self, session)</dt><dd><tt>Closes&nbsp;an&nbsp;insert&nbsp;transaction</tt></dd></dl>
+
+<dl><dt><a name="Node-CloseQueryTransaction"><strong>CloseQueryTransaction</strong></a>(self, session)</dt><dd><tt>Closes&nbsp;a&nbsp;query&nbsp;transaction</tt></dd></dl>
+
+<dl><dt><a name="Node-CloseRemoveTransaction"><strong>CloseRemoveTransaction</strong></a>(self, session)</dt><dd><tt>Closes&nbsp;a&nbsp;remove&nbsp;transaction</tt></dd></dl>
+
+<dl><dt><a name="Node-CloseSubscribeTransaction"><strong>CloseSubscribeTransaction</strong></a>(self, session)</dt><dd><tt>Closes&nbsp;a&nbsp;subscribe&nbsp;transaction</tt></dd></dl>
+
+<dl><dt><a name="Node-CloseUpdateTransaction"><strong>CloseUpdateTransaction</strong></a>(self, session)</dt><dd><tt>Closes&nbsp;a&nbsp;update&nbsp;transaction</tt></dd></dl>
+
+<dl><dt><a name="Node-CreateInsertTransaction"><strong>CreateInsertTransaction</strong></a>(self, dest)</dt><dd><tt>Creates&nbsp;an&nbsp;insert&nbsp;transaction&nbsp;for&nbsp;inserting&nbsp;information<br>
+to&nbsp;a&nbsp;smart&nbsp;space.<br>
+Returns&nbsp;an&nbsp;instance&nbsp;of&nbsp;<a href="#Insert">Insert</a>(<a href="#Transaction">Transaction</a>)&nbsp;class</tt></dd></dl>
+
+<dl><dt><a name="Node-CreateQueryTransaction"><strong>CreateQueryTransaction</strong></a>(self, dest)</dt><dd><tt>Creates&nbsp;a&nbsp;query&nbsp;transaction&nbsp;for&nbsp;querying&nbsp;information<br>
+in&nbsp;a&nbsp;smart&nbsp;space.<br>
+Returns&nbsp;an&nbsp;instance&nbsp;of&nbsp;<a href="#Query">Query</a>(<a href="#Transaction">Transaction</a>)&nbsp;class</tt></dd></dl>
+
+<dl><dt><a name="Node-CreateRemoveTransaction"><strong>CreateRemoveTransaction</strong></a>(self, dest)</dt><dd><tt>Creates&nbsp;a&nbsp;remove&nbsp;transaction&nbsp;for&nbsp;removing&nbsp;information<br>
+from&nbsp;a&nbsp;smart&nbsp;space.<br>
+Returns&nbsp;an&nbsp;instance&nbsp;of&nbsp;<a href="#Remove">Remove</a>(<a href="#Transaction">Transaction</a>)&nbsp;class</tt></dd></dl>
+
+<dl><dt><a name="Node-CreateSubscribeTransaction"><strong>CreateSubscribeTransaction</strong></a>(self, dest, once<font color="#909090">=False</font>)</dt><dd><tt>Creates&nbsp;a&nbsp;subscribe&nbsp;transaction&nbsp;for&nbsp;subscribing&nbsp;to<br>
+information&nbsp;in&nbsp;a&nbsp;smart&nbsp;space.<br>
+Returns&nbsp;an&nbsp;instance&nbsp;of&nbsp;<a href="#Subscribe">Subscribe</a>(<a href="#Transaction">Transaction</a>)&nbsp;class</tt></dd></dl>
+
+<dl><dt><a name="Node-CreateUpdateTransaction"><strong>CreateUpdateTransaction</strong></a>(self, dest)</dt></dl>
+
+<dl><dt><a name="Node-__init__"><strong>__init__</strong></a>(self, node_id)</dt></dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="NodeM3RDFHandler">class <strong>NodeM3RDFHandler</strong></a>(<a href="xml.sax.handler.html#ContentHandler">xml.sax.handler.ContentHandler</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Handler&nbsp;for&nbsp;SAX&nbsp;events&nbsp;from&nbsp;M3&nbsp;RDF&nbsp;encoded&nbsp;triples<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="NodeM3RDFHandler-__init__"><strong>__init__</strong></a>(self, triple_list, bnodes)</dt></dl>
+
+<dl><dt><a name="NodeM3RDFHandler-characters"><strong>characters</strong></a>(self, ch)</dt></dl>
+
+<dl><dt><a name="NodeM3RDFHandler-endElement"><strong>endElement</strong></a>(self, name)</dt></dl>
+
+<dl><dt><a name="NodeM3RDFHandler-startElement"><strong>startElement</strong></a>(self, name, attrs)</dt></dl>
+
+<hr>
+Methods inherited from <a href="xml.sax.handler.html#ContentHandler">xml.sax.handler.ContentHandler</a>:<br>
+<dl><dt><a name="NodeM3RDFHandler-endDocument"><strong>endDocument</strong></a>(self)</dt><dd><tt>Receive&nbsp;notification&nbsp;of&nbsp;the&nbsp;end&nbsp;of&nbsp;a&nbsp;document.<br>
+&nbsp;<br>
+The&nbsp;SAX&nbsp;parser&nbsp;will&nbsp;invoke&nbsp;this&nbsp;method&nbsp;only&nbsp;once,&nbsp;and&nbsp;it&nbsp;will<br>
+be&nbsp;the&nbsp;last&nbsp;method&nbsp;invoked&nbsp;during&nbsp;the&nbsp;parse.&nbsp;The&nbsp;parser&nbsp;shall<br>
+not&nbsp;invoke&nbsp;this&nbsp;method&nbsp;until&nbsp;it&nbsp;has&nbsp;either&nbsp;abandoned&nbsp;parsing<br>
+(because&nbsp;of&nbsp;an&nbsp;unrecoverable&nbsp;error)&nbsp;or&nbsp;reached&nbsp;the&nbsp;end&nbsp;of<br>
+input.</tt></dd></dl>
+
+<dl><dt><a name="NodeM3RDFHandler-endElementNS"><strong>endElementNS</strong></a>(self, name, qname)</dt><dd><tt>Signals&nbsp;the&nbsp;end&nbsp;of&nbsp;an&nbsp;element&nbsp;in&nbsp;namespace&nbsp;mode.<br>
+&nbsp;<br>
+The&nbsp;name&nbsp;parameter&nbsp;contains&nbsp;the&nbsp;name&nbsp;of&nbsp;the&nbsp;element&nbsp;type,&nbsp;just<br>
+as&nbsp;with&nbsp;the&nbsp;startElementNS&nbsp;event.</tt></dd></dl>
+
+<dl><dt><a name="NodeM3RDFHandler-endPrefixMapping"><strong>endPrefixMapping</strong></a>(self, prefix)</dt><dd><tt>End&nbsp;the&nbsp;scope&nbsp;of&nbsp;a&nbsp;prefix-URI&nbsp;mapping.<br>
+&nbsp;<br>
+See&nbsp;startPrefixMapping&nbsp;for&nbsp;details.&nbsp;This&nbsp;event&nbsp;will&nbsp;always<br>
+occur&nbsp;after&nbsp;the&nbsp;corresponding&nbsp;endElement&nbsp;event,&nbsp;but&nbsp;the&nbsp;order<br>
+of&nbsp;endPrefixMapping&nbsp;events&nbsp;is&nbsp;not&nbsp;otherwise&nbsp;guaranteed.</tt></dd></dl>
+
+<dl><dt><a name="NodeM3RDFHandler-ignorableWhitespace"><strong>ignorableWhitespace</strong></a>(self, whitespace)</dt><dd><tt>Receive&nbsp;notification&nbsp;of&nbsp;ignorable&nbsp;whitespace&nbsp;in&nbsp;element&nbsp;content.<br>
+&nbsp;<br>
+Validating&nbsp;Parsers&nbsp;must&nbsp;use&nbsp;this&nbsp;method&nbsp;to&nbsp;report&nbsp;each&nbsp;chunk<br>
+of&nbsp;ignorable&nbsp;whitespace&nbsp;(see&nbsp;the&nbsp;W3C&nbsp;XML&nbsp;1.0&nbsp;recommendation,<br>
+section&nbsp;2.10):&nbsp;non-validating&nbsp;parsers&nbsp;may&nbsp;also&nbsp;use&nbsp;this&nbsp;method<br>
+if&nbsp;they&nbsp;are&nbsp;capable&nbsp;of&nbsp;parsing&nbsp;and&nbsp;using&nbsp;content&nbsp;models.<br>
+&nbsp;<br>
+SAX&nbsp;parsers&nbsp;may&nbsp;return&nbsp;all&nbsp;contiguous&nbsp;whitespace&nbsp;in&nbsp;a&nbsp;single<br>
+chunk,&nbsp;or&nbsp;they&nbsp;may&nbsp;split&nbsp;it&nbsp;into&nbsp;several&nbsp;chunks;&nbsp;however,&nbsp;all<br>
+of&nbsp;the&nbsp;characters&nbsp;in&nbsp;any&nbsp;single&nbsp;event&nbsp;must&nbsp;come&nbsp;from&nbsp;the&nbsp;same<br>
+external&nbsp;entity,&nbsp;so&nbsp;that&nbsp;the&nbsp;Locator&nbsp;provides&nbsp;useful<br>
+information.</tt></dd></dl>
+
+<dl><dt><a name="NodeM3RDFHandler-processingInstruction"><strong>processingInstruction</strong></a>(self, target, data)</dt><dd><tt>Receive&nbsp;notification&nbsp;of&nbsp;a&nbsp;processing&nbsp;instruction.<br>
+&nbsp;<br>
+The&nbsp;Parser&nbsp;will&nbsp;invoke&nbsp;this&nbsp;method&nbsp;once&nbsp;for&nbsp;each&nbsp;processing<br>
+instruction&nbsp;found:&nbsp;note&nbsp;that&nbsp;processing&nbsp;instructions&nbsp;may&nbsp;occur<br>
+before&nbsp;or&nbsp;after&nbsp;the&nbsp;main&nbsp;document&nbsp;element.<br>
+&nbsp;<br>
+A&nbsp;SAX&nbsp;parser&nbsp;should&nbsp;never&nbsp;report&nbsp;an&nbsp;XML&nbsp;declaration&nbsp;(XML&nbsp;1.0,<br>
+section&nbsp;2.8)&nbsp;or&nbsp;a&nbsp;text&nbsp;declaration&nbsp;(XML&nbsp;1.0,&nbsp;section&nbsp;4.3.1)<br>
+using&nbsp;this&nbsp;method.</tt></dd></dl>
+
+<dl><dt><a name="NodeM3RDFHandler-setDocumentLocator"><strong>setDocumentLocator</strong></a>(self, locator)</dt><dd><tt>Called&nbsp;by&nbsp;the&nbsp;parser&nbsp;to&nbsp;give&nbsp;the&nbsp;application&nbsp;a&nbsp;locator&nbsp;for<br>
+locating&nbsp;the&nbsp;origin&nbsp;of&nbsp;document&nbsp;events.<br>
+&nbsp;<br>
+SAX&nbsp;parsers&nbsp;are&nbsp;strongly&nbsp;encouraged&nbsp;(though&nbsp;not&nbsp;absolutely<br>
+required)&nbsp;to&nbsp;supply&nbsp;a&nbsp;locator:&nbsp;if&nbsp;it&nbsp;does&nbsp;so,&nbsp;it&nbsp;must&nbsp;supply<br>
+the&nbsp;locator&nbsp;to&nbsp;the&nbsp;application&nbsp;by&nbsp;invoking&nbsp;this&nbsp;method&nbsp;before<br>
+invoking&nbsp;any&nbsp;of&nbsp;the&nbsp;other&nbsp;methods&nbsp;in&nbsp;the&nbsp;DocumentHandler<br>
+interface.<br>
+&nbsp;<br>
+The&nbsp;locator&nbsp;allows&nbsp;the&nbsp;application&nbsp;to&nbsp;determine&nbsp;the&nbsp;end<br>
+position&nbsp;of&nbsp;any&nbsp;document-related&nbsp;event,&nbsp;even&nbsp;if&nbsp;the&nbsp;parser&nbsp;is<br>
+not&nbsp;reporting&nbsp;an&nbsp;error.&nbsp;Typically,&nbsp;the&nbsp;application&nbsp;will&nbsp;use<br>
+this&nbsp;information&nbsp;for&nbsp;reporting&nbsp;its&nbsp;own&nbsp;errors&nbsp;(such&nbsp;as<br>
+character&nbsp;content&nbsp;that&nbsp;does&nbsp;not&nbsp;match&nbsp;an&nbsp;application's<br>
+business&nbsp;rules).&nbsp;The&nbsp;information&nbsp;returned&nbsp;by&nbsp;the&nbsp;locator&nbsp;is<br>
+probably&nbsp;not&nbsp;sufficient&nbsp;for&nbsp;use&nbsp;with&nbsp;a&nbsp;search&nbsp;engine.<br>
+&nbsp;<br>
+Note&nbsp;that&nbsp;the&nbsp;locator&nbsp;will&nbsp;return&nbsp;correct&nbsp;information&nbsp;only<br>
+during&nbsp;the&nbsp;invocation&nbsp;of&nbsp;the&nbsp;events&nbsp;in&nbsp;this&nbsp;interface.&nbsp;The<br>
+application&nbsp;should&nbsp;not&nbsp;attempt&nbsp;to&nbsp;use&nbsp;it&nbsp;at&nbsp;any&nbsp;other&nbsp;time.</tt></dd></dl>
+
+<dl><dt><a name="NodeM3RDFHandler-skippedEntity"><strong>skippedEntity</strong></a>(self, name)</dt><dd><tt>Receive&nbsp;notification&nbsp;of&nbsp;a&nbsp;skipped&nbsp;entity.<br>
+&nbsp;<br>
+The&nbsp;Parser&nbsp;will&nbsp;invoke&nbsp;this&nbsp;method&nbsp;once&nbsp;for&nbsp;each&nbsp;entity<br>
+skipped.&nbsp;Non-validating&nbsp;processors&nbsp;may&nbsp;skip&nbsp;entities&nbsp;if&nbsp;they<br>
+have&nbsp;not&nbsp;seen&nbsp;the&nbsp;declarations&nbsp;(because,&nbsp;for&nbsp;example,&nbsp;the<br>
+entity&nbsp;was&nbsp;declared&nbsp;in&nbsp;an&nbsp;external&nbsp;DTD&nbsp;subset).&nbsp;All&nbsp;processors<br>
+may&nbsp;skip&nbsp;external&nbsp;entities,&nbsp;depending&nbsp;on&nbsp;the&nbsp;values&nbsp;of&nbsp;the<br>
+<a href="http://xml.org/sax/features/external-general-entities">http://xml.org/sax/features/external-general-entities</a>&nbsp;and&nbsp;the<br>
+<a href="http://xml.org/sax/features/external-parameter-entities">http://xml.org/sax/features/external-parameter-entities</a><br>
+properties.</tt></dd></dl>
+
+<dl><dt><a name="NodeM3RDFHandler-startDocument"><strong>startDocument</strong></a>(self)</dt><dd><tt>Receive&nbsp;notification&nbsp;of&nbsp;the&nbsp;beginning&nbsp;of&nbsp;a&nbsp;document.<br>
+&nbsp;<br>
+The&nbsp;SAX&nbsp;parser&nbsp;will&nbsp;invoke&nbsp;this&nbsp;method&nbsp;only&nbsp;once,&nbsp;before&nbsp;any<br>
+other&nbsp;methods&nbsp;in&nbsp;this&nbsp;interface&nbsp;or&nbsp;in&nbsp;DTDHandler&nbsp;(except&nbsp;for<br>
+setDocumentLocator).</tt></dd></dl>
+
+<dl><dt><a name="NodeM3RDFHandler-startElementNS"><strong>startElementNS</strong></a>(self, name, qname, attrs)</dt><dd><tt>Signals&nbsp;the&nbsp;start&nbsp;of&nbsp;an&nbsp;element&nbsp;in&nbsp;namespace&nbsp;mode.<br>
+&nbsp;<br>
+The&nbsp;name&nbsp;parameter&nbsp;contains&nbsp;the&nbsp;name&nbsp;of&nbsp;the&nbsp;element&nbsp;type&nbsp;as&nbsp;a<br>
+(uri,&nbsp;localname)&nbsp;tuple,&nbsp;the&nbsp;qname&nbsp;parameter&nbsp;the&nbsp;raw&nbsp;XML&nbsp;1.0<br>
+name&nbsp;used&nbsp;in&nbsp;the&nbsp;source&nbsp;document,&nbsp;and&nbsp;the&nbsp;attrs&nbsp;parameter<br>
+holds&nbsp;an&nbsp;instance&nbsp;of&nbsp;the&nbsp;Attributes&nbsp;class&nbsp;containing&nbsp;the<br>
+attributes&nbsp;of&nbsp;the&nbsp;element.<br>
+&nbsp;<br>
+The&nbsp;uri&nbsp;part&nbsp;of&nbsp;the&nbsp;name&nbsp;tuple&nbsp;is&nbsp;None&nbsp;for&nbsp;elements&nbsp;which&nbsp;have<br>
+no&nbsp;namespace.</tt></dd></dl>
+
+<dl><dt><a name="NodeM3RDFHandler-startPrefixMapping"><strong>startPrefixMapping</strong></a>(self, prefix, uri)</dt><dd><tt>Begin&nbsp;the&nbsp;scope&nbsp;of&nbsp;a&nbsp;prefix-URI&nbsp;Namespace&nbsp;mapping.<br>
+&nbsp;<br>
+The&nbsp;information&nbsp;from&nbsp;this&nbsp;event&nbsp;is&nbsp;not&nbsp;necessary&nbsp;for&nbsp;normal<br>
+Namespace&nbsp;processing:&nbsp;the&nbsp;SAX&nbsp;XML&nbsp;reader&nbsp;will&nbsp;automatically<br>
+replace&nbsp;prefixes&nbsp;for&nbsp;element&nbsp;and&nbsp;attribute&nbsp;names&nbsp;when&nbsp;the<br>
+<a href="http://xml.org/sax/features/namespaces">http://xml.org/sax/features/namespaces</a>&nbsp;feature&nbsp;is&nbsp;true&nbsp;(the<br>
+default).<br>
+&nbsp;<br>
+There&nbsp;are&nbsp;cases,&nbsp;however,&nbsp;when&nbsp;applications&nbsp;need&nbsp;to&nbsp;use<br>
+prefixes&nbsp;in&nbsp;character&nbsp;data&nbsp;or&nbsp;in&nbsp;attribute&nbsp;values,&nbsp;where&nbsp;they<br>
+cannot&nbsp;safely&nbsp;be&nbsp;expanded&nbsp;automatically;&nbsp;the<br>
+start/endPrefixMapping&nbsp;event&nbsp;supplies&nbsp;the&nbsp;information&nbsp;to&nbsp;the<br>
+application&nbsp;to&nbsp;expand&nbsp;prefixes&nbsp;in&nbsp;those&nbsp;contexts&nbsp;itself,&nbsp;if<br>
+necessary.<br>
+&nbsp;<br>
+Note&nbsp;that&nbsp;start/endPrefixMapping&nbsp;events&nbsp;are&nbsp;not&nbsp;guaranteed&nbsp;to<br>
+be&nbsp;properly&nbsp;nested&nbsp;relative&nbsp;to&nbsp;each-other:&nbsp;all<br>
+startPrefixMapping&nbsp;events&nbsp;will&nbsp;occur&nbsp;before&nbsp;the&nbsp;corresponding<br>
+startElement&nbsp;event,&nbsp;and&nbsp;all&nbsp;endPrefixMapping&nbsp;events&nbsp;will&nbsp;occur<br>
+after&nbsp;the&nbsp;corresponding&nbsp;endElement&nbsp;event,&nbsp;but&nbsp;their&nbsp;order&nbsp;is<br>
+not&nbsp;guaranteed.</tt></dd></dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="ParticipantNode">class <strong>ParticipantNode</strong></a>(<a href="Node.html#Node">Node</a>)</font></td></tr>
+    
+<tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="ParticipantNode-discover"><strong>discover</strong></a>(self, method<font color="#909090">='Manual'</font>, browse<font color="#909090">=True</font>, name<font color="#909090">=None</font>)</dt><dd><tt>Discover&nbsp;available&nbsp;smart&nbsp;spaces.&nbsp;Currently&nbsp;available<br>
+discovery&nbsp;methods&nbsp;are:<br>
+&nbsp;&nbsp;-&nbsp;Manual:&nbsp;give&nbsp;IP&nbsp;address&nbsp;and&nbsp;port<br>
+&nbsp;&nbsp;-&nbsp;Bonjour&nbsp;discovery<br>
+Returns&nbsp;a&nbsp;handle&nbsp;for&nbsp;smart&nbsp;space&nbsp;if&nbsp;method&nbsp;is&nbsp;Manual&nbsp;or<br>
+browse&nbsp;is&nbsp;True,&nbsp;otherwise&nbsp;returns&nbsp;a&nbsp;list&nbsp;of&nbsp;handles<br>
+Handle&nbsp;is&nbsp;a&nbsp;tuple<br>
+(SSName,&nbsp;(connector&nbsp;class,&nbsp;(connector&nbsp;constructor&nbsp;args)))</tt></dd></dl>
+
+<dl><dt><a name="ParticipantNode-join"><strong>join</strong></a>(self, dest)</dt><dd><tt>Join&nbsp;a&nbsp;smart&nbsp;space.&nbsp;Argument&nbsp;dest&nbsp;is&nbsp;a&nbsp;smart&nbsp;space&nbsp;handle&nbsp;of&nbsp;form<br>
+(SSName,&nbsp;(connector&nbsp;class,&nbsp;(connector&nbsp;constructor&nbsp;args))).<br>
+<a href="#ParticipantNode-join">join</a>()&nbsp;accepts&nbsp;handles&nbsp;returned&nbsp;by&nbsp;<a href="#ParticipantNode-discover">discover</a>()&nbsp;method.<br>
+Returns&nbsp;True&nbsp;if&nbsp;succesful,&nbsp;False&nbsp;otherwise.</tt></dd></dl>
+
+<dl><dt><a name="ParticipantNode-leave"><strong>leave</strong></a>(self, dest)</dt><dd><tt>Leave&nbsp;a&nbsp;smart&nbsp;space.&nbsp;Argument&nbsp;dest&nbsp;is&nbsp;a&nbsp;smart&nbsp;space&nbsp;handle&nbsp;of&nbsp;form<br>
+(SSName,&nbsp;(connector&nbsp;class,&nbsp;(connector&nbsp;constructor&nbsp;args))).<br>
+<a href="#ParticipantNode-leave">leave</a>()&nbsp;accepts&nbsp;handles&nbsp;returned&nbsp;by&nbsp;<a href="#ParticipantNode-discover">discover</a>()&nbsp;method.<br>
+Returns&nbsp;True&nbsp;if&nbsp;succesful,&nbsp;False&nbsp;otherwise.</tt></dd></dl>
+
+<hr>
+Methods inherited from <a href="Node.html#Node">Node</a>:<br>
+<dl><dt><a name="ParticipantNode-CloseInsertTransaction"><strong>CloseInsertTransaction</strong></a>(self, session)</dt><dd><tt>Closes&nbsp;an&nbsp;insert&nbsp;transaction</tt></dd></dl>
+
+<dl><dt><a name="ParticipantNode-CloseQueryTransaction"><strong>CloseQueryTransaction</strong></a>(self, session)</dt><dd><tt>Closes&nbsp;a&nbsp;query&nbsp;transaction</tt></dd></dl>
+
+<dl><dt><a name="ParticipantNode-CloseRemoveTransaction"><strong>CloseRemoveTransaction</strong></a>(self, session)</dt><dd><tt>Closes&nbsp;a&nbsp;remove&nbsp;transaction</tt></dd></dl>
+
+<dl><dt><a name="ParticipantNode-CloseSubscribeTransaction"><strong>CloseSubscribeTransaction</strong></a>(self, session)</dt><dd><tt>Closes&nbsp;a&nbsp;subscribe&nbsp;transaction</tt></dd></dl>
+
+<dl><dt><a name="ParticipantNode-CloseUpdateTransaction"><strong>CloseUpdateTransaction</strong></a>(self, session)</dt><dd><tt>Closes&nbsp;a&nbsp;update&nbsp;transaction</tt></dd></dl>
+
+<dl><dt><a name="ParticipantNode-CreateInsertTransaction"><strong>CreateInsertTransaction</strong></a>(self, dest)</dt><dd><tt>Creates&nbsp;an&nbsp;insert&nbsp;transaction&nbsp;for&nbsp;inserting&nbsp;information<br>
+to&nbsp;a&nbsp;smart&nbsp;space.<br>
+Returns&nbsp;an&nbsp;instance&nbsp;of&nbsp;<a href="#Insert">Insert</a>(<a href="#Transaction">Transaction</a>)&nbsp;class</tt></dd></dl>
+
+<dl><dt><a name="ParticipantNode-CreateQueryTransaction"><strong>CreateQueryTransaction</strong></a>(self, dest)</dt><dd><tt>Creates&nbsp;a&nbsp;query&nbsp;transaction&nbsp;for&nbsp;querying&nbsp;information<br>
+in&nbsp;a&nbsp;smart&nbsp;space.<br>
+Returns&nbsp;an&nbsp;instance&nbsp;of&nbsp;<a href="#Query">Query</a>(<a href="#Transaction">Transaction</a>)&nbsp;class</tt></dd></dl>
+
+<dl><dt><a name="ParticipantNode-CreateRemoveTransaction"><strong>CreateRemoveTransaction</strong></a>(self, dest)</dt><dd><tt>Creates&nbsp;a&nbsp;remove&nbsp;transaction&nbsp;for&nbsp;removing&nbsp;information<br>
+from&nbsp;a&nbsp;smart&nbsp;space.<br>
+Returns&nbsp;an&nbsp;instance&nbsp;of&nbsp;<a href="#Remove">Remove</a>(<a href="#Transaction">Transaction</a>)&nbsp;class</tt></dd></dl>
+
+<dl><dt><a name="ParticipantNode-CreateSubscribeTransaction"><strong>CreateSubscribeTransaction</strong></a>(self, dest, once<font color="#909090">=False</font>)</dt><dd><tt>Creates&nbsp;a&nbsp;subscribe&nbsp;transaction&nbsp;for&nbsp;subscribing&nbsp;to<br>
+information&nbsp;in&nbsp;a&nbsp;smart&nbsp;space.<br>
+Returns&nbsp;an&nbsp;instance&nbsp;of&nbsp;<a href="#Subscribe">Subscribe</a>(<a href="#Transaction">Transaction</a>)&nbsp;class</tt></dd></dl>
+
+<dl><dt><a name="ParticipantNode-CreateUpdateTransaction"><strong>CreateUpdateTransaction</strong></a>(self, dest)</dt></dl>
+
+<dl><dt><a name="ParticipantNode-__init__"><strong>__init__</strong></a>(self, node_id)</dt></dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Query">class <strong>Query</strong></a>(<a href="Node.html#Transaction">Transaction</a>)</font></td></tr>
+    
+<tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="Query-close"><strong>close</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Query-rdf_query"><strong>rdf_query</strong></a>(self, triple)</dt><dd><tt>Perform&nbsp;a&nbsp;pattern&nbsp;(triple&nbsp;matching)&nbsp;query&nbsp;on&nbsp;the&nbsp;information<br>
+stored&nbsp;in&nbsp;a&nbsp;smart&nbsp;space.&nbsp;The&nbsp;parameter&nbsp;triple&nbsp;is&nbsp;a&nbsp;tuple<br>
+((s,&nbsp;p,&nbsp;o),&nbsp;obj_type)&nbsp;where&nbsp;obj_type&nbsp;is&nbsp;either&nbsp;'uri'&nbsp;or&nbsp;'literal',<br>
+and&nbsp;any&nbsp;of&nbsp;s,&nbsp;p,&nbsp;o&nbsp;may&nbsp;be&nbsp;None,&nbsp;specifying&nbsp;a&nbsp;wildcard.&nbsp;If&nbsp;o&nbsp;is<br>
+None,&nbsp;obj_type&nbsp;does&nbsp;not&nbsp;have&nbsp;any&nbsp;meaning.<br>
+&nbsp;<br>
+The&nbsp;method&nbsp;returns&nbsp;a&nbsp;list&nbsp;of&nbsp;matching&nbsp;triples<br>
+[((s,&nbsp;p,&nbsp;o),&nbsp;object_type),...]&nbsp;where&nbsp;the&nbsp;list&nbsp;of&nbsp;ids<br>
+lists&nbsp;all&nbsp;identifiers&nbsp;pointing&nbsp;to&nbsp;the&nbsp;triple&nbsp;in&nbsp;question.</tt></dd></dl>
+
+<dl><dt><a name="Query-wql_issubtype_query"><strong>wql_issubtype_query</strong></a>(self, subtype, supertype)</dt><dd><tt><a href="#Subscribe">Subscribe</a>&nbsp;to&nbsp;information&nbsp;stored&nbsp;in&nbsp;a&nbsp;smart&nbsp;space&nbsp;using&nbsp;a&nbsp;wql<br>
+issubtype&nbsp;query.&nbsp;Parameter&nbsp;subtype&nbsp;is&nbsp;the&nbsp;subtype&nbsp;node&nbsp;as&nbsp;<br>
+a&nbsp;string,&nbsp;and&nbsp;parameter&nbsp;supertype&nbsp;is&nbsp;the&nbsp;supertype&nbsp;node&nbsp;as&nbsp;a&nbsp;<br>
+string.&nbsp;The&nbsp;method&nbsp;returns&nbsp;True&nbsp;if&nbsp;the&nbsp;subtype&nbsp;node&nbsp;is&nbsp;a<br>
+subtype&nbsp;of&nbsp;the&nbsp;supertype&nbsp;node.</tt></dd></dl>
+
+<dl><dt><a name="Query-wql_istype_query"><strong>wql_istype_query</strong></a>(self, node, type)</dt><dd><tt><a href="#Query">Query</a>&nbsp;information&nbsp;stored&nbsp;in&nbsp;a&nbsp;smart&nbsp;space&nbsp;using&nbsp;a&nbsp;wql<br>
+istype&nbsp;query.&nbsp;Parameter&nbsp;node&nbsp;is&nbsp;the&nbsp;instance&nbsp;node&nbsp;as&nbsp;a&nbsp;<br>
+string,&nbsp;and&nbsp;parameter&nbsp;type&nbsp;is&nbsp;the&nbsp;type&nbsp;node&nbsp;as&nbsp;a&nbsp;string.&nbsp;The<br>
+method&nbsp;returns&nbsp;True&nbsp;if&nbsp;the&nbsp;instance&nbsp;node&nbsp;is&nbsp;of&nbsp;the&nbsp;type&nbsp;specified<br>
+by&nbsp;the&nbsp;type&nbsp;node.</tt></dd></dl>
+
+<dl><dt><a name="Query-wql_nodetypes_query"><strong>wql_nodetypes_query</strong></a>(self, node)</dt><dd><tt>Queries&nbsp;information&nbsp;stored&nbsp;in&nbsp;a&nbsp;smart&nbsp;space&nbsp;using&nbsp;a&nbsp;wql<br>
+nodetypes&nbsp;query.&nbsp;Parameter&nbsp;node&nbsp;is&nbsp;(node,&nbsp;literal?)&nbsp;pair,<br>
+where&nbsp;node&nbsp;is&nbsp;the&nbsp;node&nbsp;whose&nbsp;types&nbsp;are&nbsp;queried&nbsp;as&nbsp;a<br>
+string.&nbsp;The&nbsp;method&nbsp;returns&nbsp;a&nbsp;list&nbsp;of&nbsp;(node,&nbsp;literal?)&nbsp;pairs<br>
+matching&nbsp;the&nbsp;query.&nbsp;&nbsp;Note&nbsp;that&nbsp;literals&nbsp;can&nbsp;not&nbsp;have&nbsp;an&nbsp;RDF<br>
+type.</tt></dd></dl>
+
+<dl><dt><a name="Query-wql_related_query"><strong>wql_related_query</strong></a>(self, start_node, end_node, path)</dt><dd><tt><a href="#Query">Query</a>&nbsp;information&nbsp;stored&nbsp;in&nbsp;a&nbsp;smart&nbsp;space&nbsp;using&nbsp;a&nbsp;wql<br>
+related&nbsp;query.&nbsp;Parameter&nbsp;start_node&nbsp;is&nbsp;the&nbsp;starting&nbsp;node&nbsp;as<br>
+a&nbsp;(node,&nbsp;literal?)&nbsp;pair,&nbsp;parameter&nbsp;end_node&nbsp;is&nbsp;(node,<br>
+literal?)&nbsp;pair,&nbsp;and&nbsp;parameter&nbsp;path&nbsp;is&nbsp;the&nbsp;wql&nbsp;path<br>
+expression&nbsp;as&nbsp;a&nbsp;string.&nbsp;The&nbsp;method&nbsp;returns&nbsp;True&nbsp;if&nbsp;the&nbsp;end<br>
+node&nbsp;can&nbsp;be&nbsp;reached&nbsp;from&nbsp;the&nbsp;start&nbsp;node&nbsp;via&nbsp;the&nbsp;path<br>
+specified&nbsp;in&nbsp;parameter&nbsp;path.</tt></dd></dl>
+
+<dl><dt><a name="Query-wql_values_query"><strong>wql_values_query</strong></a>(self, frame, query, report_type<font color="#909090">=True</font>)</dt><dd><tt>Perform&nbsp;a&nbsp;wql&nbsp;query&nbsp;on&nbsp;the&nbsp;information&nbsp;stored&nbsp;in&nbsp;a&nbsp;smart<br>
+space.&nbsp;Parameter&nbsp;frame&nbsp;is&nbsp;the&nbsp;starting&nbsp;node&nbsp;as&nbsp;a&nbsp;(node,<br>
+literal?)&nbsp;pair,&nbsp;parameter&nbsp;query&nbsp;is&nbsp;the&nbsp;wql&nbsp;path&nbsp;expression<br>
+as&nbsp;a&nbsp;string.&nbsp;The&nbsp;method&nbsp;returns&nbsp;a&nbsp;list&nbsp;of&nbsp;rdf&nbsp;nodes<br>
+matching&nbsp;the&nbsp;query.&nbsp;&nbsp;If&nbsp;report_type&nbsp;is&nbsp;set&nbsp;to&nbsp;True,&nbsp;the<br>
+list&nbsp;contains&nbsp;pairs&nbsp;(node,&nbsp;literal?)&nbsp;where&nbsp;literal?&nbsp;is<br>
+True&nbsp;if&nbsp;the&nbsp;rdf&nbsp;node&nbsp;is&nbsp;a&nbsp;Literal,&nbsp;and&nbsp;literal?&nbsp;is&nbsp;False&nbsp;if<br>
+the&nbsp;rdf&nbsp;node&nbsp;is&nbsp;a&nbsp;URI.</tt></dd></dl>
+
+<hr>
+Methods inherited from <a href="Node.html#Transaction">Transaction</a>:<br>
+<dl><dt><a name="Query-__init__"><strong>__init__</strong></a>(self, dest, node_id)</dt></dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="RDFSubscribeHandler">class <strong>RDFSubscribeHandler</strong></a>(<a href="threading.html#Thread">threading.Thread</a>)</font></td></tr>
+    
+<tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="Node.html#RDFSubscribeHandler">RDFSubscribeHandler</a></dd>
+<dd><a href="threading.html#Thread">threading.Thread</a></dd>
+<dd><a href="threading.html#_Verbose">threading._Verbose</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="RDFSubscribeHandler-__init__"><strong>__init__</strong></a>(self, node_id, tr_id, connector, msg_handler)</dt></dl>
+
+<dl><dt><a name="RDFSubscribeHandler-run"><strong>run</strong></a>(self)</dt></dl>
+
+<hr>
+Methods inherited from <a href="threading.html#Thread">threading.Thread</a>:<br>
+<dl><dt><a name="RDFSubscribeHandler-__repr__"><strong>__repr__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="RDFSubscribeHandler-getName"><strong>getName</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="RDFSubscribeHandler-isAlive"><strong>isAlive</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="RDFSubscribeHandler-isDaemon"><strong>isDaemon</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="RDFSubscribeHandler-join"><strong>join</strong></a>(self, timeout<font color="#909090">=None</font>)</dt></dl>
+
+<dl><dt><a name="RDFSubscribeHandler-setDaemon"><strong>setDaemon</strong></a>(self, daemonic)</dt></dl>
+
+<dl><dt><a name="RDFSubscribeHandler-setName"><strong>setName</strong></a>(self, name)</dt></dl>
+
+<dl><dt><a name="RDFSubscribeHandler-start"><strong>start</strong></a>(self)</dt></dl>
+
+<hr>
+Data descriptors inherited from <a href="threading.html#_Verbose">threading._Verbose</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Remove">class <strong>Remove</strong></a>(<a href="Node.html#Transaction">Transaction</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Class&nbsp;for&nbsp;handling&nbsp;<a href="#Remove">Remove</a>&nbsp;transactions.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="Remove-close"><strong>close</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Remove-remove"><strong>remove</strong></a>(self, r_triples, r_type<font color="#909090">='rdf-m3'</font>, confirm<font color="#909090">=False</font>)</dt><dd><tt><a href="#Remove">Remove</a>&nbsp;triples&nbsp;listed&nbsp;in&nbsp;parameter&nbsp;triples.&nbsp;Format&nbsp;as&nbsp;in&nbsp;insert.<br>
+No&nbsp;blank&nbsp;nodes&nbsp;allowed</tt></dd></dl>
+
+<hr>
+Methods inherited from <a href="Node.html#Transaction">Transaction</a>:<br>
+<dl><dt><a name="Remove-__init__"><strong>__init__</strong></a>(self, dest, node_id)</dt></dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="SSAPMsgHandler">class <strong>SSAPMsgHandler</strong></a>(<a href="xml.sax.handler.html#ContentHandler">xml.sax.handler.ContentHandler</a>)</font></td></tr>
+    
+<tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="SSAPMsgHandler-__init__"><strong>__init__</strong></a>(self, array)</dt></dl>
+
+<dl><dt><a name="SSAPMsgHandler-characters"><strong>characters</strong></a>(self, ch)</dt></dl>
+
+<dl><dt><a name="SSAPMsgHandler-endElement"><strong>endElement</strong></a>(self, name)</dt></dl>
+
+<dl><dt><a name="SSAPMsgHandler-startElement"><strong>startElement</strong></a>(self, name, attrs)</dt></dl>
+
+<hr>
+Methods inherited from <a href="xml.sax.handler.html#ContentHandler">xml.sax.handler.ContentHandler</a>:<br>
+<dl><dt><a name="SSAPMsgHandler-endDocument"><strong>endDocument</strong></a>(self)</dt><dd><tt>Receive&nbsp;notification&nbsp;of&nbsp;the&nbsp;end&nbsp;of&nbsp;a&nbsp;document.<br>
+&nbsp;<br>
+The&nbsp;SAX&nbsp;parser&nbsp;will&nbsp;invoke&nbsp;this&nbsp;method&nbsp;only&nbsp;once,&nbsp;and&nbsp;it&nbsp;will<br>
+be&nbsp;the&nbsp;last&nbsp;method&nbsp;invoked&nbsp;during&nbsp;the&nbsp;parse.&nbsp;The&nbsp;parser&nbsp;shall<br>
+not&nbsp;invoke&nbsp;this&nbsp;method&nbsp;until&nbsp;it&nbsp;has&nbsp;either&nbsp;abandoned&nbsp;parsing<br>
+(because&nbsp;of&nbsp;an&nbsp;unrecoverable&nbsp;error)&nbsp;or&nbsp;reached&nbsp;the&nbsp;end&nbsp;of<br>
+input.</tt></dd></dl>
+
+<dl><dt><a name="SSAPMsgHandler-endElementNS"><strong>endElementNS</strong></a>(self, name, qname)</dt><dd><tt>Signals&nbsp;the&nbsp;end&nbsp;of&nbsp;an&nbsp;element&nbsp;in&nbsp;namespace&nbsp;mode.<br>
+&nbsp;<br>
+The&nbsp;name&nbsp;parameter&nbsp;contains&nbsp;the&nbsp;name&nbsp;of&nbsp;the&nbsp;element&nbsp;type,&nbsp;just<br>
+as&nbsp;with&nbsp;the&nbsp;startElementNS&nbsp;event.</tt></dd></dl>
+
+<dl><dt><a name="SSAPMsgHandler-endPrefixMapping"><strong>endPrefixMapping</strong></a>(self, prefix)</dt><dd><tt>End&nbsp;the&nbsp;scope&nbsp;of&nbsp;a&nbsp;prefix-URI&nbsp;mapping.<br>
+&nbsp;<br>
+See&nbsp;startPrefixMapping&nbsp;for&nbsp;details.&nbsp;This&nbsp;event&nbsp;will&nbsp;always<br>
+occur&nbsp;after&nbsp;the&nbsp;corresponding&nbsp;endElement&nbsp;event,&nbsp;but&nbsp;the&nbsp;order<br>
+of&nbsp;endPrefixMapping&nbsp;events&nbsp;is&nbsp;not&nbsp;otherwise&nbsp;guaranteed.</tt></dd></dl>
+
+<dl><dt><a name="SSAPMsgHandler-ignorableWhitespace"><strong>ignorableWhitespace</strong></a>(self, whitespace)</dt><dd><tt>Receive&nbsp;notification&nbsp;of&nbsp;ignorable&nbsp;whitespace&nbsp;in&nbsp;element&nbsp;content.<br>
+&nbsp;<br>
+Validating&nbsp;Parsers&nbsp;must&nbsp;use&nbsp;this&nbsp;method&nbsp;to&nbsp;report&nbsp;each&nbsp;chunk<br>
+of&nbsp;ignorable&nbsp;whitespace&nbsp;(see&nbsp;the&nbsp;W3C&nbsp;XML&nbsp;1.0&nbsp;recommendation,<br>
+section&nbsp;2.10):&nbsp;non-validating&nbsp;parsers&nbsp;may&nbsp;also&nbsp;use&nbsp;this&nbsp;method<br>
+if&nbsp;they&nbsp;are&nbsp;capable&nbsp;of&nbsp;parsing&nbsp;and&nbsp;using&nbsp;content&nbsp;models.<br>
+&nbsp;<br>
+SAX&nbsp;parsers&nbsp;may&nbsp;return&nbsp;all&nbsp;contiguous&nbsp;whitespace&nbsp;in&nbsp;a&nbsp;single<br>
+chunk,&nbsp;or&nbsp;they&nbsp;may&nbsp;split&nbsp;it&nbsp;into&nbsp;several&nbsp;chunks;&nbsp;however,&nbsp;all<br>
+of&nbsp;the&nbsp;characters&nbsp;in&nbsp;any&nbsp;single&nbsp;event&nbsp;must&nbsp;come&nbsp;from&nbsp;the&nbsp;same<br>
+external&nbsp;entity,&nbsp;so&nbsp;that&nbsp;the&nbsp;Locator&nbsp;provides&nbsp;useful<br>
+information.</tt></dd></dl>
+
+<dl><dt><a name="SSAPMsgHandler-processingInstruction"><strong>processingInstruction</strong></a>(self, target, data)</dt><dd><tt>Receive&nbsp;notification&nbsp;of&nbsp;a&nbsp;processing&nbsp;instruction.<br>
+&nbsp;<br>
+The&nbsp;Parser&nbsp;will&nbsp;invoke&nbsp;this&nbsp;method&nbsp;once&nbsp;for&nbsp;each&nbsp;processing<br>
+instruction&nbsp;found:&nbsp;note&nbsp;that&nbsp;processing&nbsp;instructions&nbsp;may&nbsp;occur<br>
+before&nbsp;or&nbsp;after&nbsp;the&nbsp;main&nbsp;document&nbsp;element.<br>
+&nbsp;<br>
+A&nbsp;SAX&nbsp;parser&nbsp;should&nbsp;never&nbsp;report&nbsp;an&nbsp;XML&nbsp;declaration&nbsp;(XML&nbsp;1.0,<br>
+section&nbsp;2.8)&nbsp;or&nbsp;a&nbsp;text&nbsp;declaration&nbsp;(XML&nbsp;1.0,&nbsp;section&nbsp;4.3.1)<br>
+using&nbsp;this&nbsp;method.</tt></dd></dl>
+
+<dl><dt><a name="SSAPMsgHandler-setDocumentLocator"><strong>setDocumentLocator</strong></a>(self, locator)</dt><dd><tt>Called&nbsp;by&nbsp;the&nbsp;parser&nbsp;to&nbsp;give&nbsp;the&nbsp;application&nbsp;a&nbsp;locator&nbsp;for<br>
+locating&nbsp;the&nbsp;origin&nbsp;of&nbsp;document&nbsp;events.<br>
+&nbsp;<br>
+SAX&nbsp;parsers&nbsp;are&nbsp;strongly&nbsp;encouraged&nbsp;(though&nbsp;not&nbsp;absolutely<br>
+required)&nbsp;to&nbsp;supply&nbsp;a&nbsp;locator:&nbsp;if&nbsp;it&nbsp;does&nbsp;so,&nbsp;it&nbsp;must&nbsp;supply<br>
+the&nbsp;locator&nbsp;to&nbsp;the&nbsp;application&nbsp;by&nbsp;invoking&nbsp;this&nbsp;method&nbsp;before<br>
+invoking&nbsp;any&nbsp;of&nbsp;the&nbsp;other&nbsp;methods&nbsp;in&nbsp;the&nbsp;DocumentHandler<br>
+interface.<br>
+&nbsp;<br>
+The&nbsp;locator&nbsp;allows&nbsp;the&nbsp;application&nbsp;to&nbsp;determine&nbsp;the&nbsp;end<br>
+position&nbsp;of&nbsp;any&nbsp;document-related&nbsp;event,&nbsp;even&nbsp;if&nbsp;the&nbsp;parser&nbsp;is<br>
+not&nbsp;reporting&nbsp;an&nbsp;error.&nbsp;Typically,&nbsp;the&nbsp;application&nbsp;will&nbsp;use<br>
+this&nbsp;information&nbsp;for&nbsp;reporting&nbsp;its&nbsp;own&nbsp;errors&nbsp;(such&nbsp;as<br>
+character&nbsp;content&nbsp;that&nbsp;does&nbsp;not&nbsp;match&nbsp;an&nbsp;application's<br>
+business&nbsp;rules).&nbsp;The&nbsp;information&nbsp;returned&nbsp;by&nbsp;the&nbsp;locator&nbsp;is<br>
+probably&nbsp;not&nbsp;sufficient&nbsp;for&nbsp;use&nbsp;with&nbsp;a&nbsp;search&nbsp;engine.<br>
+&nbsp;<br>
+Note&nbsp;that&nbsp;the&nbsp;locator&nbsp;will&nbsp;return&nbsp;correct&nbsp;information&nbsp;only<br>
+during&nbsp;the&nbsp;invocation&nbsp;of&nbsp;the&nbsp;events&nbsp;in&nbsp;this&nbsp;interface.&nbsp;The<br>
+application&nbsp;should&nbsp;not&nbsp;attempt&nbsp;to&nbsp;use&nbsp;it&nbsp;at&nbsp;any&nbsp;other&nbsp;time.</tt></dd></dl>
+
+<dl><dt><a name="SSAPMsgHandler-skippedEntity"><strong>skippedEntity</strong></a>(self, name)</dt><dd><tt>Receive&nbsp;notification&nbsp;of&nbsp;a&nbsp;skipped&nbsp;entity.<br>
+&nbsp;<br>
+The&nbsp;Parser&nbsp;will&nbsp;invoke&nbsp;this&nbsp;method&nbsp;once&nbsp;for&nbsp;each&nbsp;entity<br>
+skipped.&nbsp;Non-validating&nbsp;processors&nbsp;may&nbsp;skip&nbsp;entities&nbsp;if&nbsp;they<br>
+have&nbsp;not&nbsp;seen&nbsp;the&nbsp;declarations&nbsp;(because,&nbsp;for&nbsp;example,&nbsp;the<br>
+entity&nbsp;was&nbsp;declared&nbsp;in&nbsp;an&nbsp;external&nbsp;DTD&nbsp;subset).&nbsp;All&nbsp;processors<br>
+may&nbsp;skip&nbsp;external&nbsp;entities,&nbsp;depending&nbsp;on&nbsp;the&nbsp;values&nbsp;of&nbsp;the<br>
+<a href="http://xml.org/sax/features/external-general-entities">http://xml.org/sax/features/external-general-entities</a>&nbsp;and&nbsp;the<br>
+<a href="http://xml.org/sax/features/external-parameter-entities">http://xml.org/sax/features/external-parameter-entities</a><br>
+properties.</tt></dd></dl>
+
+<dl><dt><a name="SSAPMsgHandler-startDocument"><strong>startDocument</strong></a>(self)</dt><dd><tt>Receive&nbsp;notification&nbsp;of&nbsp;the&nbsp;beginning&nbsp;of&nbsp;a&nbsp;document.<br>
+&nbsp;<br>
+The&nbsp;SAX&nbsp;parser&nbsp;will&nbsp;invoke&nbsp;this&nbsp;method&nbsp;only&nbsp;once,&nbsp;before&nbsp;any<br>
+other&nbsp;methods&nbsp;in&nbsp;this&nbsp;interface&nbsp;or&nbsp;in&nbsp;DTDHandler&nbsp;(except&nbsp;for<br>
+setDocumentLocator).</tt></dd></dl>
+
+<dl><dt><a name="SSAPMsgHandler-startElementNS"><strong>startElementNS</strong></a>(self, name, qname, attrs)</dt><dd><tt>Signals&nbsp;the&nbsp;start&nbsp;of&nbsp;an&nbsp;element&nbsp;in&nbsp;namespace&nbsp;mode.<br>
+&nbsp;<br>
+The&nbsp;name&nbsp;parameter&nbsp;contains&nbsp;the&nbsp;name&nbsp;of&nbsp;the&nbsp;element&nbsp;type&nbsp;as&nbsp;a<br>
+(uri,&nbsp;localname)&nbsp;tuple,&nbsp;the&nbsp;qname&nbsp;parameter&nbsp;the&nbsp;raw&nbsp;XML&nbsp;1.0<br>
+name&nbsp;used&nbsp;in&nbsp;the&nbsp;source&nbsp;document,&nbsp;and&nbsp;the&nbsp;attrs&nbsp;parameter<br>
+holds&nbsp;an&nbsp;instance&nbsp;of&nbsp;the&nbsp;Attributes&nbsp;class&nbsp;containing&nbsp;the<br>
+attributes&nbsp;of&nbsp;the&nbsp;element.<br>
+&nbsp;<br>
+The&nbsp;uri&nbsp;part&nbsp;of&nbsp;the&nbsp;name&nbsp;tuple&nbsp;is&nbsp;None&nbsp;for&nbsp;elements&nbsp;which&nbsp;have<br>
+no&nbsp;namespace.</tt></dd></dl>
+
+<dl><dt><a name="SSAPMsgHandler-startPrefixMapping"><strong>startPrefixMapping</strong></a>(self, prefix, uri)</dt><dd><tt>Begin&nbsp;the&nbsp;scope&nbsp;of&nbsp;a&nbsp;prefix-URI&nbsp;Namespace&nbsp;mapping.<br>
+&nbsp;<br>
+The&nbsp;information&nbsp;from&nbsp;this&nbsp;event&nbsp;is&nbsp;not&nbsp;necessary&nbsp;for&nbsp;normal<br>
+Namespace&nbsp;processing:&nbsp;the&nbsp;SAX&nbsp;XML&nbsp;reader&nbsp;will&nbsp;automatically<br>
+replace&nbsp;prefixes&nbsp;for&nbsp;element&nbsp;and&nbsp;attribute&nbsp;names&nbsp;when&nbsp;the<br>
+<a href="http://xml.org/sax/features/namespaces">http://xml.org/sax/features/namespaces</a>&nbsp;feature&nbsp;is&nbsp;true&nbsp;(the<br>
+default).<br>
+&nbsp;<br>
+There&nbsp;are&nbsp;cases,&nbsp;however,&nbsp;when&nbsp;applications&nbsp;need&nbsp;to&nbsp;use<br>
+prefixes&nbsp;in&nbsp;character&nbsp;data&nbsp;or&nbsp;in&nbsp;attribute&nbsp;values,&nbsp;where&nbsp;they<br>
+cannot&nbsp;safely&nbsp;be&nbsp;expanded&nbsp;automatically;&nbsp;the<br>
+start/endPrefixMapping&nbsp;event&nbsp;supplies&nbsp;the&nbsp;information&nbsp;to&nbsp;the<br>
+application&nbsp;to&nbsp;expand&nbsp;prefixes&nbsp;in&nbsp;those&nbsp;contexts&nbsp;itself,&nbsp;if<br>
+necessary.<br>
+&nbsp;<br>
+Note&nbsp;that&nbsp;start/endPrefixMapping&nbsp;events&nbsp;are&nbsp;not&nbsp;guaranteed&nbsp;to<br>
+be&nbsp;properly&nbsp;nested&nbsp;relative&nbsp;to&nbsp;each-other:&nbsp;all<br>
+startPrefixMapping&nbsp;events&nbsp;will&nbsp;occur&nbsp;before&nbsp;the&nbsp;corresponding<br>
+startElement&nbsp;event,&nbsp;and&nbsp;all&nbsp;endPrefixMapping&nbsp;events&nbsp;will&nbsp;occur<br>
+after&nbsp;the&nbsp;corresponding&nbsp;endElement&nbsp;event,&nbsp;but&nbsp;their&nbsp;order&nbsp;is<br>
+not&nbsp;guaranteed.</tt></dd></dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Subscribe">class <strong>Subscribe</strong></a>(<a href="Node.html#Transaction">Transaction</a>)</font></td></tr>
+    
+<tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="Subscribe-__init__"><strong>__init__</strong></a>(self, dest, node_id, once<font color="#909090">=False</font>)</dt></dl>
+
+<dl><dt><a name="Subscribe-close"><strong>close</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Subscribe-subscribe_rdf"><strong>subscribe_rdf</strong></a>(self, triple, msg_handler)</dt><dd><tt><a href="#Subscribe">Subscribe</a>&nbsp;to&nbsp;the&nbsp;information&nbsp;stored&nbsp;in&nbsp;a&nbsp;smart&nbsp;space&nbsp;using<br>
+a&nbsp;pattern&nbsp;(triple&nbsp;matching)&nbsp;query.&nbsp;The&nbsp;parameter&nbsp;triple&nbsp;is&nbsp;a<br>
+tuple&nbsp;(s,&nbsp;p,&nbsp;o)&nbsp;where&nbsp;any&nbsp;component&nbsp;may&nbsp;be&nbsp;None,&nbsp;specifying&nbsp;a<br>
+wildcard.<br>
+&nbsp;<br>
+The&nbsp;method&nbsp;returns&nbsp;a&nbsp;list&nbsp;of&nbsp;matching&nbsp;triples&nbsp;<br>
+[((s,&nbsp;p,&nbsp;o),&nbsp;object_type),...]<br>
+&nbsp;<br>
+When&nbsp;the&nbsp;query&nbsp;results&nbsp;change&nbsp;in&nbsp;the&nbsp;smart&nbsp;space&nbsp;the&nbsp;subscription<br>
+calls&nbsp;msg_handler.handle(added,&nbsp;removed)&nbsp;where&nbsp;added&nbsp;is&nbsp;a&nbsp;list<br>
+of&nbsp;triples&nbsp;added&nbsp;to&nbsp;the&nbsp;query&nbsp;results&nbsp;since&nbsp;last&nbsp;callback&nbsp;and<br>
+removed&nbsp;is&nbsp;a&nbsp;list&nbsp;of&nbsp;triples&nbsp;removed&nbsp;from&nbsp;the&nbsp;query&nbsp;results&nbsp;after<br>
+last&nbsp;callback</tt></dd></dl>
+
+<dl><dt><a name="Subscribe-subscribe_wql_issubtype"><strong>subscribe_wql_issubtype</strong></a>(self, subtype, supertype, msg_handler)</dt><dd><tt><a href="#Subscribe">Subscribe</a>&nbsp;to&nbsp;information&nbsp;stored&nbsp;in&nbsp;a&nbsp;smart&nbsp;space&nbsp;using&nbsp;a<br>
+wql&nbsp;issubtype&nbsp;query.&nbsp;Parameter&nbsp;subtype&nbsp;is&nbsp;the&nbsp;subtype<br>
+node&nbsp;as&nbsp;a&nbsp;pair&nbsp;(node,&nbsp;literal?),&nbsp;and&nbsp;parameter&nbsp;supertype&nbsp;is<br>
+the&nbsp;supertype&nbsp;node&nbsp;as&nbsp;a&nbsp;pair&nbsp;(node,&nbsp;literal?).&nbsp;Both<br>
+literal?&nbsp;values&nbsp;in&nbsp;the&nbsp;parameters&nbsp;should&nbsp;be&nbsp;False<br>
+(indicating&nbsp;an&nbsp;URI).&nbsp;The&nbsp;method&nbsp;returns&nbsp;True&nbsp;if&nbsp;the&nbsp;subtype<br>
+node&nbsp;is&nbsp;a&nbsp;subtype&nbsp;of&nbsp;the&nbsp;supertype&nbsp;node,&nbsp;and&nbsp;makes&nbsp;a<br>
+callback&nbsp;each&nbsp;time&nbsp;that&nbsp;the&nbsp;query&nbsp;results&nbsp;change&nbsp;in&nbsp;the<br>
+smart&nbsp;space.&nbsp;The&nbsp;msg_handler&nbsp;callback&nbsp;should&nbsp;be&nbsp;a&nbsp;class<br>
+having&nbsp;a&nbsp;method&nbsp;handle(added,&nbsp;removed)&nbsp;where&nbsp;both&nbsp;are<br>
+boolean&nbsp;values.</tt></dd></dl>
+
+<dl><dt><a name="Subscribe-subscribe_wql_istype"><strong>subscribe_wql_istype</strong></a>(self, node, type, msg_handler)</dt><dd><tt><a href="#Subscribe">Subscribe</a>&nbsp;to&nbsp;information&nbsp;stored&nbsp;in&nbsp;a&nbsp;smart&nbsp;space&nbsp;using&nbsp;a<br>
+wql&nbsp;istype&nbsp;query.&nbsp;Parameter&nbsp;node&nbsp;is&nbsp;the&nbsp;instance&nbsp;node&nbsp;as&nbsp;a<br>
+pair&nbsp;(node,&nbsp;literal?)&nbsp;where&nbsp;literal?&nbsp;should&nbsp;be&nbsp;False<br>
+(indicating&nbsp;an&nbsp;URI),&nbsp;and&nbsp;parameter&nbsp;type&nbsp;is&nbsp;the&nbsp;type&nbsp;node&nbsp;as<br>
+a&nbsp;string.&nbsp;The&nbsp;method&nbsp;returns&nbsp;True&nbsp;if&nbsp;the&nbsp;instance&nbsp;node&nbsp;is<br>
+of&nbsp;the&nbsp;type&nbsp;specified&nbsp;by&nbsp;the&nbsp;type&nbsp;node,&nbsp;and&nbsp;makes&nbsp;a<br>
+callback&nbsp;each&nbsp;time&nbsp;that&nbsp;the&nbsp;query&nbsp;results&nbsp;change&nbsp;in&nbsp;the<br>
+smart&nbsp;space.&nbsp;The&nbsp;msg_handler&nbsp;callback&nbsp;should&nbsp;be&nbsp;a&nbsp;class<br>
+having&nbsp;a&nbsp;method&nbsp;handle(added,&nbsp;removed)&nbsp;where&nbsp;both&nbsp;are<br>
+boolean&nbsp;values.</tt></dd></dl>
+
+<dl><dt><a name="Subscribe-subscribe_wql_nodetypes"><strong>subscribe_wql_nodetypes</strong></a>(self, node, msg_handler, report_type<font color="#909090">=False</font>)</dt><dd><tt><a href="#Subscribe">Subscribe</a>&nbsp;to&nbsp;information&nbsp;stored&nbsp;in&nbsp;a&nbsp;smart&nbsp;space&nbsp;using&nbsp;a<br>
+wql&nbsp;nodetypes&nbsp;query.&nbsp;Parameter&nbsp;node&nbsp;is&nbsp;the&nbsp;node&nbsp;whose&nbsp;types<br>
+are&nbsp;queried&nbsp;as&nbsp;a&nbsp;pair&nbsp;(node,&nbsp;literal?),&nbsp;where&nbsp;the&nbsp;literal?<br>
+should&nbsp;be&nbsp;False&nbsp;(indicating&nbsp;an&nbsp;URI).&nbsp;The&nbsp;method&nbsp;returns&nbsp;a<br>
+list&nbsp;of&nbsp;(node,&nbsp;literal?)&nbsp;pairs&nbsp;matching&nbsp;the&nbsp;query&nbsp;and&nbsp;makes<br>
+a&nbsp;callback&nbsp;each&nbsp;time&nbsp;that&nbsp;the&nbsp;query&nbsp;results&nbsp;change&nbsp;in&nbsp;the<br>
+smart&nbsp;space.&nbsp;The&nbsp;msg_handler&nbsp;callback&nbsp;should&nbsp;be&nbsp;a&nbsp;class<br>
+having&nbsp;a&nbsp;method&nbsp;handle(added,&nbsp;removed)&nbsp;where&nbsp;added&nbsp;is&nbsp;a<br>
+list&nbsp;of&nbsp;(node,&nbsp;literal?)&nbsp;pairs&nbsp;added&nbsp;to&nbsp;the&nbsp;result&nbsp;set<br>
+after&nbsp;previous&nbsp;callback,&nbsp;and&nbsp;removed&nbsp;is&nbsp;a&nbsp;list&nbsp;of&nbsp;(node,<br>
+literal?)&nbsp;removed&nbsp;from&nbsp;the&nbsp;result&nbsp;set&nbsp;after&nbsp;previous<br>
+callback.</tt></dd></dl>
+
+<dl><dt><a name="Subscribe-subscribe_wql_related"><strong>subscribe_wql_related</strong></a>(self, start_node, end_node, path, msg_handler, report_type<font color="#909090">=False</font>)</dt><dd><tt><a href="#Subscribe">Subscribe</a>&nbsp;to&nbsp;information&nbsp;stored&nbsp;in&nbsp;a&nbsp;smart&nbsp;space&nbsp;using&nbsp;a<br>
+wql&nbsp;related&nbsp;query.&nbsp;Parameter&nbsp;start_node&nbsp;is&nbsp;the&nbsp;starting<br>
+node&nbsp;as&nbsp;a&nbsp;pair&nbsp;(node,&nbsp;literal?),&nbsp;parameter&nbsp;end_node&nbsp;is&nbsp;the<br>
+end&nbsp;node&nbsp;as&nbsp;a&nbsp;pair&nbsp;(node,&nbsp;literal?),&nbsp;and&nbsp;parameter&nbsp;path&nbsp;is<br>
+the&nbsp;wql&nbsp;path&nbsp;expression&nbsp;as&nbsp;a&nbsp;string.&nbsp;The&nbsp;method&nbsp;returns<br>
+True&nbsp;if&nbsp;the&nbsp;end&nbsp;node&nbsp;can&nbsp;be&nbsp;reached&nbsp;from&nbsp;the&nbsp;start&nbsp;node&nbsp;via<br>
+the&nbsp;path&nbsp;specified&nbsp;in&nbsp;parameter&nbsp;path,&nbsp;and&nbsp;makes&nbsp;a&nbsp;callback<br>
+each&nbsp;time&nbsp;that&nbsp;the&nbsp;query&nbsp;results&nbsp;change&nbsp;in&nbsp;the&nbsp;smart<br>
+space.&nbsp;The&nbsp;msg_handler&nbsp;callback&nbsp;should&nbsp;be&nbsp;a&nbsp;class&nbsp;having&nbsp;a<br>
+method&nbsp;handle(added,&nbsp;removed)&nbsp;where&nbsp;both&nbsp;are&nbsp;boolean<br>
+values.</tt></dd></dl>
+
+<dl><dt><a name="Subscribe-subscribe_wql_values"><strong>subscribe_wql_values</strong></a>(self, frame, query, msg_handler, report_type<font color="#909090">=True</font>)</dt><dd><tt><a href="#Subscribe">Subscribe</a>&nbsp;to&nbsp;information&nbsp;stored&nbsp;in&nbsp;a&nbsp;smart&nbsp;space&nbsp;using&nbsp;a<br>
+wql&nbsp;values&nbsp;query.&nbsp;Parameter&nbsp;frame&nbsp;is&nbsp;the&nbsp;starting&nbsp;node&nbsp;as&nbsp;a<br>
+pair&nbsp;(node,&nbsp;literal?),&nbsp;parameter&nbsp;query&nbsp;is&nbsp;the&nbsp;wql&nbsp;path<br>
+expression&nbsp;as&nbsp;a&nbsp;string&nbsp;or&nbsp;list&nbsp;of&nbsp;strings&nbsp;(e.g.&nbsp;"['seq',<br>
+'rdf:type']"&nbsp;or&nbsp;['seq',&nbsp;'rdf:type']).&nbsp;The&nbsp;method&nbsp;returns&nbsp;a<br>
+list&nbsp;of&nbsp;rdf&nbsp;nodes&nbsp;matching&nbsp;the&nbsp;query&nbsp;and&nbsp;makes&nbsp;a&nbsp;callback&nbsp;each<br>
+time&nbsp;that&nbsp;the&nbsp;query&nbsp;results&nbsp;change&nbsp;in&nbsp;the&nbsp;smart&nbsp;space.&nbsp;The<br>
+msg_handler&nbsp;callback&nbsp;should&nbsp;be&nbsp;a&nbsp;class&nbsp;having&nbsp;a&nbsp;method<br>
+handle(added,&nbsp;removed)&nbsp;where&nbsp;added&nbsp;is&nbsp;a&nbsp;list&nbsp;of&nbsp;(node,<br>
+literal?)&nbsp;pairs&nbsp;added&nbsp;to&nbsp;the&nbsp;result&nbsp;set&nbsp;after&nbsp;previous<br>
+callback,&nbsp;and&nbsp;removed&nbsp;is&nbsp;a&nbsp;list&nbsp;of&nbsp;(node,&nbsp;literal?)&nbsp;removed<br>
+from&nbsp;the&nbsp;result&nbsp;set&nbsp;after&nbsp;previous&nbsp;callback.</tt></dd></dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="TCPConnector">class <strong>TCPConnector</strong></a>(<a href="Node.html#Connector">Connector</a>)</font></td></tr>
+    
+<tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="TCPConnector-__init__"><strong>__init__</strong></a>(self, arg_tuple)</dt></dl>
+
+<dl><dt><a name="TCPConnector-close"><strong>close</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="TCPConnector-connect"><strong>connect</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="TCPConnector-receive"><strong>receive</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="TCPConnector-send"><strong>send</strong></a>(self, msg)</dt></dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Transaction">class <strong>Transaction</strong></a></font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Abstract&nbsp;base&nbsp;class&nbsp;for&nbsp;Smart&nbsp;Space&nbsp;transactions.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="Transaction-__init__"><strong>__init__</strong></a>(self, dest, node_id)</dt></dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Update">class <strong>Update</strong></a>(<a href="Node.html#Transaction">Transaction</a>)</font></td></tr>
+    
+<tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="Update-close"><strong>close</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Update-update"><strong>update</strong></a>(self, i_triples, i_enc, r_triples, r_enc, confirm<font color="#909090">=False</font>)</dt><dd><tt>Perform&nbsp;an&nbsp;atomic&nbsp;update&nbsp;operation.&nbsp;First,&nbsp;removes&nbsp;the&nbsp;triples&nbsp;<br>
+given&nbsp;in&nbsp;parameter&nbsp;r_triples&nbsp;and&nbsp;then&nbsp;inserts&nbsp;the&nbsp;triples&nbsp;given<br>
+in&nbsp;parameter&nbsp;i_triples.&nbsp;Parameters&nbsp;i_enc&nbsp;and&nbsp;r_enc&nbsp;as&nbsp;in&nbsp;<a href="#Insert">Insert</a><br>
+transaction.</tt></dd></dl>
+
+<hr>
+Methods inherited from <a href="Node.html#Transaction">Transaction</a>:<br>
+<dl><dt><a name="Update-__init__"><strong>__init__</strong></a>(self, dest, node_id)</dt></dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="UriListHandler">class <strong>UriListHandler</strong></a>(<a href="xml.sax.handler.html#ContentHandler">xml.sax.handler.ContentHandler</a>)</font></td></tr>
+    
+<tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="UriListHandler-__init__"><strong>__init__</strong></a>(self, node_list)</dt></dl>
+
+<dl><dt><a name="UriListHandler-characters"><strong>characters</strong></a>(self, ch)</dt></dl>
+
+<dl><dt><a name="UriListHandler-endElement"><strong>endElement</strong></a>(self, name)</dt></dl>
+
+<dl><dt><a name="UriListHandler-startElement"><strong>startElement</strong></a>(self, name, attrs)</dt></dl>
+
+<hr>
+Methods inherited from <a href="xml.sax.handler.html#ContentHandler">xml.sax.handler.ContentHandler</a>:<br>
+<dl><dt><a name="UriListHandler-endDocument"><strong>endDocument</strong></a>(self)</dt><dd><tt>Receive&nbsp;notification&nbsp;of&nbsp;the&nbsp;end&nbsp;of&nbsp;a&nbsp;document.<br>
+&nbsp;<br>
+The&nbsp;SAX&nbsp;parser&nbsp;will&nbsp;invoke&nbsp;this&nbsp;method&nbsp;only&nbsp;once,&nbsp;and&nbsp;it&nbsp;will<br>
+be&nbsp;the&nbsp;last&nbsp;method&nbsp;invoked&nbsp;during&nbsp;the&nbsp;parse.&nbsp;The&nbsp;parser&nbsp;shall<br>
+not&nbsp;invoke&nbsp;this&nbsp;method&nbsp;until&nbsp;it&nbsp;has&nbsp;either&nbsp;abandoned&nbsp;parsing<br>
+(because&nbsp;of&nbsp;an&nbsp;unrecoverable&nbsp;error)&nbsp;or&nbsp;reached&nbsp;the&nbsp;end&nbsp;of<br>
+input.</tt></dd></dl>
+
+<dl><dt><a name="UriListHandler-endElementNS"><strong>endElementNS</strong></a>(self, name, qname)</dt><dd><tt>Signals&nbsp;the&nbsp;end&nbsp;of&nbsp;an&nbsp;element&nbsp;in&nbsp;namespace&nbsp;mode.<br>
+&nbsp;<br>
+The&nbsp;name&nbsp;parameter&nbsp;contains&nbsp;the&nbsp;name&nbsp;of&nbsp;the&nbsp;element&nbsp;type,&nbsp;just<br>
+as&nbsp;with&nbsp;the&nbsp;startElementNS&nbsp;event.</tt></dd></dl>
+
+<dl><dt><a name="UriListHandler-endPrefixMapping"><strong>endPrefixMapping</strong></a>(self, prefix)</dt><dd><tt>End&nbsp;the&nbsp;scope&nbsp;of&nbsp;a&nbsp;prefix-URI&nbsp;mapping.<br>
+&nbsp;<br>
+See&nbsp;startPrefixMapping&nbsp;for&nbsp;details.&nbsp;This&nbsp;event&nbsp;will&nbsp;always<br>
+occur&nbsp;after&nbsp;the&nbsp;corresponding&nbsp;endElement&nbsp;event,&nbsp;but&nbsp;the&nbsp;order<br>
+of&nbsp;endPrefixMapping&nbsp;events&nbsp;is&nbsp;not&nbsp;otherwise&nbsp;guaranteed.</tt></dd></dl>
+
+<dl><dt><a name="UriListHandler-ignorableWhitespace"><strong>ignorableWhitespace</strong></a>(self, whitespace)</dt><dd><tt>Receive&nbsp;notification&nbsp;of&nbsp;ignorable&nbsp;whitespace&nbsp;in&nbsp;element&nbsp;content.<br>
+&nbsp;<br>
+Validating&nbsp;Parsers&nbsp;must&nbsp;use&nbsp;this&nbsp;method&nbsp;to&nbsp;report&nbsp;each&nbsp;chunk<br>
+of&nbsp;ignorable&nbsp;whitespace&nbsp;(see&nbsp;the&nbsp;W3C&nbsp;XML&nbsp;1.0&nbsp;recommendation,<br>
+section&nbsp;2.10):&nbsp;non-validating&nbsp;parsers&nbsp;may&nbsp;also&nbsp;use&nbsp;this&nbsp;method<br>
+if&nbsp;they&nbsp;are&nbsp;capable&nbsp;of&nbsp;parsing&nbsp;and&nbsp;using&nbsp;content&nbsp;models.<br>
+&nbsp;<br>
+SAX&nbsp;parsers&nbsp;may&nbsp;return&nbsp;all&nbsp;contiguous&nbsp;whitespace&nbsp;in&nbsp;a&nbsp;single<br>
+chunk,&nbsp;or&nbsp;they&nbsp;may&nbsp;split&nbsp;it&nbsp;into&nbsp;several&nbsp;chunks;&nbsp;however,&nbsp;all<br>
+of&nbsp;the&nbsp;characters&nbsp;in&nbsp;any&nbsp;single&nbsp;event&nbsp;must&nbsp;come&nbsp;from&nbsp;the&nbsp;same<br>
+external&nbsp;entity,&nbsp;so&nbsp;that&nbsp;the&nbsp;Locator&nbsp;provides&nbsp;useful<br>
+information.</tt></dd></dl>
+
+<dl><dt><a name="UriListHandler-processingInstruction"><strong>processingInstruction</strong></a>(self, target, data)</dt><dd><tt>Receive&nbsp;notification&nbsp;of&nbsp;a&nbsp;processing&nbsp;instruction.<br>
+&nbsp;<br>
+The&nbsp;Parser&nbsp;will&nbsp;invoke&nbsp;this&nbsp;method&nbsp;once&nbsp;for&nbsp;each&nbsp;processing<br>
+instruction&nbsp;found:&nbsp;note&nbsp;that&nbsp;processing&nbsp;instructions&nbsp;may&nbsp;occur<br>
+before&nbsp;or&nbsp;after&nbsp;the&nbsp;main&nbsp;document&nbsp;element.<br>
+&nbsp;<br>
+A&nbsp;SAX&nbsp;parser&nbsp;should&nbsp;never&nbsp;report&nbsp;an&nbsp;XML&nbsp;declaration&nbsp;(XML&nbsp;1.0,<br>
+section&nbsp;2.8)&nbsp;or&nbsp;a&nbsp;text&nbsp;declaration&nbsp;(XML&nbsp;1.0,&nbsp;section&nbsp;4.3.1)<br>
+using&nbsp;this&nbsp;method.</tt></dd></dl>
+
+<dl><dt><a name="UriListHandler-setDocumentLocator"><strong>setDocumentLocator</strong></a>(self, locator)</dt><dd><tt>Called&nbsp;by&nbsp;the&nbsp;parser&nbsp;to&nbsp;give&nbsp;the&nbsp;application&nbsp;a&nbsp;locator&nbsp;for<br>
+locating&nbsp;the&nbsp;origin&nbsp;of&nbsp;document&nbsp;events.<br>
+&nbsp;<br>
+SAX&nbsp;parsers&nbsp;are&nbsp;strongly&nbsp;encouraged&nbsp;(though&nbsp;not&nbsp;absolutely<br>
+required)&nbsp;to&nbsp;supply&nbsp;a&nbsp;locator:&nbsp;if&nbsp;it&nbsp;does&nbsp;so,&nbsp;it&nbsp;must&nbsp;supply<br>
+the&nbsp;locator&nbsp;to&nbsp;the&nbsp;application&nbsp;by&nbsp;invoking&nbsp;this&nbsp;method&nbsp;before<br>
+invoking&nbsp;any&nbsp;of&nbsp;the&nbsp;other&nbsp;methods&nbsp;in&nbsp;the&nbsp;DocumentHandler<br>
+interface.<br>
+&nbsp;<br>
+The&nbsp;locator&nbsp;allows&nbsp;the&nbsp;application&nbsp;to&nbsp;determine&nbsp;the&nbsp;end<br>
+position&nbsp;of&nbsp;any&nbsp;document-related&nbsp;event,&nbsp;even&nbsp;if&nbsp;the&nbsp;parser&nbsp;is<br>
+not&nbsp;reporting&nbsp;an&nbsp;error.&nbsp;Typically,&nbsp;the&nbsp;application&nbsp;will&nbsp;use<br>
+this&nbsp;information&nbsp;for&nbsp;reporting&nbsp;its&nbsp;own&nbsp;errors&nbsp;(such&nbsp;as<br>
+character&nbsp;content&nbsp;that&nbsp;does&nbsp;not&nbsp;match&nbsp;an&nbsp;application's<br>
+business&nbsp;rules).&nbsp;The&nbsp;information&nbsp;returned&nbsp;by&nbsp;the&nbsp;locator&nbsp;is<br>
+probably&nbsp;not&nbsp;sufficient&nbsp;for&nbsp;use&nbsp;with&nbsp;a&nbsp;search&nbsp;engine.<br>
+&nbsp;<br>
+Note&nbsp;that&nbsp;the&nbsp;locator&nbsp;will&nbsp;return&nbsp;correct&nbsp;information&nbsp;only<br>
+during&nbsp;the&nbsp;invocation&nbsp;of&nbsp;the&nbsp;events&nbsp;in&nbsp;this&nbsp;interface.&nbsp;The<br>
+application&nbsp;should&nbsp;not&nbsp;attempt&nbsp;to&nbsp;use&nbsp;it&nbsp;at&nbsp;any&nbsp;other&nbsp;time.</tt></dd></dl>
+
+<dl><dt><a name="UriListHandler-skippedEntity"><strong>skippedEntity</strong></a>(self, name)</dt><dd><tt>Receive&nbsp;notification&nbsp;of&nbsp;a&nbsp;skipped&nbsp;entity.<br>
+&nbsp;<br>
+The&nbsp;Parser&nbsp;will&nbsp;invoke&nbsp;this&nbsp;method&nbsp;once&nbsp;for&nbsp;each&nbsp;entity<br>
+skipped.&nbsp;Non-validating&nbsp;processors&nbsp;may&nbsp;skip&nbsp;entities&nbsp;if&nbsp;they<br>
+have&nbsp;not&nbsp;seen&nbsp;the&nbsp;declarations&nbsp;(because,&nbsp;for&nbsp;example,&nbsp;the<br>
+entity&nbsp;was&nbsp;declared&nbsp;in&nbsp;an&nbsp;external&nbsp;DTD&nbsp;subset).&nbsp;All&nbsp;processors<br>
+may&nbsp;skip&nbsp;external&nbsp;entities,&nbsp;depending&nbsp;on&nbsp;the&nbsp;values&nbsp;of&nbsp;the<br>
+<a href="http://xml.org/sax/features/external-general-entities">http://xml.org/sax/features/external-general-entities</a>&nbsp;and&nbsp;the<br>
+<a href="http://xml.org/sax/features/external-parameter-entities">http://xml.org/sax/features/external-parameter-entities</a><br>
+properties.</tt></dd></dl>
+
+<dl><dt><a name="UriListHandler-startDocument"><strong>startDocument</strong></a>(self)</dt><dd><tt>Receive&nbsp;notification&nbsp;of&nbsp;the&nbsp;beginning&nbsp;of&nbsp;a&nbsp;document.<br>
+&nbsp;<br>
+The&nbsp;SAX&nbsp;parser&nbsp;will&nbsp;invoke&nbsp;this&nbsp;method&nbsp;only&nbsp;once,&nbsp;before&nbsp;any<br>
+other&nbsp;methods&nbsp;in&nbsp;this&nbsp;interface&nbsp;or&nbsp;in&nbsp;DTDHandler&nbsp;(except&nbsp;for<br>
+setDocumentLocator).</tt></dd></dl>
+
+<dl><dt><a name="UriListHandler-startElementNS"><strong>startElementNS</strong></a>(self, name, qname, attrs)</dt><dd><tt>Signals&nbsp;the&nbsp;start&nbsp;of&nbsp;an&nbsp;element&nbsp;in&nbsp;namespace&nbsp;mode.<br>
+&nbsp;<br>
+The&nbsp;name&nbsp;parameter&nbsp;contains&nbsp;the&nbsp;name&nbsp;of&nbsp;the&nbsp;element&nbsp;type&nbsp;as&nbsp;a<br>
+(uri,&nbsp;localname)&nbsp;tuple,&nbsp;the&nbsp;qname&nbsp;parameter&nbsp;the&nbsp;raw&nbsp;XML&nbsp;1.0<br>
+name&nbsp;used&nbsp;in&nbsp;the&nbsp;source&nbsp;document,&nbsp;and&nbsp;the&nbsp;attrs&nbsp;parameter<br>
+holds&nbsp;an&nbsp;instance&nbsp;of&nbsp;the&nbsp;Attributes&nbsp;class&nbsp;containing&nbsp;the<br>
+attributes&nbsp;of&nbsp;the&nbsp;element.<br>
+&nbsp;<br>
+The&nbsp;uri&nbsp;part&nbsp;of&nbsp;the&nbsp;name&nbsp;tuple&nbsp;is&nbsp;None&nbsp;for&nbsp;elements&nbsp;which&nbsp;have<br>
+no&nbsp;namespace.</tt></dd></dl>
+
+<dl><dt><a name="UriListHandler-startPrefixMapping"><strong>startPrefixMapping</strong></a>(self, prefix, uri)</dt><dd><tt>Begin&nbsp;the&nbsp;scope&nbsp;of&nbsp;a&nbsp;prefix-URI&nbsp;Namespace&nbsp;mapping.<br>
+&nbsp;<br>
+The&nbsp;information&nbsp;from&nbsp;this&nbsp;event&nbsp;is&nbsp;not&nbsp;necessary&nbsp;for&nbsp;normal<br>
+Namespace&nbsp;processing:&nbsp;the&nbsp;SAX&nbsp;XML&nbsp;reader&nbsp;will&nbsp;automatically<br>
+replace&nbsp;prefixes&nbsp;for&nbsp;element&nbsp;and&nbsp;attribute&nbsp;names&nbsp;when&nbsp;the<br>
+<a href="http://xml.org/sax/features/namespaces">http://xml.org/sax/features/namespaces</a>&nbsp;feature&nbsp;is&nbsp;true&nbsp;(the<br>
+default).<br>
+&nbsp;<br>
+There&nbsp;are&nbsp;cases,&nbsp;however,&nbsp;when&nbsp;applications&nbsp;need&nbsp;to&nbsp;use<br>
+prefixes&nbsp;in&nbsp;character&nbsp;data&nbsp;or&nbsp;in&nbsp;attribute&nbsp;values,&nbsp;where&nbsp;they<br>
+cannot&nbsp;safely&nbsp;be&nbsp;expanded&nbsp;automatically;&nbsp;the<br>
+start/endPrefixMapping&nbsp;event&nbsp;supplies&nbsp;the&nbsp;information&nbsp;to&nbsp;the<br>
+application&nbsp;to&nbsp;expand&nbsp;prefixes&nbsp;in&nbsp;those&nbsp;contexts&nbsp;itself,&nbsp;if<br>
+necessary.<br>
+&nbsp;<br>
+Note&nbsp;that&nbsp;start/endPrefixMapping&nbsp;events&nbsp;are&nbsp;not&nbsp;guaranteed&nbsp;to<br>
+be&nbsp;properly&nbsp;nested&nbsp;relative&nbsp;to&nbsp;each-other:&nbsp;all<br>
+startPrefixMapping&nbsp;events&nbsp;will&nbsp;occur&nbsp;before&nbsp;the&nbsp;corresponding<br>
+startElement&nbsp;event,&nbsp;and&nbsp;all&nbsp;endPrefixMapping&nbsp;events&nbsp;will&nbsp;occur<br>
+after&nbsp;the&nbsp;corresponding&nbsp;endElement&nbsp;event,&nbsp;but&nbsp;their&nbsp;order&nbsp;is<br>
+not&nbsp;guaranteed.</tt></dd></dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="WQLBooleanSubscribeHandler">class <strong>WQLBooleanSubscribeHandler</strong></a>(<a href="threading.html#Thread">threading.Thread</a>)</font></td></tr>
+    
+<tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="Node.html#WQLBooleanSubscribeHandler">WQLBooleanSubscribeHandler</a></dd>
+<dd><a href="threading.html#Thread">threading.Thread</a></dd>
+<dd><a href="threading.html#_Verbose">threading._Verbose</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="WQLBooleanSubscribeHandler-__init__"><strong>__init__</strong></a>(self, node_id, tr_id, connector, msg_handler)</dt></dl>
+
+<dl><dt><a name="WQLBooleanSubscribeHandler-run"><strong>run</strong></a>(self)</dt></dl>
+
+<hr>
+Methods inherited from <a href="threading.html#Thread">threading.Thread</a>:<br>
+<dl><dt><a name="WQLBooleanSubscribeHandler-__repr__"><strong>__repr__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="WQLBooleanSubscribeHandler-getName"><strong>getName</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="WQLBooleanSubscribeHandler-isAlive"><strong>isAlive</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="WQLBooleanSubscribeHandler-isDaemon"><strong>isDaemon</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="WQLBooleanSubscribeHandler-join"><strong>join</strong></a>(self, timeout<font color="#909090">=None</font>)</dt></dl>
+
+<dl><dt><a name="WQLBooleanSubscribeHandler-setDaemon"><strong>setDaemon</strong></a>(self, daemonic)</dt></dl>
+
+<dl><dt><a name="WQLBooleanSubscribeHandler-setName"><strong>setName</strong></a>(self, name)</dt></dl>
+
+<dl><dt><a name="WQLBooleanSubscribeHandler-start"><strong>start</strong></a>(self)</dt></dl>
+
+<hr>
+Data descriptors inherited from <a href="threading.html#_Verbose">threading._Verbose</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="WQLNodeSubscribeHandler">class <strong>WQLNodeSubscribeHandler</strong></a>(<a href="threading.html#Thread">threading.Thread</a>)</font></td></tr>
+    
+<tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="Node.html#WQLNodeSubscribeHandler">WQLNodeSubscribeHandler</a></dd>
+<dd><a href="threading.html#Thread">threading.Thread</a></dd>
+<dd><a href="threading.html#_Verbose">threading._Verbose</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="WQLNodeSubscribeHandler-__init__"><strong>__init__</strong></a>(self, node_id, tr_id, connector, msg_handler, report_type)</dt></dl>
+
+<dl><dt><a name="WQLNodeSubscribeHandler-run"><strong>run</strong></a>(self)</dt></dl>
+
+<hr>
+Methods inherited from <a href="threading.html#Thread">threading.Thread</a>:<br>
+<dl><dt><a name="WQLNodeSubscribeHandler-__repr__"><strong>__repr__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="WQLNodeSubscribeHandler-getName"><strong>getName</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="WQLNodeSubscribeHandler-isAlive"><strong>isAlive</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="WQLNodeSubscribeHandler-isDaemon"><strong>isDaemon</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="WQLNodeSubscribeHandler-join"><strong>join</strong></a>(self, timeout<font color="#909090">=None</font>)</dt></dl>
+
+<dl><dt><a name="WQLNodeSubscribeHandler-setDaemon"><strong>setDaemon</strong></a>(self, daemonic)</dt></dl>
+
+<dl><dt><a name="WQLNodeSubscribeHandler-setName"><strong>setName</strong></a>(self, name)</dt></dl>
+
+<dl><dt><a name="WQLNodeSubscribeHandler-start"><strong>start</strong></a>(self)</dt></dl>
+
+<hr>
+Data descriptors inherited from <a href="threading.html#_Verbose">threading._Verbose</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>END_TAG</strong> = '&lt;/SSAP_message&gt;'<br>
+<strong>ETL</strong> = 15<br>
+<strong>M3_KP_ERROR</strong> = 'm3:KP.Error'<br>
+<strong>M3_KP_ERROR_MESSAGE_INCOMPLETE</strong> = 'm3:KP.Error.Message.Incomplete'<br>
+<strong>M3_KP_ERROR_MESSAGE_SYNTAX</strong> = 'm3:KP.Error.Message.Syntax'<br>
+<strong>M3_KP_ERROR_REQUEST</strong> = 'm3:KP.Error.Request'<br>
+<strong>M3_SIB_ERROR</strong> = 'm3:SIB.Error'<br>
+<strong>M3_SIB_ERROR_ACCESS_DENIED</strong> = 'm3:SIB.Error.AccessDenied'<br>
+<strong>M3_SIB_FAILURE_NOT_IMPLEMENTED</strong> = 'm3:SIB.Failure.NotImplemented'<br>
+<strong>M3_SIB_FAILURE_OUT_OF_RESOURCES</strong> = 'm3:SIB.Failure.OutOfResources'<br>
+<strong>M3_SIB_NOTIFICATION_CLOSING</strong> = 'm3:SIB.Notification.Closing'<br>
+<strong>M3_SIB_NOTIFICATION_RESET</strong> = 'm3:SIB.Notification.Reset'<br>
+<strong>M3_SUCCESS</strong> = 'm3:Success'<br>
+<strong>TCP</strong> = 6</td></tr></table>
+</body></html>

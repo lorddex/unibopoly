@@ -1,0 +1,85 @@
+Installation instructions:
+
+1. Install piglet
+Piglet (the RDF store backend) should compile without problems on most
+linux distributions and also on Macs. "make" and "make install" should
+compile and install all necessary components. You may have to run
+ldconfig after make install to make the library visible to other
+programs.
+
+Piglet needs the following packages to compile:
+Curl (http://curl.haxx.se/)
+SQLite3 (http://www.sqlite.org/)
+Raptor (http://librdf.org/raptor/)
+
+2. Unpack the M3 .tar.gz or .zip file in any suitable directory
+
+3. Set the PIGLET_HOME environment variable to point to the directory
+where piglet should generate the SQLite database file. An easy solution
+is to use the installation directory. Note that if you want to clear the
+information in the SIB, you must remove the database file. It is created
+with the same name as given to the smart space when starting the SIB.
+Otherwise, the information is persistent even if the SIB is restarted.
+
+4. Run the SIB: "python SIB.py X" will start the SIB representing the 
+smart space "X". "python SIB.py --help" will list available options.
+
+5. For the C based KP libraries, follow their attached instructions on 
+compiling and setting up.
+
+--------------------------------------
+
+Contents in the Sofia/M3 python SIB and KP package 6th May 2009:
+
+Basic example containing examples of all operations:
+basic_test.py
+
+
+More complex example showing sample information in a hypothetical 
+home smart space:
+bootHSS.py
+queryHSS.py
+
+KP library files:
+Node.py
+discovery.py (included by Node.py)
+
+SIB files:
+SIB.py
+SIBConnectivity.py (included by SIB.py)
+
+Hello World example:
+SS_HelloWorld_agentNode.py
+SS_HelloWorld_reactiveNode.py
+SS_HelloWorld_Proactive_node_observer_of_Christian_God.py
+Start these files in separate windows in the order given above.
+
+Miscellaneous utility functions:
+RDFTransactionList.py
+TripleConvenienceFunctions.py
+
+Wilbur related files:
+wilbur.py
+rdfplus.py
+iso8601.py
+
+explorer.py
+SIB Explorer, a graphical Qt based tool for inspecting the information 
+in SIB. Incomplete, but basic functionality works.
+Working features:
+  - List all triples
+  - List all classes
+  - List all information organized in classes
+
+SIB Explorer needs Qt 4 and PyQt 4 libraries.
+
+The following files are related to SIB explorer:
+explorer.ui
+explorer_ui.py
+connectDialog.ui
+connectDialog_ui.py
+wqlResult.ui
+wqlResult_ui.py
+makeTransaction.ui
+makeTransaction_ui.py
+

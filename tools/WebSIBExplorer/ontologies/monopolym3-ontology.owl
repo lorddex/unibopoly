@@ -1,0 +1,1117 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+
+<rdf:RDF xmlns="http://smartM3Lab/Ontology.owl#"
+     xml:base="http://smartM3Lab/Ontology.owl"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+    <owl:Ontology rdf:about="http://smartM3Lab/Ontology.owl#"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://smartM3Lab/Ontology.owl#HasCommand -->
+
+    <owl:ObjectProperty rdf:about="http://smartM3Lab/Ontology.owl#HasCommand">
+        <rdfs:range rdf:resource="http://smartM3Lab/Ontology.owl#Command"/>
+        <rdfs:domain rdf:resource="http://smartM3Lab/Ontology.owl#CommandInterface"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://smartM3Lab/Ontology.owl#HasCommandInterface -->
+
+    <owl:ObjectProperty rdf:about="http://smartM3Lab/Ontology.owl#HasCommandInterface">
+        <rdfs:range rdf:resource="http://smartM3Lab/Ontology.owl#CommandInterface"/>
+        <rdfs:domain rdf:resource="http://smartM3Lab/Ontology.owl#GameSession"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://smartM3Lab/Ontology.owl#HasCommandType -->
+
+    <owl:ObjectProperty rdf:about="http://smartM3Lab/Ontology.owl#HasCommandType">
+        <rdfs:domain rdf:resource="http://smartM3Lab/Ontology.owl#Command"/>
+        <rdfs:range rdf:resource="http://smartM3Lab/Ontology.owl#CommandType"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://smartM3Lab/Ontology.owl#HasContract -->
+
+    <owl:ObjectProperty rdf:about="http://smartM3Lab/Ontology.owl#HasContract">
+        <rdfs:range rdf:resource="http://smartM3Lab/Ontology.owl#Contract"/>
+        <rdfs:domain rdf:resource="http://smartM3Lab/Ontology.owl#Person"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://smartM3Lab/Ontology.owl#HasControlSet -->
+
+    <owl:ObjectProperty rdf:about="http://smartM3Lab/Ontology.owl#HasControlSet">
+        <rdfs:range rdf:resource="http://smartM3Lab/Ontology.owl#ControlSet"/>
+        <rdfs:domain rdf:resource="http://smartM3Lab/Ontology.owl#InteractiveGame"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://smartM3Lab/Ontology.owl#HasGameDescription -->
+
+    <owl:ObjectProperty rdf:about="http://smartM3Lab/Ontology.owl#HasGameDescription">
+        <rdfs:range rdf:resource="http://smartM3Lab/Ontology.owl#GameDescription"/>
+        <rdfs:domain rdf:resource="http://smartM3Lab/Ontology.owl#GameSession"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://smartM3Lab/Ontology.owl#HasGameSession -->
+
+    <owl:ObjectProperty rdf:about="http://smartM3Lab/Ontology.owl#HasGameSession">
+        <rdfs:range rdf:resource="http://smartM3Lab/Ontology.owl#GameSession"/>
+        <rdfs:domain rdf:resource="http://smartM3Lab/Ontology.owl#InteractiveGame"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://smartM3Lab/Ontology.owl#HasIssuer -->
+
+    <owl:ObjectProperty rdf:about="http://smartM3Lab/Ontology.owl#HasIssuer">
+        <rdfs:domain rdf:resource="http://smartM3Lab/Ontology.owl#Command"/>
+        <rdfs:range rdf:resource="http://smartM3Lab/Ontology.owl#Person"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://smartM3Lab/Ontology.owl#HasObserver -->
+
+    <owl:ObjectProperty rdf:about="http://smartM3Lab/Ontology.owl#HasObserver">
+        <rdfs:domain rdf:resource="http://smartM3Lab/Ontology.owl#GameSession"/>
+        <rdfs:range rdf:resource="http://smartM3Lab/Ontology.owl#Person"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://smartM3Lab/Ontology.owl#HasPlayer -->
+
+    <owl:ObjectProperty rdf:about="http://smartM3Lab/Ontology.owl#HasPlayer">
+        <rdfs:domain rdf:resource="http://smartM3Lab/Ontology.owl#GameSession"/>
+        <rdfs:range rdf:resource="http://smartM3Lab/Ontology.owl#Person"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://smartM3Lab/Ontology.owl#HasStatus -->
+
+    <owl:ObjectProperty rdf:about="http://smartM3Lab/Ontology.owl#HasStatus">
+        <rdfs:domain rdf:resource="http://smartM3Lab/Ontology.owl#GameSession"/>
+        <rdfs:range rdf:resource="http://smartM3Lab/Ontology.owl#GameStatus"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://smartM3Lab/Ontology.owl#HasSupportedCommand -->
+
+    <owl:ObjectProperty rdf:about="http://smartM3Lab/Ontology.owl#HasSupportedCommand">
+        <rdfs:range rdf:resource="http://smartM3Lab/Ontology.owl#CommandType"/>
+        <rdfs:domain rdf:resource="http://smartM3Lab/Ontology.owl#ControlSet"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://smartM3Lab/Ontology.owl#IsInBox -->
+
+    <owl:ObjectProperty rdf:about="http://smartM3Lab/Ontology.owl#IsInBox">
+        <rdfs:range rdf:resource="http://smartM3Lab/Ontology.owl#Box"/>
+        <rdfs:domain rdf:resource="http://smartM3Lab/Ontology.owl#Person"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://smartM3Lab/Ontology.owl#TurnOf -->
+
+    <owl:ObjectProperty rdf:about="http://smartM3Lab/Ontology.owl#TurnOf">
+        <rdfs:domain rdf:resource="http://smartM3Lab/Ontology.owl#GameSession"/>
+        <rdfs:range rdf:resource="http://smartM3Lab/Ontology.owl#Person"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://smartM3Lab/Ontology.owl#boxColor -->
+
+    <owl:DatatypeProperty rdf:about="http://smartM3Lab/Ontology.owl#boxColor">
+        <rdfs:domain rdf:resource="http://smartM3Lab/Ontology.owl#Street"/>
+        <rdfs:range>
+            <rdfs:Datatype>
+                <owl:oneOf>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&rdf;List"/>
+                        <rdf:first>blue</rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="&rdf;List"/>
+                                <rdf:first>cyan</rdf:first>
+                                <rdf:rest>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="&rdf;List"/>
+                                        <rdf:first>green</rdf:first>
+                                        <rdf:rest>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="&rdf;List"/>
+                                                <rdf:first>orange</rdf:first>
+                                                <rdf:rest>
+                                                    <rdf:Description>
+                                                        <rdf:type rdf:resource="&rdf;List"/>
+                                                        <rdf:first>pink</rdf:first>
+                                                        <rdf:rest>
+                                                            <rdf:Description>
+                                                                <rdf:type rdf:resource="&rdf;List"/>
+                                                                <rdf:first>purple</rdf:first>
+                                                                <rdf:rest>
+                                                                    <rdf:Description>
+                                                                        <rdf:type rdf:resource="&rdf;List"/>
+                                                                        <rdf:first>red</rdf:first>
+                                                                        <rdf:rest>
+                                                                            <rdf:Description>
+                                                                                <rdf:type rdf:resource="&rdf;List"/>
+                                                                                <rdf:first>yellow</rdf:first>
+                                                                                <rdf:rest rdf:resource="&rdf;nil"/>
+                                                                            </rdf:Description>
+                                                                        </rdf:rest>
+                                                                    </rdf:Description>
+                                                                </rdf:rest>
+                                                            </rdf:Description>
+                                                        </rdf:rest>
+                                                    </rdf:Description>
+                                                </rdf:rest>
+                                            </rdf:Description>
+                                        </rdf:rest>
+                                    </rdf:Description>
+                                </rdf:rest>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </owl:oneOf>
+            </rdfs:Datatype>
+        </rdfs:range>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://smartM3Lab/Ontology.owl#boxID -->
+
+    <owl:DatatypeProperty rdf:about="http://smartM3Lab/Ontology.owl#boxID">
+        <rdfs:domain rdf:resource="http://smartM3Lab/Ontology.owl#Box"/>
+        <rdfs:range rdf:resource="&xsd;positiveInteger"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://smartM3Lab/Ontology.owl#boxName -->
+
+    <owl:DatatypeProperty rdf:about="http://smartM3Lab/Ontology.owl#boxName">
+        <rdfs:domain rdf:resource="http://smartM3Lab/Ontology.owl#Box"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://smartM3Lab/Ontology.owl#cardAction -->
+
+    <owl:DatatypeProperty rdf:about="http://smartM3Lab/Ontology.owl#cardAction"/>
+    
+
+
+    <!-- http://smartM3Lab/Ontology.owl#cardID -->
+
+    <owl:DatatypeProperty rdf:about="http://smartM3Lab/Ontology.owl#cardID">
+        <rdfs:domain rdf:resource="http://smartM3Lab/Ontology.owl#Card"/>
+        <rdfs:range rdf:resource="&xsd;positiveInteger"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://smartM3Lab/Ontology.owl#cardText -->
+
+    <owl:DatatypeProperty rdf:about="http://smartM3Lab/Ontology.owl#cardText">
+        <rdfs:domain rdf:resource="http://smartM3Lab/Ontology.owl#Card"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://smartM3Lab/Ontology.owl#cashBalance -->
+
+    <owl:DatatypeProperty rdf:about="http://smartM3Lab/Ontology.owl#cashBalance">
+        <rdfs:domain rdf:resource="http://smartM3Lab/Ontology.owl#Person"/>
+        <rdfs:range rdf:resource="&xsd;nonNegativeInteger"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://smartM3Lab/Ontology.owl#numberOfHotels -->
+
+    <owl:DatatypeProperty rdf:about="http://smartM3Lab/Ontology.owl#numberOfHotels">
+        <rdfs:domain rdf:resource="http://smartM3Lab/Ontology.owl#Street"/>
+        <rdfs:range rdf:resource="&xsd;nonNegativeInteger"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://smartM3Lab/Ontology.owl#numberOfHouses -->
+
+    <owl:DatatypeProperty rdf:about="http://smartM3Lab/Ontology.owl#numberOfHouses">
+        <rdfs:domain rdf:resource="http://smartM3Lab/Ontology.owl#Street"/>
+        <rdfs:range rdf:resource="&xsd;nonNegativeInteger"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://smartM3Lab/Ontology.owl#numberOfPlayers -->
+
+    <owl:DatatypeProperty rdf:about="http://smartM3Lab/Ontology.owl#numberOfPlayers">
+        <rdfs:domain rdf:resource="http://smartM3Lab/Ontology.owl#GameSession"/>
+        <rdfs:range rdf:resource="&xsd;nonNegativeInteger"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://smartM3Lab/Ontology.owl#purchaseCost -->
+
+    <owl:DatatypeProperty rdf:about="http://smartM3Lab/Ontology.owl#purchaseCost">
+        <rdfs:domain rdf:resource="http://smartM3Lab/Ontology.owl#Contract"/>
+        <rdfs:range rdf:resource="&xsd;nonNegativeInteger"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://smartM3Lab/Ontology.owl#specialBoxAction -->
+
+    <owl:DatatypeProperty rdf:about="http://smartM3Lab/Ontology.owl#specialBoxAction"/>
+    
+
+
+    <!-- http://smartM3Lab/Ontology.owl#tollCost -->
+
+    <owl:DatatypeProperty rdf:about="http://smartM3Lab/Ontology.owl#tollCost">
+        <rdfs:domain rdf:resource="http://smartM3Lab/Ontology.owl#Contract"/>
+        <rdfs:range rdf:resource="&xsd;nonNegativeInteger"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://smartM3Lab/Ontology.owl#userName -->
+
+    <owl:DatatypeProperty rdf:about="http://smartM3Lab/Ontology.owl#userName">
+        <rdfs:domain rdf:resource="http://smartM3Lab/Ontology.owl#Person"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://smartM3Lab/Ontology.owl#Box -->
+
+    <owl:Class rdf:about="http://smartM3Lab/Ontology.owl#Box">
+        <rdfs:subClassOf rdf:resource="http://smartM3Lab/Ontology.owl#GameDescription"/>
+    </owl:Class>
+    
+
+
+    <!-- http://smartM3Lab/Ontology.owl#Card -->
+
+    <owl:Class rdf:about="http://smartM3Lab/Ontology.owl#Card">
+        <rdfs:subClassOf rdf:resource="http://smartM3Lab/Ontology.owl#GameDescription"/>
+    </owl:Class>
+    
+
+
+    <!-- http://smartM3Lab/Ontology.owl#Command -->
+
+    <owl:Class rdf:about="http://smartM3Lab/Ontology.owl#Command"/>
+    
+
+
+    <!-- http://smartM3Lab/Ontology.owl#CommandInterface -->
+
+    <owl:Class rdf:about="http://smartM3Lab/Ontology.owl#CommandInterface"/>
+    
+
+
+    <!-- http://smartM3Lab/Ontology.owl#CommandType -->
+
+    <owl:Class rdf:about="http://smartM3Lab/Ontology.owl#CommandType"/>
+    
+
+
+    <!-- http://smartM3Lab/Ontology.owl#Contract -->
+
+    <owl:Class rdf:about="http://smartM3Lab/Ontology.owl#Contract">
+        <rdfs:subClassOf rdf:resource="http://smartM3Lab/Ontology.owl#Box"/>
+    </owl:Class>
+    
+
+
+    <!-- http://smartM3Lab/Ontology.owl#ControlSet -->
+
+    <owl:Class rdf:about="http://smartM3Lab/Ontology.owl#ControlSet"/>
+    
+
+
+    <!-- http://smartM3Lab/Ontology.owl#GameDescription -->
+
+    <owl:Class rdf:about="http://smartM3Lab/Ontology.owl#GameDescription"/>
+    
+
+
+    <!-- http://smartM3Lab/Ontology.owl#GameSession -->
+
+    <owl:Class rdf:about="http://smartM3Lab/Ontology.owl#GameSession"/>
+    
+
+
+    <!-- http://smartM3Lab/Ontology.owl#GameStatus -->
+
+    <owl:Class rdf:about="http://smartM3Lab/Ontology.owl#GameStatus"/>
+    
+
+
+    <!-- http://smartM3Lab/Ontology.owl#Hitch -->
+
+    <owl:Class rdf:about="http://smartM3Lab/Ontology.owl#Hitch">
+        <rdfs:subClassOf rdf:resource="http://smartM3Lab/Ontology.owl#Card"/>
+    </owl:Class>
+    
+
+
+    <!-- http://smartM3Lab/Ontology.owl#InteractiveGame -->
+
+    <owl:Class rdf:about="http://smartM3Lab/Ontology.owl#InteractiveGame"/>
+    
+
+
+    <!-- http://smartM3Lab/Ontology.owl#Person -->
+
+    <owl:Class rdf:about="http://smartM3Lab/Ontology.owl#Person"/>
+    
+
+
+    <!-- http://smartM3Lab/Ontology.owl#Probability -->
+
+    <owl:Class rdf:about="http://smartM3Lab/Ontology.owl#Probability">
+        <rdfs:subClassOf rdf:resource="http://smartM3Lab/Ontology.owl#Card"/>
+    </owl:Class>
+    
+
+
+    <!-- http://smartM3Lab/Ontology.owl#Society -->
+
+    <owl:Class rdf:about="http://smartM3Lab/Ontology.owl#Society">
+        <rdfs:subClassOf rdf:resource="http://smartM3Lab/Ontology.owl#Contract"/>
+    </owl:Class>
+    
+
+
+    <!-- http://smartM3Lab/Ontology.owl#Special -->
+
+    <owl:Class rdf:about="http://smartM3Lab/Ontology.owl#Special">
+        <rdfs:subClassOf rdf:resource="http://smartM3Lab/Ontology.owl#Box"/>
+    </owl:Class>
+    
+
+
+    <!-- http://smartM3Lab/Ontology.owl#Station -->
+
+    <owl:Class rdf:about="http://smartM3Lab/Ontology.owl#Station">
+        <rdfs:subClassOf rdf:resource="http://smartM3Lab/Ontology.owl#Contract"/>
+    </owl:Class>
+    
+
+
+    <!-- http://smartM3Lab/Ontology.owl#Street -->
+
+    <owl:Class rdf:about="http://smartM3Lab/Ontology.owl#Street">
+        <rdfs:subClassOf rdf:resource="http://smartM3Lab/Ontology.owl#Contract"/>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://smartM3Lab/Ontology.owl#Active -->
+
+    <owl:NamedIndividual rdf:about="http://smartM3Lab/Ontology.owl#Active">
+        <rdf:type rdf:resource="http://smartM3Lab/Ontology.owl#GameStatus"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smartM3Lab/Ontology.owl#Almawelcome -->
+
+    <owl:NamedIndividual rdf:about="http://smartM3Lab/Ontology.owl#Almawelcome">
+        <rdf:type rdf:resource="http://smartM3Lab/Ontology.owl#Special"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smartM3Lab/Ontology.owl#Autostazione -->
+
+    <owl:NamedIndividual rdf:about="http://smartM3Lab/Ontology.owl#Autostazione">
+        <rdf:type rdf:resource="http://smartM3Lab/Ontology.owl#Station"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smartM3Lab/Ontology.owl#BirthdayAperitif -->
+
+    <owl:NamedIndividual rdf:about="http://smartM3Lab/Ontology.owl#BirthdayAperitif">
+        <rdf:type rdf:resource="http://smartM3Lab/Ontology.owl#Hitch"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smartM3Lab/Ontology.owl#BuildCommand -->
+
+    <owl:NamedIndividual rdf:about="http://smartM3Lab/Ontology.owl#BuildCommand">
+        <rdf:type rdf:resource="http://smartM3Lab/Ontology.owl#CommandType"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smartM3Lab/Ontology.owl#BuyBook -->
+
+    <owl:NamedIndividual rdf:about="http://smartM3Lab/Ontology.owl#BuyBook">
+        <rdf:type rdf:resource="http://smartM3Lab/Ontology.owl#Hitch"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smartM3Lab/Ontology.owl#BuyCommand -->
+
+    <owl:NamedIndividual rdf:about="http://smartM3Lab/Ontology.owl#BuyCommand">
+        <rdf:type rdf:resource="http://smartM3Lab/Ontology.owl#CommandType"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smartM3Lab/Ontology.owl#BuyNotebook -->
+
+    <owl:NamedIndividual rdf:about="http://smartM3Lab/Ontology.owl#BuyNotebook">
+        <rdf:type rdf:resource="http://smartM3Lab/Ontology.owl#Hitch"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smartM3Lab/Ontology.owl#DegreeParty -->
+
+    <owl:NamedIndividual rdf:about="http://smartM3Lab/Ontology.owl#DegreeParty">
+        <rdf:type rdf:resource="http://smartM3Lab/Ontology.owl#Hitch"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smartM3Lab/Ontology.owl#DegreePresent -->
+
+    <owl:NamedIndividual rdf:about="http://smartM3Lab/Ontology.owl#DegreePresent">
+        <rdf:type rdf:resource="http://smartM3Lab/Ontology.owl#Probability"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smartM3Lab/Ontology.owl#Ended -->
+
+    <owl:NamedIndividual rdf:about="http://smartM3Lab/Ontology.owl#Ended">
+        <rdf:type rdf:resource="http://smartM3Lab/Ontology.owl#GameStatus"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smartM3Lab/Ontology.owl#ExitSecretary -->
+
+    <owl:NamedIndividual rdf:about="http://smartM3Lab/Ontology.owl#ExitSecretary">
+        <rdf:type rdf:resource="http://smartM3Lab/Ontology.owl#Probability"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smartM3Lab/Ontology.owl#FreeSandwich -->
+
+    <owl:NamedIndividual rdf:about="http://smartM3Lab/Ontology.owl#FreeSandwich">
+        <rdf:type rdf:resource="http://smartM3Lab/Ontology.owl#Probability"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smartM3Lab/Ontology.owl#GoToAlmaWelcome -->
+
+    <owl:NamedIndividual rdf:about="http://smartM3Lab/Ontology.owl#GoToAlmaWelcome">
+        <rdf:type rdf:resource="http://smartM3Lab/Ontology.owl#Probability"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smartM3Lab/Ontology.owl#GoToBorgoPanigaleStation -->
+
+    <owl:NamedIndividual rdf:about="http://smartM3Lab/Ontology.owl#GoToBorgoPanigaleStation">
+        <rdf:type rdf:resource="http://smartM3Lab/Ontology.owl#Probability"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smartM3Lab/Ontology.owl#GoToBusStation -->
+
+    <owl:NamedIndividual rdf:about="http://smartM3Lab/Ontology.owl#GoToBusStation">
+        <rdf:type rdf:resource="http://smartM3Lab/Ontology.owl#Probability"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smartM3Lab/Ontology.owl#GoToCentralStation -->
+
+    <owl:NamedIndividual rdf:about="http://smartM3Lab/Ontology.owl#GoToCentralStation">
+        <rdf:type rdf:resource="http://smartM3Lab/Ontology.owl#Probability"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smartM3Lab/Ontology.owl#GoToRefectory -->
+
+    <owl:NamedIndividual rdf:about="http://smartM3Lab/Ontology.owl#GoToRefectory">
+        <rdf:type rdf:resource="http://smartM3Lab/Ontology.owl#Probability"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smartM3Lab/Ontology.owl#GoToSanVitaleStation -->
+
+    <owl:NamedIndividual rdf:about="http://smartM3Lab/Ontology.owl#GoToSanVitaleStation">
+        <rdf:type rdf:resource="http://smartM3Lab/Ontology.owl#Probability"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smartM3Lab/Ontology.owl#GoToSaragozza -->
+
+    <owl:NamedIndividual rdf:about="http://smartM3Lab/Ontology.owl#GoToSaragozza">
+        <rdf:type rdf:resource="http://smartM3Lab/Ontology.owl#Hitch"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smartM3Lab/Ontology.owl#GoToSecretary -->
+
+    <owl:NamedIndividual rdf:about="http://smartM3Lab/Ontology.owl#GoToSecretary">
+        <rdf:type rdf:resource="http://smartM3Lab/Ontology.owl#Hitch"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smartM3Lab/Ontology.owl#Imprevisto1 -->
+
+    <owl:NamedIndividual rdf:about="http://smartM3Lab/Ontology.owl#Imprevisto1">
+        <rdf:type rdf:resource="http://smartM3Lab/Ontology.owl#Special"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smartM3Lab/Ontology.owl#Imprevisto2 -->
+
+    <owl:NamedIndividual rdf:about="http://smartM3Lab/Ontology.owl#Imprevisto2">
+        <rdf:type rdf:resource="http://smartM3Lab/Ontology.owl#Special"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smartM3Lab/Ontology.owl#InterestingThesis -->
+
+    <owl:NamedIndividual rdf:about="http://smartM3Lab/Ontology.owl#InterestingThesis">
+        <rdf:type rdf:resource="http://smartM3Lab/Ontology.owl#Probability"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smartM3Lab/Ontology.owl#LostBursary -->
+
+    <owl:NamedIndividual rdf:about="http://smartM3Lab/Ontology.owl#LostBursary">
+        <rdf:type rdf:resource="http://smartM3Lab/Ontology.owl#Hitch"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smartM3Lab/Ontology.owl#LostRoom -->
+
+    <owl:NamedIndividual rdf:about="http://smartM3Lab/Ontology.owl#LostRoom">
+        <rdf:type rdf:resource="http://smartM3Lab/Ontology.owl#Hitch"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smartM3Lab/Ontology.owl#Mensa -->
+
+    <owl:NamedIndividual rdf:about="http://smartM3Lab/Ontology.owl#Mensa">
+        <rdf:type rdf:resource="http://smartM3Lab/Ontology.owl#Special"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smartM3Lab/Ontology.owl#MoveBackward1 -->
+
+    <owl:NamedIndividual rdf:about="http://smartM3Lab/Ontology.owl#MoveBackward1">
+        <rdf:type rdf:resource="http://smartM3Lab/Ontology.owl#Hitch"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smartM3Lab/Ontology.owl#MoveBackward2 -->
+
+    <owl:NamedIndividual rdf:about="http://smartM3Lab/Ontology.owl#MoveBackward2">
+        <rdf:type rdf:resource="http://smartM3Lab/Ontology.owl#Hitch"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smartM3Lab/Ontology.owl#MoveBackward3 -->
+
+    <owl:NamedIndividual rdf:about="http://smartM3Lab/Ontology.owl#MoveBackward3">
+        <rdf:type rdf:resource="http://smartM3Lab/Ontology.owl#Hitch"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smartM3Lab/Ontology.owl#MoveForward1 -->
+
+    <owl:NamedIndividual rdf:about="http://smartM3Lab/Ontology.owl#MoveForward1">
+        <rdf:type rdf:resource="http://smartM3Lab/Ontology.owl#Probability"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smartM3Lab/Ontology.owl#MoveForward2 -->
+
+    <owl:NamedIndividual rdf:about="http://smartM3Lab/Ontology.owl#MoveForward2">
+        <rdf:type rdf:resource="http://smartM3Lab/Ontology.owl#Probability"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smartM3Lab/Ontology.owl#MoveForward3 -->
+
+    <owl:NamedIndividual rdf:about="http://smartM3Lab/Ontology.owl#MoveForward3">
+        <rdf:type rdf:resource="http://smartM3Lab/Ontology.owl#Probability"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smartM3Lab/Ontology.owl#Paused -->
+
+    <owl:NamedIndividual rdf:about="http://smartM3Lab/Ontology.owl#Paused">
+        <rdf:type rdf:resource="http://smartM3Lab/Ontology.owl#GameStatus"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smartM3Lab/Ontology.owl#PayAllCommand -->
+
+    <owl:NamedIndividual rdf:about="http://smartM3Lab/Ontology.owl#PayAllCommand">
+        <rdf:type rdf:resource="http://smartM3Lab/Ontology.owl#CommandType"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smartM3Lab/Ontology.owl#PayCommand -->
+
+    <owl:NamedIndividual rdf:about="http://smartM3Lab/Ontology.owl#PayCommand">
+        <rdf:type rdf:resource="http://smartM3Lab/Ontology.owl#CommandType"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smartM3Lab/Ontology.owl#PayFirstDuty -->
+
+    <owl:NamedIndividual rdf:about="http://smartM3Lab/Ontology.owl#PayFirstDuty">
+        <rdf:type rdf:resource="http://smartM3Lab/Ontology.owl#Hitch"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smartM3Lab/Ontology.owl#PaySecondDuty -->
+
+    <owl:NamedIndividual rdf:about="http://smartM3Lab/Ontology.owl#PaySecondDuty">
+        <rdf:type rdf:resource="http://smartM3Lab/Ontology.owl#Hitch"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smartM3Lab/Ontology.owl#PayThirdDuty -->
+
+    <owl:NamedIndividual rdf:about="http://smartM3Lab/Ontology.owl#PayThirdDuty">
+        <rdf:type rdf:resource="http://smartM3Lab/Ontology.owl#Hitch"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smartM3Lab/Ontology.owl#PayToOwnerCommand -->
+
+    <owl:NamedIndividual rdf:about="http://smartM3Lab/Ontology.owl#PayToOwnerCommand">
+        <rdf:type rdf:resource="http://smartM3Lab/Ontology.owl#CommandType"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smartM3Lab/Ontology.owl#PiazzaleBacchelli -->
+
+    <owl:NamedIndividual rdf:about="http://smartM3Lab/Ontology.owl#PiazzaleBacchelli">
+        <rdf:type rdf:resource="http://smartM3Lab/Ontology.owl#Street"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smartM3Lab/Ontology.owl#PiazzettaMorandi -->
+
+    <owl:NamedIndividual rdf:about="http://smartM3Lab/Ontology.owl#PiazzettaMorandi">
+        <rdf:type rdf:resource="http://smartM3Lab/Ontology.owl#Street"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smartM3Lab/Ontology.owl#Probabilita1 -->
+
+    <owl:NamedIndividual rdf:about="http://smartM3Lab/Ontology.owl#Probabilita1">
+        <rdf:type rdf:resource="http://smartM3Lab/Ontology.owl#Special"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smartM3Lab/Ontology.owl#Probabilita2 -->
+
+    <owl:NamedIndividual rdf:about="http://smartM3Lab/Ontology.owl#Probabilita2">
+        <rdf:type rdf:resource="http://smartM3Lab/Ontology.owl#Special"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smartM3Lab/Ontology.owl#RollDice -->
+
+    <owl:NamedIndividual rdf:about="http://smartM3Lab/Ontology.owl#RollDice">
+        <rdf:type rdf:resource="http://smartM3Lab/Ontology.owl#Probability"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smartM3Lab/Ontology.owl#RollDiceCommand -->
+
+    <owl:NamedIndividual rdf:about="http://smartM3Lab/Ontology.owl#RollDiceCommand">
+        <rdf:type rdf:resource="http://smartM3Lab/Ontology.owl#CommandType"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smartM3Lab/Ontology.owl#Segreteria -->
+
+    <owl:NamedIndividual rdf:about="http://smartM3Lab/Ontology.owl#Segreteria">
+        <rdf:type rdf:resource="http://smartM3Lab/Ontology.owl#Special"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smartM3Lab/Ontology.owl#SocietaAcqua -->
+
+    <owl:NamedIndividual rdf:about="http://smartM3Lab/Ontology.owl#SocietaAcqua">
+        <rdf:type rdf:resource="http://smartM3Lab/Ontology.owl#Society"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smartM3Lab/Ontology.owl#SocietaElettrica -->
+
+    <owl:NamedIndividual rdf:about="http://smartM3Lab/Ontology.owl#SocietaElettrica">
+        <rdf:type rdf:resource="http://smartM3Lab/Ontology.owl#Society"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smartM3Lab/Ontology.owl#SocietaGas -->
+
+    <owl:NamedIndividual rdf:about="http://smartM3Lab/Ontology.owl#SocietaGas">
+        <rdf:type rdf:resource="http://smartM3Lab/Ontology.owl#Society"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smartM3Lab/Ontology.owl#SocietaSpazzatura -->
+
+    <owl:NamedIndividual rdf:about="http://smartM3Lab/Ontology.owl#SocietaSpazzatura">
+        <rdf:type rdf:resource="http://smartM3Lab/Ontology.owl#Society"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smartM3Lab/Ontology.owl#Start -->
+
+    <owl:NamedIndividual rdf:about="http://smartM3Lab/Ontology.owl#Start">
+        <rdf:type rdf:resource="http://smartM3Lab/Ontology.owl#Special"/>
+        <boxID rdf:datatype="&xsd;integer">1</boxID>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smartM3Lab/Ontology.owl#StazioneBorgoPanigale -->
+
+    <owl:NamedIndividual rdf:about="http://smartM3Lab/Ontology.owl#StazioneBorgoPanigale">
+        <rdf:type rdf:resource="http://smartM3Lab/Ontology.owl#Station"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smartM3Lab/Ontology.owl#StazioneCentrale -->
+
+    <owl:NamedIndividual rdf:about="http://smartM3Lab/Ontology.owl#StazioneCentrale">
+        <rdf:type rdf:resource="http://smartM3Lab/Ontology.owl#Station"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smartM3Lab/Ontology.owl#StazioneSanVitale -->
+
+    <owl:NamedIndividual rdf:about="http://smartM3Lab/Ontology.owl#StazioneSanVitale">
+        <rdf:type rdf:resource="http://smartM3Lab/Ontology.owl#Station"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smartM3Lab/Ontology.owl#StopToRefectory -->
+
+    <owl:NamedIndividual rdf:about="http://smartM3Lab/Ontology.owl#StopToRefectory">
+        <rdf:type rdf:resource="http://smartM3Lab/Ontology.owl#Hitch"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smartM3Lab/Ontology.owl#StradaMaggiore -->
+
+    <owl:NamedIndividual rdf:about="http://smartM3Lab/Ontology.owl#StradaMaggiore">
+        <rdf:type rdf:resource="http://smartM3Lab/Ontology.owl#Street"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smartM3Lab/Ontology.owl#TaxRefund -->
+
+    <owl:NamedIndividual rdf:about="http://smartM3Lab/Ontology.owl#TaxRefund">
+        <rdf:type rdf:resource="http://smartM3Lab/Ontology.owl#Probability"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smartM3Lab/Ontology.owl#ViaBarberia -->
+
+    <owl:NamedIndividual rdf:about="http://smartM3Lab/Ontology.owl#ViaBarberia">
+        <rdf:type rdf:resource="http://smartM3Lab/Ontology.owl#Street"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smartM3Lab/Ontology.owl#ViaBelmeloro -->
+
+    <owl:NamedIndividual rdf:about="http://smartM3Lab/Ontology.owl#ViaBelmeloro">
+        <rdf:type rdf:resource="http://smartM3Lab/Ontology.owl#Street"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smartM3Lab/Ontology.owl#ViaBertoloni -->
+
+    <owl:NamedIndividual rdf:about="http://smartM3Lab/Ontology.owl#ViaBertoloni">
+        <rdf:type rdf:resource="http://smartM3Lab/Ontology.owl#Street"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smartM3Lab/Ontology.owl#ViaDellArchiginnasio -->
+
+    <owl:NamedIndividual rdf:about="http://smartM3Lab/Ontology.owl#ViaDellArchiginnasio">
+        <rdf:type rdf:resource="http://smartM3Lab/Ontology.owl#Street"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smartM3Lab/Ontology.owl#ViaFanin -->
+
+    <owl:NamedIndividual rdf:about="http://smartM3Lab/Ontology.owl#ViaFanin">
+        <rdf:type rdf:resource="http://smartM3Lab/Ontology.owl#Street"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smartM3Lab/Ontology.owl#ViaFilippoRe -->
+
+    <owl:NamedIndividual rdf:about="http://smartM3Lab/Ontology.owl#ViaFilippoRe">
+        <rdf:type rdf:resource="http://smartM3Lab/Ontology.owl#Street"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smartM3Lab/Ontology.owl#ViaIrnerio -->
+
+    <owl:NamedIndividual rdf:about="http://smartM3Lab/Ontology.owl#ViaIrnerio">
+        <rdf:type rdf:resource="http://smartM3Lab/Ontology.owl#Street"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smartM3Lab/Ontology.owl#ViaMarsala -->
+
+    <owl:NamedIndividual rdf:about="http://smartM3Lab/Ontology.owl#ViaMarsala">
+        <rdf:type rdf:resource="http://smartM3Lab/Ontology.owl#Street"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smartM3Lab/Ontology.owl#ViaMassarenti -->
+
+    <owl:NamedIndividual rdf:about="http://smartM3Lab/Ontology.owl#ViaMassarenti">
+        <rdf:type rdf:resource="http://smartM3Lab/Ontology.owl#Street"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smartM3Lab/Ontology.owl#ViaPupilli -->
+
+    <owl:NamedIndividual rdf:about="http://smartM3Lab/Ontology.owl#ViaPupilli">
+        <rdf:type rdf:resource="http://smartM3Lab/Ontology.owl#Street"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smartM3Lab/Ontology.owl#ViaSanGiacomo -->
+
+    <owl:NamedIndividual rdf:about="http://smartM3Lab/Ontology.owl#ViaSanGiacomo">
+        <rdf:type rdf:resource="http://smartM3Lab/Ontology.owl#Street"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smartM3Lab/Ontology.owl#ViaSanVitale -->
+
+    <owl:NamedIndividual rdf:about="http://smartM3Lab/Ontology.owl#ViaSanVitale">
+        <rdf:type rdf:resource="http://smartM3Lab/Ontology.owl#Street"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smartM3Lab/Ontology.owl#ViaSaragozza -->
+
+    <owl:NamedIndividual rdf:about="http://smartM3Lab/Ontology.owl#ViaSaragozza">
+        <rdf:type rdf:resource="http://smartM3Lab/Ontology.owl#Street"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smartM3Lab/Ontology.owl#ViaTerracini -->
+
+    <owl:NamedIndividual rdf:about="http://smartM3Lab/Ontology.owl#ViaTerracini">
+        <rdf:type rdf:resource="http://smartM3Lab/Ontology.owl#Street"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smartM3Lab/Ontology.owl#ViaVallescura -->
+
+    <owl:NamedIndividual rdf:about="http://smartM3Lab/Ontology.owl#ViaVallescura">
+        <rdf:type rdf:resource="http://smartM3Lab/Ontology.owl#Street"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smartM3Lab/Ontology.owl#ViaZamboni -->
+
+    <owl:NamedIndividual rdf:about="http://smartM3Lab/Ontology.owl#ViaZamboni">
+        <rdf:type rdf:resource="http://smartM3Lab/Ontology.owl#Street"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smartM3Lab/Ontology.owl#VialeBertiPichat -->
+
+    <owl:NamedIndividual rdf:about="http://smartM3Lab/Ontology.owl#VialeBertiPichat">
+        <rdf:type rdf:resource="http://smartM3Lab/Ontology.owl#Street"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smartM3Lab/Ontology.owl#VialeFilopanti -->
+
+    <owl:NamedIndividual rdf:about="http://smartM3Lab/Ontology.owl#VialeFilopanti">
+        <rdf:type rdf:resource="http://smartM3Lab/Ontology.owl#Street"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smartM3Lab/Ontology.owl#VialeRisorgimento -->
+
+    <owl:NamedIndividual rdf:about="http://smartM3Lab/Ontology.owl#VialeRisorgimento">
+        <rdf:type rdf:resource="http://smartM3Lab/Ontology.owl#Street"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://smartM3Lab/Ontology.owl#Waiting -->
+
+    <owl:NamedIndividual rdf:about="http://smartM3Lab/Ontology.owl#Waiting">
+        <rdf:type rdf:resource="http://smartM3Lab/Ontology.owl#GameStatus"/>
+    </owl:NamedIndividual>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.4.2) http://owlapi.sourceforge.net -->
+
