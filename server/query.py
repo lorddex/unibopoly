@@ -19,10 +19,11 @@ def get_players(node, session):
     query = """SELECT ?o
     WHERE { ns:""" + session + """ ns:HasPlayer ?o }"""
     result = node.execute_query(query)
+    print result
     res = []
     if len(result)>0:
-        for i in result[0]:
-            res.append(str(i[2]).split("#")[1])
+        for i in result:
+            res.append(str(i[0][2]).split("#")[1])
     return res
 
 def get_cash_balance(node, player):

@@ -39,7 +39,8 @@ class MM3Server():
             self.turn_number = 1
             self.sem_lock = False
             self.waiting = {}
-            self.semaphore = threading.Lock() 
+            self.semaphore = threading.Lock()
+            self.nextdice = None 
             self.heading = colored("MM3Server> ", 'green', attrs=['bold']) 
             if debug:
                 print self.heading + "joining the sib on " + ip + ":" + str(port)
@@ -78,8 +79,9 @@ class MM3Server():
                 parms.append(a)
         action = cmd.split(" ")[0]
         
-        if action == "lost" and len(parms) == 1:
-            for i in get_players(self.node, self.game_session_id):
+        if action == "balance" and len(parms) == 2:
+            players = get_players(self.node, self.game_session_id)
+            for i in players:
                 if i == parms[0] + "_" + self.game_session_id:
                     triples_u = []     
                     triples_o = []
@@ -89,9 +91,11 @@ class MM3Server():
                         URI(ns + str(old_balance))))
                     triples_u.append(Triple(URI(ns + i),
                         URI(ns + "cashBalance"),
-                        URI(ns + str(-1))))
+                        URI(ns + str(old_balance + int(parms[1])))))
                     self.node.update(triples_u, triples_o)
-                    print self.heading + "player has now " + str(get_cash_balance(self.node, i))
+                    print self.heading + " player " + parms[0]  + " has now " + str(get_cash_balance(self.node, i))
+        elif action == "nextdice" and len(parms) == 1:
+            self.nextdice=int(parms[0])
                     
     def new_game_session(self, required_players):
 

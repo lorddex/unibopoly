@@ -60,7 +60,11 @@ def rolldice(self):
     player_id = self.server.current_player_id
      
     # Extract random number
-    dices = random.randint(1,6)
+    if self.server.nextdice is not None:
+        dices = self.server.nextdice
+        self.server.nextdice = None
+    else:
+        dices = random.randint(1,6)
     
     # Updating player position
     # Get old position
@@ -599,11 +603,19 @@ def update_commands(self, player, box_name, new_position):
 def takecard(self, card_type):
 
     if (card_type == "hitch"):
-        card = random.choice(hitch.keys())
+        if self.server.nextdice is None:
+            card = random.choice(hitch.keys())
+        else:
+            card = hitch.keys()[self.server.nextdice]
+            self.server.nextdice = None
         action = hitch[card]["action"]
         param = hitch[card]["param"]
     else:
-        card = random.choice(prob.keys())
+        if self.server.nextdice is None:
+            card = random.choice(prob.keys())
+        else:
+            card = prob.keys()[self.server.nextdice]
+            self.server.nextdice = None
         action = prob[card]["action"]
         param = prob[card]["param"]
 
