@@ -40,13 +40,10 @@ class Application(Frame):
                     URI(ns + "cashBalance"),
                     URI(ns + str(-1))))
                 self.c.node.update(triples_u, triples_o)
-                time.sleep(1)
-                self.c.close_subscriptions()
-                time.sleep(1)
                 self.c.clear_my_sib()
                 time.sleep(1)
+                self.c.close_subscriptions()
                 self.c.leave_sib()
-                time.sleep(1)
             except AttributeError:
                 pass
         self.quit()
