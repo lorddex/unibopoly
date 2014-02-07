@@ -89,7 +89,13 @@ class TurnHandler:
                             self.player.interface.actions_combobox_var.set('')
                             m = self.player.interface.actions_combobox['menu']
                             m.delete(0, 'end')
-                            m.add_command(label = "RollDiceCommand", command=Tkinter._setit(self.player.interface.actions_combobox_var, "RollDiceCommand"))
+
+                            if self.player.waiting == False:
+                                m.add_command(label = "RollDiceCommand", command=Tkinter._setit(self.player.interface.actions_combobox_var, "RollDiceCommand"))
+                            else:
+                                m.add_command(label = "NothingCommand", command=Tkinter._setit(self.player.interface.actions_combobox_var, "NothingCommand"))
+                                self.player.waiting = False
+                        
                             m = self.player.interface.actions_combobox.pack() 
                             self.player.interface.actions_combobox.config(state = NORMAL)
                             self.player.interface.choose_action_button.config(state = NORMAL)

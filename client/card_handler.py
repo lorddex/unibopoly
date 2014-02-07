@@ -32,10 +32,11 @@ class CardHandler:
         for i in added:
             self.prev_handler.player.lock("card")
             card = self.extracted_card = str(i[2]).split("#")[1]
-            print self.heading + "extracted card: " + colored(card, "cyan", attrs=["bold"])
+            print self.heading + " extracted card: " + colored(card, "cyan", attrs=["bold"])
 
             # check if the extracted card is related to secretary
             if card == "GoToSecretary":
+                print "locking the next round"
                 self.prev_handler.player.waiting = True
 
             # removing subscription
