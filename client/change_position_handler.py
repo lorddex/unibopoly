@@ -126,11 +126,13 @@ class ChangePositionHandler:
                                         
                                         # draw a card
                                         self.canvas.delete(self.canvas.dadi)
-                                        dado = "images/dadi/"+ str(dice) + ".png"
-                                        # print dado
-                                        self.dadi_img = ImageTk.PhotoImage(Image.open(dado))
-                                        self.canvas.dadi = self.canvas.create_image(500, 70, image = self.dadi_img, anchor = NW)
-                                        # time.sleep(int(dice))
+                                        # dice can be greater than 6 if it's forced
+                                        if dice <=6:
+                                            dado = "images/dadi/"+ str(dice) + ".png"
+                                            # print dado
+                                            self.dadi_img = ImageTk.PhotoImage(Image.open(dado))
+                                            self.canvas.dadi = self.canvas.create_image(500, 70, image = self.dadi_img, anchor = NW)
+                                            # time.sleep(int(dice))
                                         
                                     # moving the piece
                                     if (int(self.old_position)+1) < (int(self.new_position)+1):

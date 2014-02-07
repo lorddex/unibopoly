@@ -19,7 +19,6 @@ def get_players(node, session):
     query = """SELECT ?o
     WHERE { ns:""" + session + """ ns:HasPlayer ?o }"""
     result = node.execute_query(query)
-    print result
     res = []
     if len(result)>0:
         for i in result:
