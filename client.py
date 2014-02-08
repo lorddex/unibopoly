@@ -55,3 +55,14 @@ c.join_game_session(gamesession, sys.argv[3], nickname)
 
 # subscriptions
 c.launch_subscriptions()
+
+print "CTRL+D to close\n"
+while True:
+    try:
+        cmd = raw_input('> ')
+        if cmd is not "":
+            c.save_command(cmd)
+    except EOFError:
+        print "Goodbye!"
+        c.force_quit()
+        sys.exit(0)

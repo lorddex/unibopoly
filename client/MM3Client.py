@@ -42,7 +42,7 @@ class MM3Client:
             self.turn_number = 0
             self.role = None
             self.waiting = False
-
+            
             self.card_st_on = False    
             self.quit = False
 
@@ -50,7 +50,9 @@ class MM3Client:
             self.semaphore = threading.Lock()
             self.last_command = None
             self.heading = colored("MM3Client> ", "red", attrs=["bold"])
-            
+
+            self.command_available = False
+
             # board info
             self.properties = []
             for i in range(0,38):
@@ -70,6 +72,14 @@ class MM3Client:
                 pass
             finally:
                 self.sem_lock = True
+
+    def save_command(self, cmd):
+        self.command = cmd
+        self.command_available = True
+
+    def extract_command(self):
+        self.command_available = False
+        return self.command    
 
     def unlock(self, who):
         if self.sem_lock is False: 

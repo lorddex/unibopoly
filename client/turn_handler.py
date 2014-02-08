@@ -44,9 +44,8 @@ class TurnHandler:
 
                 # retrieving balance 
                 balance = get_balance(self.player)
-                # print str(balance)
 
-                if int(balance) >= 0: # serve??? Non c'e' un else.. cosa facciamo se < 0 ?
+                if int(balance) >= 0:
 
                     self.player.balance = balance
                     if self.player.waiting == False:
@@ -61,7 +60,6 @@ class TurnHandler:
 
                         # graphical user interface notification
                         if self.player.gtki:
-                            # self.player.interface.balance_editable_label.config(text = "You won the game!", fg="green")
                             self.player.interface.canvas.delete(self.player.interface.balance_editable_label)
                             self.player.interface.balance_editable_label = self.player.interface.canvas.create_text(120, 390, text = "You won the game!", fill = "green", anchor = W)
                             
@@ -73,12 +71,6 @@ class TurnHandler:
                             self.player.interface.choose_game_session_button.config(state = DISABLED)
                             self.player.interface.choose_action_button.config(state = DISABLED)
                 
-                        # # closing subs
-                        # self.player.close_subscriptions()
-                
-                        # # leaving the sib
-                        # self.player.leave_sib()
-
                     else:
 
                         # Increment the turn number
@@ -115,7 +107,10 @@ class TurnHandler:
                                 action = None            
                                 while (action != 0):
                                     try:
-                                        action = input(self.heading + "Action? ")
+                                        print self.heading + "Action? "
+                                        while self.player.command_available is False:
+                                            time.sleep(0.1)
+                                        action = int(self.player.extract_command())
                                     except EOFError:
                                         print "Goodbye!"    
                                         self.player.force_quit()
@@ -141,8 +136,8 @@ class TurnHandler:
                                 
                 self.player.unlock("turn_handler")
 
-            else: # non e' il nostro turno
-                print self.other_heading + "it's " +colored(str(self.current_player_nickname), "cyan", attrs=["bold"]) + "'s turn"
+            else: # it isn't my turn
+                print self.other_heading + "it's " + colored(str(self.current_player_nickname), "cyan", attrs=["bold"]) + "'s turn"
                 if self.player.gtki:
                     self.player.interface.turn_editable_label.config(text = str(self.current_player.split("_")[0]), anchor = W)
                     self.player.interface.actions_combobox.config(state = DISABLED)
@@ -150,5 +145,4 @@ class TurnHandler:
 
 
         for i in removed:
-            # print "[th] RIMOSSO " + str(i)
             pass
