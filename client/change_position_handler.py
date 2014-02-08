@@ -204,8 +204,10 @@ class ChangePositionHandler:
                                     while not(str(action) in commands_id):
                                         try:
                                             print self.heading + "Action?"
-                                            while self.player.command_available is False:
+                                            while self.player.command_available is False and self.player.quit is False:
                                                 time.sleep(0.1)
+                                            if self.player.quit is True:
+                                                return
                                             action = int(self.player.extract_command())
                                         except Exception:
                                             pass

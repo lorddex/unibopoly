@@ -292,6 +292,8 @@ class MM3Client:
         
 
     def close_subscriptions(self):
+        if self.node is None:
+            return
         # closing subscriptions
         print colored("MM3Client> ", 'red', attrs=['bold']) + "closing subscriptions..."
         try:
@@ -307,6 +309,8 @@ class MM3Client:
             pass
 
     def force_quit(self):
+        if self.node is None:
+            return
         if self.role is not "observer":    
             try:
                 self.quit = True
@@ -326,13 +330,18 @@ class MM3Client:
 
     def leave_sib(self):
         # leaving the sib
+        if self.node is None:
+            return
         print colored("MM3Client> ", 'red', attrs=['bold']) + "leaving the sib..."
         try:
             self.node.leave_sib()
+            self.node = None
         except Exception:
             pass
     
     def clear_my_sib(self):
+        if self.node is None:
+            return
         print colored("MM3Client> ", 'red', attrs=['bold']) + "cleaning the sib..."
         # removing all the triples with the loser as the subject
         query = """SELECT ?p ?o WHERE { ns:""" + self.nickname + """ ?p ?o }"""

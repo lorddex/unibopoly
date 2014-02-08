@@ -53,14 +53,15 @@ class LostGameHandler:
                     # disable buttons
                     self.player.interface.choose_game_session_button.config(state = DISABLED)
                     self.player.interface.choose_action_button.config(state = DISABLED)
-            
-            self.player.clear_my_sib()
 
-            # closing subs
-            self.player.close_subscriptions()
+            if self.player.node is not None:            
+                self.player.clear_my_sib()
+
+                # closing subs
+                self.player.close_subscriptions()
             
-            # leaving the sib
-            self.player.leave_sib()
+                # leaving the sib
+                self.player.leave_sib()
 
         for t in removed:                        
             pass

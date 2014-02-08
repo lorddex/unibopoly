@@ -85,7 +85,6 @@ class ChangeBalanceHandler:
                 if self.player.nickname == self.current_player:
                     print self.heading + "you have now " + str(self.updated_balance) + " euros"
 
-
                     # always update the label in the gui
                     if self.player.gtki:
                         self.player.interface.canvas.delete(self.player.interface.balance_editable_label)
