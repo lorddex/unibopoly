@@ -254,29 +254,6 @@
     
 
 
-    <!-- http://smartM3Lab/Ontology.owl#cardAction -->
-
-    <owl:DatatypeProperty rdf:about="http://smartM3Lab/Ontology.owl#cardAction"/>
-    
-
-
-    <!-- http://smartM3Lab/Ontology.owl#cardID -->
-
-    <owl:DatatypeProperty rdf:about="http://smartM3Lab/Ontology.owl#cardID">
-        <rdfs:domain rdf:resource="http://smartM3Lab/Ontology.owl#Card"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://smartM3Lab/Ontology.owl#cardText -->
-
-    <owl:DatatypeProperty rdf:about="http://smartM3Lab/Ontology.owl#cardText">
-        <rdfs:domain rdf:resource="http://smartM3Lab/Ontology.owl#Card"/>
-        <rdfs:range rdf:resource="&xsd;string"/>
-    </owl:DatatypeProperty>
-    
-
-
     <!-- http://smartM3Lab/Ontology.owl#cashBalance -->
 
     <owl:DatatypeProperty rdf:about="http://smartM3Lab/Ontology.owl#cashBalance">
@@ -317,25 +294,10 @@
     
 
 
-    <!-- http://smartM3Lab/Ontology.owl#specialBoxAction -->
-
-    <owl:DatatypeProperty rdf:about="http://smartM3Lab/Ontology.owl#specialBoxAction"/>
-    
-
-
     <!-- http://smartM3Lab/Ontology.owl#tollCost -->
 
     <owl:DatatypeProperty rdf:about="http://smartM3Lab/Ontology.owl#tollCost">
         <rdfs:domain rdf:resource="http://smartM3Lab/Ontology.owl#Contract"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://smartM3Lab/Ontology.owl#userName -->
-
-    <owl:DatatypeProperty rdf:about="http://smartM3Lab/Ontology.owl#userName">
-        <rdfs:domain rdf:resource="http://smartM3Lab/Ontology.owl#Person"/>
-        <rdfs:range rdf:resource="&xsd;string"/>
     </owl:DatatypeProperty>
     
 
@@ -513,16 +475,6 @@
         <tollCost>250</tollCost>
         <purchaseCost>500</purchaseCost>
         <boxID>34</boxID>
-        <HasPossibleCommand rdf:resource="http://smartM3Lab/Ontology.owl#BuyCommand"/>
-        <HasPossibleCommand rdf:resource="http://smartM3Lab/Ontology.owl#NothingCommand"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://smartM3Lab/Ontology.owl#BirthdayAperitif -->
-
-    <owl:NamedIndividual rdf:about="http://smartM3Lab/Ontology.owl#BirthdayAperitif">
-        <rdf:type rdf:resource="http://smartM3Lab/Ontology.owl#Hitch"/>
     </owl:NamedIndividual>
     
 
@@ -535,57 +487,9 @@
     
 
 
-    <!-- http://smartM3Lab/Ontology.owl#BuyBook -->
-
-    <owl:NamedIndividual rdf:about="http://smartM3Lab/Ontology.owl#BuyBook">
-        <rdf:type rdf:resource="http://smartM3Lab/Ontology.owl#Hitch"/>
-    </owl:NamedIndividual>
-    
-
-
     <!-- http://smartM3Lab/Ontology.owl#BuyCommand -->
 
     <owl:NamedIndividual rdf:about="http://smartM3Lab/Ontology.owl#BuyCommand">
-        <rdf:type rdf:resource="http://smartM3Lab/Ontology.owl#CommandType"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://smartM3Lab/Ontology.owl#BuyNotebook -->
-
-    <owl:NamedIndividual rdf:about="http://smartM3Lab/Ontology.owl#BuyNotebook">
-        <rdf:type rdf:resource="http://smartM3Lab/Ontology.owl#Hitch"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://smartM3Lab/Ontology.owl#DegreeParty -->
-
-    <owl:NamedIndividual rdf:about="http://smartM3Lab/Ontology.owl#DegreeParty">
-        <rdf:type rdf:resource="http://smartM3Lab/Ontology.owl#Hitch"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://smartM3Lab/Ontology.owl#DegreePresent -->
-
-    <owl:NamedIndividual rdf:about="http://smartM3Lab/Ontology.owl#DegreePresent">
-        <rdf:type rdf:resource="http://smartM3Lab/Ontology.owl#Probability"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://smartM3Lab/Ontology.owl#EarnAllCommand -->
-
-    <owl:NamedIndividual rdf:about="http://smartM3Lab/Ontology.owl#EarnAllCommand">
-        <rdf:type rdf:resource="http://smartM3Lab/Ontology.owl#CommandType"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://smartM3Lab/Ontology.owl#EarnCommand -->
-
-    <owl:NamedIndividual rdf:about="http://smartM3Lab/Ontology.owl#EarnCommand">
         <rdf:type rdf:resource="http://smartM3Lab/Ontology.owl#CommandType"/>
     </owl:NamedIndividual>
     
@@ -595,86 +499,6 @@
 
     <owl:NamedIndividual rdf:about="http://smartM3Lab/Ontology.owl#Ended">
         <rdf:type rdf:resource="http://smartM3Lab/Ontology.owl#GameStatus"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://smartM3Lab/Ontology.owl#ExitSecretary -->
-
-    <owl:NamedIndividual rdf:about="http://smartM3Lab/Ontology.owl#ExitSecretary">
-        <rdf:type rdf:resource="http://smartM3Lab/Ontology.owl#Probability"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://smartM3Lab/Ontology.owl#FreeSandwich -->
-
-    <owl:NamedIndividual rdf:about="http://smartM3Lab/Ontology.owl#FreeSandwich">
-        <rdf:type rdf:resource="http://smartM3Lab/Ontology.owl#Probability"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://smartM3Lab/Ontology.owl#GoToAlmaWelcome -->
-
-    <owl:NamedIndividual rdf:about="http://smartM3Lab/Ontology.owl#GoToAlmaWelcome">
-        <rdf:type rdf:resource="http://smartM3Lab/Ontology.owl#Probability"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://smartM3Lab/Ontology.owl#GoToBorgoPanigaleStation -->
-
-    <owl:NamedIndividual rdf:about="http://smartM3Lab/Ontology.owl#GoToBorgoPanigaleStation">
-        <rdf:type rdf:resource="http://smartM3Lab/Ontology.owl#Probability"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://smartM3Lab/Ontology.owl#GoToBusStation -->
-
-    <owl:NamedIndividual rdf:about="http://smartM3Lab/Ontology.owl#GoToBusStation">
-        <rdf:type rdf:resource="http://smartM3Lab/Ontology.owl#Probability"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://smartM3Lab/Ontology.owl#GoToCentralStation -->
-
-    <owl:NamedIndividual rdf:about="http://smartM3Lab/Ontology.owl#GoToCentralStation">
-        <rdf:type rdf:resource="http://smartM3Lab/Ontology.owl#Probability"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://smartM3Lab/Ontology.owl#GoToRefectory -->
-
-    <owl:NamedIndividual rdf:about="http://smartM3Lab/Ontology.owl#GoToRefectory">
-        <rdf:type rdf:resource="http://smartM3Lab/Ontology.owl#Probability"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://smartM3Lab/Ontology.owl#GoToSanVitaleStation -->
-
-    <owl:NamedIndividual rdf:about="http://smartM3Lab/Ontology.owl#GoToSanVitaleStation">
-        <rdf:type rdf:resource="http://smartM3Lab/Ontology.owl#Probability"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://smartM3Lab/Ontology.owl#GoToSaragozza -->
-
-    <owl:NamedIndividual rdf:about="http://smartM3Lab/Ontology.owl#GoToSaragozza">
-        <rdf:type rdf:resource="http://smartM3Lab/Ontology.owl#Hitch"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://smartM3Lab/Ontology.owl#GoToSecretary -->
-
-    <owl:NamedIndividual rdf:about="http://smartM3Lab/Ontology.owl#GoToSecretary">
-        <rdf:type rdf:resource="http://smartM3Lab/Ontology.owl#Hitch"/>
     </owl:NamedIndividual>
     
 
@@ -695,30 +519,6 @@
         <rdf:type rdf:resource="http://smartM3Lab/Ontology.owl#Special"/>
         <boxID>22</boxID>
         <HasPossibleCommand rdf:resource="http://smartM3Lab/Ontology.owl#TakeHitchCardCommand"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://smartM3Lab/Ontology.owl#InterestingThesis -->
-
-    <owl:NamedIndividual rdf:about="http://smartM3Lab/Ontology.owl#InterestingThesis">
-        <rdf:type rdf:resource="http://smartM3Lab/Ontology.owl#Probability"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://smartM3Lab/Ontology.owl#LostBursary -->
-
-    <owl:NamedIndividual rdf:about="http://smartM3Lab/Ontology.owl#LostBursary">
-        <rdf:type rdf:resource="http://smartM3Lab/Ontology.owl#Hitch"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://smartM3Lab/Ontology.owl#LostRoom -->
-
-    <owl:NamedIndividual rdf:about="http://smartM3Lab/Ontology.owl#LostRoom">
-        <rdf:type rdf:resource="http://smartM3Lab/Ontology.owl#Hitch"/>
     </owl:NamedIndividual>
     
 
@@ -749,58 +549,9 @@
         <rdf:type rdf:resource="http://smartM3Lab/Ontology.owl#ControlSet"/>
         <HasSupportedCommand rdf:resource="http://smartM3Lab/Ontology.owl#BuildCommand"/>
         <HasSupportedCommand rdf:resource="http://smartM3Lab/Ontology.owl#BuyCommand"/>
-        <HasSupportedCommand rdf:resource="http://smartM3Lab/Ontology.owl#PayAllCommand"/>
         <HasSupportedCommand rdf:resource="http://smartM3Lab/Ontology.owl#PayCommand"/>
         <HasSupportedCommand rdf:resource="http://smartM3Lab/Ontology.owl#PayToOwnerCommand"/>
         <HasSupportedCommand rdf:resource="http://smartM3Lab/Ontology.owl#RollDiceCommand"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://smartM3Lab/Ontology.owl#MoveBackward1 -->
-
-    <owl:NamedIndividual rdf:about="http://smartM3Lab/Ontology.owl#MoveBackward1">
-        <rdf:type rdf:resource="http://smartM3Lab/Ontology.owl#Hitch"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://smartM3Lab/Ontology.owl#MoveBackward2 -->
-
-    <owl:NamedIndividual rdf:about="http://smartM3Lab/Ontology.owl#MoveBackward2">
-        <rdf:type rdf:resource="http://smartM3Lab/Ontology.owl#Hitch"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://smartM3Lab/Ontology.owl#MoveBackward3 -->
-
-    <owl:NamedIndividual rdf:about="http://smartM3Lab/Ontology.owl#MoveBackward3">
-        <rdf:type rdf:resource="http://smartM3Lab/Ontology.owl#Hitch"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://smartM3Lab/Ontology.owl#MoveForward1 -->
-
-    <owl:NamedIndividual rdf:about="http://smartM3Lab/Ontology.owl#MoveForward1">
-        <rdf:type rdf:resource="http://smartM3Lab/Ontology.owl#Probability"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://smartM3Lab/Ontology.owl#MoveForward2 -->
-
-    <owl:NamedIndividual rdf:about="http://smartM3Lab/Ontology.owl#MoveForward2">
-        <rdf:type rdf:resource="http://smartM3Lab/Ontology.owl#Probability"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://smartM3Lab/Ontology.owl#MoveForward3 -->
-
-    <owl:NamedIndividual rdf:about="http://smartM3Lab/Ontology.owl#MoveForward3">
-        <rdf:type rdf:resource="http://smartM3Lab/Ontology.owl#Probability"/>
     </owl:NamedIndividual>
     
 
@@ -821,42 +572,10 @@
     
 
 
-    <!-- http://smartM3Lab/Ontology.owl#PayAllCommand -->
-
-    <owl:NamedIndividual rdf:about="http://smartM3Lab/Ontology.owl#PayAllCommand">
-        <rdf:type rdf:resource="http://smartM3Lab/Ontology.owl#CommandType"/>
-    </owl:NamedIndividual>
-    
-
-
     <!-- http://smartM3Lab/Ontology.owl#PayCommand -->
 
     <owl:NamedIndividual rdf:about="http://smartM3Lab/Ontology.owl#PayCommand">
         <rdf:type rdf:resource="http://smartM3Lab/Ontology.owl#CommandType"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://smartM3Lab/Ontology.owl#PayFirstDuty -->
-
-    <owl:NamedIndividual rdf:about="http://smartM3Lab/Ontology.owl#PayFirstDuty">
-        <rdf:type rdf:resource="http://smartM3Lab/Ontology.owl#Hitch"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://smartM3Lab/Ontology.owl#PaySecondDuty -->
-
-    <owl:NamedIndividual rdf:about="http://smartM3Lab/Ontology.owl#PaySecondDuty">
-        <rdf:type rdf:resource="http://smartM3Lab/Ontology.owl#Hitch"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://smartM3Lab/Ontology.owl#PayThirdDuty -->
-
-    <owl:NamedIndividual rdf:about="http://smartM3Lab/Ontology.owl#PayThirdDuty">
-        <rdf:type rdf:resource="http://smartM3Lab/Ontology.owl#Hitch"/>
     </owl:NamedIndividual>
     
 
@@ -876,8 +595,6 @@
         <boxID>18</boxID>
         <purchaseCost>280</purchaseCost>
         <tollCost>140</tollCost>
-        <HasPossibleCommand rdf:resource="http://smartM3Lab/Ontology.owl#BuildCommand"/>
-        <HasPossibleCommand rdf:resource="http://smartM3Lab/Ontology.owl#NothingCommand"/>
     </owl:NamedIndividual>
     
 
@@ -889,8 +606,6 @@
         <tollCost>170</tollCost>
         <purchaseCost>350</purchaseCost>
         <boxID>32</boxID>
-        <HasPossibleCommand rdf:resource="http://smartM3Lab/Ontology.owl#BuildCommand"/>
-        <HasPossibleCommand rdf:resource="http://smartM3Lab/Ontology.owl#NothingCommand"/>
     </owl:NamedIndividual>
     
 
@@ -911,14 +626,6 @@
         <rdf:type rdf:resource="http://smartM3Lab/Ontology.owl#Special"/>
         <boxID>28</boxID>
         <HasPossibleCommand rdf:resource="http://smartM3Lab/Ontology.owl#TakeProbCardCommand"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://smartM3Lab/Ontology.owl#RollDice -->
-
-    <owl:NamedIndividual rdf:about="http://smartM3Lab/Ontology.owl#RollDice">
-        <rdf:type rdf:resource="http://smartM3Lab/Ontology.owl#Probability"/>
     </owl:NamedIndividual>
     
 
@@ -948,8 +655,6 @@
         <purchaseCost>500</purchaseCost>
         <boxID>25</boxID>
         <tollCost>250</tollCost>
-        <HasPossibleCommand rdf:resource="http://smartM3Lab/Ontology.owl#BuyCommand"/>
-        <HasPossibleCommand rdf:resource="http://smartM3Lab/Ontology.owl#NothingCommand"/>
     </owl:NamedIndividual>
     
 
@@ -961,8 +666,6 @@
         <purchaseCost>500</purchaseCost>
         <tollCost>250</tollCost>
         <boxID>6</boxID>
-        <HasPossibleCommand rdf:resource="http://smartM3Lab/Ontology.owl#BuyCommand"/>
-        <HasPossibleCommand rdf:resource="http://smartM3Lab/Ontology.owl#NothingCommand"/>
     </owl:NamedIndividual>
     
 
@@ -974,8 +677,6 @@
         <boxID>16</boxID>
         <purchaseCost>500</purchaseCost>
         <tollCost>250</tollCost>
-        <HasPossibleCommand rdf:resource="http://smartM3Lab/Ontology.owl#BuyCommand"/>
-        <HasPossibleCommand rdf:resource="http://smartM3Lab/Ontology.owl#NothingCommand"/>
     </owl:NamedIndividual>
     
 
@@ -987,8 +688,6 @@
         <purchaseCost>500</purchaseCost>
         <tollCost>250</tollCost>
         <boxID>35</boxID>
-        <HasPossibleCommand rdf:resource="http://smartM3Lab/Ontology.owl#BuyCommand"/>
-        <HasPossibleCommand rdf:resource="http://smartM3Lab/Ontology.owl#NothingCommand"/>
     </owl:NamedIndividual>
     
 
@@ -1010,8 +709,6 @@
         <boxID>15</boxID>
         <purchaseCost>500</purchaseCost>
         <tollCost>250</tollCost>
-        <HasPossibleCommand rdf:resource="http://smartM3Lab/Ontology.owl#BuyCommand"/>
-        <HasPossibleCommand rdf:resource="http://smartM3Lab/Ontology.owl#NothingCommand"/>
     </owl:NamedIndividual>
     
 
@@ -1023,8 +720,6 @@
         <boxID>5</boxID>
         <purchaseCost>500</purchaseCost>
         <tollCost>250</tollCost>
-        <HasPossibleCommand rdf:resource="http://smartM3Lab/Ontology.owl#BuyCommand"/>
-        <HasPossibleCommand rdf:resource="http://smartM3Lab/Ontology.owl#NothingCommand"/>
     </owl:NamedIndividual>
     
 
@@ -1036,16 +731,6 @@
         <tollCost>250</tollCost>
         <boxID>24</boxID>
         <purchaseCost>500</purchaseCost>
-        <HasPossibleCommand rdf:resource="http://smartM3Lab/Ontology.owl#BuyCommand"/>
-        <HasPossibleCommand rdf:resource="http://smartM3Lab/Ontology.owl#NothingCommand"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://smartM3Lab/Ontology.owl#StopToRefectory -->
-
-    <owl:NamedIndividual rdf:about="http://smartM3Lab/Ontology.owl#StopToRefectory">
-        <rdf:type rdf:resource="http://smartM3Lab/Ontology.owl#Hitch"/>
     </owl:NamedIndividual>
     
 
@@ -1057,8 +742,6 @@
         <boxID>31</boxID>
         <purchaseCost>300</purchaseCost>
         <tollCost>150</tollCost>
-        <HasPossibleCommand rdf:resource="http://smartM3Lab/Ontology.owl#BuildCommand"/>
-        <HasPossibleCommand rdf:resource="http://smartM3Lab/Ontology.owl#NothingCommand"/>
     </owl:NamedIndividual>
     
 
@@ -1079,14 +762,6 @@
     
 
 
-    <!-- http://smartM3Lab/Ontology.owl#TaxRefund -->
-
-    <owl:NamedIndividual rdf:about="http://smartM3Lab/Ontology.owl#TaxRefund">
-        <rdf:type rdf:resource="http://smartM3Lab/Ontology.owl#Probability"/>
-    </owl:NamedIndividual>
-    
-
-
     <!-- http://smartM3Lab/Ontology.owl#ViaBarberia -->
 
     <owl:NamedIndividual rdf:about="http://smartM3Lab/Ontology.owl#ViaBarberia">
@@ -1094,8 +769,6 @@
         <boxID>36</boxID>
         <tollCost>100</tollCost>
         <purchaseCost>210</purchaseCost>
-        <HasPossibleCommand rdf:resource="http://smartM3Lab/Ontology.owl#BuildCommand"/>
-        <HasPossibleCommand rdf:resource="http://smartM3Lab/Ontology.owl#NothingCommand"/>
     </owl:NamedIndividual>
     
 
@@ -1105,10 +778,8 @@
     <owl:NamedIndividual rdf:about="http://smartM3Lab/Ontology.owl#ViaBelmeloro">
         <rdf:type rdf:resource="http://smartM3Lab/Ontology.owl#Street"/>
         <tollCost>110</tollCost>
-        <purchaseCost>220</purchaseCost>
         <boxID>21</boxID>
-        <HasPossibleCommand rdf:resource="http://smartM3Lab/Ontology.owl#BuildCommand"/>
-        <HasPossibleCommand rdf:resource="http://smartM3Lab/Ontology.owl#NothingCommand"/>
+        <purchaseCost>220</purchaseCost>
     </owl:NamedIndividual>
     
 
@@ -1120,8 +791,6 @@
         <tollCost>90</tollCost>
         <purchaseCost>190</purchaseCost>
         <boxID>13</boxID>
-        <HasPossibleCommand rdf:resource="http://smartM3Lab/Ontology.owl#BuildCommand"/>
-        <HasPossibleCommand rdf:resource="http://smartM3Lab/Ontology.owl#NothingCommand"/>
     </owl:NamedIndividual>
     
 
@@ -1133,8 +802,6 @@
         <purchaseCost>400</purchaseCost>
         <boxID>33</boxID>
         <tollCost>200</tollCost>
-        <HasPossibleCommand rdf:resource="http://smartM3Lab/Ontology.owl#BuildCommand"/>
-        <HasPossibleCommand rdf:resource="http://smartM3Lab/Ontology.owl#NothingCommand"/>
     </owl:NamedIndividual>
     
 
@@ -1146,8 +813,6 @@
         <boxID>14</boxID>
         <purchaseCost>240</purchaseCost>
         <tollCost>120</tollCost>
-        <HasPossibleCommand rdf:resource="http://smartM3Lab/Ontology.owl#BuildCommand"/>
-        <HasPossibleCommand rdf:resource="http://smartM3Lab/Ontology.owl#NothingCommand"/>
     </owl:NamedIndividual>
     
 
@@ -1159,8 +824,6 @@
         <tollCost>150</tollCost>
         <purchaseCost>300</purchaseCost>
         <boxID>27</boxID>
-        <HasPossibleCommand rdf:resource="http://smartM3Lab/Ontology.owl#BuildCommand"/>
-        <HasPossibleCommand rdf:resource="http://smartM3Lab/Ontology.owl#NothingCommand"/>
     </owl:NamedIndividual>
     
 
@@ -1172,8 +835,6 @@
         <purchaseCost>250</purchaseCost>
         <tollCost>120</tollCost>
         <boxID>26</boxID>
-        <HasPossibleCommand rdf:resource="http://smartM3Lab/Ontology.owl#BuildCommand"/>
-        <HasPossibleCommand rdf:resource="http://smartM3Lab/Ontology.owl#NothingCommand"/>
     </owl:NamedIndividual>
     
 
@@ -1185,8 +846,6 @@
         <tollCost>100</tollCost>
         <purchaseCost>200</purchaseCost>
         <boxID>12</boxID>
-        <HasPossibleCommand rdf:resource="http://smartM3Lab/Ontology.owl#BuildCommand"/>
-        <HasPossibleCommand rdf:resource="http://smartM3Lab/Ontology.owl#NothingCommand"/>
     </owl:NamedIndividual>
     
 
@@ -1198,8 +857,6 @@
         <tollCost>80</tollCost>
         <purchaseCost>160</purchaseCost>
         <boxID>20</boxID>
-        <HasPossibleCommand rdf:resource="http://smartM3Lab/Ontology.owl#BuildCommand"/>
-        <HasPossibleCommand rdf:resource="http://smartM3Lab/Ontology.owl#NothingCommand"/>
     </owl:NamedIndividual>
     
 
@@ -1211,8 +868,6 @@
         <purchaseCost>260</purchaseCost>
         <boxID>17</boxID>
         <tollCost>130</tollCost>
-        <HasPossibleCommand rdf:resource="http://smartM3Lab/Ontology.owl#BuildCommand"/>
-        <HasPossibleCommand rdf:resource="http://smartM3Lab/Ontology.owl#NothingCommand"/>
     </owl:NamedIndividual>
     
 
@@ -1224,8 +879,6 @@
         <purchaseCost>190</purchaseCost>
         <tollCost>80</tollCost>
         <boxID>10</boxID>
-        <HasPossibleCommand rdf:resource="http://smartM3Lab/Ontology.owl#BuildCommand"/>
-        <HasPossibleCommand rdf:resource="http://smartM3Lab/Ontology.owl#NothingCommand"/>
     </owl:NamedIndividual>
     
 
@@ -1237,8 +890,6 @@
         <purchaseCost>200</purchaseCost>
         <boxID>23</boxID>
         <tollCost>100</tollCost>
-        <HasPossibleCommand rdf:resource="http://smartM3Lab/Ontology.owl#BuildCommand"/>
-        <HasPossibleCommand rdf:resource="http://smartM3Lab/Ontology.owl#NothingCommand"/>
     </owl:NamedIndividual>
     
 
@@ -1250,8 +901,6 @@
         <tollCost>100</tollCost>
         <boxID>1</boxID>
         <purchaseCost>200</purchaseCost>
-        <HasPossibleCommand rdf:resource="http://smartM3Lab/Ontology.owl#BuildCommand"/>
-        <HasPossibleCommand rdf:resource="http://smartM3Lab/Ontology.owl#NothingCommand"/>
     </owl:NamedIndividual>
     
 
@@ -1263,8 +912,6 @@
         <purchaseCost>150</purchaseCost>
         <boxID>37</boxID>
         <tollCost>70</tollCost>
-        <HasPossibleCommand rdf:resource="http://smartM3Lab/Ontology.owl#BuildCommand"/>
-        <HasPossibleCommand rdf:resource="http://smartM3Lab/Ontology.owl#NothingCommand"/>
     </owl:NamedIndividual>
     
 
@@ -1276,8 +923,6 @@
         <boxID>4</boxID>
         <tollCost>120</tollCost>
         <purchaseCost>240</purchaseCost>
-        <HasPossibleCommand rdf:resource="http://smartM3Lab/Ontology.owl#BuildCommand"/>
-        <HasPossibleCommand rdf:resource="http://smartM3Lab/Ontology.owl#NothingCommand"/>
     </owl:NamedIndividual>
     
 
@@ -1289,8 +934,6 @@
         <purchaseCost>190</purchaseCost>
         <boxID>29</boxID>
         <tollCost>90</tollCost>
-        <HasPossibleCommand rdf:resource="http://smartM3Lab/Ontology.owl#BuildCommand"/>
-        <HasPossibleCommand rdf:resource="http://smartM3Lab/Ontology.owl#NothingCommand"/>
     </owl:NamedIndividual>
     
 
@@ -1302,8 +945,6 @@
         <boxID>7</boxID>
         <purchaseCost>150</purchaseCost>
         <tollCost>70</tollCost>
-        <HasPossibleCommand rdf:resource="http://smartM3Lab/Ontology.owl#BuildCommand"/>
-        <HasPossibleCommand rdf:resource="http://smartM3Lab/Ontology.owl#NothingCommand"/>
     </owl:NamedIndividual>
     
 
@@ -1315,8 +956,6 @@
         <tollCost>90</tollCost>
         <boxID>8</boxID>
         <purchaseCost>180</purchaseCost>
-        <HasPossibleCommand rdf:resource="http://smartM3Lab/Ontology.owl#BuildCommand"/>
-        <HasPossibleCommand rdf:resource="http://smartM3Lab/Ontology.owl#NothingCommand"/>
     </owl:NamedIndividual>
     
 
@@ -1328,16 +967,6 @@
         <purchaseCost>220</purchaseCost>
         <tollCost>110</tollCost>
         <boxID>2</boxID>
-        <HasPossibleCommand rdf:resource="http://smartM3Lab/Ontology.owl#BuildCommand"/>
-        <HasPossibleCommand rdf:resource="http://smartM3Lab/Ontology.owl#NothingCommand"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://smartM3Lab/Ontology.owl#Waiting -->
-
-    <owl:NamedIndividual rdf:about="http://smartM3Lab/Ontology.owl#Waiting">
-        <rdf:type rdf:resource="http://smartM3Lab/Ontology.owl#GameStatus"/>
     </owl:NamedIndividual>
 </rdf:RDF>
 
