@@ -95,6 +95,7 @@ class ChangePositionHandler:
                                                               URI(ns + "ExtractedCard"),
                                                               None)                                    
                                     self.player.card_st = self.player.node.CreateSubscribeTransaction(self.player.node.ss_handle)
+                                    self.player.card_st_on = True
                                     initial_results_card = self.player.card_st.subscribe_rdf(self.triple_card, CardHandler(self))                                
     
                                 ##################################################

@@ -42,6 +42,7 @@ class CardHandler:
             # removing subscription
             print self.heading + "removing subscription for the extracted card"
             self.prev_handler.player.node.CloseSubscribeTransaction(self.prev_handler.player.card_st)
+            self.prev_handler.player.card_st_on = False
             
             # removing the triple
             self.prev_handler.player.node.remove(self.prev_handler.triple_card)

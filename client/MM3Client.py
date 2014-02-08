@@ -42,7 +42,10 @@ class MM3Client:
             self.turn_number = 0
             self.role = None
             self.waiting = False
-    
+
+            self.card_st_on = False    
+            self.quit = False
+
             self.sem_lock = False
             self.semaphore = threading.Lock()
             self.last_command = None
@@ -281,17 +284,43 @@ class MM3Client:
     def close_subscriptions(self):
         # closing subscriptions
         print colored("MM3Client> ", 'red', attrs=['bold']) + "closing subscriptions..."
-        self.node.CloseSubscribeTransaction(self.st1)
-        self.node.CloseSubscribeTransaction(self.st2)
-        self.node.CloseSubscribeTransaction(self.st3)
-        self.node.CloseSubscribeTransaction(self.st4)
-        self.node.CloseSubscribeTransaction(self.st5)
-        self.node.CloseSubscribeTransaction(self.st6)
-        
+        try:
+            self.node.CloseSubscribeTransaction(self.st1)
+            self.node.CloseSubscribeTransaction(self.st2)
+            self.node.CloseSubscribeTransaction(self.st3)
+            self.node.CloseSubscribeTransaction(self.st4)
+            self.node.CloseSubscribeTransaction(self.st5)
+            self.node.CloseSubscribeTransaction(self.st6)
+            if self.card_st_on is True:
+                self.node.CloseSubscribeTransaction(self.card_st)
+        except Exception:
+            pass
+
+    def force_quit(self):
+        if self.role is not "observer":    
+            try:
+                self.quit = True
+                old_balance = get_balance(self)
+                triples_o = []
+                triples_u = []
+                triples_o.append(Triple(URI(ns + self.nickname),
+                    URI(ns + "cashBalance"),
+                    URI(ns + str(old_balance))))
+                triples_u.append(Triple(URI(ns + self.nickname),
+                    URI(ns + "cashBalance"),
+                    URI(ns + str(-1))))
+                self.node.update(triples_u, triples_o)
+            except AttributeError:
+                pass
+
+
     def leave_sib(self):
         # leaving the sib
         print colored("MM3Client> ", 'red', attrs=['bold']) + "leaving the sib..."
-        self.node.leave_sib()
+        try:
+            self.node.leave_sib()
+        except Exception:
+            pass
     
     def clear_my_sib(self):
         print colored("MM3Client> ", 'red', attrs=['bold']) + "cleaning the sib..."

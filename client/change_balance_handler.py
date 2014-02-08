@@ -72,10 +72,13 @@ class ChangeBalanceHandler:
                         self.player.interface.canvas.delete(self.player.interface.pieces[self.current_player])
 
                 if self.player.nickname == self.current_player:
-
                     self.player.clear_my_sib()
-                    self.player.begin_observer()
-
+                    if self.player.quit is not True:
+                        self.player.begin_observer()
+                    else:
+                        self.player.close_subscriptions()
+                        self.player.leave_sib()
+                    
             else:
 
                 # simply notify the updated balance                

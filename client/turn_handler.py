@@ -116,8 +116,9 @@ class TurnHandler:
                                 while (action != 0):
                                     try:
                                         action = input(self.heading + "Action? ")
-                                    except Exception:
-                                        pass
+                                    except EOFError:
+                                        print "Goodbye!"    
+                                        self.player.force_quit()
                 
                                     print self.heading + " user chose command " + colored("RollDiceCommand", "cyan", attrs=["bold"])
                                     

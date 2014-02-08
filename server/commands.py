@@ -105,6 +105,8 @@ def switch_turn(self):
     # Get current player
     old_player = self.server.current_player
 
+    self.server.number_of_players = len(get_players(self.server.node, self.server.game_session_id))
+    
     try:
         # Verify if the player has been eliminated or not
         old_player_id = self.server.players.index(old_player)
@@ -114,21 +116,24 @@ def switch_turn(self):
         new_player_id = self.server.current_player_id    
     
     # Switch the turn
-    self.server.current_player = self.server.players[new_player_id % self.server.number_of_players]
-    self.server.current_player_id = new_player_id
+    try:
+        self.server.current_player = self.server.players[new_player_id % self.server.number_of_players]
+        self.server.current_player_id = new_player_id
 
-    # Debug print
-    print colored("CommandHandler> ", "blue", attrs=["bold"]) + "it's " + colored(self.server.current_player.split("_")[0], "cyan", attrs=["bold"]) + "'s turn"
+        # Debug print
+        print colored("CommandHandler> ", "blue", attrs=["bold"]) + "it's " + colored(self.server.current_player.split("_")[0], "cyan", attrs=["bold"]) + "'s turn"
 
-    # Updating the triple into the sib
-    ta = [Triple(URI(ns + self.server.game_session_id),
-                 URI(ns + "TurnOf"),
-                 URI(ns + self.server.current_player))]
-    tr = [Triple(URI(ns + self.server.game_session_id),
-                 URI(ns + "TurnOf"),
-                 URI(ns + old_player))]
+        # Updating the triple into the sib
+        ta = [Triple(URI(ns + self.server.game_session_id),
+                     URI(ns + "TurnOf"),
+                     URI(ns + self.server.current_player))]
+        tr = [Triple(URI(ns + self.server.game_session_id),
+                     URI(ns + "TurnOf"),
+                     URI(ns + old_player))]
     
-    self.server.node.update(ta, tr)
+        self.server.node.update(ta, tr)
+    except ZeroDivisionError:
+        pass
 
 def lost(server, current_player):
     position = get_position(server.node, current_player)

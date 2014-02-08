@@ -201,6 +201,9 @@ class MM3Server():
         # closing subscriptions
         if self.debug:
             print colored("MM3Server> ", 'green', attrs=['bold']) + "closing subscriptions..."
-        self.node.CloseSubscribeTransaction(self.c_st)
-        self.node.CloseSubscribeTransaction(self.ags_st)
-        self.node.CloseSubscribeTransaction(self.ge_st)
+        try:
+            self.node.CloseSubscribeTransaction(self.c_st)
+            self.node.CloseSubscribeTransaction(self.ags_st)
+            self.node.CloseSubscribeTransaction(self.ge_st)
+        except Exception:
+            pass

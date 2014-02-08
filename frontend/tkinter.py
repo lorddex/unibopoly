@@ -28,24 +28,9 @@ ns = "http://smartM3Lab/Ontology.owl#"
 class Application(Frame):
      
     def quit_monopoly(self):
-        if self.c is not None and self.c.role is not "observer":
-            try:
-                old_balance = client_query.get_balance(self.c)
-                triples_o = []
-                triples_u = []
-                triples_o.append(Triple(URI(ns + self.c.nickname),
-                    URI(ns + "cashBalance"),
-                    URI(ns + str(old_balance))))
-                triples_u.append(Triple(URI(ns + self.c.nickname),
-                    URI(ns + "cashBalance"),
-                    URI(ns + str(-1))))
-                self.c.node.update(triples_u, triples_o)
-                self.c.clear_my_sib()
-                time.sleep(1)
-                self.c.close_subscriptions()
-                self.c.leave_sib()
-            except AttributeError:
-                pass
+        if self.c is not None:
+            self.c.force_quit()
+        showinfo("Unibopoly v0.1", "Goodbye!")
         self.quit()
 
     def about_monopoly(self):
