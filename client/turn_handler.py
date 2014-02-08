@@ -119,6 +119,7 @@ class TurnHandler:
                                     except EOFError:
                                         print "Goodbye!"    
                                         self.player.force_quit()
+                                        sys.exit(0)
                 
                                     print self.heading + " user chose command " + colored("RollDiceCommand", "cyan", attrs=["bold"])
                                     
