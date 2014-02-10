@@ -101,6 +101,16 @@ def get_num_of_houses(self, box_name):
         num_of_houses = int(result[0][0][2].split("#")[1])
         return num_of_houses
 
+def get_num_of_hotels(self, box_name):
+    query = """SELECT ?o
+    WHERE { ns:""" + box_name + """ ns:numberOfHotels ?o}"""
+    result = self.server.node.execute_query(query) 
+    if len(result) == 0:
+        return 0
+    else:
+        num_of_hotels = int(result[0][0][2].split("#")[1])
+        return num_of_hotels
+
 def get_box_type(self, box_name):
     query = """SELECT ?o
     WHERE {ns:""" + box_name + """ rdf:type ?o}"""
