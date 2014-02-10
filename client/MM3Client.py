@@ -144,30 +144,22 @@ class MM3Client:
                                 nickname = raw_input("Insert another nickname > ")
                         else:
                             valid = True
-	    
-	                        
                                
                 # controllo se il nick e' gia' presente (dall'interfaccia grafica)
                 else:
                     while (valid == False):
-                        print str(valid)
                         nickname = self.interface.nickname_entry.get()
-                        print str(valid)
-                        nickname_gs = nickname + "_" + str(gamesession) 
-                        print str(valid)
-                        if (nickname_gs in player_list):
-                            print "sono nella join e sto controllando il nick..."
-                            print str(valid)
-                            self.interface.error_label2.config(text = ".....Nickname already in use! Insert another one!")#, fill = "red")
-                            print str(valid)
-                            self.interface.nickname_entry.delete(0, Tkinter.END)
-                            print str(valid)
-                            self.interface.choose_game_session_button.config(state = NORMAL)
-                            print str(valid)
-                            #self.interface.nickname_entry.config(state = NORMAL)
+                        if len(nickname) > 0:
+                            nickname_gs = nickname + "_" + str(gamesession) 
+                            if (nickname_gs in player_list):
+                                self.interface.error_label2.config(text = ".....Nickname already in use! Insert another one!")#, fill = "red")
+                                self.interface.nickname_entry.delete(0, Tkinter.END)
+                                self.interface.choose_game_session_button.config(state = NORMAL)
+                                #self.interface.nickname_entry.config(state = NORMAL)
+                            else:
+                                valid = True
                         else:
-                            print "perche' sono nell'else???"
-                            valid = True
+                            return False
                     
                 self.nickname = nickname_gs
                 
@@ -186,9 +178,7 @@ class MM3Client:
                             temp.append(k)
 
                 cont_players=int(temp[5].split('#')[1])
-                cont_players+=1
-    
-                
+                cont_players+=1 
                 
                 #self.nickname = "player_" + str(cont_players)
     
@@ -245,7 +235,7 @@ class MM3Client:
                                       URI(ns + self.nickname)))
                 # insert the triples into the sib
                 self.node.insert(triples)
-
+            return True
         except():
             print colored("MM3Client> ", 'red', attrs=['bold']) + " an exception occurred during the player registration.. aborting!"
             sys.exit(0)

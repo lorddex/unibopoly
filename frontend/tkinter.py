@@ -77,8 +77,9 @@ class Application(Frame):
         
         # join game session
         # try:
-        self.c.join_game_session(self.game_sessions_combobox_var.get(), "player", self.nickname_entry.get())
-       
+        if self.c.join_game_session(self.game_sessions_combobox_var.get(), "player", self.nickname_entry.get()) == False:
+            return
+        
         # except Exception:
         #     print "Choose a game session!"
         #     self.error_label1.config(text = "Choose a valid game session!", fg = "red")
