@@ -49,17 +49,17 @@ class Application(Frame):
 
         
     def choose_gs(self):
-        self.error_label1.config(text = "")#, fg = "red")
-        self.error_label2.config(text = "")#, fg = "red")
+        self.error_label1.config(text = "")#, fill = "red")
+        self.error_label2.config(text = "")#, fill = "red")
 
         # Controlli sul nickname
         reg = re.compile(r"[a-zA-Z0-9_]*$")
         nickname = str(self.nickname_entry.get())
                 
         if not(reg.match(nickname)) or len(nickname) == 0 and self.game_sessions_combobox_var.get() == "Select a game session...":
-            self.error_label2.config(text = "Nickname not valid. Insert another one!")#, fg = "red")
+            self.error_label2.config(text = "Nickname not valid. Insert another one!")#, fill = "red")
             self.nickname_entry.delete(0, END)
-            self.error_label1.config(text = "Choose a game session!")#, fg = "red")
+            self.error_label1.config(text = "Choose a game session!")#, fill = "red")
             return
             
         if not(reg.match(nickname)) or len(nickname) == 0:
@@ -76,7 +76,7 @@ class Application(Frame):
             return
         
         # join game session
-#        try:
+        # try:
         self.c.join_game_session(self.game_sessions_combobox_var.get(), "player", self.nickname_entry.get())
        
         # except Exception:

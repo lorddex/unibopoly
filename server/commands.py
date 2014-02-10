@@ -180,6 +180,8 @@ def buy(self):
     self.server.node.update(ta, tr)
 
     gs = get_current_gs(self, self.server.current_player)
+    print "--------------------------" + str(gs)
+    print "--------------------------" + str(self.server.game_session_id)
     box_name_gs = str(box_name) + "_" + gs
     
     # Add contract 
@@ -211,6 +213,8 @@ def build(self):
 
     # Get current game session 
     gs = get_current_gs(self, current_player)
+    print "--------------------------" + str(gs)
+    print "--------------------------" + str(self.server.game_session_id)
     box_name_gs = str(box_name) + "_" + gs
     
     
