@@ -56,7 +56,7 @@ class Application(Frame):
         reg = re.compile(r"[a-zA-Z0-9_]*$")
         nickname = str(self.nickname_entry.get())
                 
-        if not(reg.match(nickname)) or len(nickname) == 0 and self.game_sessions_combobox_var.get() == "Select a game session...":
+        if (not(reg.match(nickname)) or len(nickname) == 0) and self.game_sessions_combobox_var.get() == "Select a game session...":
             self.error_label2.config(text = "Nickname not valid. Insert another one!")#, fill = "red")
             self.nickname_entry.delete(0, END)
             self.error_label1.config(text = "Choose a game session!")#, fill = "red")
