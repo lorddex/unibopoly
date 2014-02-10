@@ -15,6 +15,9 @@ from contract_handler import ContractHandler
 from number_of_houses_handler import NumberOfHousesHandler
 from lost_game_handler import LostGameHandler
 import threading
+import Tkinter
+from Tkinter import *
+from ttk import *
 
 rdf = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
 owl = "http://www.w3.org/2002/07/owl#"
@@ -118,22 +121,6 @@ class MM3Client:
             triples = []
             if (role == "player"):
 
-                # get players number for the current session
-                temp = []
-                query = """
-                     SELECT ?s ?o
-                     WHERE { ns:""" + gamesession + """ ns:numberOfPlayers ?o}          
-                     """
-
-                result = self.node.execute_query(query)
-                for i in result:
-                    for j in i:
-                        for k in j:
-                            temp.append(k)
-
-                cont_players=int(temp[5].split('#')[1])
-                cont_players+=1
-    
                 # is nickname already registered?
                 player_list = []
                 query = """SELECT ?p 
@@ -163,15 +150,45 @@ class MM3Client:
                 # controllo se il nick e' gia' presente (dall'interfaccia grafica)
                 else:
                     while (valid == False):
+                        print str(valid)
                         nickname = self.interface.nickname_entry.get()
+                        print str(valid)
                         nickname_gs = nickname + "_" + str(gamesession) 
+                        print str(valid)
                         if (nickname_gs in player_list):
-                            self.interface.error_label.config(text = "Nickname already in use! Insert another one!", fg = "red")
-                            self.interface.nickname_entry.delete(0, END)
+                            print "sono nella join e sto controllando il nick..."
+                            print str(valid)
+                            self.interface.error_label2.config(text = ".....Nickname already in use! Insert another one!")#, fill = "red")
+                            print str(valid)
+                            self.interface.nickname_entry.delete(0, Tkinter.END)
+                            print str(valid)
+                            self.interface.choose_game_session_button.config(state = NORMAL)
+                            print str(valid)
+                            #self.interface.nickname_entry.config(state = NORMAL)
                         else:
+                            print "perche' sono nell'else???"
                             valid = True
                     
                 self.nickname = nickname_gs
+                
+                # get players number for the current session
+                print "sono uscito dal ciclo"
+                temp = []
+                query = """
+                     SELECT ?s ?o
+                     WHERE { ns:""" + gamesession + """ ns:numberOfPlayers ?o}          
+                     """
+
+                result = self.node.execute_query(query)
+                for i in result:
+                    for j in i:
+                        for k in j:
+                            temp.append(k)
+
+                cont_players=int(temp[5].split('#')[1])
+                cont_players+=1
+    
+                
                 
                 #self.nickname = "player_" + str(cont_players)
     
