@@ -62,6 +62,16 @@ def get_box_owner(self, box_name_gs):
     box_owner = str(result[0][0][2]).split("#")[1]
     return box_owner
 
+def get_num_of_hotels(self, box_name):
+    query = """SELECT ?o
+    WHERE { ns:""" + box_name + """ ns:numberOfHotels ?o}"""
+    result = self.player.node.execute_query(query) 
+    if len(result) == 0:
+        return 0
+    else:
+        num_of_hotels = int(result[0][0][2].split("#")[1])
+        return num_of_hotels
+
 def get_possible_commands(self, position_name_gs):
     query = """SELECT ?o
     WHERE { ns:""" + position_name_gs + """ ns:HasPossibleCommand ?o}"""           

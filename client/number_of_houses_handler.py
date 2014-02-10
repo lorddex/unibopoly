@@ -48,9 +48,9 @@ class NumberOfHousesHandler:
 
                 # debug print
                 if self.owner == self.player.nickname:
-                    print self.headings + "you built a house"
+                    print self.headings + "you built the house n." + str(self.number)
                 else:
-                    print self.other_headings + colored(self.owner.split("_")[0], "cyan", attrs=["bold"]) + " built a house"
+                    print self.other_headings + colored(self.owner.split("_")[0], "cyan", attrs=["bold"]) + " built the house n." + str(self.number)
 
                 # tk user interface
                 if self.player.gtki:             
@@ -75,5 +75,52 @@ class NumberOfHousesHandler:
                         self.player.interface.houses[str(self.box_id)] = self.player.interface.canvas.create_rectangle(top_x, top_y, bot_x, bot_y, fill=color)
             self.player.unlock("number_of_houses")
 
+        # houses removal
+
         for t in removed:
+
+            self.player.lock("number_of_houses")
+
+            # we need to check if the houses became hotels
+
+            # information retrieval
+
+            self.box_name_gs = str(t[0]).split("#")[1]
+            self.box_name = self.box_name_gs.split("_")[0]
+            self.box_id = get_box_id(self, self.box_name)
+            self.gs = self.box_name_gs.split("_")[1]
+            self.owner = get_box_owner(self, self.box_name_gs)
+            self.hotels = get_num_of_hotels(self, self.box_name_gs)
+
+            if int(self.hotels) == 1:
+                
+                # tk user interface
+                if self.player.gtki:             
+                    
+                    # determine the color
+                    if not(self.player.nickname == self.owner):
+                        color = self.player.interface.pieces_colors[self.owner]
+                    else:
+                        color = "yellow"
+                        
+                    # determine coordinates for the house
+                    top_x = self.player.interface.cell_coords[int(self.box_id)]['x'] - 23
+                    top_y = self.player.interface.cell_coords[int(self.box_id)]['y'] - 23
+                    bot_x = int(top_x) + 15 * 4
+                    bot_y = int(top_y) + 15
+    
+                    # delete the old house
+                    self.player.interface.canvas.delete(self.player.interface.houses[str(self.box_id)])
+    
+                    # build the new house
+                    self.player.interface.houses[str(self.box_id)] = self.player.interface.canvas.create_rectangle(top_x, top_y, bot_x, bot_y, fill=color)
+
+                # cli and tk interface
+                if self.owner == self.player.nickname:
+                    print self.headings + "you built an hotel"
+                else:
+                    print self.other_headings + colored(self.owner.split("_")[0], "cyan", attrs=["bold"]) + " built an hotel"
+            
+            self.player.unlock("number_of_houses")
+
             pass

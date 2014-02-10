@@ -213,10 +213,8 @@ def build(self):
 
     # Get current game session 
     gs = get_current_gs(self, current_player)
-    print "--------------------------" + str(gs)
-    print "--------------------------" + str(self.server.game_session_id)
+    box_name_gs = str(box_name) + "_" + gs    
     box_name_gs = str(box_name) + "_" + gs
-    
     
     # Get purchase cost 
     purchaseCost = get_purchase_cost(self, box_name)
@@ -237,7 +235,7 @@ def build(self):
     
     tr = [(Triple(URI(ns + self.server.current_player),
                   URI(ns + "cashBalance"),
-                  URI(ns + str(old_cash_balance))))]
+                  URI(ns + str(old_cash_balance))))]    
 
     self.server.node.update(ta, tr)
     
@@ -252,18 +250,29 @@ def build(self):
 
     self.server.node.insert(t)
 
-    old_num_of_houses = get_num_of_houses(self, box_name)
+    old_num_of_houses = get_num_of_houses(self, box_name_gs)
+    
     new_num_of_houses = old_num_of_houses + 1
 
-    ta = [(Triple(URI(ns + box_name_gs),
-                  URI(ns + "numberOfHouses"),
-                  URI(ns + str(new_num_of_houses))))]
     tr = [(Triple(URI(ns + box_name_gs),
                   URI(ns + "numberOfHouses"),
                   URI(ns + str(old_num_of_houses))))]
 
-    self.server.node.update(ta, tr)
+    if new_num_of_houses == 4:
+        # hotel
+        th = [(Triple(URI(ns + box_name_gs),
+                      URI(ns + "numberOfHotels"),
+                      URI(ns + str(1))))]
+        self.server.node.remove(tr)
+        self.server.node.insert(th)
 
+    else:
+        # houses
+        ta = [(Triple(URI(ns + box_name_gs),
+                      URI(ns + "numberOfHouses"),
+                      URI(ns + str(new_num_of_houses))))]
+        self.server.node.update(ta, tr)
+        
     # settare l'attributo balance del player
 
 ##########################################################
@@ -283,7 +292,7 @@ def pay_to_owner(self):
     # Get position name
     box_name = get_box_name(self, position)
     
-    # Get current game sessione
+    # Get current game session
     gs = get_current_gs(self, current_player)
     
     box_name_gs = box_name + "_" + gs
@@ -340,15 +349,17 @@ def pay_to_owner(self):
     # if it's a street decrement my balance and increment the owner's one of tollCost*numberOfHouses
     if (box_type == "Street"):
 
-        # get numberOfHouses
-        query = """SELECT ?o
-        WHERE { ns:""" + box_name_gs + """ ns:numberOfHouses ?o}"""
-    
-        result = self.server.node.execute_query(query) 
+        # Get number of houses and hotels
+        houses = get_num_of_houses(self, box_name_gs)
+        hotels = get_num_of_hotels(self, box_name_gs)
 
-        num_of_houses = int(result[0][0][2].split("#")[1])
+        # Multiplier
+        if hotels > 0:
+            multiplier = 4
+        else:
+            multiplier = houses
 
-        total_tollCost = tollCost * num_of_houses
+        total_tollCost = tollCost * int(multiplier)
         
         # Decrease my balance
         my_new_cash_balance = my_old_cash_balance - total_tollCost
