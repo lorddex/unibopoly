@@ -53,7 +53,7 @@ class Application(Frame):
         self.error_label2.config(text = "")#, fill = "red")
 
         # Controlli sul nickname
-        reg = re.compile(r"[a-zA-Z0-9_]*$")
+        reg = re.compile(r"[a-zA-Z0-9]*$")
         nickname = str(self.nickname_entry.get())
                 
         if (not(reg.match(nickname)) or len(nickname) == 0) and self.game_sessions_combobox_var.get() == "Select a game session...":

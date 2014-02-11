@@ -132,7 +132,7 @@ class MM3Client:
                 
                 # controllo se il nick e' gia' presente (parte testuale)
                 valid = False
-                reg = re.compile(r"[a-zA-Z0-9_]*$")
+                reg = re.compile(r"[a-zA-Z0-9]*$")
                 if not(self.gtki):
                     while (valid == False):
                         nickname_gs = nickname + "_" + str(gamesession) 
