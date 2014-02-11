@@ -67,7 +67,7 @@ class ChangePositionHandler:
                     
                         # The change position handler is launched when the pawn is positioned for the first time
                         # on the table, and at this time we don't want to show to the user the commands of the box
-                        if (int(self.new_position) == 0) & (int(self.player.turn_number) <= 1):
+                        if (int(self.new_position) == 0) & (int(self.player.turn_number) < 1):
                             self.player.unlock("change_position")
                             pass
     

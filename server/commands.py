@@ -474,7 +474,6 @@ def update_commands(self, player, box_name, new_position):
     # buy/build> and insert <box hasPossibleCommand PayToOwnerCommand>
 
     print colored("CommandHandler> ", "blue", attrs=["bold"]) + "updating possible commands for box " + str(new_position)
-
     # get current game session
     gs = get_current_gs(self, player)
     box_name_gs = box_name + "_" + gs
@@ -511,7 +510,6 @@ def update_commands(self, player, box_name, new_position):
             
     # find the box type
     box_type = get_box_type(self, box_name)
-        
     if (box_type == "Street") | (box_type == "Society") | (box_type == "Station"):
 
         purchase_cost = get_purchase_cost(self, box_name)
@@ -645,7 +643,6 @@ def update_commands(self, player, box_name, new_position):
                         URI(ns + "NothingCommand")))
 
                 self.server.node.insert(t)
-
 
 ##########################################################
 #                                                        #

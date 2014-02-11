@@ -68,9 +68,11 @@ class MM3Server():
                 self.sem_lock = False
                 
     def leave_sib(self):
+        self.lock()
         if self.debug:
             print self.heading + "leaving the sib..."
         self.node.leave_sib()
+        self.unlock()
 
     def parse_command(self, cmd):
         parms = []
