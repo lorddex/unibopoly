@@ -141,7 +141,7 @@ class ChangePositionHandler:
                                         
                                     else:
                                         # if we are moving after the MoveBackward we use a better way
-                                        if int(self.old_position) in self.prob_pos:
+                                        if (int(self.old_position) in self.prob_pos) & (int(self.old_position)-int(self.new_position) < 4):
                                             pos = range(int(self.old_position) - 1, int(self.new_position)-1, -1)
                                         else:
                                             pos = range(int(self.old_position) + 1, 38) + range(0, int(self.new_position)+1)

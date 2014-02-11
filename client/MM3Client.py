@@ -13,7 +13,7 @@ from change_position_handler import ChangePositionHandler
 from change_balance_handler import ChangeBalanceHandler
 from contract_handler import ContractHandler
 from number_of_houses_handler import NumberOfHousesHandler
-from lost_game_handler import LostGameHandler
+from game_ended_handler import GameEndedHandler
 import threading
 import Tkinter
 from Tkinter import *
@@ -295,7 +295,7 @@ class MM3Client:
 
         print colored("MM3Client> ", 'red', attrs=['bold']) + "new subscription for the end of the game"
         self.st6 = self.node.CreateSubscribeTransaction(self.node.ss_handle)
-        initial_results6 = self.st6.subscribe_rdf(triple_lost, LostGameHandler(self))
+        initial_results6 = self.st6.subscribe_rdf(triple_lost, GameEndedHandler(self))
         
 
     def close_subscriptions(self):
