@@ -180,59 +180,6 @@
 
     <owl:DatatypeProperty rdf:about="http://smartM3Lab/Ontology.owl#boxColor">
         <rdfs:domain rdf:resource="http://smartM3Lab/Ontology.owl#Street"/>
-        <rdfs:range>
-            <rdfs:Datatype>
-                <owl:oneOf>
-                    <rdf:Description>
-                        <rdf:type rdf:resource="&rdf;List"/>
-                        <rdf:first>blue</rdf:first>
-                        <rdf:rest>
-                            <rdf:Description>
-                                <rdf:type rdf:resource="&rdf;List"/>
-                                <rdf:first>cyan</rdf:first>
-                                <rdf:rest>
-                                    <rdf:Description>
-                                        <rdf:type rdf:resource="&rdf;List"/>
-                                        <rdf:first>green</rdf:first>
-                                        <rdf:rest>
-                                            <rdf:Description>
-                                                <rdf:type rdf:resource="&rdf;List"/>
-                                                <rdf:first>orange</rdf:first>
-                                                <rdf:rest>
-                                                    <rdf:Description>
-                                                        <rdf:type rdf:resource="&rdf;List"/>
-                                                        <rdf:first>pink</rdf:first>
-                                                        <rdf:rest>
-                                                            <rdf:Description>
-                                                                <rdf:type rdf:resource="&rdf;List"/>
-                                                                <rdf:first>purple</rdf:first>
-                                                                <rdf:rest>
-                                                                    <rdf:Description>
-                                                                        <rdf:type rdf:resource="&rdf;List"/>
-                                                                        <rdf:first>red</rdf:first>
-                                                                        <rdf:rest>
-                                                                            <rdf:Description>
-                                                                                <rdf:type rdf:resource="&rdf;List"/>
-                                                                                <rdf:first>yellow</rdf:first>
-                                                                                <rdf:rest rdf:resource="&rdf;nil"/>
-                                                                            </rdf:Description>
-                                                                        </rdf:rest>
-                                                                    </rdf:Description>
-                                                                </rdf:rest>
-                                                            </rdf:Description>
-                                                        </rdf:rest>
-                                                    </rdf:Description>
-                                                </rdf:rest>
-                                            </rdf:Description>
-                                        </rdf:rest>
-                                    </rdf:Description>
-                                </rdf:rest>
-                            </rdf:Description>
-                        </rdf:rest>
-                    </rdf:Description>
-                </owl:oneOf>
-            </rdfs:Datatype>
-        </rdfs:range>
     </owl:DatatypeProperty>
     
 
@@ -593,6 +540,7 @@
     <owl:NamedIndividual rdf:about="http://smartM3Lab/Ontology.owl#PiazzaleBacchelli">
         <rdf:type rdf:resource="http://smartM3Lab/Ontology.owl#Street"/>
         <boxID>18</boxID>
+        <boxColor>yellow</boxColor>
         <purchaseCost>280</purchaseCost>
         <tollCost>140</tollCost>
     </owl:NamedIndividual>
@@ -604,6 +552,7 @@
     <owl:NamedIndividual rdf:about="http://smartM3Lab/Ontology.owl#PiazzettaMorandi">
         <rdf:type rdf:resource="http://smartM3Lab/Ontology.owl#Street"/>
         <tollCost>170</tollCost>
+        <boxColor>pink</boxColor>
         <purchaseCost>350</purchaseCost>
         <boxID>32</boxID>
     </owl:NamedIndividual>
@@ -740,6 +689,7 @@
     <owl:NamedIndividual rdf:about="http://smartM3Lab/Ontology.owl#StradaMaggiore">
         <rdf:type rdf:resource="http://smartM3Lab/Ontology.owl#Street"/>
         <boxID>31</boxID>
+        <boxColor>pink</boxColor>
         <purchaseCost>300</purchaseCost>
         <tollCost>150</tollCost>
     </owl:NamedIndividual>
@@ -768,6 +718,7 @@
         <rdf:type rdf:resource="http://smartM3Lab/Ontology.owl#Street"/>
         <boxID>36</boxID>
         <tollCost>100</tollCost>
+        <boxColor>blue</boxColor>
         <purchaseCost>210</purchaseCost>
     </owl:NamedIndividual>
     
@@ -777,6 +728,7 @@
 
     <owl:NamedIndividual rdf:about="http://smartM3Lab/Ontology.owl#ViaBelmeloro">
         <rdf:type rdf:resource="http://smartM3Lab/Ontology.owl#Street"/>
+        <boxColor>green</boxColor>
         <tollCost>110</tollCost>
         <boxID>21</boxID>
         <purchaseCost>220</purchaseCost>
@@ -789,6 +741,7 @@
     <owl:NamedIndividual rdf:about="http://smartM3Lab/Ontology.owl#ViaBertoloni">
         <rdf:type rdf:resource="http://smartM3Lab/Ontology.owl#Street"/>
         <tollCost>90</tollCost>
+        <boxColor>cyan</boxColor>
         <purchaseCost>190</purchaseCost>
         <boxID>13</boxID>
     </owl:NamedIndividual>
@@ -802,6 +755,7 @@
         <purchaseCost>400</purchaseCost>
         <boxID>33</boxID>
         <tollCost>200</tollCost>
+        <boxColor>pink</boxColor>
     </owl:NamedIndividual>
     
 
@@ -810,6 +764,7 @@
 
     <owl:NamedIndividual rdf:about="http://smartM3Lab/Ontology.owl#ViaFanin">
         <rdf:type rdf:resource="http://smartM3Lab/Ontology.owl#Street"/>
+        <boxColor>cyan</boxColor>
         <boxID>14</boxID>
         <purchaseCost>240</purchaseCost>
         <tollCost>120</tollCost>
@@ -821,6 +776,7 @@
 
     <owl:NamedIndividual rdf:about="http://smartM3Lab/Ontology.owl#ViaFilippoRe">
         <rdf:type rdf:resource="http://smartM3Lab/Ontology.owl#Street"/>
+        <boxColor>red</boxColor>
         <tollCost>150</tollCost>
         <purchaseCost>300</purchaseCost>
         <boxID>27</boxID>
@@ -835,6 +791,7 @@
         <purchaseCost>250</purchaseCost>
         <tollCost>120</tollCost>
         <boxID>26</boxID>
+        <boxColor>red</boxColor>
     </owl:NamedIndividual>
     
 
@@ -846,6 +803,7 @@
         <tollCost>100</tollCost>
         <purchaseCost>200</purchaseCost>
         <boxID>12</boxID>
+        <boxColor>cyan</boxColor>
     </owl:NamedIndividual>
     
 
@@ -854,6 +812,7 @@
 
     <owl:NamedIndividual rdf:about="http://smartM3Lab/Ontology.owl#ViaMassarenti">
         <rdf:type rdf:resource="http://smartM3Lab/Ontology.owl#Street"/>
+        <boxColor>green</boxColor>
         <tollCost>80</tollCost>
         <purchaseCost>160</purchaseCost>
         <boxID>20</boxID>
@@ -865,6 +824,7 @@
 
     <owl:NamedIndividual rdf:about="http://smartM3Lab/Ontology.owl#ViaPupilli">
         <rdf:type rdf:resource="http://smartM3Lab/Ontology.owl#Street"/>
+        <boxColor>yellow</boxColor>
         <purchaseCost>260</purchaseCost>
         <boxID>17</boxID>
         <tollCost>130</tollCost>
@@ -877,6 +837,7 @@
     <owl:NamedIndividual rdf:about="http://smartM3Lab/Ontology.owl#ViaSanGiacomo">
         <rdf:type rdf:resource="http://smartM3Lab/Ontology.owl#Street"/>
         <purchaseCost>190</purchaseCost>
+        <boxColor>orange</boxColor>
         <tollCost>80</tollCost>
         <boxID>10</boxID>
     </owl:NamedIndividual>
@@ -889,6 +850,7 @@
         <rdf:type rdf:resource="http://smartM3Lab/Ontology.owl#Street"/>
         <purchaseCost>200</purchaseCost>
         <boxID>23</boxID>
+        <boxColor>green</boxColor>
         <tollCost>100</tollCost>
     </owl:NamedIndividual>
     
@@ -900,6 +862,7 @@
         <rdf:type rdf:resource="http://smartM3Lab/Ontology.owl#Street"/>
         <tollCost>100</tollCost>
         <boxID>1</boxID>
+        <boxColor>gray</boxColor>
         <purchaseCost>200</purchaseCost>
     </owl:NamedIndividual>
     
@@ -912,6 +875,7 @@
         <purchaseCost>150</purchaseCost>
         <boxID>37</boxID>
         <tollCost>70</tollCost>
+        <boxColor>blue</boxColor>
     </owl:NamedIndividual>
     
 
@@ -922,6 +886,7 @@
         <rdf:type rdf:resource="http://smartM3Lab/Ontology.owl#Street"/>
         <boxID>4</boxID>
         <tollCost>120</tollCost>
+        <boxColor>gray</boxColor>
         <purchaseCost>240</purchaseCost>
     </owl:NamedIndividual>
     
@@ -933,6 +898,7 @@
         <rdf:type rdf:resource="http://smartM3Lab/Ontology.owl#Street"/>
         <purchaseCost>190</purchaseCost>
         <boxID>29</boxID>
+        <boxColor>red</boxColor>
         <tollCost>90</tollCost>
     </owl:NamedIndividual>
     
@@ -944,6 +910,7 @@
         <rdf:type rdf:resource="http://smartM3Lab/Ontology.owl#Street"/>
         <boxID>7</boxID>
         <purchaseCost>150</purchaseCost>
+        <boxColor>orange</boxColor>
         <tollCost>70</tollCost>
     </owl:NamedIndividual>
     
@@ -955,6 +922,7 @@
         <rdf:type rdf:resource="http://smartM3Lab/Ontology.owl#Street"/>
         <tollCost>90</tollCost>
         <boxID>8</boxID>
+        <boxColor>orange</boxColor>
         <purchaseCost>180</purchaseCost>
     </owl:NamedIndividual>
     
@@ -967,6 +935,7 @@
         <purchaseCost>220</purchaseCost>
         <tollCost>110</tollCost>
         <boxID>2</boxID>
+        <boxColor>gray</boxColor>
     </owl:NamedIndividual>
 </rdf:RDF>
 
