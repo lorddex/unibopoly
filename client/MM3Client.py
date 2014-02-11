@@ -347,7 +347,7 @@ class MM3Client:
             pass
     
     def clear_my_sib(self):
-        if self.node is None:
+        if self.node == None:
             return
         print colored("MM3Client> ", 'red', attrs=['bold']) + "cleaning the sib..."
         # removing all the triples with the loser as the subject

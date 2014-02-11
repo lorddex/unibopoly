@@ -82,7 +82,10 @@ def get_position(self):
     query = """SELECT ?o
     WHERE { ns:""" + self.player.nickname + """ ns:IsInBox ?o }"""
     result = self.player.node.execute_query(query)
-    position = int(result[0][0][2].split("#")[1]) 
+    if len(result) != 0:
+        position = int(result[0][0][2].split("#")[1]) 
+    else:
+        position = None
     return position
 
 def get_is_in_box(self):

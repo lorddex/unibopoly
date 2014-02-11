@@ -67,7 +67,7 @@ class ChangeBalanceHandler:
                     
                     # delete the piece
                     if self.player.nickname == self.current_player:
-                            self.player.interface.canvas.delete(self.player.interface.piece)
+                        self.player.interface.canvas.delete(self.player.interface.piece)
                     else:
                         self.player.interface.canvas.delete(self.player.interface.pieces[self.current_player])
 

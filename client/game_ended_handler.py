@@ -27,11 +27,9 @@ class GameEndedHandler:
 
     def handle(self, added, removed):
         for t in added:
-
-            np_result = get_is_in_box(self)
-
-            if len(np_result) == 1:
-                if get_balance(self.player) < 0:
+            if self.player.role == "player":                
+  
+                if (self.player.balance < 0):
                     message = "you lost the game!"
                     color = "red"
                 else:
@@ -40,19 +38,25 @@ class GameEndedHandler:
 
                 print self.heading + colored(message, color, attrs=["bold"])
 
-                # graphical user interface notification
-                if self.player.gtki:
-                    # self.player.interface.balance_editable_label.config(text = "You won the game!", fg="green")
-                    self.player.interface.canvas.delete(self.player.interface.balance_editable_label)
-                    self.player.interface.balance_editable_label = self.player.interface.canvas.create_text(120, 390, text = message, fill = color, anchor = W)
-                            
-                    # disable every combobox
-                    self.player.interface.game_sessions_combobox.config(state = DISABLED)
-                    self.player.interface.actions_combobox.config(state = DISABLED)
-                    
-                    # disable buttons
-                    self.player.interface.choose_game_session_button.config(state = DISABLED)
-                    self.player.interface.choose_action_button.config(state = DISABLED)
+            else:
+                message = "Game Ended!"
+                color = "green"
+                print self.other_heading + colored(message, color, attrs=["bold"])
+
+            # graphical user interface notification
+            if self.player.gtki:
+                
+                # label notification
+                self.player.interface.canvas.delete(self.player.interface.balance_editable_label)
+                self.player.interface.balance_editable_label = self.player.interface.canvas.create_text(120, 390, text = message, fill = color, anchor = W)
+                        
+                # disable every combobox
+                self.player.interface.game_sessions_combobox.config(state = DISABLED)
+                self.player.interface.actions_combobox.config(state = DISABLED)
+                
+                # disable buttons
+                self.player.interface.choose_game_session_button.config(state = DISABLED)
+                self.player.interface.choose_action_button.config(state = DISABLED)
 
             if self.player.node is not None:            
                 self.player.clear_my_sib()
