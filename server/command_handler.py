@@ -8,6 +8,7 @@ from sib import SIBLib
 import time
 import random
 from commands import *
+from query import *
 
 rdf = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
 owl = "http://www.w3.org/2002/07/owl#"
@@ -23,16 +24,28 @@ class CommandHandler:
         for i in added:
 
             self.server.lock()
-            
+                        
             # information retrieval
             command = str(i[0]).split("#")[1]
             issuer = str(i[2]).split("#")[1]
             issuer_game_session = issuer.split("_")[1]
 
-            if issuer_game_session == self.server.game_session_id:
-                print colored("CommandHandler> ", "blue", attrs=["bold"]) + colored(issuer.split("_")[0], "cyan", attrs=["bold"]) + " requested " + colored(command, "cyan", attrs=["bold"])
+            issuer_position = get_position(self.server.node, str(i[2]).split("#")[1])
+            box_name = get_box_name(self, issuer_position)
+            cmds = get_commands(self.server.node, box_name+"_"+issuer_game_session)
+            box_type = get_box_type(self, box_name)
+ 
+            if command != "RollDiceCommand" and command != "TakeHitchCardCommand" and command != "TakeProbCardCommand" and box_type != "Special" and command not in cmds:
+                print colored("CommandHandler> ", "blue", attrs=["bold"]) + "COMMAND " + command + " IS NOT A POSSIBLE COMMAND FOR THIS BOX!! CHEAT ATTEMPT, QUITTING."
+                self.server.unlock()
+                self.server.close_subscriptions()
+                self.server.leave_sib()
+                sys.exit(0)                
 
+            if issuer_game_session == self.server.game_session_id:
+                print colored("CommandHandler> ", "blue", attrs=["bold"]) + colored(issuer.split("_")[0], "cyan", attrs=["bold"]) + " requested " + colored(command, "cyan", attrs=["bold"])          
                 self.execute_command(command)
+
 
             self.server.unlock()
 
