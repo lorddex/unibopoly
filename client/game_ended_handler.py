@@ -18,7 +18,7 @@ xsd = "http://www.w3.org/2001/XMLSchema#"
 rdfs = "http://www.w3.org/2000/01/rdf-schema#"
 ns = "http://smartM3Lab/Ontology.owl#"
 
-class LostGameHandler:    
+class GameEndedHandler:    
 
     def __init__(self, player):
         self.player = player
