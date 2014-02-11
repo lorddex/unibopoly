@@ -51,33 +51,46 @@ class Application(Frame):
     def choose_gs(self):
         self.error_label1.config(text = "")#, fill = "red")
         self.error_label2.config(text = "")#, fill = "red")
+        self.error_label3.config(text = "")#, fill = "red")
 
         # Controlli sul nickname
         reg = re.compile(r"[a-zA-Z0-9]*$")
         nickname = str(self.nickname_entry.get())
                 
-        if (not(reg.match(nickname)) or len(nickname) == 0) and self.game_sessions_combobox_var.get() == "Select a game session...":
-            self.error_label2.config(text = "Nickname not valid. Insert another one!")#, fill = "red")
-            self.nickname_entry.delete(0, END)
-            self.error_label1.config(text = "Choose a game session!")#, fill = "red")
-            return
+        if (not(reg.match(nickname)) or len(nickname) == 0) or self.game_sessions_combobox_var.get() == "Select a game session..." or self.role_combobox_var.get() == "Select a role...":
+            # self.error_label2.config(text = "Nickname not valid. Insert another one!")#, fill = "red")
+            # self.nickname_entry.delete(0, END)
+            # self.error_label1.config(text = "Choose a game session!")#, fill = "red")
+            # self.error_label3.config(text = "Select a role!")#, fill = "red")
+            #return
             
-        if not(reg.match(nickname)) or len(nickname) == 0:
-            print self.heading + " Nickname not valid!"
-            self.error_label2.config(text = "Nickname not valid. Insert another one!")
-            self.error_label1.config(text = "")
-            self.nickname_entry.delete(0, END)
-            return 
+            if not(reg.match(nickname)) or len(nickname) == 0:
+                print self.heading + " Nickname not valid!"
+                self.error_label2.config(text = "Nickname not valid. Insert another one!")
+                # self.error_label1.config(text = "")
+                # self.nickname_entry.delete(0, END)
+                # self.error_label3.config(text = "")
+#                return 
     
-        if self.game_sessions_combobox_var.get() == "Select a game session...":
-            print self.heading + " Choose a game session!"
-            self.error_label1.config(text = "Choose a game session!")
-            self.error_label2.config(text = "")
+            if self.game_sessions_combobox_var.get() == "Select a game session...":
+                print self.heading + " Choose a game session!"
+                self.error_label1.config(text = "Choose a game session!")
+                # self.error_label2.config(text = "")
+                # self.error_label3.config(text = "")
+                #return
+        
+            if self.role_combobox_var.get() == "Select a role...":
+                print self.heading + " Select a role!"
+                self.error_label3.config(text = "Select a role!")
+                # self.error_label2.config(text = "")
+                # self.error_label1.config(text = "")
             return
+
         
         # join game session
         # try:
-        if self.c.join_game_session(self.game_sessions_combobox_var.get(), "player", self.nickname_entry.get()) == False:
+        # if self.c.join_game_session(self.game_sessions_combobox_var.get(), "player", self.nickname_entry.get()) == False:
+        if self.c.join_game_session(self.game_sessions_combobox_var.get(), self.role_combobox_var.get(), self.nickname_entry.get()) == False:
             return
         
         # except Exception:
@@ -91,7 +104,8 @@ class Application(Frame):
         self.update_game_session_button.config(state = DISABLED)
         self.choose_game_session_button.config(state = DISABLED)
         self.game_sessions_combobox.config(state = DISABLED)
-         
+        self.role_combobox.config(state = DISABLED)
+ 
         # disable username field
         self.nickname_entry.config(state = DISABLED)
 
@@ -221,11 +235,26 @@ class Application(Frame):
         self.nickname_entry = Entry(self.game_sessions_frame)
         self.nickname_entry.grid(row=1, column=1, sticky = W)
 
+        # Role Combobox
+        self.role_combobox_var = StringVar(self.game_sessions_frame)
+        self.role_combobox_items = ()
+        self.role_combobox = OptionMenu(self.game_sessions_frame, self.role_combobox_var, self.role_combobox_items)
+        self.role_combobox.grid( row=1, column=2, sticky = W, padx=10 )
+        self.role_combobox.config(width = 10)
+        self.role_combobox_var.set('Select a role...')
+        r = self.role_combobox['menu']
+        r.delete(0, 'end')
+        r.add_command(label = "player", command=Tkinter._setit(self.role_combobox_var, "player"))
+        r.add_command(label = "observer", command=Tkinter._setit(self.role_combobox_var, "observer"))
+
+        
         # Error Labels
         self.error_label1 = Label(self.game_sessions_frame, text=" ")
         self.error_label1.grid( row = 2, column = 1 )        
         self.error_label2 = Label(self.game_sessions_frame, text=" ")
         self.error_label2.grid( row = 3, column = 1 )        
+        self.error_label3 = Label(self.game_sessions_frame, text=" ")
+        self.error_label3.grid( row = 3, column = 2 )        
 
         
         # Game session Label
@@ -252,7 +281,7 @@ class Application(Frame):
         self.choose_game_session_button["text"] = "Enter"
         self.choose_game_session_button["command"] =  self.choose_gs
         self.choose_game_session_button.config(state = DISABLED)
-        self.choose_game_session_button.grid( row=1,column=2, sticky = W )
+        self.choose_game_session_button.grid( row=1,column=3, sticky = W )
 
         # canvas
         self.canvas = Canvas(self.labels_frame, width = 651, height = 490)
