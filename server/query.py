@@ -48,7 +48,6 @@ def get_current_gs(self, player):
     gs = result[0][0][2].split("#")[1]
     return str(gs)
 
-
 def get_box_name(self, position):
     # Get position name
     query = """SELECT ?s
@@ -56,6 +55,26 @@ def get_box_name(self, position):
     result = self.server.node.execute_query(query)
     box_name = str(result[0][0][2].split("#")[1])
     return box_name
+
+def get_box_color(self, position_name):
+    # Get position color
+    query = """SELECT ?o
+    WHERE { ns:""" + position_name + """ ns:boxColor ?o }"""
+    print query
+    result = self.server.node.execute_query(query)
+    box_color = str(result[0][0][2])
+    return box_color
+
+def get_boxes_with_color_same_as(self, position_name):
+    # Get boxes with color same as the given box
+    query = """SELECT ?s
+    WHERE { ns:""" + position_name + """ ns:boxColor ?c .
+    ?s ns:boxColor ?c }"""
+    result = self.server.node.execute_query(query)
+    boxes = []
+    for r in result:
+        boxes.append(str(r[0][2]).split("#")[1])
+    return boxes
 
 def get_box_owner(self, box_name_gs):
     # query = """SELECT ?s

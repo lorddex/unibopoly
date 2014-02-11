@@ -541,7 +541,7 @@ def update_commands(self, player, box_name, new_position):
             owner = get_box_owner(self, box_name_gs)
             # found someone?
             if (owner is not None): 
-                
+
                 if (owner != player):
 
                     t = [(Triple(URI(ns + box_name_gs),
@@ -554,10 +554,42 @@ def update_commands(self, player, box_name, new_position):
                     if (player_balance >= purchase_cost):
                         
                         num = int(get_num_of_houses(self, box_name_gs))
-                        if num < 4:
+                        if num < 3:                                                       
                             t.append(Triple(URI(ns + box_name_gs),
                                             URI(ns + "HasPossibleCommand"),
                                             URI(ns + "BuildCommand")))
+
+                        elif num == 3: 
+                            # The owner of the box is the current player.
+                            # He already has 3 houses. Now he can built an hotel
+                            # only if he owns the other streets of the same colors too.
+
+                            # get all the boxes with the same color of the current position
+                            boxes = get_boxes_with_color_same_as(self, box_name)
+                            
+                            # get the owner of each box selected previously
+                            owners = []                
+                            for b in boxes:
+                                b_gs = b + "_" + gs
+                                query = """SELECT ?s
+                                WHERE { ?s ns:HasContract ns:""" + b_gs + """ }"""
+                                result = self.server.node.execute_query(query)
+                                if len(result) > 0:
+                                    owners.append(str(result[0][0][2]).split("#")[1])
+                                    
+                            # check if the owner of the box owns the others boxes too
+                            owns_everything = True
+                            if len(owners) == len(boxes):
+                                for o in owners:
+                                    if o != player:
+                                        owns_everything = False
+                            else:
+                                owns_everything = False
+
+                            if owns_everything:
+                                t.append(Triple(URI(ns + box_name_gs),
+                                                URI(ns + "HasPossibleCommand"),
+                                                URI(ns + "BuildCommand")))
 
                     t.append(Triple(URI(ns+ box_name_gs), 
                                     URI(ns + "HasPossibleCommand"), 
@@ -568,6 +600,7 @@ def update_commands(self, player, box_name, new_position):
                     
             # else (no-one has the contract of this box)
             else:
+                        
                 t = []
                 if (player_balance >= purchase_cost):
 
