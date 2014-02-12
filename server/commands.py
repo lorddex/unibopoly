@@ -102,15 +102,11 @@ def rolldice(self):
 ##########################################################  
 def switch_turn(self):
 
-    print "RICHIAMATA SWITCH TURN"
-
     # Get current player
     old_player = self.server.current_player
-    print "IL VECCHIO GIOCATORE ERA " + str(old_player)
 
     # Get number of players
     self.server.number_of_players = len(get_players(self.server.node, self.server.game_session_id))
-    print "CI SONO " + str(self.server.number_of_players) + " GIOCATORI"
     
     # try:
     # Verify if the player has been eliminated or not
