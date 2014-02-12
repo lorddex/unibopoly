@@ -25,6 +25,16 @@ def get_players(node, session):
             res.append(str(i[0][2]).split("#")[1])
     return res
 
+def get_commands(node, box_name):
+    query = """SELECT ?o
+        WHERE {ns:""" + box_name + """ ns:HasPossibleCommand ?o }"""
+    result = node.execute_query(query) 
+    cmds = []
+    for i in result:
+       cmds.append(str(i[0][2]).split("#")[1])
+
+    return cmds
+
 def get_cash_balance(node, player):
     query = """SELECT ?o
     WHERE { ns:""" + player + """ ns:cashBalance ?o}"""

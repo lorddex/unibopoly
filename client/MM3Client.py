@@ -299,7 +299,9 @@ class MM3Client:
         
 
     def close_subscriptions(self):
+        self.lock("MM3Server")
         if self.node is None:
+            self.unlock("MM3Server")
             return
         # closing subscriptions
         print colored("MM3Client> ", 'red', attrs=['bold']) + "closing subscriptions..."
@@ -314,9 +316,12 @@ class MM3Client:
                 self.node.CloseSubscribeTransaction(self.card_st)
         except Exception:
             pass
+        self.unlock("MM3Server")
 
     def force_quit(self):
+        self.lock("MM3Server")
         if self.node is None:
+            self.unlock("MM3Server")
             return
         if self.role is not "observer":    
             try:
@@ -333,11 +338,13 @@ class MM3Client:
                 self.node.update(triples_u, triples_o)
             except AttributeError:
                 pass
-
+        self.unlock("MM3Server")
 
     def leave_sib(self):
+        self.lock("MM3Server")
         # leaving the sib
         if self.node is None:
+            self.unlock("MM3Server")
             return
         print colored("MM3Client> ", 'red', attrs=['bold']) + "leaving the sib..."
         try:
@@ -345,9 +352,13 @@ class MM3Client:
             self.node = None
         except Exception:
             pass
+        self.unlock("MM3Server")
     
     def clear_my_sib(self):
-        if self.node == None:
+
+        self.lock("MM3Server")
+        if self.node is None:
+            self.unlock("MM3Server")
             return
         print colored("MM3Client> ", 'red', attrs=['bold']) + "cleaning the sib..."
         # removing all the triples with the loser as the subject
@@ -367,6 +378,7 @@ class MM3Client:
             for c in o_result:
                 o_triples.append(Triple(URI(c[0][2]), URI(c[1][2]), URI(ns + self.nickname)))
             self.node.remove(o_triples)
+        self.unlock("MM3Server")
 
     def begin_observer(self):
         # inserting a triple to let the old player observe the rest of the game

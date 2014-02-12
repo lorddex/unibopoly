@@ -66,11 +66,28 @@ class MM3Server():
                 pass
             finally:
                 self.sem_lock = False
-                
+    
+    def clean_my_sib(self):
+        self.lock()
+        if self.debug:
+            print self.heading + "cleaning the sib..."
+        query = """SELECT ?s ?p ?o WHERE { ?s ?p ?o }"""
+        result = self.node.execute_query(query)
+        triples = []
+        for i in result:
+            if len(i)>0 and len(i[0])>0 and len(str(i[0][2]).split("_"))>1:
+                if self.game_session_id == str(i[0][2]).split("_")[1]:
+                    triples.append(Triple(URI(i[0][2]), URI(i[1][2]), URI(i[2][2])))
+        self.node.remove(triples)
+        self.unlock() 
+            
     def leave_sib(self):
+        self.lock()
         if self.debug:
             print self.heading + "leaving the sib..."
+        self.clean_my_sib()
         self.node.leave_sib()
+        self.unlock()
 
     def parse_command(self, cmd):
         parms = []
