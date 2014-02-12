@@ -56,7 +56,7 @@ class ChangePositionHandler:
                     ##################################################
     
                     # game session info
-                    game_session_status = get_game_session_status(self)
+                    game_session_status = get_game_session_status(self, self.player.game_session)
                     
                     if game_session_status == "Active":
                         

@@ -46,7 +46,6 @@ class CommandHandler:
                 print colored("CommandHandler> ", "blue", attrs=["bold"]) + colored(issuer.split("_")[0], "cyan", attrs=["bold"]) + " requested " + colored(command, "cyan", attrs=["bold"])          
                 self.execute_command(command)
 
-
             self.server.unlock()
 
         for i in removed:

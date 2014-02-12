@@ -37,7 +37,10 @@ class Application(Frame):
         showinfo("Unibopoly v0.1", "Unibopoly v0.1 - Developed by Francesco Apollonio, Alessandra Persano and Fabio Viola")
 
     def update_gs_list(self):
-        self.gs_list = self.c.get_game_session_list()
+        if self.role == "player":
+            self.gs_list = self.c.get_game_session_list()
+        else:
+            self.gs_list = self.c.get_all_game_sessions()
         self.gs_tuple = tuple(self.gs_list)
 
         # filling the combobox
@@ -49,6 +52,7 @@ class Application(Frame):
 
         
     def choose_gs(self):
+
         self.error_label1.config(text = "")#, fill = "red")
         self.error_label2.config(text = "")#, fill = "red")
         self.error_label3.config(text = "")#, fill = "red")
@@ -85,11 +89,11 @@ class Application(Frame):
                 # self.error_label2.config(text = "")
                 # self.error_label1.config(text = "")
             return
-
         
         # join game session
         # try:
         # if self.c.join_game_session(self.game_sessions_combobox_var.get(), "player", self.nickname_entry.get()) == False:
+
         if self.c.join_game_session(self.game_sessions_combobox_var.get(), self.role_combobox_var.get(), self.nickname_entry.get()) == False:
             return
         
@@ -98,6 +102,20 @@ class Application(Frame):
         #     self.error_label1.config(text = "Choose a valid game session!", fg = "red")
 
         # launch subscriptions
+
+        # piece
+        if self.role == "player":
+            position_randomizer_x = random.randint(-5,5)
+            position_randomizer_y = random.randint(-5,5)
+        
+            new_top_x = self.cell_coords[0]['x'] + position_randomizer_x
+            new_top_y = self.cell_coords[0]['y'] + position_randomizer_y
+        
+            new_bot_x = new_top_x + 20
+            new_bot_y = new_top_y + 20
+        
+            self.piece = self.canvas.create_oval(new_top_x, new_top_y, new_bot_x, new_bot_y, fill = 'yellow')
+
         self.c.launch_subscriptions()
          
         # disable button and combobox for the game sessions
@@ -140,9 +158,14 @@ class Application(Frame):
 
         # MM3Client
         self.c = MM3Client.MM3Client(self.ip_entry.get(), int(self.port_entry.get()), True, True, self)
-        
+        self.role = self.role_combobox_var.get()               
+
         # getting game session list
-        self.gs_list = self.c.get_game_session_list()
+        if self.role == "player":
+            self.gs_list = self.c.get_game_session_list()
+        else:
+            self.gs_list = self.c.get_all_game_sessions()
+
         self.gs_tuple = tuple(self.gs_list)
 
         # filling the combobox
@@ -160,6 +183,7 @@ class Application(Frame):
         self.ip_entry.config(state = DISABLED)
         self.port_entry.config(state = DISABLED)
         self.connect_button.config(state = DISABLED)
+        self.role_combobox.config(state = DISABLED)
 
     def createWidgets(self):
 
@@ -207,7 +231,7 @@ class Application(Frame):
         self.turn_editable_label.pack( side = LEFT )
 
         # IP Label
-        self.ip_label = Label(self.connection_frame, text="Server's IP")
+        self.ip_label = Label(self.connection_frame, text="IP")
         self.ip_label.pack(side = LEFT)
         self.ip_entry = Entry(self.connection_frame)
         self.ip_entry.pack(side = LEFT)
@@ -219,6 +243,20 @@ class Application(Frame):
         self.port_entry = Entry(self.connection_frame)
         self.port_entry.pack(side = LEFT)
         self.port_entry.insert(0, "10010")
+        self.port_entry.config(width = 7)
+
+        # Role Combobox
+        self.role_combobox_var = StringVar(self.connection_frame)
+        self.role_combobox_items = ()
+        self.role_combobox = OptionMenu(self.connection_frame, self.role_combobox_var, self.role_combobox_items)
+#        self.role_combobox.grid( row=1, column=2, sticky = W, padx=10 )
+        self.role_combobox.pack(side = LEFT, padx = 15, pady = 5)
+        self.role_combobox.config(width = 10)
+        self.role_combobox_var.set('Select a role...')
+        r = self.role_combobox['menu']
+        r.delete(0, 'end')
+        r.add_command(label = "player", command=Tkinter._setit(self.role_combobox_var, "player"))
+        r.add_command(label = "observer", command=Tkinter._setit(self.role_combobox_var, "observer"))
 
         # Connect Button
         self.connect_button = Button(self.connection_frame)
@@ -234,20 +272,7 @@ class Application(Frame):
         # Nickname entry
         self.nickname_entry = Entry(self.game_sessions_frame)
         self.nickname_entry.grid(row=1, column=1, sticky = W)
-
-        # Role Combobox
-        self.role_combobox_var = StringVar(self.game_sessions_frame)
-        self.role_combobox_items = ()
-        self.role_combobox = OptionMenu(self.game_sessions_frame, self.role_combobox_var, self.role_combobox_items)
-        self.role_combobox.grid( row=1, column=2, sticky = W, padx=10 )
-        self.role_combobox.config(width = 10)
-        self.role_combobox_var.set('Select a role...')
-        r = self.role_combobox['menu']
-        r.delete(0, 'end')
-        r.add_command(label = "player", command=Tkinter._setit(self.role_combobox_var, "player"))
-        r.add_command(label = "observer", command=Tkinter._setit(self.role_combobox_var, "observer"))
-
-        
+       
         # Error Labels
         self.error_label1 = Label(self.game_sessions_frame, text=" ")
         self.error_label1.grid( row = 2, column = 1 )        
@@ -301,18 +326,6 @@ class Application(Frame):
         self.canvas.create_text(90, 410, text = "Position: ")
         self.position_editable_label = self.canvas.create_text(120, 410, text = "-")
 
-        # piece
-        position_randomizer_x = random.randint(-5,5)
-        position_randomizer_y = random.randint(-5,5)
-        
-        new_top_x = self.cell_coords[0]['x'] + position_randomizer_x
-        new_top_y = self.cell_coords[0]['y'] + position_randomizer_y
-        
-        new_bot_x = new_top_x + 20
-        new_bot_y = new_top_y + 20
-        
-        self.piece = self.canvas.create_oval(new_top_x, new_top_y, new_bot_x, new_bot_y, fill = 'yellow')
-
         # Info Button
         self.Info = Button(self.buttons_frame)
         self.Info["text"] = "About"
@@ -323,7 +336,6 @@ class Application(Frame):
         # Quit Button
         self.Quit = Button(self.buttons_frame)
         self.Quit["text"] = "Quit"
-#        self.Quit["fg"]   = "black"
         self.Quit.foreground = "black"
         self.Quit["command"] =  self.quit_monopoly
         self.Quit.pack( side = LEFT )

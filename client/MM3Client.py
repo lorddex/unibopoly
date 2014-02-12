@@ -108,6 +108,22 @@ class MM3Client:
           
         return game_session_list
 
+    def get_all_game_sessions(self):
+
+        # query to select available sessions
+        query = """
+        SELECT ?s ?o
+        WHERE {?s ns:HasStatus ?o}
+        """
+        result = self.node.execute_query(query)
+
+        game_session_list = []
+        for i in result:
+            game_session_list.append(str(i[0][2].split('#')[1]))
+        print str(game_session_list)
+        return game_session_list
+    
+
     def join_game_session(self, gamesession, role, nickname):
         try:
 
@@ -323,21 +339,25 @@ class MM3Client:
         if self.node is None:
             self.unlock("MM3Client")
             return
-        if self.role is not "observer":    
+        if self.role == "player":    
             try:
                 self.quit = True
-                old_balance = get_balance(self)
-                triples_o = []
-                triples_u = []
-                triples_o.append(Triple(URI(ns + self.nickname),
-                    URI(ns + "cashBalance"),
-                    URI(ns + str(old_balance))))
-                triples_u.append(Triple(URI(ns + self.nickname),
-                    URI(ns + "cashBalance"),
-                    URI(ns + str(-1))))
-                self.node.update(triples_u, triples_o)
+                if self.game_session is not None:
+                    old_balance = get_balance(self)
+                    triples_o = []
+                    triples_u = []
+                    triples_o.append(Triple(URI(ns + self.nickname),
+                        URI(ns + "cashBalance"),
+                        URI(ns + str(old_balance))))
+                    triples_u.append(Triple(URI(ns + self.nickname),
+                        URI(ns + "cashBalance"),
+                        URI(ns + str(-1))))
+                    self.node.update(triples_u, triples_o)
             except AttributeError:
                 pass
+        else:
+            self.close_subscriptions()
+            self.leave_sib()
         self.unlock("MM3Client")
 
     def leave_sib(self):

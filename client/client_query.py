@@ -34,9 +34,9 @@ def get_active_player(player):
 
 # SELF COMMANDS
 
-def get_game_session_status(self):
+def get_game_session_status(self, game_session):
     query = """SELECT ?o
-    WHERE { ns:""" + self.player.game_session + """ ns:HasStatus ?o}"""
+    WHERE { ns:""" + game_session + """ ns:HasStatus ?o}"""
     result = self.player.node.execute_query(query)
     game_session_status = str(result[0][0][2].split("#")[1])
     return game_session_status

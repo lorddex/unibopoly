@@ -14,6 +14,8 @@ if len(sys.argv) < 4:
     print "$ python client.py server_ip server_port role"
     sys.exit(0)
 
+role = sys.argv[3]
+
 # client connection
 c = MM3Client.MM3Client(sys.argv[1], int(sys.argv[2]), True, False, None)
 
@@ -26,7 +28,10 @@ while not(reg.match(nickname)) or nickname == "":
     nickname = raw_input("Insert another nickname > ")
         
 # game session selection
-game_session_list = c.get_game_session_list()
+if role == "player":
+    game_session_list = c.get_game_session_list()
+else:
+    game_session_list = c.get_all_game_sessions()
 if len(game_session_list)>0:          
     print  colored("Client> ", "yellow", attrs=["bold"]) + "select the desired game session: "
     index = 1
