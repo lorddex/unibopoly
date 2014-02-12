@@ -102,38 +102,39 @@ def rolldice(self):
 ##########################################################  
 def switch_turn(self):
 
+    print "RICHIAMATA SWITCH TURN"
+
     # Get current player
     old_player = self.server.current_player
+    print "IL VECCHIO GIOCATORE ERA " + str(old_player)
 
+    # Get number of players
     self.server.number_of_players = len(get_players(self.server.node, self.server.game_session_id))
+    print "CI SONO " + str(self.server.number_of_players) + " GIOCATORI"
     
+    # try:
+    # Verify if the player has been eliminated or not
     try:
-        # Verify if the player has been eliminated or not
-        old_player_id = self.server.players.index(old_player)
+        old_player_id = self.server.players.index(old_player)    
         new_player_id = (old_player_id + 1) % self.server.number_of_players
-
     except ValueError:
-        new_player_id = self.server.current_player_id    
-    
-    # Switch the turn
-    try:
-        self.server.current_player = self.server.players[new_player_id % self.server.number_of_players]
-        self.server.current_player_id = new_player_id
+        # il vecchio player e' stato rimosso
+        new_player_id = 0
+        
+    self.server.current_player = self.server.players[new_player_id]
+    self.server.current_player_id = new_player_id
 
-        # Debug print
-        print colored("CommandHandler> ", "blue", attrs=["bold"]) + "it's " + colored(self.server.current_player.split("_")[0], "cyan", attrs=["bold"]) + "'s turn"
+    # Updating the triple into the sib
+    ta = [Triple(URI(ns + self.server.game_session_id),
+                 URI(ns + "TurnOf"),
+                 URI(ns + self.server.current_player))]
+    tr = [Triple(URI(ns + self.server.game_session_id),
+                 URI(ns + "TurnOf"),
+                 URI(ns + old_player))]
+    self.server.node.update(ta, tr)
 
-        # Updating the triple into the sib
-        ta = [Triple(URI(ns + self.server.game_session_id),
-                     URI(ns + "TurnOf"),
-                     URI(ns + self.server.current_player))]
-        tr = [Triple(URI(ns + self.server.game_session_id),
-                     URI(ns + "TurnOf"),
-                     URI(ns + old_player))]
-    
-        self.server.node.update(ta, tr)
-    except ZeroDivisionError:
-        pass
+    # Debug print
+    print colored("CommandHandler> ", "blue", attrs=["bold"]) + "it's " + colored(self.server.current_player.split("_")[0], "cyan", attrs=["bold"]) + "'s turn"
 
 def lost(server, current_player):
     position = get_position(server.node, current_player)

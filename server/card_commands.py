@@ -46,6 +46,7 @@ def card_action_payall(self, arg):
     if self.server.debug:
         print colored("CommandHandler> ", "blue", attrs=["bold"]) + "pay " + str(arg) + " to all the other players"
     current_player = self.server.current_player
+    position = get_position(self.server.node, current_player)
     for i in self.server.players:
         if (str(i) != current_player):
             # get balance
@@ -183,6 +184,7 @@ def card_action_earnall(self, arg):
     if self.server.debug:
         print colored("CommandHandler> ", "blue", attrs=["bold"]) + "earn " + str(arg) + " from each player"
     current_player = self.server.current_player
+    position = get_position(self.server.node, current_player)
     for i in self.server.players:
         if (str(i) != current_player):
             # get balance

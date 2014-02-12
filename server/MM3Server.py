@@ -108,7 +108,7 @@ class MM3Server():
                         URI(ns + str(old_balance))))
                     triples_u.append(Triple(URI(ns + i),
                         URI(ns + "cashBalance"),
-                        URI(ns + str(old_balance + int(parms[1])))))
+                        URI(ns + str(parms[1]))))
                     self.node.update(triples_u, triples_o)
                     print self.heading + " player " + parms[0]  + " has now " + str(get_cash_balance(self.node, i))
         elif action == "nextdice" and len(parms) == 1:

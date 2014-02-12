@@ -15,6 +15,8 @@ xsd = "http://www.w3.org/2001/XMLSchema#"
 rdfs = "http://www.w3.org/2000/01/rdf-schema#"
 ns = "http://smartM3Lab/Ontology.owl#"
 
+# This handler starts when a player is removed
+
 class GameEndedHandler:
     def __init__(self, server):
         self.server = server
@@ -33,6 +35,7 @@ class GameEndedHandler:
                 if j == str(removed[0][2]).split('#')[1]:
                     self.server.players.remove(j)
 
+            # check how many players remains. If it's only one player, then the game is ended
             if len(self.server.players) == 1:
                 
                 # and the winner is...
@@ -52,8 +55,9 @@ class GameEndedHandler:
 
                 # leaving the sib
                 self.server.leave_sib()
-            else:
-                switch_turn(self)
+            # else:
+            #     print "RICHIAMO LA SWITCH TURN DA GAME ENDED HANDLER"
+            #     switch_turn(self)
                 
 
             # unlock

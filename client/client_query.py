@@ -59,7 +59,10 @@ def get_box_owner(self, box_name_gs):
     query = """SELECT ?s
     WHERE { ?s ns:HasContract ns:""" + box_name_gs + """}"""
     result = self.player.node.execute_query(query)
-    box_owner = str(result[0][0][2]).split("#")[1]
+    if len(result) > 0:
+        box_owner = str(result[0][0][2]).split("#")[1]
+    else:
+        box_owner = None
     return box_owner
 
 def get_num_of_hotels(self, box_name):

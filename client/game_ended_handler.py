@@ -22,33 +22,21 @@ class GameEndedHandler:
 
     def __init__(self, player):
         self.player = player
-        self.heading = colored("LostGameHandler> ", "blue", attrs=["bold"])
-        self.other_heading = colored("LostGameHandler> ", "magenta", attrs=["bold"])
+        self.heading = colored("GameEndedHandler> ", "blue", attrs=["bold"])
+        self.other_heading = colored("GameEndedHandler> ", "magenta", attrs=["bold"])
 
     def handle(self, added, removed):
         for t in added:
-            if self.player.role == "player":                
-  
-                if (self.player.balance < 0):
-                    message = "you lost the game!"
-                    color = "red"
-                else:
-                    message = "you won the game! CONGRATULATIONS!"
-                    color = "green"
-
-                print self.heading + colored(message, color, attrs=["bold"])
-
-            else:
-                message = "Game Ended!"
-                color = "green"
-                print self.other_heading + colored(message, color, attrs=["bold"])
+            message = "Game Ended!"
+            color = "green"
+            print self.heading + colored(message, color, attrs=["bold"])
 
             # graphical user interface notification
             if self.player.gtki:
                 
-                # label notification
-                self.player.interface.canvas.delete(self.player.interface.balance_editable_label)
-                self.player.interface.balance_editable_label = self.player.interface.canvas.create_text(120, 390, text = message, fill = color, anchor = W)
+                # # label notification
+                # self.player.interface.canvas.delete(self.player.interface.balance_editable_label)
+                # self.player.interface.balance_editable_label = self.player.interface.canvas.create_text(120, 390, text = message, fill = color, anchor = W)
                         
                 # disable every combobox
                 self.player.interface.game_sessions_combobox.config(state = DISABLED)
