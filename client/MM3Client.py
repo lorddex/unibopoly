@@ -299,9 +299,9 @@ class MM3Client:
         
 
     def close_subscriptions(self):
-        self.lock("MM3Server")
+        self.lock("MM3Client")
         if self.node is None:
-            self.unlock("MM3Server")
+            self.unlock("MM3Client")
             return
         # closing subscriptions
         print colored("MM3Client> ", 'red', attrs=['bold']) + "closing subscriptions..."
@@ -316,12 +316,12 @@ class MM3Client:
                 self.node.CloseSubscribeTransaction(self.card_st)
         except Exception:
             pass
-        self.unlock("MM3Server")
+        self.unlock("MM3Client")
 
     def force_quit(self):
-        self.lock("MM3Server")
+        self.lock("MM3Client")
         if self.node is None:
-            self.unlock("MM3Server")
+            self.unlock("MM3Client")
             return
         if self.role is not "observer":    
             try:
@@ -338,13 +338,13 @@ class MM3Client:
                 self.node.update(triples_u, triples_o)
             except AttributeError:
                 pass
-        self.unlock("MM3Server")
+        self.unlock("MM3Client")
 
     def leave_sib(self):
-        self.lock("MM3Server")
+        self.lock("MM3Client")
         # leaving the sib
         if self.node is None:
-            self.unlock("MM3Server")
+            self.unlock("MM3Client")
             return
         print colored("MM3Client> ", 'red', attrs=['bold']) + "leaving the sib..."
         try:
@@ -352,14 +352,13 @@ class MM3Client:
             self.node = None
         except Exception:
             pass
-        self.unlock("MM3Server")
+        self.unlock("MM3Client")
     
     def clear_my_sib(self):
 
-        self.lock("MM3Server")
-        if self.node is None:
-            self.unlock("MM3Server")
-            return
+        # lock
+        self.lock("MM3Client")
+
         print colored("MM3Client> ", 'red', attrs=['bold']) + "cleaning the sib..."
         # removing all the triples with the loser as the subject
         query = """SELECT ?p ?o WHERE { ns:""" + self.nickname + """ ?p ?o }"""
@@ -368,23 +367,29 @@ class MM3Client:
         s_triples = []
         for c in s_result:
             s_triples.append(Triple(URI(ns + self.nickname), URI(c[0][2]), URI(c[1][2])))
-            self.node.remove(s_triples)
+            if self.node is not None:
+                self.node.remove(s_triples)
 
             # removing all the triples with the loser as the object
             query = """SELECT ?s ?p WHERE { ?s ?p ns:""" + self.nickname + """}"""
-            o_result = self.node.execute_query(query)
+            if self.node is not None:
+                o_result = self.node.execute_query(query)
             
             o_triples = []
             for c in o_result:
                 o_triples.append(Triple(URI(c[0][2]), URI(c[1][2]), URI(ns + self.nickname)))
-            self.node.remove(o_triples)
-        self.unlock("MM3Server")
+                if self.node is not None:
+                    self.node.remove(o_triples)
+                    
+        # unlock
+        self.unlock("MM3Client")
 
     def begin_observer(self):
         # inserting a triple to let the old player observe the rest of the game
-        obs_triple = [(Triple(URI(ns + self.game_session), URI(ns + "HasObserver"),
-            URI(ns + self.nickname)))]
-        self.node.insert(obs_triple)
-        self.role = "observer"
-        print self.heading + "now you observe the rest of the match"
-
+        if not(self.node is None):
+            obs_triple = [(Triple(URI(ns + self.game_session), URI(ns + "HasObserver"),
+                                  URI(ns + self.nickname)))]
+            self.node.insert(obs_triple)
+            self.role = "observer"
+            print self.heading + "now you observe the rest of the match"
+            

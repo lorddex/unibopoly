@@ -108,7 +108,7 @@ class ChangePositionHandler:
                                     dice = int(self.new_position) - int(self.old_position)
                                     # print str(dice)
                                 else:
-                                    dice = int(self.new_position) + (37 - int(self.old_position))
+                                    dice = int(self.new_position) + (38 - int(self.old_position))
                                     
                                 if self.player.gtki:
                                     
