@@ -120,17 +120,32 @@ class TurnHandler:
                 
                                     print self.heading + " user chose command " + colored("RollDiceCommand", "cyan", attrs=["bold"])
                                     
-                                t = [Triple(URI(ns + "RollDiceCommand"),
+                                t = []
+                                t.append(Triple(URI(ns + "RollDiceCommand_" + str(self.player.turn_number)),
                                             URI(ns + "HasIssuer"),
-                                            URI(ns + self.player.nickname))]
+                                            URI(ns + self.player.nickname)))
+                                t.append(Triple(URI(ns + "RollDiceCommand_" + str(self.player.turn_number)),
+                                            URI(rdf + "type"),
+                                            URI(ns + "Command")))
+                                t.append(Triple(URI(ns + "RollDiceCommand_" + str(self.player.turn_number)),
+                                            URI(ns + "HasCommandType"),
+                                            URI(ns + "RolldiceCommand")))
+
                                 self.player.node.insert(t)
                                 print self.heading + " adding a " + colored("RollDice", "cyan", attrs=["bold"]) + " request"
                             else:
 
                                 # if the player is blocked in secretary he can only wait!
-                                t = [Triple(URI(ns + "NothingCommand"),
-                                            URI(ns + "HasIssuer"),
-                                            URI(ns + self.player.nickname))]
+                                t = []
+                                t.append(Triple(URI(ns + "NothingCommand_" + str(self.player.turn_number)),
+                                                URI(ns + "HasIssuer"),
+                                                URI(ns + self.player.nickname)))
+                                t.append(Triple(URI(ns + "NothingCommand_" + str(self.player.turn_number)),
+                                            URI(rdf + "type"),
+                                            URI(ns + "Command")))
+                                t.append(Triple(URI(ns + "NothingCommand_" + str(self.player.turn_number)),
+                                            URI(ns + "HasCommandType"),
+                                            URI(ns + "NothingCommand")))                                
                                 self.player.node.insert(t)
 
                                 # reset the waiting status

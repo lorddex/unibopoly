@@ -42,7 +42,7 @@ class MM3Client:
             self.nickname = None
             self.balance = 1000
             self.game_session = None
-            self.turn_number = 0
+            self.turn_number = 0            
             self.role = None
             self.waiting = False
             

@@ -19,6 +19,7 @@ ns = "http://smartM3Lab/Ontology.owl#"
 class CommandHandler:
     def __init__(self, server):
         self.server = server
+        self.heading = colored("CommandHandler> ", "blue", attrs=["bold"])
         
     def handle(self, added, removed):
         for i in added:
@@ -27,6 +28,7 @@ class CommandHandler:
                         
             # information retrieval
             command = str(i[0]).split("#")[1]
+            command_type = command.split("_")[0]
             issuer = str(i[2]).split("#")[1]
             issuer_game_session = issuer.split("_")[1]
 
@@ -35,16 +37,16 @@ class CommandHandler:
             cmds = get_commands(self.server.node, box_name+"_"+issuer_game_session)
             box_type = get_box_type(self, box_name)
  
-            if command != "RollDiceCommand" and command != "TakeHitchCardCommand" and command != "TakeProbCardCommand" and box_type != "Special" and command not in cmds:
-                print colored("CommandHandler> ", "blue", attrs=["bold"]) + "COMMAND " + command + " IS NOT A POSSIBLE COMMAND FOR THIS BOX!! CHEAT ATTEMPT, QUITTING."
+            if command_type != "RollDiceCommand" and command_type != "TakeHitchCardCommand" and command_type != "TakeProbCardCommand" and box_type != "Special" and command_type not in cmds:
+                print self.heading + "COMMAND " + command + " IS NOT A POSSIBLE COMMAND FOR THIS BOX!! CHEAT ATTEMPT, QUITTING."
                 self.server.unlock()
                 self.server.close_subscriptions()
                 self.server.leave_sib()
                 sys.exit(0)                
 
             if issuer_game_session == self.server.game_session_id:
-                print colored("CommandHandler> ", "blue", attrs=["bold"]) + colored(issuer.split("_")[0], "cyan", attrs=["bold"]) + " requested " + colored(command, "cyan", attrs=["bold"])          
-                self.execute_command(command)
+                print self.heading + colored(issuer.split("_")[0], "cyan", attrs=["bold"]) + " requested " + colored(command, "cyan", attrs=["bold"])          
+                self.execute_command(command, command_type)
 
             self.server.unlock()
 
@@ -52,71 +54,63 @@ class CommandHandler:
             pass
 
 
-    def execute_command(self, command):
+    def execute_command(self, command, command_type):
+
+        # removing triples
+        self.remove_command(command, command_type)
         
-        if command == "RollDiceCommand":
-            t = [Triple(URI(ns + "RollDiceCommand"),
-                        URI(ns + "HasIssuer"),
-                        URI(ns + self.server.current_player))]
-            self.server.node.remove(t)
+        # executing commands
+        if command_type == "RollDiceCommand":
             rolldice(self) 
         else:
-            if command == "BuildCommand": 
-                t = [Triple(URI(ns + "BuildCommand"),
-                            URI(ns + "HasIssuer"),
-                            URI(ns + self.server.current_player))]
-                self.server.node.remove(t)
-                print colored("CommandHandler> ", "blue", attrs=["bold"]) + colored("BuildCommand", "cyan", attrs=["bold"]) + " request"
+            if command_type == "BuildCommand": 
+                print self.heading + colored("BuildCommand", "cyan", attrs=["bold"]) + " request"
                 build(self)
                 switch_turn(self)
 
-            elif command == "BuyCommand":
-                t = [Triple(URI(ns + "BuyCommand"),
-                            URI(ns + "HasIssuer"),
-                            URI(ns + self.server.current_player))]
-                self.server.node.remove(t)
-                print colored("CommandHandler> ", "blue", attrs=["bold"]) + colored("BuyCommand", "cyan", attrs=["bold"]) + " request"
+            elif command_type == "BuyCommand":
+                print self.heading + colored("BuyCommand", "cyan", attrs=["bold"]) + " request"
                 buy(self)
                 switch_turn(self)
 
-            elif command == "TakeHitchCardCommand":
-                t = [Triple(URI(ns + "TakeHitchCardCommand"),
-                            URI(ns + "HasIssuer"),
-                            URI(ns + self.server.current_player))]
-                self.server.node.remove(t)
-                print colored("CommandHandler> ", "blue", attrs=["bold"]) + colored("TakeHitchCardCommand", "cyan", attrs=["bold"]) + " request"
+            elif command_type == "TakeHitchCardCommand":
+                print self.heading + colored("TakeHitchCardCommand", "cyan", attrs=["bold"]) + " request"
                 takecard(self, "hitch")
 
-            elif command == "TakeProbCardCommand":
-                t = [Triple(URI(ns + "TakeProbCardCommand"),
-                            URI(ns + "HasIssuer"),
-                            URI(ns + self.server.current_player))]
-                self.server.node.remove(t)
-                print colored("CommandHandler> ", "blue", attrs=["bold"]) + colored("TakeProbCardCommand", "cyan", attrs=["bold"]) + " request"
+            elif command_type == "TakeProbCardCommand":
+                print self.heading + colored("TakeProbCardCommand", "cyan", attrs=["bold"]) + " request"
                 takecard(self, "prob")
 
-            elif command == "NothingCommand":
-                t = [Triple(URI(ns + "NothingCommand"),
-                            URI(ns + "HasIssuer"),
-                            URI(ns + self.server.current_player))]
-                self.server.node.remove(t)               
-                print colored("CommandHandler> ", "blue", attrs=["bold"]) + colored("NothingCommand", "cyan", attrs=["bold"]) + " request"
+            elif command_type == "NothingCommand":
+                print self.heading + colored("NothingCommand", "cyan", attrs=["bold"]) + " request"
                 switch_turn(self)
 
-            elif command == "PayToOwnerCommand": 
-                t = [Triple(URI(ns + "PayToOwnerCommand"),
-                            URI(ns + "HasIssuer"),
-                            URI(ns + self.server.current_player))]
-                self.server.node.remove(t)
-                print colored("CommandHandler> ", "blue", attrs=["bold"]) + colored("PayCommand", "cyan", attrs=["bold"]) + " request"
+            elif command_type == "PayToOwnerCommand":
+                print self.heading + colored("PayCommand", "cyan", attrs=["bold"]) + " request"
                 pay_to_owner(self)
                 switch_turn(self)
             
-            elif command == "PayCommand": 
-                t = [Triple(URI(ns + "PayCommand"),
-                            URI(ns + "HasIssuer"),
-                            URI(ns + self.server.current_player))]
-                self.server.node.remove(t)
-                print colored("CommandHandler> ", "blue", attrs=["bold"]) + colored("PayCommand", "cyan", attrs=["bold"]) + " request"
+            elif command_type == "PayCommand": 
+                print self.heading + colored("PayCommand", "cyan", attrs=["bold"]) + " request"
                 pay(self)
                 switch_turn(self)
+
+    # the following function is used to easily delete the command-related triples
+    # before executing a command
+
+    def remove_command(self, command, command_type):
+
+        # finding triples to remove
+        t = []        
+        t.append(Triple(URI(ns + command),
+                        URI(ns + "HasIssuer"),
+                        URI(ns + self.server.current_player)))
+        t.append(Triple(URI(ns + command),
+                        URI(rdf + "type"),
+                        URI(ns + "Command")))
+        t.append(Triple(URI(ns + command),
+                        URI(ns + "HasCommandType"),
+                        URI(ns + command_type)))
+        
+        # removing triples
+        self.server.node.remove(t)

@@ -145,11 +145,8 @@ class ChangePositionHandler:
                                             pos = range(int(self.old_position) - 1, int(self.new_position)-1, -1)
                                         else:
                                             pos = range(int(self.old_position) + 1, 38) + range(0, int(self.new_position)+1)
-    
-                                    # print "MOVING PIECE FROM " + str(self.old_position) + " TO " + str(self.new_position)
-    
-                                    # updating actions in the combobox
                                     
+                                    # updating actions in the combobox                                    
                                     self.interface.actions_combobox_var.set('')
                                     m = self.interface.actions_combobox['menu']
                                     m.delete(0, 'end')
@@ -159,7 +156,6 @@ class ChangePositionHandler:
 
                                     # piece animation
                                     for box in pos:
-                                        # print str(box)
     
                                         # moving the piece randomizing the positioning into the box
                                         position_randomizer_x = random.randint(-5,5)
@@ -215,13 +211,19 @@ class ChangePositionHandler:
                                     print self.heading + "user chose command " + colored(commands[int(action)], "cyan", attrs=["bold"]) + "!"
                                 
                                     # building the command triple
-                                    triples = []
-                                    triples.append(Triple(URI(ns + commands[int(action)]),
-                                                          URI(ns + "HasIssuer"),
-                                                          URI(ns + self.player.nickname)))
+                                    t = []
+                                    t.append(Triple(URI(ns + commands[int(action)] + "_" + str(self.player.turn_number)),
+                                                    URI(ns + "HasIssuer"),
+                                                    URI(ns + self.player.nickname)))
+                                    t.append(Triple(URI(ns + commands[int(action)] + "_" + str(self.player.turn_number)),
+                                                    URI(rdf + "type"),
+                                                    URI(ns + "Command")))
+                                    t.append(Triple(URI(ns + commands[int(action)] + "_" + str(self.player.turn_number)),
+                                                    URI(ns + "HasCommandType"),
+                                                    URI(ns + commands[int(action)])))                                
                                     
                                     # Inserting the triple
-                                    self.player.node.insert(triples)               
+                                    self.player.node.insert(t)
                                     
                 else:
     
