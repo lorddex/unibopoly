@@ -171,11 +171,11 @@ def buy(self):
 
     ta = [(Triple(URI(ns + self.server.current_player),
                           URI(ns + "cashBalance"),
-                          URI(ns + str(new_cash_balance))))]
+                          URI(str(new_cash_balance))))]
     
     tr = [(Triple(URI(ns + self.server.current_player),
                   URI(ns + "cashBalance"),
-                  URI(ns + str(old_cash_balance))))]
+                  URI(str(old_cash_balance))))]
 
     self.server.node.update(ta, tr)
 
@@ -232,11 +232,11 @@ def build(self):
 
     ta = [(Triple(URI(ns + self.server.current_player),
                   URI(ns + "cashBalance"),
-                  URI(ns + str(new_cash_balance))))]
+                  URI(str(new_cash_balance))))]
     
     tr = [(Triple(URI(ns + self.server.current_player),
                   URI(ns + "cashBalance"),
-                  URI(ns + str(old_cash_balance))))]    
+                  URI(str(old_cash_balance))))]    
 
     self.server.node.update(ta, tr)
     
@@ -326,11 +326,11 @@ def pay_to_owner(self):
 
         ta = [(Triple(URI(ns + self.server.current_player),
                       URI(ns + "cashBalance"),
-                      URI(ns + str(my_new_cash_balance))))]
+                      URI(str(my_new_cash_balance))))]
     
         tr = [(Triple(URI(ns + self.server.current_player),
                       URI(ns + "cashBalance"),
-                      URI(ns + str(my_old_cash_balance))))]
+                      URI(str(my_old_cash_balance))))]
 
         self.server.node.update(ta, tr)
 
@@ -339,11 +339,11 @@ def pay_to_owner(self):
         
         ta = [(Triple(URI(ns + owner),
                       URI(ns + "cashBalance"),
-                      URI(ns + str(owner_new_cash_balance))))]
+                      URI(str(owner_new_cash_balance))))]
     
         tr = [(Triple(URI(ns + owner),
                       URI(ns + "cashBalance"),
-                      URI(ns + str(owner_old_cash_balance))))]        
+                      URI(str(owner_old_cash_balance))))]        
         
         self.server.node.update(ta, tr)
 
@@ -375,11 +375,11 @@ def pay_to_owner(self):
         
         ta = [(Triple(URI(ns + self.server.current_player),
                       URI(ns + "cashBalance"),
-                      URI(ns + str(my_new_cash_balance))))]
+                      URI(str(my_new_cash_balance))))]
     
         tr = [(Triple(URI(ns + self.server.current_player),
                       URI(ns + "cashBalance"),
-                      URI(ns + str(my_old_cash_balance))))]
+                      URI(str(my_old_cash_balance))))]
 
         self.server.node.update(ta, tr)
 
@@ -388,11 +388,11 @@ def pay_to_owner(self):
         
         ta = [(Triple(URI(ns + owner),
                       URI(ns + "cashBalance"),
-                      URI(ns + str(owner_new_cash_balance))))]
+                      URI(str(owner_new_cash_balance))))]
     
         tr = [(Triple(URI(ns + owner),
                       URI(ns + "cashBalance"),
-                      URI(ns + str(owner_old_cash_balance))))]        
+                      URI(str(owner_old_cash_balance))))]        
         
         self.server.node.update(ta, tr)
 
@@ -415,11 +415,11 @@ def earn(self, gain):
         
     ta = [(Triple(URI(ns + self.server.current_player),
                   URI(ns + "cashBalance"),
-                  URI(ns + str(new_cash_balance))))]
+                  URI(str(new_cash_balance))))]
 
     tr = [(Triple(URI(ns + self.server.current_player),
                   URI(ns + "cashBalance"),
-                  URI(ns + str(old_cash_balance))))]
+                  URI(str(old_cash_balance))))]
 
     self.server.node.update(ta, tr)
 
@@ -449,11 +449,11 @@ def pay(self):
 
     ta = [(Triple(URI(ns + self.server.current_player),
                   URI(ns + "cashBalance"),
-                  URI(ns + str(new_cash_balance))))]
+                  URI(str(new_cash_balance))))]
     
     tr = [(Triple(URI(ns + self.server.current_player),
                   URI(ns + "cashBalance"),
-                  URI(ns + str(old_cash_balance))))]
+                  URI(str(old_cash_balance))))]
 
     self.server.node.update(ta, tr)
 

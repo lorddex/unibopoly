@@ -33,7 +33,7 @@ class ChangeBalanceHandler:
             self.player.lock("change balance")
 
             # retrieving informations
-            self.updated_balance = str(t[2]).split("#")[1]
+            self.updated_balance = str(t[2])
             self.current_player = str(t[0]).split("#")[1]            
             self.current_player_nickname = self.current_player.split("_")[0]
             self.player.balance = self.updated_balance

@@ -91,34 +91,39 @@ class MM3Server():
             for a in cmd.split(" ")[1:]:
                 parms.append(a)
         action = cmd.split(" ")[0]
-        
-        # this action modifies the player's balance
-        if action == "balance" and len(parms) == 2:
-            players = get_players(self.node, self.game_session_id)
-            nick = parms[0] + "_" + self.game_session_id
-            if nick in players:
-                triples_u = []     
-                triples_o = []
-                old_balance = get_cash_balance(self.node, nick)
-                triples_o.append(Triple(URI(ns + nick),
-                                        URI(ns + "cashBalance"),
-                                        URI(ns + str(old_balance))))
-                triples_u.append(Triple(URI(ns + nick),
-                                        URI(ns + "cashBalance"),
-                                        URI(ns + str(parms[1]))))
-                self.node.update(triples_u, triples_o)
-                print self.heading + " player " + parms[0]  + " has now " + str(get_cash_balance(self.node, nick))
+        try:
+            # this action modifies the player's balance
+            if action == "balance" and len(parms) == 2:
+                players = get_players(self.node, self.game_session_id)
+                nick = parms[0] + "_" + self.game_session_id
+                if nick in players:
+                    triples_u = []     
+                    triples_o = []
+                    old_balance = get_cash_balance(self.node, nick)
+                    triples_o.append(Triple(URI(ns + nick),
+                                            URI(ns + "cashBalance"),
+                                            URI(str(old_balance))))
+                    triples_u.append(Triple(URI(ns + nick),
+                                            URI(ns + "cashBalance"),
+                                            URI(str(parms[1]))))
+                    self.node.update(triples_u, triples_o)
+                    print self.heading + " player " + parms[0]  + " has now " + str(get_cash_balance(self.node, nick))
 
-        # this action alters the dice for the next turn
-        elif action == "nextdice" and len(parms) == 1:
-            self.nextdice=int(parms[0])
+            # this action alters the dice for the next turn
+            elif action == "nextdice" and len(parms) == 1:
+                self.nextdice=int(parms[0])
 
-        elif action == "nexthitch" and len(parms) == 1:
-            self.nexthitch=parms[0]
+            elif action == "nexthitch" and len(parms) == 1:
+                self.nexthitch=parms[0]
             
-        elif action == "nextprob" and len(parms) == 1:
-            self.nextprob=parms[0]
-                    
+            elif action == "nextprob" and len(parms) == 1:
+                self.nextprob=parms[0]
+            else:
+                print "Command not found."
+
+        except Exception:
+            print "Parameters not valid."
+
     def new_game_session(self, required_players):
 
         # simply create a triple in the sib to define a new GameSession

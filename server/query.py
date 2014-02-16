@@ -39,7 +39,7 @@ def get_cash_balance(node, player):
     query = """SELECT ?o
     WHERE { ns:""" + player + """ ns:cashBalance ?o}"""
     result = node.execute_query(query)
-    cash_balance = int(result[0][0][2].split("#")[1])
+    cash_balance = int(result[0][0][2])
     return cash_balance
 
 def get_position(node, player):

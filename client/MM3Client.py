@@ -241,7 +241,7 @@ class MM3Client:
                 # set the initial money balance
                 triples.append(Triple(URI(ns + self.nickname),
                                       URI(ns + "cashBalance"),
-                                      URI(ns + "1000")))
+                                      URI("1000")))
                 
                 triples.append(Triple(URI(ns + self.nickname),
                                       URI(ns + "userID"),
@@ -360,10 +360,10 @@ class MM3Client:
                     triples_u = []
                     triples_o.append(Triple(URI(ns + self.nickname),
                         URI(ns + "cashBalance"),
-                        URI(ns + str(old_balance))))
+                        URI(str(old_balance))))
                     triples_u.append(Triple(URI(ns + self.nickname),
                         URI(ns + "cashBalance"),
-                        URI(ns + str(-1))))
+                        URI(str(-1))))
                     self.node.update(triples_u, triples_o)
             except AttributeError:
                 pass

@@ -20,7 +20,7 @@ def get_balance(player):
     WHERE { ns:""" + player.nickname + """ ns:cashBalance ?o }"""
     result = player.node.execute_query(query)
     if len(result) == 1:
-        balance = int(result[0][0][2].split("#")[1])
+        balance = int(result[0][0][2])
         return balance
     else: 
         return None
