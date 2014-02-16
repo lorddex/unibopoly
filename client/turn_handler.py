@@ -114,7 +114,8 @@ class TurnHandler:
                                             return
                                         action = int(self.player.extract_command())
                                     except EOFError:
-                                        print "Goodbye!"    
+                                        print "Goodbye!"
+                                        self.player.unlock("turn_handler")
                                         self.player.force_quit()
                                         sys.exit(0)
                 
