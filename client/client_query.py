@@ -34,6 +34,16 @@ def get_active_player(player):
 
 # SELF COMMANDS
 
+def get_purchase_cost(self, box_name):
+    query = """SELECT ?o
+    WHERE { ns:""" + box_name + """ ns:purchaseCost ?o}"""
+    result = self.player.node.execute_query(query)
+    if len(result) > 0:
+        purchaseCost = int(result[0][0][2])
+    else:
+        purchaseCost = None
+    return purchaseCost
+
 def get_game_session_status(self, game_session):
     query = """SELECT ?o
     WHERE { ns:""" + game_session + """ ns:HasStatus ?o}"""

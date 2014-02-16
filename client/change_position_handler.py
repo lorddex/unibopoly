@@ -183,7 +183,9 @@ class ChangePositionHandler:
                                 else:
     
                                     # cli part
-                                    
+                                    purCost = get_purchase_cost(self, self.new_position_name)
+                                    if purCost is not None:
+                                        print self.heading + "Purchase Cost: " + colored(str(purCost), "cyan", attrs=["bold"])
                                     # getting commands
                                     commands = []
                                     commands_id = []
