@@ -176,6 +176,14 @@
     
 
 
+    <!-- http://smartM3Lab/Ontology.owl#ExtractedCard -->
+
+    <owl:DatatypeProperty rdf:about="http://smartM3Lab/Ontology.owl#ExtractedCard">
+        <rdfs:domain rdf:resource="http://smartM3Lab/Ontology.owl#GameSession"/>
+    </owl:DatatypeProperty>
+    
+
+
     <!-- http://smartM3Lab/Ontology.owl#boxColor -->
 
     <owl:DatatypeProperty rdf:about="http://smartM3Lab/Ontology.owl#boxColor">
@@ -244,7 +252,7 @@
     <!-- http://smartM3Lab/Ontology.owl#tollCost -->
 
     <owl:DatatypeProperty rdf:about="http://smartM3Lab/Ontology.owl#tollCost">
-        <rdfs:domain rdf:resource="http://smartM3Lab/Ontology.owl#Contract"/>
+        <rdfs:domain rdf:resource="http://smartM3Lab/Ontology.owl#Box"/>
     </owl:DatatypeProperty>
     
 
