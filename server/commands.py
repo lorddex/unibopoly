@@ -667,7 +667,7 @@ def takecard(self, card_type):
         action = hitch[card]["action"]
         param = hitch[card]["param"]
     else:
-        if self.server.nextprob in None:
+        if self.server.nextprob is None:
             card = random.choice(prob.keys())
         else:
             card = self.server.nextprob

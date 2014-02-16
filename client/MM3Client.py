@@ -245,7 +245,7 @@ class MM3Client:
                 
                 triples.append(Triple(URI(ns + self.nickname),
                                       URI(ns + "userID"),
-                                      URI(ns + str(cont_players))))
+                                      URI(str(cont_players))))
 
                 # insert the triples into the sib
                 self.node.insert(triples)
