@@ -18,7 +18,8 @@ import threading
 import Tkinter
 from Tkinter import *
 from ttk import *
-
+import os
+import signal 
 rdf = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
 owl = "http://www.w3.org/2002/07/owl#"
 xsd = "http://www.w3.org/2001/XMLSchema#"
@@ -135,50 +136,57 @@ class MM3Client:
 
             # declare the client as a player or as an observer
             triples = []
-            if (role == "player"):
-
-                # is nickname already registered?
-                player_list = []
-                query = """SELECT ?p 
-                WHERE {ns:""" + str(gamesession) + """ ns:HasPlayer ?p}"""
-                result = self.node.execute_query(query)
-                if (len(result) > 0):
-                    for pl in result:
-                        player_list.append(pl[0][2].split('#')[1])
-                
-                # controllo se il nick e' gia' presente (parte testuale)
+            # is nickname already registered?
+            player_list = []
+            query = """SELECT ?s 
+            WHERE {ns:""" + nickname+"_"+str(gamesession) + """ rdf:type ns:Person}"""
+            result = self.node.execute_query(query)
+            if (len(result) > 0):
+                print "Nickname already in use!"                        
                 valid = False
-                reg = re.compile(r"[a-zA-Z0-9]*$")
-                if not(self.gtki):
-                    while (valid == False):
+            else:
+                valid = True
+
+            reg = re.compile(r"[a-zA-Z0-9]*$")
+            if not(self.gtki):
+                while (valid == False):
+                    nickname = raw_input("Insert another nickname > ")
+                    while not(reg.match(nickname)):
+                        print "Nickname not valid!"
+                        nickname = raw_input("Insert another nickname > ")
+                    query = """SELECT ?s 
+                    WHERE {ns:""" + nickname+"_"+str(gamesession) + """ rdf:type ns:Person}"""
+                    result = self.node.execute_query(query)
+                    if (len(result) > 0):
+                        print "Nickname already in use!"                        
+                        valid = False
+                    else:
+                        valid = True
+                               
+            # controllo se il nick e' gia' presente (dall'interfaccia grafica)
+            else:
+                while (valid == False):
+                    nickname = self.interface.nickname_entry.get()
+                    if len(nickname) > 0:
                         nickname_gs = nickname + "_" + str(gamesession) 
-                        if (nickname_gs in player_list):
-                            print "Nickname already in use!"                        
-                            nickname = raw_input("Insert another nickname > ")
-                            while not(reg.match(nickname)):
-                                print "Nickname not valid!"
-                                nickname = raw_input("Insert another nickname > ")
+                        query = """SELECT ?s 
+                        WHERE {ns:""" + nickname+"_"+str(gamesession) + """ rdf:type ns:Person}"""
+                        result = self.node.execute_query(query)
+                        if (len(result) > 0):
+                            self.interface.error_label2.config(text = ".....Nickname already in use! Insert another one!")#, fill = "red")
+                            self.interface.nickname_entry.delete(0, Tkinter.END)
+                            self.interface.choose_game_session_button.config(state = NORMAL)
+                            self.interface.nickname_entry.config(state = NORMAL)
+                            valid = False
                         else:
                             valid = True
-                               
-                # controllo se il nick e' gia' presente (dall'interfaccia grafica)
-                else:
-                    while (valid == False):
-                        nickname = self.interface.nickname_entry.get()
-                        if len(nickname) > 0:
-                            nickname_gs = nickname + "_" + str(gamesession) 
-                            if (nickname_gs in player_list):
-                                self.interface.error_label2.config(text = ".....Nickname already in use! Insert another one!")#, fill = "red")
-                                self.interface.nickname_entry.delete(0, Tkinter.END)
-                                self.interface.choose_game_session_button.config(state = NORMAL)
-                                #self.interface.nickname_entry.config(state = NORMAL)
-                            else:
-                                valid = True
-                        else:
-                            return False
+                    else:
+                        return False
                     
-                self.nickname = nickname_gs
+            nickname_gs = nickname + "_" + str(gamesession) 
+            self.nickname = nickname_gs
                 
+            if (role == "player"):
                 # get players number for the current session
                 temp = []
                 query = """
@@ -192,7 +200,7 @@ class MM3Client:
                         for k in j:
                             temp.append(k)
 
-                cont_players=int(temp[5].split('#')[1])
+                cont_players=int(temp[5])
                 cont_players+=1 
                 
                 #self.nickname = "player_" + str(cont_players)
@@ -215,11 +223,11 @@ class MM3Client:
                 dt = []
                 it.append(Triple(URI(ns + gamesession),
                                  URI(ns + "numberOfPlayers"),
-                                 URI(ns + str(cont_players))))
+                                 URI(str(cont_players))))
                                 
                 dt.append(Triple(URI(ns + gamesession),
                                  URI(ns + "numberOfPlayers"),
-                                 URI(ns + str(cont_players - 1))))
+                                 URI(str(cont_players - 1))))
             
                 self.node.update(it,dt)
 
@@ -233,18 +241,18 @@ class MM3Client:
                 # set the initial money balance
                 triples.append(Triple(URI(ns + self.nickname),
                                       URI(ns + "cashBalance"),
-                                      URI(ns + "1000")))
+                                      URI("1000")))
                 
                 triples.append(Triple(URI(ns + self.nickname),
                                       URI(ns + "userID"),
-                                      URI(ns + str(cont_players))))
+                                      URI(str(cont_players))))
 
                 # insert the triples into the sib
                 self.node.insert(triples)
                 self.game_session = gamesession
                 
             elif (role == "observer"):
-                self.nickname = nickname + "_" + str(gamesession)
+#                self.nickname = nickname + "_" + str(gamesession)
                 triples.append(Triple(URI(ns + gamesession),
                                       URI(ns + "HasObserver"),
                                       URI(ns + self.nickname)))
@@ -339,8 +347,10 @@ class MM3Client:
     def force_quit(self):
         self.lock("MM3Client")
         if self.node is None:
-            self.unlock("MM3Client")
-            return
+            os.kill(os.getpid(), signal.SIGKILL)
+#           sys.exit(0)
+#            self.unlock("MM3Client")
+#            return
         if self.role == "player":    
             try:
                 self.quit = True
@@ -350,10 +360,10 @@ class MM3Client:
                     triples_u = []
                     triples_o.append(Triple(URI(ns + self.nickname),
                         URI(ns + "cashBalance"),
-                        URI(ns + str(old_balance))))
+                        URI(str(old_balance))))
                     triples_u.append(Triple(URI(ns + self.nickname),
                         URI(ns + "cashBalance"),
-                        URI(ns + str(-1))))
+                        URI(str(-1))))
                     self.node.update(triples_u, triples_o)
             except AttributeError:
                 pass
@@ -396,6 +406,8 @@ class MM3Client:
         query = """SELECT ?s ?p WHERE { ?s ?p ns:""" + self.nickname + """}"""
         if self.node is not None:
             o_result = self.node.execute_query(query)
+        else:
+            o_result = []
             
         o_triples = []
         for c in o_result:

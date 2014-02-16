@@ -42,7 +42,7 @@ if len(game_session_list)>0:
         WHERE {ns:""" + i + """ ns:numberOfPlayers ?p}
         """
         res = c.node.execute_query(query2)
-        print colored("Client> ", "yellow", attrs=["bold"]) + "write " + str(index) + " for the game session " + colored(i, "cyan", attrs=["bold"]) + " (users: " + str(res[0][0][2].split('#')[1]) + ")" 
+        print colored("Client> ", "yellow", attrs=["bold"]) + "write " + str(index) + " for the game session " + colored(i, "cyan", attrs=["bold"]) + " (users: " + str(res[0][0][2]) + ")" 
         gs_id.append(str(index))
         index += 1
 

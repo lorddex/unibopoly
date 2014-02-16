@@ -34,10 +34,10 @@ def card_action_pay(self, arg):
 
     tr = [Triple(URI(ns + self.server.current_player),
                  URI(ns + "cashBalance"),
-                 URI(ns + str(current_balance)))]
+                 URI(str(current_balance)))]
     ta = [Triple(URI(ns + self.server.current_player),
                  URI(ns + "cashBalance"),
-                 URI(ns + str(new_balance)))]
+                 URI(str(new_balance)))]
     self.server.node.update(ta, tr)
     commands.switch_turn(self)
 
@@ -53,10 +53,10 @@ def card_action_payall(self, arg):
             
             tr = [Triple(URI(ns + str(i)),
                          URI(ns + "cashBalance"),
-                         URI(ns + str(current_balance)))]
+                         URI(str(current_balance)))]
             ta = [Triple(URI(ns + str(i)),
                          URI(ns + "cashBalance"),
-                         URI(ns + str(new_balance)))]
+                         URI(str(new_balance)))]
             self.server.node.update(ta, tr)
         else:
             num_other_players = self.server.required_players - 1
@@ -73,10 +73,10 @@ def card_action_payall(self, arg):
             
             tr = [Triple(URI(ns + current_player),
                          URI(ns + "cashBalance"),
-                         URI(ns + str(current_balance)))]
+                         URI(str(current_balance)))]
             ta = [Triple(URI(ns + current_player),
                          URI(ns + "cashBalance"),
-                         URI(ns + str(new_balance)))]
+                         URI(str(new_balance)))]
             self.server.node.update(ta, tr)
 
     commands.switch_turn(self)
@@ -89,7 +89,6 @@ def card_action_goto(self, arg):
     #Update Possible commands
     new_box_name = get_box_name(self, new_position)
     commands.update_commands(self, self.server.current_player, new_box_name, new_position)
-
 
     tr = [Triple(URI(ns + self.server.current_player),
                  URI(ns + "IsInBox"),
@@ -166,10 +165,10 @@ def card_action_earn(self, arg):
 
     tr = [Triple(URI(ns + self.server.current_player),
                  URI(ns + "cashBalance"),
-                 URI(ns + str(current_balance)))]
+                 URI(str(current_balance)))]
     ta = [Triple(URI(ns + self.server.current_player),
                  URI(ns + "cashBalance"),
-                 URI(ns + str(new_balance)))]
+                 URI(str(new_balance)))]
     self.server.node.update(ta, tr)
     commands.switch_turn(self)
 
@@ -192,10 +191,10 @@ def card_action_earnall(self, arg):
             
             tr = [Triple(URI(ns + str(i)),
                          URI(ns + "cashBalance"),
-                         URI(ns + str(current_balance)))]
+                         URI(str(current_balance)))]
             ta = [Triple(URI(ns + str(i)),
                          URI(ns + "cashBalance"),
-                         URI(ns + str(new_balance)))]
+                         URI(str(new_balance)))]
             self.server.node.update(ta, tr)
         else:
             num_other_players = self.server.required_players - 1
@@ -205,10 +204,10 @@ def card_action_earnall(self, arg):
             
             tr = [Triple(URI(ns + current_player),
                          URI(ns + "cashBalance"),
-                         URI(ns + str(current_balance)))]
+                         URI(str(current_balance)))]
             ta = [Triple(URI(ns + current_player),
                          URI(ns + "cashBalance"),
-                         URI(ns + str(new_balance)))]
+                         str(new_balance))]
             self.server.node.update(ta, tr)
             
     commands.switch_turn(self)

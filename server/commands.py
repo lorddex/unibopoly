@@ -171,11 +171,11 @@ def buy(self):
 
     ta = [(Triple(URI(ns + self.server.current_player),
                           URI(ns + "cashBalance"),
-                          URI(ns + str(new_cash_balance))))]
+                          URI(str(new_cash_balance))))]
     
     tr = [(Triple(URI(ns + self.server.current_player),
                   URI(ns + "cashBalance"),
-                  URI(ns + str(old_cash_balance))))]
+                  URI(str(old_cash_balance))))]
 
     self.server.node.update(ta, tr)
 
@@ -183,9 +183,14 @@ def buy(self):
     box_name_gs = str(box_name) + "_" + gs
     
     # Add contract 
-    t = [(Triple(URI(ns + self.server.current_player),
+    t = []
+    t.append(Triple(URI(ns + self.server.current_player),
                           URI(ns + "HasContract"),
-                          URI(ns + box_name_gs)))]
+                          URI(ns + box_name_gs)))
+
+    t.append((Triple(URI(ns + box_name_gs),
+                          URI(rdf + "type"),
+                          URI(ns + "Box"))))
 
     self.server.node.insert(t)
 
@@ -227,18 +232,23 @@ def build(self):
 
     ta = [(Triple(URI(ns + self.server.current_player),
                   URI(ns + "cashBalance"),
-                  URI(ns + str(new_cash_balance))))]
+                  URI(str(new_cash_balance))))]
     
     tr = [(Triple(URI(ns + self.server.current_player),
                   URI(ns + "cashBalance"),
-                  URI(ns + str(old_cash_balance))))]    
+                  URI(str(old_cash_balance))))]    
 
     self.server.node.update(ta, tr)
     
     # Add contract 
-    t = [(Triple(URI(ns + self.server.current_player),
+    t = []
+    t.append(Triple(URI(ns + self.server.current_player),
                  URI(ns + "HasContract"),
-                 URI(ns + box_name_gs)))]
+                 URI(ns + box_name_gs)))
+
+    t.append((Triple(URI(ns + box_name_gs),
+                          URI(rdf + "type"),
+                          URI(ns + "Box"))))
 
     self.server.node.insert(t)
 
@@ -248,13 +258,13 @@ def build(self):
 
     tr = [(Triple(URI(ns + box_name_gs),
                   URI(ns + "numberOfHouses"),
-                  URI(ns + str(old_num_of_houses))))]
+                  URI(str(old_num_of_houses))))]
 
     if new_num_of_houses == 4:
         # hotel
         th = [(Triple(URI(ns + box_name_gs),
                       URI(ns + "numberOfHotels"),
-                      URI(ns + str(1))))]
+                      URI(str(1))))]
         self.server.node.remove(tr)
         self.server.node.insert(th)
 
@@ -262,7 +272,7 @@ def build(self):
         # houses
         ta = [(Triple(URI(ns + box_name_gs),
                       URI(ns + "numberOfHouses"),
-                      URI(ns + str(new_num_of_houses))))]
+                      URI(str(new_num_of_houses))))]
         self.server.node.update(ta, tr)
         
     # settare l'attributo balance del player
@@ -316,11 +326,11 @@ def pay_to_owner(self):
 
         ta = [(Triple(URI(ns + self.server.current_player),
                       URI(ns + "cashBalance"),
-                      URI(ns + str(my_new_cash_balance))))]
+                      URI(str(my_new_cash_balance))))]
     
         tr = [(Triple(URI(ns + self.server.current_player),
                       URI(ns + "cashBalance"),
-                      URI(ns + str(my_old_cash_balance))))]
+                      URI(str(my_old_cash_balance))))]
 
         self.server.node.update(ta, tr)
 
@@ -329,11 +339,11 @@ def pay_to_owner(self):
         
         ta = [(Triple(URI(ns + owner),
                       URI(ns + "cashBalance"),
-                      URI(ns + str(owner_new_cash_balance))))]
+                      URI(str(owner_new_cash_balance))))]
     
         tr = [(Triple(URI(ns + owner),
                       URI(ns + "cashBalance"),
-                      URI(ns + str(owner_old_cash_balance))))]        
+                      URI(str(owner_old_cash_balance))))]        
         
         self.server.node.update(ta, tr)
 
@@ -365,11 +375,11 @@ def pay_to_owner(self):
         
         ta = [(Triple(URI(ns + self.server.current_player),
                       URI(ns + "cashBalance"),
-                      URI(ns + str(my_new_cash_balance))))]
+                      URI(str(my_new_cash_balance))))]
     
         tr = [(Triple(URI(ns + self.server.current_player),
                       URI(ns + "cashBalance"),
-                      URI(ns + str(my_old_cash_balance))))]
+                      URI(str(my_old_cash_balance))))]
 
         self.server.node.update(ta, tr)
 
@@ -378,11 +388,11 @@ def pay_to_owner(self):
         
         ta = [(Triple(URI(ns + owner),
                       URI(ns + "cashBalance"),
-                      URI(ns + str(owner_new_cash_balance))))]
+                      URI(str(owner_new_cash_balance))))]
     
         tr = [(Triple(URI(ns + owner),
                       URI(ns + "cashBalance"),
-                      URI(ns + str(owner_old_cash_balance))))]        
+                      URI(str(owner_old_cash_balance))))]        
         
         self.server.node.update(ta, tr)
 
@@ -405,11 +415,11 @@ def earn(self, gain):
         
     ta = [(Triple(URI(ns + self.server.current_player),
                   URI(ns + "cashBalance"),
-                  URI(ns + str(new_cash_balance))))]
+                  URI(str(new_cash_balance))))]
 
     tr = [(Triple(URI(ns + self.server.current_player),
                   URI(ns + "cashBalance"),
-                  URI(ns + str(old_cash_balance))))]
+                  URI(str(old_cash_balance))))]
 
     self.server.node.update(ta, tr)
 
@@ -439,11 +449,11 @@ def pay(self):
 
     ta = [(Triple(URI(ns + self.server.current_player),
                   URI(ns + "cashBalance"),
-                  URI(ns + str(new_cash_balance))))]
+                  URI(str(new_cash_balance))))]
     
     tr = [(Triple(URI(ns + self.server.current_player),
                   URI(ns + "cashBalance"),
-                  URI(ns + str(old_cash_balance))))]
+                  URI(str(old_cash_balance))))]
 
     self.server.node.update(ta, tr)
 
@@ -657,7 +667,7 @@ def takecard(self, card_type):
         action = hitch[card]["action"]
         param = hitch[card]["param"]
     else:
-        if self.server.nextprob in None:
+        if self.server.nextprob is None:
             card = random.choice(prob.keys())
         else:
             card = self.server.nextprob
