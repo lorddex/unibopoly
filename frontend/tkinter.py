@@ -82,19 +82,24 @@ class Application(Frame):
                 # self.error_label2.config(text = "")
                 # self.error_label3.config(text = "")
                 #return
-        
-            if self.role_combobox_var.get() == "Select a role...":
-                print self.heading + " Select a role!"
-                self.error_label3.config(text = "Select a role!")
+            
+#            if self.role_combobox_var.get() == "Select a role...":
+#                role = "observer"
+#            else:
+#                role = self.role_combobox_var.get()
+
+                #print self.heading + " Select a role!"
+                #self.error_label3.config(text = "Select a role!")
+
                 # self.error_label2.config(text = "")
                 # self.error_label1.config(text = "")
-            return
+            #return
         
         # join game session
         # try:
         # if self.c.join_game_session(self.game_sessions_combobox_var.get(), "player", self.nickname_entry.get()) == False:
 
-        if self.c.join_game_session(self.game_sessions_combobox_var.get(), self.role_combobox_var.get(), self.nickname_entry.get()) == False:
+        if self.c.join_game_session(self.game_sessions_combobox_var.get(), self.role, self.nickname_entry.get()) == False:
             return
         
         # except Exception:
@@ -105,14 +110,14 @@ class Application(Frame):
 
         # piece
         if self.role == "player":
-            position_randomizer_x = random.randint(-5,5)
-            position_randomizer_y = random.randint(-5,5)
+            position_randomizer_x = random.randint(-15,15)
+#            position_randomizer_y = random.randint(-5,5)
         
             new_top_x = self.cell_coords[0]['x'] + position_randomizer_x
-            new_top_y = self.cell_coords[0]['y'] + position_randomizer_y
-        
-            new_bot_x = new_top_x + 20
-            new_bot_y = new_top_y + 20
+            new_top_y = self.cell_coords[0]['y'] - 8
+       
+            new_bot_x = new_top_x + 13
+            new_bot_y = new_top_y + 13
         
             self.piece = self.canvas.create_oval(new_top_x, new_top_y, new_bot_x, new_bot_y, fill = 'yellow')
 
@@ -159,7 +164,9 @@ class Application(Frame):
         # MM3Client
         self.c = MM3Client.MM3Client(self.ip_entry.get(), int(self.port_entry.get()), True, True, self)
         self.role = self.role_combobox_var.get()               
-
+        if self.role == "Select a role..":
+            self.role = "observer"
+        
         # getting game session list
         if self.role == "player":
             self.gs_list = self.c.get_game_session_list()
