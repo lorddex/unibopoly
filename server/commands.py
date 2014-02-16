@@ -183,9 +183,14 @@ def buy(self):
     box_name_gs = str(box_name) + "_" + gs
     
     # Add contract 
-    t = [(Triple(URI(ns + self.server.current_player),
+    t = []
+    t.append(Triple(URI(ns + self.server.current_player),
                           URI(ns + "HasContract"),
-                          URI(ns + box_name_gs)))]
+                          URI(ns + box_name_gs)))
+
+    t.append((Triple(URI(ns + box_name_gs),
+                          URI(rdf + "type"),
+                          URI(ns + "Box"))))
 
     self.server.node.insert(t)
 
@@ -236,9 +241,14 @@ def build(self):
     self.server.node.update(ta, tr)
     
     # Add contract 
-    t = [(Triple(URI(ns + self.server.current_player),
+    t = []
+    t.append(Triple(URI(ns + self.server.current_player),
                  URI(ns + "HasContract"),
-                 URI(ns + box_name_gs)))]
+                 URI(ns + box_name_gs)))
+
+    t.append((Triple(URI(ns + box_name_gs),
+                          URI(rdf + "type"),
+                          URI(ns + "Box"))))
 
     self.server.node.insert(t)
 

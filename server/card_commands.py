@@ -90,7 +90,6 @@ def card_action_goto(self, arg):
     new_box_name = get_box_name(self, new_position)
     commands.update_commands(self, self.server.current_player, new_box_name, new_position)
 
-
     tr = [Triple(URI(ns + self.server.current_player),
                  URI(ns + "IsInBox"),
                  URI(ns + str(old_position)))]
