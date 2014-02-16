@@ -16,7 +16,8 @@ ns = "http://smartM3Lab/Ontology.owl#"
 class ActivateGameSessionHandler:
     def __init__(self, server):
         self.server = server
-        
+        self.heading = colored("ActivateGameSessionHandler> ", 'red', attrs=['bold'])
+
     def handle(self, added, removed):
         for i in added:
             self.server.lock()
@@ -32,7 +33,7 @@ class ActivateGameSessionHandler:
             for player in result:
                 for el in player:
                     self.server.players.append(el[2].split('#')[1])        
-                    print colored("ActivateGameSessionHandler> ", 'red', attrs=['bold']) + "added " + colored(el[2].split('#')[1].split("_")[0], "cyan", attrs=["bold"]) + " to " + colored(self.server.game_session_id, "cyan", attrs=["bold"])
+                    print self.heading + "added " + colored(el[2].split('#')[1].split("_")[0], "cyan", attrs=["bold"]) + " to " + colored(self.server.game_session_id, "cyan", attrs=["bold"])
                     self.server.number_of_players += 1
                 
 
@@ -51,14 +52,13 @@ class ActivateGameSessionHandler:
                                  URI(ns + "Waiting"))]
             self.server.node.update(ta, tr)        
             
-            print colored("ActivateGameSessionHandler> ", "red", attrs=["bold"]), "setting turn to " + colored(self.server.players[0].split("_")[0], "cyan", attrs=["bold"])
-            print colored("ActivateGameSessionHandler> ", "red", attrs=["bold"]), "changing game session status to " + colored("Active", "cyan", attrs=["bold"])
+            print self.heading + "setting turn to " + colored(self.server.players[0].split("_")[0], "cyan", attrs=["bold"])
+            print self.heading + "changing game session status to " + colored("Active", "cyan", attrs=["bold"])
             self.server.current_player = self.server.players[0]
             self.server.current_player_id = 0
 
             self.server.unlock()
 
         for i in removed:
-            # print "[agsh] RIMOSSO " + str(i)
             pass
         

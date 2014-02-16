@@ -33,21 +33,23 @@ prob = {"DegreePresent": {"action": "card_action_earnall", "param":20},
         "TaxRefund": {"action": "card_action_earn", "param":900}
         }
 
-hitch = {"BirthdayAperitif": {"action":"card_action_payall", "param":10},
-         "BuyBook": {"action":"card_action_pay", "param":50},
-         "BuyNotebook": {"action":"card_action_pay", "param":500},
-         "DegreeParty": {"action":"card_action_pay", "param":200},
-         "GoToTerracini": {"action":"card_action_goto", "param":37}, 
-         "GoToSecretary": {"action":"card_action_goto", "param":19},
-         "LostBursary": {"action":"card_action_pay", "param":900},
-         "LostRoom": {"action":"card_action_pay", "param":200},
-         "MoveBackward1": {"action":"card_action_move_backward", "param":1},
-         "MoveBackward2": {"action":"card_action_move_backward", "param":2},
-         "MoveBackward3": {"action":"card_action_move_backward", "param":3},
-         "PayFirstDuty": {"action":"card_action_pay", "param":900},
-         "PaySecondDuty": {"action":"card_action_pay", "param":900},
-         "PayThirdDuty": {"action":"card_action_pay", "param":300},
-         "GoToRefectory": {"action":"card_action_goto", "param":30}}
+hitch = {# "BirthdayAperitif": {"action":"card_action_payall", "param":10},
+         # "BuyBook": {"action":"card_action_pay", "param":50},
+         # "BuyNotebook": {"action":"card_action_pay", "param":500},
+         # "DegreeParty": {"action":"card_action_pay", "param":200},
+         # "GoToTerracini": {"action":"card_action_goto", "param":37},
+         
+         "GoToSecretary": {"action":"card_action_goto", "param":19}
+         # "LostBursary": {"action":"card_action_pay", "param":900},
+         # "LostRoom": {"action":"card_action_pay", "param":200},
+         # "MoveBackward1": {"action":"card_action_move_backward", "param":1},
+         # "MoveBackward2": {"action":"card_action_move_backward", "param":2},
+         # "MoveBackward3": {"action":"card_action_move_backward", "param":3},
+         # "PayFirstDuty": {"action":"card_action_pay", "param":900},
+         # "PaySecondDuty": {"action":"card_action_pay", "param":900},
+         # "PayThirdDuty": {"action":"card_action_pay", "param":300},
+         # "GoToRefectory": {"action":"card_action_goto", "param":30}
+         }
 
 
 ##########################################################
@@ -129,17 +131,14 @@ def switch_turn(self):
                  URI(ns + old_player))]
     self.server.node.update(ta, tr)
 
+    # if self.server.waiting.has_key(old_player):
+    #     if self.server.waiting[old_player]:
+    #         self.server.waiting[old_player] = False
+
     # Debug print
     print colored("CommandHandler> ", "blue", attrs=["bold"]) + "it's " + colored(self.server.current_player.split("_")[0], "cyan", attrs=["bold"]) + "'s turn"
 
-def lost(server, current_player):
-    position = get_position(server.node, current_player)
-    server.players.remove(current_player)
-    server.number_of_players -= 1
-    t_iib = [Triple(URI(ns + current_player),
-        URI(ns + "IsInBox"),
-        URI(ns + str(position)))]
-    server.node.remove(t_iib)
+
 
 ##########################################################
 #                                                        #
@@ -163,8 +162,13 @@ def buy(self):
 
     # Update balance
     new_cash_balance = old_cash_balance - purchaseCost
-    if int(new_cash_balance) < 0:
-        self.lost(self.server, current_player)
+    # if int(new_cash_balance) < 0:
+    #     self.server.players.remove(self.server.current_player)
+    #     self.server.number_of_players -= 1
+    #     t_iib = [Triple(URI(ns + self.server.current_player),
+    #                     URI(ns + "IsInBox"),
+    #                     URI(ns + str(position)))]
+    #     self.server.node.remove(t_iib)
 
     ta = [(Triple(URI(ns + self.server.current_player),
                           URI(ns + "cashBalance"),
@@ -177,8 +181,6 @@ def buy(self):
     self.server.node.update(ta, tr)
 
     gs = get_current_gs(self, self.server.current_player)
-#    print "--------------------------" + str(gs)
-#    print "--------------------------" + str(self.server.game_session_id)
     box_name_gs = str(box_name) + "_" + gs
     
     # Add contract 
@@ -188,8 +190,7 @@ def buy(self):
 
     self.server.node.insert(t)
 
-    # settare l'attributo balance del player
-
+#TODO settare l'attributo balance del player
 
 ##########################################################
 #                                                        #
@@ -211,20 +212,19 @@ def build(self):
     # Get current game session 
     gs = get_current_gs(self, current_player)
     box_name_gs = str(box_name) + "_" + gs    
-    box_name_gs = str(box_name) + "_" + gs
-    
+     
     # Get purchase cost 
     purchaseCost = get_purchase_cost(self, box_name)
 
     # Update balance
     new_cash_balance = old_cash_balance - purchaseCost
-    if int(new_cash_balance) < 0:
-        self.server.players.remove(self.server.current_player)
-        self.server.number_of_players -= 1
-        t_iib = [Triple(URI(ns + self.server.current_player),
-                        URI(ns + "IsInBox"),
-                        URI(ns + str(position)))]
-        self.server.node.remove(t_iib)
+    # if int(new_cash_balance) < 0:
+    #     self.server.players.remove(self.server.current_player)
+    #     self.server.number_of_players -= 1
+    #     t_iib = [Triple(URI(ns + self.server.current_player),
+    #                     URI(ns + "IsInBox"),
+    #                     URI(ns + str(position)))]
+    #     self.server.node.remove(t_iib)
 
     ta = [(Triple(URI(ns + self.server.current_player),
                   URI(ns + "cashBalance"),
@@ -240,10 +240,6 @@ def build(self):
     t = [(Triple(URI(ns + self.server.current_player),
                  URI(ns + "HasContract"),
                  URI(ns + box_name_gs)))]
-
-    # t = [(Triple(URI(ns + self.server.current_player),
-    #                       URI(ns + "HasContract"),
-    #                       URI(ns + str(position))))]
 
     self.server.node.insert(t)
 
@@ -404,9 +400,9 @@ def earn(self, gain):
         
     # Update balance
     new_cash_balance = old_cash_balance + gain
-    if int(new_cash_balance) < 0:
-        self.server.players.remove(self.server.current_player)
-        self.server.number_of_players -= 1
+    # if int(new_cash_balance) < 0:
+    #     self.server.players.remove(self.server.current_player)
+    #     self.server.number_of_players -= 1
         
     ta = [(Triple(URI(ns + self.server.current_player),
                   URI(ns + "cashBalance"),
@@ -429,13 +425,14 @@ def pay(self):
     current_player = self.server.current_player
     # Get current balance of current player
     old_cash_balance = get_cash_balance(self.server.node, current_player)    
-    position = get_position(self.server.node, current_player)
         
     # Update balance     
     new_cash_balance = old_cash_balance - 10
     if int(new_cash_balance) < 0:
         self.server.players.remove(self.server.current_player)
         self.server.number_of_players -= 1
+
+        position = get_position(self.server.node, current_player)
         t_iib = [Triple(URI(ns + self.server.current_player),
                         URI(ns + "IsInBox"),
                         URI(ns + str(position)))]
