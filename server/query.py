@@ -127,7 +127,7 @@ def get_num_of_houses(self, box_name):
     if len(result) == 0:
         return 0
     else:
-        num_of_houses = int(result[0][0][2].split("#")[1])
+        num_of_houses = int(result[0][0][2])
         return num_of_houses
 
 def get_num_of_hotels(self, box_name):
@@ -137,7 +137,7 @@ def get_num_of_hotels(self, box_name):
     if len(result) == 0:
         return 0
     else:
-        num_of_hotels = int(result[0][0][2].split("#")[1])
+        num_of_hotels = int(result[0][0][2])
         return num_of_hotels
 
 def get_box_type(self, box_name):

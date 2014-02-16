@@ -258,13 +258,13 @@ def build(self):
 
     tr = [(Triple(URI(ns + box_name_gs),
                   URI(ns + "numberOfHouses"),
-                  URI(ns + str(old_num_of_houses))))]
+                  URI(str(old_num_of_houses))))]
 
     if new_num_of_houses == 4:
         # hotel
         th = [(Triple(URI(ns + box_name_gs),
                       URI(ns + "numberOfHotels"),
-                      URI(ns + str(1))))]
+                      URI(str(1))))]
         self.server.node.remove(tr)
         self.server.node.insert(th)
 
@@ -272,7 +272,7 @@ def build(self):
         # houses
         ta = [(Triple(URI(ns + box_name_gs),
                       URI(ns + "numberOfHouses"),
-                      URI(ns + str(new_num_of_houses))))]
+                      URI(str(new_num_of_houses))))]
         self.server.node.update(ta, tr)
         
     # settare l'attributo balance del player
