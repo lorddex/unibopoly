@@ -20,6 +20,7 @@ ns = "http://smartM3Lab/Ontology.owl#"
 class GameEndedHandler:
     def __init__(self, server):
         self.server = server
+        self.heading = colored("GameEndedHandler> ", "blue", attrs=["bold"])
         
     def handle(self, added, removed):
 
@@ -39,7 +40,7 @@ class GameEndedHandler:
             if len(self.server.players) == 1:
                 
                 # and the winner is...
-                print colored("GameEndedHandler> ", "blue", attrs=["bold"]) + colored(self.server.players[0], "cyan", attrs=["bold"]) + " won the game!"
+                print self.heading + colored(self.server.players[0], "cyan", attrs=["bold"]) + " won the game!"
 
                 # updating the triple into the sib
                 tr = [Triple(URI(ns + self.server.game_session_id),

@@ -34,7 +34,7 @@ class NumberOfHousesHandler:
             self.player.lock("number_of_houses")
             
             # information retrieval
-            self.number = str(i[2]).split("#")[1]
+            self.number = str(i[2])
             self.box_name_gs = str(i[0]).split("#")[1]
             self.box_name = self.box_name_gs.split("_")[0]
             self.box_id = get_box_id(self, self.box_name)

@@ -32,7 +32,7 @@ class CommandHandler:
             issuer = str(i[2]).split("#")[1]
             issuer_game_session = issuer.split("_")[1]
 
-            issuer_position = get_position(self.server.node, str(i[2]).split("#")[1])
+            issuer_position = get_position(self.server.node, issuer)
             box_name = get_box_name(self, issuer_position)
             cmds = get_commands(self.server.node, box_name+"_"+issuer_game_session)
             box_type = get_box_type(self, box_name)

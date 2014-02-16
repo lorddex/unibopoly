@@ -18,8 +18,7 @@ ns = "http://smartM3Lab/Ontology.owl#"
 
 def card_action_pay(self, arg):
 
-    if self.server.debug:
-        print colored("CommandHandler> ", "blue", attrs=["bold"]) + colored(self.server.current_player, "cyan", attrs=["bold"]) + " pays " + str(arg)
+    print colored("CommandHandler> ", "blue", attrs=["bold"]) + colored(self.server.current_player, "cyan", attrs=["bold"]) + " pays " + str(arg)
 
     # get current balance
     current_balance = get_cash_balance(self.server.node, self.server.current_player)
@@ -35,16 +34,15 @@ def card_action_pay(self, arg):
 
     tr = [Triple(URI(ns + self.server.current_player),
                  URI(ns + "cashBalance"),
-                 URI(ns + str(current_balance)))]
+                 URI(str(current_balance)))]
     ta = [Triple(URI(ns + self.server.current_player),
                  URI(ns + "cashBalance"),
-                 URI(ns + str(new_balance)))]
+                 URI(str(new_balance)))]
     self.server.node.update(ta, tr)
     commands.switch_turn(self)
 
 def card_action_payall(self, arg):
-    if self.server.debug:
-        print colored("CommandHandler> ", "blue", attrs=["bold"]) + "pay " + str(arg) + " to all the other players"
+    print colored("CommandHandler> ", "blue", attrs=["bold"]) + "pay " + str(arg) + " to all the other players"
     current_player = self.server.current_player
     position = get_position(self.server.node, current_player)
     for i in self.server.players:
@@ -55,10 +53,10 @@ def card_action_payall(self, arg):
             
             tr = [Triple(URI(ns + str(i)),
                          URI(ns + "cashBalance"),
-                         URI(ns + str(current_balance)))]
+                         URI(str(current_balance)))]
             ta = [Triple(URI(ns + str(i)),
                          URI(ns + "cashBalance"),
-                         URI(ns + str(new_balance)))]
+                         URI(str(new_balance)))]
             self.server.node.update(ta, tr)
         else:
             num_other_players = self.server.required_players - 1
@@ -75,24 +73,22 @@ def card_action_payall(self, arg):
             
             tr = [Triple(URI(ns + current_player),
                          URI(ns + "cashBalance"),
-                         URI(ns + str(current_balance)))]
+                         URI(str(current_balance)))]
             ta = [Triple(URI(ns + current_player),
                          URI(ns + "cashBalance"),
-                         URI(ns + str(new_balance)))]
+                         URI(str(new_balance)))]
             self.server.node.update(ta, tr)
 
     commands.switch_turn(self)
     
 def card_action_goto(self, arg):
-    if self.server.debug:
-        print colored("CommandHandler> ", "blue", attrs=["bold"]) + colored(self.server.current_player, "cyan", attrs=["bold"]) + " goes to box " + colored(str(arg), "cyan", attrs=["bold"])
+    print colored("CommandHandler> ", "blue", attrs=["bold"]) + colored(self.server.current_player, "cyan", attrs=["bold"]) + " goes to box " + colored(str(arg), "cyan", attrs=["bold"])
     old_position = get_position(self.server.node, self.server.current_player)
     new_position = int(arg)
 
     #Update Possible commands
     new_box_name = get_box_name(self, new_position)
     commands.update_commands(self, self.server.current_player, new_box_name, new_position)
-
 
     tr = [Triple(URI(ns + self.server.current_player),
                  URI(ns + "IsInBox"),
@@ -103,8 +99,7 @@ def card_action_goto(self, arg):
     self.server.node.update(ta, tr)
 
 def card_action_goto_and_earn(self, arg):
-    if self.server.debug:
-        print colored("CommandHandler> ", "blue", attrs=["bold"]) + colored(self.server.current_player.split("_")[0], "cyan", attrs=["bold"]) + " goes to box " + colored(str(arg[0]), "cyan", attrs=["bold"]) + " and earn " + colored(str(arg[1]), "cyan", attrs=["bold"]) + " euro "
+    print colored("CommandHandler> ", "blue", attrs=["bold"]) + colored(self.server.current_player.split("_")[0], "cyan", attrs=["bold"]) + " goes to box " + colored(str(arg[0]), "cyan", attrs=["bold"]) + " and earn " + colored(str(arg[1]), "cyan", attrs=["bold"]) + " euro "
     old_position = get_position(self.server.node, self.server.current_player)
     new_position = int(arg[0])
 
@@ -120,8 +115,7 @@ def card_action_goto_and_earn(self, arg):
     
   
 def card_action_move_forward(self, arg):
-    if self.server.debug:
-        print colored("CommandHandler> ", "blue", attrs=["bold"]) + "move forward " + str(arg)
+    print colored("CommandHandler> ", "blue", attrs=["bold"]) + "move forward " + str(arg)
     old_position = get_position(self.server.node, self.server.current_player)
     new_position = int(old_position) + int(arg)
 
@@ -139,8 +133,7 @@ def card_action_move_forward(self, arg):
 
     
 def card_action_move_backward(self, arg):
-    if self.server.debug:
-        print colored("CommandHandler> ", "blue", attrs=["bold"]) + "move backward " + str(arg)
+    print colored("CommandHandler> ", "blue", attrs=["bold"]) + "move backward " + str(arg)
     old_position = get_position(self.server.node, self.server.current_player)
     new_position = int(old_position) - int(arg)
 
@@ -164,8 +157,7 @@ def card_action_wait(self, arg):
     commands.switch_turn(self)
 
 def card_action_earn(self, arg):
-    if self.server.debug:
-        print colored("CommandHandler> ", "blue", attrs=["bold"]) + "earn " + str(arg)
+    print colored("CommandHandler> ", "blue", attrs=["bold"]) + "earn " + str(arg)
         
     # get current balance
     current_balance = get_cash_balance(self.server.node, self.server.current_player)
@@ -173,16 +165,15 @@ def card_action_earn(self, arg):
 
     tr = [Triple(URI(ns + self.server.current_player),
                  URI(ns + "cashBalance"),
-                 URI(ns + str(current_balance)))]
+                 URI(str(current_balance)))]
     ta = [Triple(URI(ns + self.server.current_player),
                  URI(ns + "cashBalance"),
-                 URI(ns + str(new_balance)))]
+                 URI(str(new_balance)))]
     self.server.node.update(ta, tr)
     commands.switch_turn(self)
 
 def card_action_earnall(self, arg):
-    if self.server.debug:
-        print colored("CommandHandler> ", "blue", attrs=["bold"]) + "earn " + str(arg) + " from each player"
+    print colored("CommandHandler> ", "blue", attrs=["bold"]) + "earn " + str(arg) + " from each player"
     current_player = self.server.current_player
     position = get_position(self.server.node, current_player)
     for i in self.server.players:
@@ -200,10 +191,10 @@ def card_action_earnall(self, arg):
             
             tr = [Triple(URI(ns + str(i)),
                          URI(ns + "cashBalance"),
-                         URI(ns + str(current_balance)))]
+                         URI(str(current_balance)))]
             ta = [Triple(URI(ns + str(i)),
                          URI(ns + "cashBalance"),
-                         URI(ns + str(new_balance)))]
+                         URI(str(new_balance)))]
             self.server.node.update(ta, tr)
         else:
             num_other_players = self.server.required_players - 1
@@ -213,23 +204,21 @@ def card_action_earnall(self, arg):
             
             tr = [Triple(URI(ns + current_player),
                          URI(ns + "cashBalance"),
-                         URI(ns + str(current_balance)))]
+                         URI(str(current_balance)))]
             ta = [Triple(URI(ns + current_player),
                          URI(ns + "cashBalance"),
-                         URI(ns + str(new_balance)))]
+                         str(new_balance))]
             self.server.node.update(ta, tr)
             
     commands.switch_turn(self)
 
     
 def card_action_rolldice(self, arg):
-   #if self.server.debug:
     print colored("CommandHandler> ", "blue", attrs=["bold"]) + "roll the dice"
     commands.rolldice(self)
 
 
 def card_action_jailbreak(self, arg):
-    #if self.server.debug:
     print colored("CommandHandler> ", "blue", attrs=["bold"]) + "prison break!"
     commands.switch_turn(self)
   

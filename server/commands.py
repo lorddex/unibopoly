@@ -37,7 +37,7 @@ hitch = {"BirthdayAperitif": {"action":"card_action_payall", "param":10},
          "BuyBook": {"action":"card_action_pay", "param":50},
          "BuyNotebook": {"action":"card_action_pay", "param":500},
          "DegreeParty": {"action":"card_action_pay", "param":200},
-         "GoToTerracini": {"action":"card_action_goto", "param":37}, 
+         "GoToTerracini": {"action":"card_action_goto", "param":37},
          "GoToSecretary": {"action":"card_action_goto", "param":19},
          "LostBursary": {"action":"card_action_pay", "param":900},
          "LostRoom": {"action":"card_action_pay", "param":200},
@@ -47,7 +47,8 @@ hitch = {"BirthdayAperitif": {"action":"card_action_payall", "param":10},
          "PayFirstDuty": {"action":"card_action_pay", "param":900},
          "PaySecondDuty": {"action":"card_action_pay", "param":900},
          "PayThirdDuty": {"action":"card_action_pay", "param":300},
-         "GoToRefectory": {"action":"card_action_goto", "param":30}}
+         "GoToRefectory": {"action":"card_action_goto", "param":30}
+         }
 
 
 ##########################################################
@@ -129,17 +130,14 @@ def switch_turn(self):
                  URI(ns + old_player))]
     self.server.node.update(ta, tr)
 
+    # if self.server.waiting.has_key(old_player):
+    #     if self.server.waiting[old_player]:
+    #         self.server.waiting[old_player] = False
+
     # Debug print
     print colored("CommandHandler> ", "blue", attrs=["bold"]) + "it's " + colored(self.server.current_player.split("_")[0], "cyan", attrs=["bold"]) + "'s turn"
 
-def lost(server, current_player):
-    position = get_position(server.node, current_player)
-    server.players.remove(current_player)
-    server.number_of_players -= 1
-    t_iib = [Triple(URI(ns + current_player),
-        URI(ns + "IsInBox"),
-        URI(ns + str(position)))]
-    server.node.remove(t_iib)
+
 
 ##########################################################
 #                                                        #
@@ -163,33 +161,40 @@ def buy(self):
 
     # Update balance
     new_cash_balance = old_cash_balance - purchaseCost
-    if int(new_cash_balance) < 0:
-        self.lost(self.server, current_player)
+    # if int(new_cash_balance) < 0:
+    #     self.server.players.remove(self.server.current_player)
+    #     self.server.number_of_players -= 1
+    #     t_iib = [Triple(URI(ns + self.server.current_player),
+    #                     URI(ns + "IsInBox"),
+    #                     URI(ns + str(position)))]
+    #     self.server.node.remove(t_iib)
 
     ta = [(Triple(URI(ns + self.server.current_player),
                           URI(ns + "cashBalance"),
-                          URI(ns + str(new_cash_balance))))]
+                          URI(str(new_cash_balance))))]
     
     tr = [(Triple(URI(ns + self.server.current_player),
                   URI(ns + "cashBalance"),
-                  URI(ns + str(old_cash_balance))))]
+                  URI(str(old_cash_balance))))]
 
     self.server.node.update(ta, tr)
 
     gs = get_current_gs(self, self.server.current_player)
-#    print "--------------------------" + str(gs)
-#    print "--------------------------" + str(self.server.game_session_id)
     box_name_gs = str(box_name) + "_" + gs
     
     # Add contract 
-    t = [(Triple(URI(ns + self.server.current_player),
+    t = []
+    t.append(Triple(URI(ns + self.server.current_player),
                           URI(ns + "HasContract"),
-                          URI(ns + box_name_gs)))]
+                          URI(ns + box_name_gs)))
+
+    t.append((Triple(URI(ns + box_name_gs),
+                          URI(rdf + "type"),
+                          URI(ns + "Box"))))
 
     self.server.node.insert(t)
 
-    # settare l'attributo balance del player
-
+#TODO settare l'attributo balance del player
 
 ##########################################################
 #                                                        #
@@ -211,39 +216,39 @@ def build(self):
     # Get current game session 
     gs = get_current_gs(self, current_player)
     box_name_gs = str(box_name) + "_" + gs    
-    box_name_gs = str(box_name) + "_" + gs
-    
+     
     # Get purchase cost 
     purchaseCost = get_purchase_cost(self, box_name)
 
     # Update balance
     new_cash_balance = old_cash_balance - purchaseCost
-    if int(new_cash_balance) < 0:
-        self.server.players.remove(self.server.current_player)
-        self.server.number_of_players -= 1
-        t_iib = [Triple(URI(ns + self.server.current_player),
-                        URI(ns + "IsInBox"),
-                        URI(ns + str(position)))]
-        self.server.node.remove(t_iib)
+    # if int(new_cash_balance) < 0:
+    #     self.server.players.remove(self.server.current_player)
+    #     self.server.number_of_players -= 1
+    #     t_iib = [Triple(URI(ns + self.server.current_player),
+    #                     URI(ns + "IsInBox"),
+    #                     URI(ns + str(position)))]
+    #     self.server.node.remove(t_iib)
 
     ta = [(Triple(URI(ns + self.server.current_player),
                   URI(ns + "cashBalance"),
-                  URI(ns + str(new_cash_balance))))]
+                  URI(str(new_cash_balance))))]
     
     tr = [(Triple(URI(ns + self.server.current_player),
                   URI(ns + "cashBalance"),
-                  URI(ns + str(old_cash_balance))))]    
+                  URI(str(old_cash_balance))))]    
 
     self.server.node.update(ta, tr)
     
     # Add contract 
-    t = [(Triple(URI(ns + self.server.current_player),
+    t = []
+    t.append(Triple(URI(ns + self.server.current_player),
                  URI(ns + "HasContract"),
-                 URI(ns + box_name_gs)))]
+                 URI(ns + box_name_gs)))
 
-    # t = [(Triple(URI(ns + self.server.current_player),
-    #                       URI(ns + "HasContract"),
-    #                       URI(ns + str(position))))]
+    t.append((Triple(URI(ns + box_name_gs),
+                          URI(rdf + "type"),
+                          URI(ns + "Box"))))
 
     self.server.node.insert(t)
 
@@ -253,13 +258,13 @@ def build(self):
 
     tr = [(Triple(URI(ns + box_name_gs),
                   URI(ns + "numberOfHouses"),
-                  URI(ns + str(old_num_of_houses))))]
+                  URI(str(old_num_of_houses))))]
 
     if new_num_of_houses == 4:
         # hotel
         th = [(Triple(URI(ns + box_name_gs),
                       URI(ns + "numberOfHotels"),
-                      URI(ns + str(1))))]
+                      URI(str(1))))]
         self.server.node.remove(tr)
         self.server.node.insert(th)
 
@@ -267,7 +272,7 @@ def build(self):
         # houses
         ta = [(Triple(URI(ns + box_name_gs),
                       URI(ns + "numberOfHouses"),
-                      URI(ns + str(new_num_of_houses))))]
+                      URI(str(new_num_of_houses))))]
         self.server.node.update(ta, tr)
         
     # settare l'attributo balance del player
@@ -321,11 +326,11 @@ def pay_to_owner(self):
 
         ta = [(Triple(URI(ns + self.server.current_player),
                       URI(ns + "cashBalance"),
-                      URI(ns + str(my_new_cash_balance))))]
+                      URI(str(my_new_cash_balance))))]
     
         tr = [(Triple(URI(ns + self.server.current_player),
                       URI(ns + "cashBalance"),
-                      URI(ns + str(my_old_cash_balance))))]
+                      URI(str(my_old_cash_balance))))]
 
         self.server.node.update(ta, tr)
 
@@ -334,11 +339,11 @@ def pay_to_owner(self):
         
         ta = [(Triple(URI(ns + owner),
                       URI(ns + "cashBalance"),
-                      URI(ns + str(owner_new_cash_balance))))]
+                      URI(str(owner_new_cash_balance))))]
     
         tr = [(Triple(URI(ns + owner),
                       URI(ns + "cashBalance"),
-                      URI(ns + str(owner_old_cash_balance))))]        
+                      URI(str(owner_old_cash_balance))))]        
         
         self.server.node.update(ta, tr)
 
@@ -370,11 +375,11 @@ def pay_to_owner(self):
         
         ta = [(Triple(URI(ns + self.server.current_player),
                       URI(ns + "cashBalance"),
-                      URI(ns + str(my_new_cash_balance))))]
+                      URI(str(my_new_cash_balance))))]
     
         tr = [(Triple(URI(ns + self.server.current_player),
                       URI(ns + "cashBalance"),
-                      URI(ns + str(my_old_cash_balance))))]
+                      URI(str(my_old_cash_balance))))]
 
         self.server.node.update(ta, tr)
 
@@ -383,11 +388,11 @@ def pay_to_owner(self):
         
         ta = [(Triple(URI(ns + owner),
                       URI(ns + "cashBalance"),
-                      URI(ns + str(owner_new_cash_balance))))]
+                      URI(str(owner_new_cash_balance))))]
     
         tr = [(Triple(URI(ns + owner),
                       URI(ns + "cashBalance"),
-                      URI(ns + str(owner_old_cash_balance))))]        
+                      URI(str(owner_old_cash_balance))))]        
         
         self.server.node.update(ta, tr)
 
@@ -404,17 +409,17 @@ def earn(self, gain):
         
     # Update balance
     new_cash_balance = old_cash_balance + gain
-    if int(new_cash_balance) < 0:
-        self.server.players.remove(self.server.current_player)
-        self.server.number_of_players -= 1
+    # if int(new_cash_balance) < 0:
+    #     self.server.players.remove(self.server.current_player)
+    #     self.server.number_of_players -= 1
         
     ta = [(Triple(URI(ns + self.server.current_player),
                   URI(ns + "cashBalance"),
-                  URI(ns + str(new_cash_balance))))]
+                  URI(str(new_cash_balance))))]
 
     tr = [(Triple(URI(ns + self.server.current_player),
                   URI(ns + "cashBalance"),
-                  URI(ns + str(old_cash_balance))))]
+                  URI(str(old_cash_balance))))]
 
     self.server.node.update(ta, tr)
 
@@ -429,13 +434,14 @@ def pay(self):
     current_player = self.server.current_player
     # Get current balance of current player
     old_cash_balance = get_cash_balance(self.server.node, current_player)    
-    position = get_position(self.server.node, current_player)
         
     # Update balance     
     new_cash_balance = old_cash_balance - 10
     if int(new_cash_balance) < 0:
         self.server.players.remove(self.server.current_player)
         self.server.number_of_players -= 1
+
+        position = get_position(self.server.node, current_player)
         t_iib = [Triple(URI(ns + self.server.current_player),
                         URI(ns + "IsInBox"),
                         URI(ns + str(position)))]
@@ -443,11 +449,11 @@ def pay(self):
 
     ta = [(Triple(URI(ns + self.server.current_player),
                   URI(ns + "cashBalance"),
-                  URI(ns + str(new_cash_balance))))]
+                  URI(str(new_cash_balance))))]
     
     tr = [(Triple(URI(ns + self.server.current_player),
                   URI(ns + "cashBalance"),
-                  URI(ns + str(old_cash_balance))))]
+                  URI(str(old_cash_balance))))]
 
     self.server.node.update(ta, tr)
 
@@ -532,7 +538,6 @@ def update_commands(self, player, box_name, new_position):
             
         if (box_type == "Street"):
             # find the current owner 
-            #owner = get_box_owner(self, new_position)
             owner = get_box_owner(self, box_name_gs)
             # found someone?
             if (owner is not None): 
@@ -650,19 +655,24 @@ def update_commands(self, player, box_name, new_position):
 def takecard(self, card_type):
 
     if (card_type == "hitch"):
-        if self.server.nextdice is None or self.server.nextdice >= 15:
+        if self.server.nexthitch is None:
             card = random.choice(hitch.keys())
+            print "Scelgo a random"
         else:
-            card = hitch.keys()[self.server.nextdice]
-            self.server.nextdice = None
+            print "scelgo la carta " + str(hitch[self.server.nexthitch])
+            print str(self.server.nexthitch)
+            card = self.server.nexthitch
+            self.server.nexthitch = None
+
         action = hitch[card]["action"]
         param = hitch[card]["param"]
     else:
-        if self.server.nextdice is None or self.server.nextdice >= 15:
+        if self.server.nextprob is None:
             card = random.choice(prob.keys())
         else:
-            card = prob.keys()[self.server.nextdice]
-            self.server.nextdice = None
+            card = self.server.nextprob
+            self.server.nextprob = None
+
         action = prob[card]["action"]
         param = prob[card]["param"]
 

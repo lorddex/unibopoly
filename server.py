@@ -11,7 +11,7 @@ if sys.argv[3] < 2 and sys.argv[3] > 6:
     print "Wrong players number. Insert a value between 2 and 6."
     sys.exit(0)
 
-s = MM3Server.MM3Server(sys.argv[1], int(sys.argv[2]), True)
+s = MM3Server.MM3Server(sys.argv[1], int(sys.argv[2]))
 s.new_game_session(int(sys.argv[3]))
 s.launch_subscriptions()
 

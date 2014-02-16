@@ -114,9 +114,12 @@ class TurnHandler:
                                             return
                                         action = int(self.player.extract_command())
                                     except EOFError:
-                                        print "Goodbye!"    
+                                        print "Goodbye!"
+                                        self.player.unlock("turn_handler")
                                         self.player.force_quit()
                                         sys.exit(0)
+                                    except ValueError:
+                                        action = None
                 
                                     print self.heading + " user chose command " + colored("RollDiceCommand", "cyan", attrs=["bold"])
                                     

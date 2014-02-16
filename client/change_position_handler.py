@@ -158,12 +158,12 @@ class ChangePositionHandler:
                                     for box in pos:
     
                                         # moving the piece randomizing the positioning into the box
-                                        position_randomizer_x = random.randint(-5,5)
-                                        position_randomizer_y = random.randint(-5,5)
+                                        position_randomizer_x = random.randint(-15,15)
+#                                        position_randomizer_y = random.randint(-5,5)
                                         new_top_x = self.interface.cell_coords[int(box)]['x'] + position_randomizer_x
-                                        new_top_y = self.interface.cell_coords[int(box)]['y'] + position_randomizer_y
-                                        new_bot_x = new_top_x + 20
-                                        new_bot_y = new_top_y + 20
+                                        new_top_y = self.interface.cell_coords[int(box)]['y'] - 8 
+                                        new_bot_x = new_top_x + 13
+                                        new_bot_y = new_top_y + 13
                                         
                                         self.interface.canvas.delete(self.interface.piece)
                                         self.interface.piece = self.interface.canvas.create_oval(
@@ -183,7 +183,9 @@ class ChangePositionHandler:
                                 else:
     
                                     # cli part
-                                    
+                                    purCost = get_purchase_cost(self, self.new_position_name)
+                                    if purCost is not None:
+                                        print self.heading + "Purchase Cost: " + colored(str(purCost), "cyan", attrs=["bold"])
                                     # getting commands
                                     commands = []
                                     commands_id = []
@@ -240,13 +242,13 @@ class ChangePositionHandler:
                     if self.player.gtki:
                         
                         # getting the new position
-                        position_randomizer_x = random.randint(-5,5)
-                        position_randomizer_y = random.randint(-5,5)
+                        position_randomizer_x = random.randint(-15,15)
+#                        position_randomizer_y = random.randint(-5,5)
     
                         new_top_x = self.interface.cell_coords[int(self.new_position)]['x'] + position_randomizer_x
-                        new_top_y = self.interface.cell_coords[int(self.new_position)]['y'] + position_randomizer_y
-                        new_bot_x = new_top_x + 20
-                        new_bot_y = new_top_y + 20
+                        new_top_y = self.interface.cell_coords[int(self.new_position)]['y'] - 8
+                        new_bot_x = new_top_x + 13
+                        new_bot_y = new_top_y + 13
     
                         # getting color
                         if (not (self.interface.pieces_colors.has_key(self.moved_player))):

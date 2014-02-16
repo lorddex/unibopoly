@@ -20,7 +20,7 @@ def get_balance(player):
     WHERE { ns:""" + player.nickname + """ ns:cashBalance ?o }"""
     result = player.node.execute_query(query)
     if len(result) == 1:
-        balance = int(result[0][0][2].split("#")[1])
+        balance = int(result[0][0][2])
         return balance
     else: 
         return None
@@ -33,6 +33,16 @@ def get_active_player(player):
     return active_player
 
 # SELF COMMANDS
+
+def get_purchase_cost(self, box_name):
+    query = """SELECT ?o
+    WHERE { ns:""" + box_name + """ ns:purchaseCost ?o}"""
+    result = self.player.node.execute_query(query)
+    if len(result) > 0:
+        purchaseCost = int(result[0][0][2])
+    else:
+        purchaseCost = None
+    return purchaseCost
 
 def get_game_session_status(self, game_session):
     query = """SELECT ?o

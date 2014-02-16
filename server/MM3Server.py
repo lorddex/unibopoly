@@ -10,7 +10,6 @@ from command_handler import CommandHandler
 from game_ended_handler import GameEndedHandler
 import threading
 from query import get_players, get_cash_balance
-from commands import lost
 
 rdf = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
 owl = "http://www.w3.org/2002/07/owl#"
@@ -20,11 +19,8 @@ ns = "http://smartM3Lab/Ontology.owl#"
 
 class MM3Server():
 
-    def __init__(self, ip, port, debug):
+    def __init__(self, ip, port):
         try:
-            # debug settings
-            self.debug = debug
-
             # connection to the sib
             self.node = SIBLib.SibLib(ip, port)
             self.node.join_sib()
@@ -41,9 +37,11 @@ class MM3Server():
             self.waiting = {}
             self.semaphore = threading.Lock()
             self.nextdice = None 
+            self.nexthitch = None
+            self.nextprob = None
             self.heading = colored("MM3Server> ", 'green', attrs=['bold']) 
-            if debug:
-                print self.heading + "joining the sib on " + ip + ":" + str(port)
+
+            print self.heading + "joining the sib on " + ip + ":" + str(port)
 
         except():
             print self.heading + " an exception occurs during the creation of the server, aborting!"
@@ -69,8 +67,7 @@ class MM3Server():
     
     def clean_my_sib(self):
         self.lock()
-        if self.debug:
-            print self.heading + "cleaning the sib..."
+        print self.heading + "cleaning the sib..."
         query = """SELECT ?s ?p ?o WHERE { ?s ?p ?o }"""
         result = self.node.execute_query(query)
         triples = []
@@ -83,8 +80,7 @@ class MM3Server():
             
     def leave_sib(self):
         self.lock()
-        if self.debug:
-            print self.heading + "leaving the sib..."
+        print self.heading + "leaving the sib..."
         self.clean_my_sib()
         self.node.leave_sib()
         self.unlock()
@@ -95,25 +91,39 @@ class MM3Server():
             for a in cmd.split(" ")[1:]:
                 parms.append(a)
         action = cmd.split(" ")[0]
-        
-        if action == "balance" and len(parms) == 2:
-            players = get_players(self.node, self.game_session_id)
-            for i in players:
-                if i == parms[0] + "_" + self.game_session_id:
+        try:
+            # this action modifies the player's balance
+            if action == "balance" and len(parms) == 2:
+                players = get_players(self.node, self.game_session_id)
+                nick = parms[0] + "_" + self.game_session_id
+                if nick in players:
                     triples_u = []     
                     triples_o = []
-                    old_balance = get_cash_balance(self.node, i)
-                    triples_o.append(Triple(URI(ns + i),
-                        URI(ns + "cashBalance"),
-                        URI(ns + str(old_balance))))
-                    triples_u.append(Triple(URI(ns + i),
-                        URI(ns + "cashBalance"),
-                        URI(ns + str(parms[1]))))
+                    old_balance = get_cash_balance(self.node, nick)
+                    triples_o.append(Triple(URI(ns + nick),
+                                            URI(ns + "cashBalance"),
+                                            URI(str(old_balance))))
+                    triples_u.append(Triple(URI(ns + nick),
+                                            URI(ns + "cashBalance"),
+                                            URI(str(parms[1]))))
                     self.node.update(triples_u, triples_o)
-                    print self.heading + " player " + parms[0]  + " has now " + str(get_cash_balance(self.node, i))
-        elif action == "nextdice" and len(parms) == 1:
-            self.nextdice=int(parms[0])
-                    
+                    print self.heading + " player " + parms[0]  + " has now " + str(get_cash_balance(self.node, nick))
+
+            # this action alters the dice for the next turn
+            elif action == "nextdice" and len(parms) == 1:
+                self.nextdice=int(parms[0])
+
+            elif action == "nexthitch" and len(parms) == 1:
+                self.nexthitch=parms[0]
+            
+            elif action == "nextprob" and len(parms) == 1:
+                self.nextprob=parms[0]
+            else:
+                print "Command not found."
+
+        except Exception:
+            print "Parameters not valid."
+
     def new_game_session(self, required_players):
 
         # simply create a triple in the sib to define a new GameSession
@@ -135,24 +145,23 @@ class MM3Server():
         # setting the number of player for the game session
         triples.append(Triple(URI(ns + self.game_session_id),
                               URI(ns + "numberOfPlayers"),
-                              URI(ns + "0")))
+                              URI("0")))
 
         # inserting the triples into the sib
         self.node.insert(triples)
         
-        if self.debug:
-            print colored("MM3Server> ", 'green', attrs=['bold']) + "new game session with id " + colored(self.game_session_id, "cyan", attrs=["bold"])
-            print colored("MM3Server> ", 'green', attrs=['bold']) + "inserting a triple for the new GameSession into the sib"
-            print colored("MM3Server> ", 'green', attrs=['bold']) + "inserting a triple for the state of the new GameSession into the sib"
-            print colored("MM3Server> ", 'green', attrs=['bold']) + "inserting a triple for the number of players for the new GameSession"
+        print self.heading + "new game session with id " + colored(self.game_session_id, "cyan", attrs=["bold"])
+        print self.heading + "inserting a triple for the new GameSession into the sib"
+        print self.heading + "inserting a triple for the state of the new GameSession into the sib"
+        print self.heading + "inserting a triple for the number of players for the new GameSession"
 
         # game session activation
         triple = Triple(URI(ns + self.game_session_id),
                         URI(ns + "numberOfPlayers"),
-                        URI(ns + str(required_players)))
+                        URI(str(required_players)))
 
-        if self.debug:
-            print colored("MM3Server> ", 'green', attrs=['bold'] ) + "new subscription to check the number of players (" + str(required_players) + ")"
+
+        print self.heading + "new subscription to check the number of players (" + str(required_players) + ")"
 
         self.ags_st = self.node.CreateSubscribeTransaction(self.node.ss_handle)
         initial_results_ags = self.ags_st.subscribe_rdf(triple, ActivateGameSessionHandler(self))
@@ -196,8 +205,7 @@ class MM3Server():
                         URI(ns + "HasIssuer"),
                         None)
 
-        if self.debug:
-            print colored("MM3Server> ", 'green', attrs=['bold'] ) + "new subscription to check the received commands"
+        print self.heading + "new subscription to check the received commands"
 
         self.c_st = self.node.CreateSubscribeTransaction(self.node.ss_handle)
         initial_results_c = self.c_st.subscribe_rdf(triple, CommandHandler(self))
@@ -207,8 +215,7 @@ class MM3Server():
                         URI(ns + "HasPlayer"),
                         None)
 
-        if self.debug:
-            print colored("MM3Server> ", 'green', attrs=['bold'] ) + "new subscription to check the end of the game"
+        print self.heading + "new subscription to check the end of the game"
 
         self.ge_st = self.node.CreateSubscribeTransaction(self.node.ss_handle)
         initial_results_ge = self.ge_st.subscribe_rdf(ge_triple, GameEndedHandler(self))
@@ -216,8 +223,7 @@ class MM3Server():
     def close_subscriptions(self):
         
         # closing subscriptions
-        if self.debug:
-            print colored("MM3Server> ", 'green', attrs=['bold']) + "closing subscriptions..."
+        print self.heading + "closing subscriptions..."
         try:
             self.node.CloseSubscribeTransaction(self.c_st)
             self.node.CloseSubscribeTransaction(self.ags_st)
