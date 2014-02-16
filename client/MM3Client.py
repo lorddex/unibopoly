@@ -200,7 +200,7 @@ class MM3Client:
                         for k in j:
                             temp.append(k)
 
-                cont_players=int(temp[5].split('#')[1])
+                cont_players=int(temp[5])
                 cont_players+=1 
                 
                 #self.nickname = "player_" + str(cont_players)
@@ -223,11 +223,11 @@ class MM3Client:
                 dt = []
                 it.append(Triple(URI(ns + gamesession),
                                  URI(ns + "numberOfPlayers"),
-                                 URI(ns + str(cont_players))))
+                                 URI(str(cont_players))))
                                 
                 dt.append(Triple(URI(ns + gamesession),
                                  URI(ns + "numberOfPlayers"),
-                                 URI(ns + str(cont_players - 1))))
+                                 URI(str(cont_players - 1))))
             
                 self.node.update(it,dt)
 

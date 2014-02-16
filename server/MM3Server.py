@@ -140,7 +140,7 @@ class MM3Server():
         # setting the number of player for the game session
         triples.append(Triple(URI(ns + self.game_session_id),
                               URI(ns + "numberOfPlayers"),
-                              URI(ns + "0")))
+                              URI("0")))
 
         # inserting the triples into the sib
         self.node.insert(triples)
@@ -153,7 +153,7 @@ class MM3Server():
         # game session activation
         triple = Triple(URI(ns + self.game_session_id),
                         URI(ns + "numberOfPlayers"),
-                        URI(ns + str(required_players)))
+                        URI(str(required_players)))
 
 
         print self.heading + "new subscription to check the number of players (" + str(required_players) + ")"
