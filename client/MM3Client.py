@@ -110,7 +110,7 @@ class MM3Client:
 
     def get_all_game_sessions(self):
 
-        # query to select available sessions
+        # query to select all sessions
         query = """
         SELECT ?s ?o
         WHERE {?s ns:HasStatus ?o}
@@ -180,7 +180,6 @@ class MM3Client:
                 self.nickname = nickname_gs
                 
                 # get players number for the current session
-                print "sono uscito dal ciclo"
                 temp = []
                 query = """
                      SELECT ?s ?o
@@ -249,6 +248,9 @@ class MM3Client:
                 triples.append(Triple(URI(ns + gamesession),
                                       URI(ns + "HasObserver"),
                                       URI(ns + self.nickname)))
+                triples.append(Triple(URI(ns + self.nickname),
+                                      URI(rdf + "type"),
+                                      URI(ns + "Person")))
                 # insert the triples into the sib
                 self.node.insert(triples)
             return True
@@ -390,16 +392,16 @@ class MM3Client:
             if self.node is not None:
                 self.node.remove(s_triples)
 
-            # removing all the triples with the loser as the object
-            query = """SELECT ?s ?p WHERE { ?s ?p ns:""" + self.nickname + """}"""
-            if self.node is not None:
-                o_result = self.node.execute_query(query)
+        # removing all the triples with the loser as the object
+        query = """SELECT ?s ?p WHERE { ?s ?p ns:""" + self.nickname + """}"""
+        if self.node is not None:
+            o_result = self.node.execute_query(query)
             
-            o_triples = []
-            for c in o_result:
-                o_triples.append(Triple(URI(c[0][2]), URI(c[1][2]), URI(ns + self.nickname)))
-                if self.node is not None:
-                    self.node.remove(o_triples)
+        o_triples = []
+        for c in o_result:
+            o_triples.append(Triple(URI(c[0][2]), URI(c[1][2]), URI(ns + self.nickname)))
+            if self.node is not None:
+                self.node.remove(o_triples)
                     
         # unlock
         self.unlock("MM3Client")
