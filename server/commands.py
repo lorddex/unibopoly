@@ -33,22 +33,21 @@ prob = {"DegreePresent": {"action": "card_action_earnall", "param":20},
         "TaxRefund": {"action": "card_action_earn", "param":900}
         }
 
-hitch = {# "BirthdayAperitif": {"action":"card_action_payall", "param":10},
-         # "BuyBook": {"action":"card_action_pay", "param":50},
-         # "BuyNotebook": {"action":"card_action_pay", "param":500},
-         # "DegreeParty": {"action":"card_action_pay", "param":200},
-         # "GoToTerracini": {"action":"card_action_goto", "param":37},
-         
-         "GoToSecretary": {"action":"card_action_goto", "param":19}
-         # "LostBursary": {"action":"card_action_pay", "param":900},
-         # "LostRoom": {"action":"card_action_pay", "param":200},
-         # "MoveBackward1": {"action":"card_action_move_backward", "param":1},
-         # "MoveBackward2": {"action":"card_action_move_backward", "param":2},
-         # "MoveBackward3": {"action":"card_action_move_backward", "param":3},
-         # "PayFirstDuty": {"action":"card_action_pay", "param":900},
-         # "PaySecondDuty": {"action":"card_action_pay", "param":900},
-         # "PayThirdDuty": {"action":"card_action_pay", "param":300},
-         # "GoToRefectory": {"action":"card_action_goto", "param":30}
+hitch = {"BirthdayAperitif": {"action":"card_action_payall", "param":10},
+         "BuyBook": {"action":"card_action_pay", "param":50},
+         "BuyNotebook": {"action":"card_action_pay", "param":500},
+         "DegreeParty": {"action":"card_action_pay", "param":200},
+         "GoToTerracini": {"action":"card_action_goto", "param":37},
+         "GoToSecretary": {"action":"card_action_goto", "param":19},
+         "LostBursary": {"action":"card_action_pay", "param":900},
+         "LostRoom": {"action":"card_action_pay", "param":200},
+         "MoveBackward1": {"action":"card_action_move_backward", "param":1},
+         "MoveBackward2": {"action":"card_action_move_backward", "param":2},
+         "MoveBackward3": {"action":"card_action_move_backward", "param":3},
+         "PayFirstDuty": {"action":"card_action_pay", "param":900},
+         "PaySecondDuty": {"action":"card_action_pay", "param":900},
+         "PayThirdDuty": {"action":"card_action_pay", "param":300},
+         "GoToRefectory": {"action":"card_action_goto", "param":30}
          }
 
 
@@ -529,7 +528,6 @@ def update_commands(self, player, box_name, new_position):
             
         if (box_type == "Street"):
             # find the current owner 
-            #owner = get_box_owner(self, new_position)
             owner = get_box_owner(self, box_name_gs)
             # found someone?
             if (owner is not None): 
@@ -647,19 +645,24 @@ def update_commands(self, player, box_name, new_position):
 def takecard(self, card_type):
 
     if (card_type == "hitch"):
-        if self.server.nextdice is None or self.server.nextdice >= 15:
+        if self.server.nexthitch is None:
             card = random.choice(hitch.keys())
+            print "Scelgo a random"
         else:
-            card = hitch.keys()[self.server.nextdice]
-            self.server.nextdice = None
+            print "scelgo la carta " + str(hitch[self.server.nexthitch])
+            print str(self.server.nexthitch)
+            card = self.server.nexthitch
+            self.server.nexthitch = None
+
         action = hitch[card]["action"]
         param = hitch[card]["param"]
     else:
-        if self.server.nextdice is None or self.server.nextdice >= 15:
+        if self.server.nextprob in None:
             card = random.choice(prob.keys())
         else:
-            card = prob.keys()[self.server.nextdice]
-            self.server.nextdice = None
+            card = self.server.nextprob
+            self.server.nextprob = None
+
         action = prob[card]["action"]
         param = prob[card]["param"]
 

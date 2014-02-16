@@ -37,6 +37,8 @@ class MM3Server():
             self.waiting = {}
             self.semaphore = threading.Lock()
             self.nextdice = None 
+            self.nexthitch = None
+            self.nextprob = None
             self.heading = colored("MM3Server> ", 'green', attrs=['bold']) 
 
             print self.heading + "joining the sib on " + ip + ":" + str(port)
@@ -110,6 +112,12 @@ class MM3Server():
         # this action alters the dice for the next turn
         elif action == "nextdice" and len(parms) == 1:
             self.nextdice=int(parms[0])
+
+        elif action == "nexthitch" and len(parms) == 1:
+            self.nexthitch=parms[0]
+            
+        elif action == "nextprob" and len(parms) == 1:
+            self.nextprob=parms[0]
                     
     def new_game_session(self, required_players):
 
