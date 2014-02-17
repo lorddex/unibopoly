@@ -106,3 +106,14 @@ def get_is_in_box(self):
     WHERE { ?s ns:IsInBox ?o }"""
     result = self.player.node.execute_query(query)
     return result
+
+def get_is_in_box_gs(self, gs):
+    query = """SELECT ?s ?o
+    WHERE { ?s ns:IsInBox ?o }"""
+    result = self.player.node.execute_query(query)
+    num = 0
+    if result != None:
+        for i in result:
+            if i[0][2].split('_')[1] == gs:
+                num = num + 1
+    return num

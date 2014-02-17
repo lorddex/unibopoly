@@ -26,7 +26,7 @@ class TurnHandler:
         self.current_player_nickname = None
         self.heading = colored("TurnHandler> ", "blue", attrs=["bold"])
         self.other_heading = colored("TurnHandler> ", "magenta", attrs=["bold"])
-        
+        self.gamesession = self.player.game_session
     def handle(self, added, removed):
 
         for i in added:
@@ -52,9 +52,9 @@ class TurnHandler:
                         print self.heading + "it's your turn! --- you are in box " + str(self.player.current_position) + " and you have " + str(self.player.balance) + " euros"
 
                     # check if we won the game!                
-                    np_result = get_is_in_box(self)
+                    np_result = get_is_in_box_gs(self, self.gamesession)
                     
-                    if len(np_result) == 1:
+                    if np_result == 1:
                 
                         print self.heading + colored("you won the game! CONGRATULATIONS!", "green", attrs=["bold"])
 

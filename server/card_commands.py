@@ -207,7 +207,7 @@ def card_action_earnall(self, arg):
                          URI(str(current_balance)))]
             ta = [Triple(URI(ns + current_player),
                          URI(ns + "cashBalance"),
-                         str(new_balance))]
+                         URI(str(new_balance)))]
             self.server.node.update(ta, tr)
             
     commands.switch_turn(self)
