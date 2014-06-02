@@ -48,8 +48,14 @@ PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX ns: <http://smartM3Lab/Ontology.owl#>
 SELECT ?o
             WHERE { ns:""" + self.contract_box_name + """ rdf:type ?o }"""
-            print query
-            result = self.player.node.execute_sparql_query(query)
+            loop = True
+            while loop:
+                try:
+                    result = self.player.node.execute_sparql_query(query)
+                    loop = False
+                except SIBError:
+                    print "sib error in contract_handler.py"
+                                    
             self.contract_type = str(result[0][0][2]).split("#")[1]
             
             # printing informations

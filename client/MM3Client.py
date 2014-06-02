@@ -35,6 +35,7 @@ class MM3Client:
             self.interface = interface            
 
             # connection to the sib
+            print 'Connecting to SIB ' + str(ip) + ":" + str(port)
             self.node = SIBLib.SibLib(ip, port)
             self.node.join_sib()
             
