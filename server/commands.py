@@ -486,10 +486,15 @@ def update_commands(self, player, box_name, new_position):
         if self.server.waiting[self.server.current_player]:
             
             # remove all the triples "HasPossibleCommands"
-            query = """SELECT ?o
+            query = """PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX ns: <http://smartM3Lab/Ontology.owl#>
+SELECT ?o
             WHERE {ns:""" + box_name_gs + """ ns:HasPossibleCommand ?o }"""
             
-            result = self.server.node.execute_query(query)
+            result = self.server.node.execute_sparql_query(query)
                         
             if (len(result) > 0):
                 triples = []
@@ -520,10 +525,14 @@ def update_commands(self, player, box_name, new_position):
         
         # remove all the triples "HasPossibleCommands"
 
-        query = """SELECT ?o
+        query = """PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX ns: <http://smartM3Lab/Ontology.owl#>
+SELECT ?o
         WHERE {ns:""" + box_name_gs + """ ns:HasPossibleCommand ?o }"""
         
-        result = self.server.node.execute_query(query)
+        result = self.server.node.execute_sparql_query(query)
                         
         if (len(result) > 0):
             triples = []
@@ -573,7 +582,7 @@ def update_commands(self, player, box_name, new_position):
                                 b_gs = b + "_" + gs
                                 query = """SELECT ?s
                                 WHERE { ?s ns:HasContract ns:""" + b_gs + """ }"""
-                                result = self.server.node.execute_query(query)
+                                result = self.server.node.execute_sparql_query(query)
                                 if len(result) > 0:
                                     owners.append(str(result[0][0][2]).split("#")[1])
                                     

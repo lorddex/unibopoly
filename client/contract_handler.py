@@ -38,12 +38,27 @@ class ContractHandler:
         
             # query = """SELECT ?s
             # WHERE { ?s ns:boxID \'""" + str(self.contract_box) + """\'}"""
-            # result = self.player.node.execute_query(query)
+            # result = self.player.node.execute_sparql_query(query)
             # self.contract_box_name = str(result[0][0][2]).split("#")[1]
 
-            query = """SELECT ?o
+            query = """PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX ns: <http://smartM3Lab/Ontology.owl#>
+SELECT ?o
             WHERE { ns:""" + self.contract_box_name + """ rdf:type ?o }"""
-            result = self.player.node.execute_query(query)
+
+            print "sending contract_handler query" + query
+            loop = True
+            while loop:
+                try:
+                    result = self.player.node.execute_sparql_query(query)
+                    loop = False
+                except SIBError:
+                    print "sib error in contract_handler.py"
+                                    
+            print "QUERY RESULTS (contract_handler): " + str(result)
             self.contract_type = str(result[0][0][2]).split("#")[1]
             
             # printing informations
