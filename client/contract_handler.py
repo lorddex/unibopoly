@@ -48,6 +48,8 @@ PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX ns: <http://smartM3Lab/Ontology.owl#>
 SELECT ?o
             WHERE { ns:""" + self.contract_box_name + """ rdf:type ?o }"""
+
+            print "sending contract_handler query" + query
             loop = True
             while loop:
                 try:
@@ -56,6 +58,7 @@ SELECT ?o
                 except SIBError:
                     print "sib error in contract_handler.py"
                                     
+            print "QUERY RESULTS (contract_handler): " + str(result)
             self.contract_type = str(result[0][0][2]).split("#")[1]
             
             # printing informations
