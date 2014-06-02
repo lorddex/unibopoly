@@ -77,9 +77,7 @@ PREFIX owl: <http://www.w3.org/2002/07/owl#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX ns: <http://smartM3Lab/Ontology.owl#>
-SELECT ?s
-    WHERE { ?s ns:boxID \'""" + str(box_id) + """\'}"""
-    print query
+SELECT ?s WHERE { ?s ns:boxID '""" + str(box_id) + """'}"""
     result = self.player.node.execute_sparql_query(query)
     position_name = str(result[0][0][2].split("#")[1])
     return position_name
