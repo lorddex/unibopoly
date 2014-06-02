@@ -69,7 +69,7 @@ class MM3Server():
         self.lock()
         print self.heading + "cleaning the sib..."
         query = """SELECT ?s ?p ?o WHERE { ?s ?p ?o }"""
-        result = self.node.execute_query(query)
+        result = self.node.execute_sparql_query(query)
         triples = []
         for i in result:
             if len(i)>0 and len(i[0])>0 and len(str(i[0][2]).split("_"))>1:

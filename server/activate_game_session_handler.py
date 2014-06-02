@@ -23,12 +23,17 @@ class ActivateGameSessionHandler:
             self.server.lock()
             
             # filling the players array
-            query = """ SELECT ?o 
+            query = """PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX ns: <http://smartM3Lab/Ontology.owl#>
+SELECT ?o 
             WHERE { ns:""" + self.server.game_session_id + """
                 ns:HasPlayer
                 ?o
             }"""     
-            result = self.server.node.execute_query(query)
+            result = self.server.node.execute_sparql_query(query)
 
             for player in result:
                 for el in player:

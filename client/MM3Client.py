@@ -98,10 +98,15 @@ class MM3Client:
 
         # query to select available sessions
         query = """
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX ns: <http://smartM3Lab/Ontology.owl#>
         SELECT ?s
         WHERE {?s ns:HasStatus ns:Waiting}
         """
-        result = self.node.execute_query(query)
+        result = self.node.execute_sparql_query(query)
 
         game_session_list = []
         for i in result:
@@ -113,10 +118,15 @@ class MM3Client:
 
         # query to select all sessions
         query = """
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX ns: <http://smartM3Lab/Ontology.owl#>
         SELECT ?s ?o
         WHERE {?s ns:HasStatus ?o}
         """
-        result = self.node.execute_query(query)
+        result = self.node.execute_sparql_query(query)
 
         game_session_list = []
         for i in result:
@@ -138,9 +148,15 @@ class MM3Client:
             triples = []
             # is nickname already registered?
             player_list = []
-            query = """SELECT ?s 
+            query = """
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX ns: <http://smartM3Lab/Ontology.owl#>
+SELECT ?s 
             WHERE {ns:""" + nickname+"_"+str(gamesession) + """ rdf:type ns:Person}"""
-            result = self.node.execute_query(query)
+            result = self.node.execute_sparql_query(query)
             if (len(result) > 0):
                 print "Nickname already in use!"                        
                 valid = False
@@ -154,9 +170,15 @@ class MM3Client:
                     while not(reg.match(nickname)):
                         print "Nickname not valid!"
                         nickname = raw_input("Insert another nickname > ")
-                    query = """SELECT ?s 
+                    query = """
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX ns: <http://smartM3Lab/Ontology.owl#>
+SELECT ?s 
                     WHERE {ns:""" + nickname+"_"+str(gamesession) + """ rdf:type ns:Person}"""
-                    result = self.node.execute_query(query)
+                    result = self.node.execute_sparql_query(query)
                     if (len(result) > 0):
                         print "Nickname already in use!"                        
                         valid = False
@@ -169,9 +191,15 @@ class MM3Client:
                     nickname = self.interface.nickname_entry.get()
                     if len(nickname) > 0:
                         nickname_gs = nickname + "_" + str(gamesession) 
-                        query = """SELECT ?s 
+                        query = """
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX ns: <http://smartM3Lab/Ontology.owl#>
+SELECT ?s 
                         WHERE {ns:""" + nickname+"_"+str(gamesession) + """ rdf:type ns:Person}"""
-                        result = self.node.execute_query(query)
+                        result = self.node.execute_sparql_query(query)
                         if (len(result) > 0):
                             self.interface.error_label2.config(text = ".....Nickname already in use! Insert another one!")#, fill = "red")
                             self.interface.nickname_entry.delete(0, Tkinter.END)
@@ -189,12 +217,16 @@ class MM3Client:
             if (role == "player"):
                 # get players number for the current session
                 temp = []
-                query = """
+                query = """PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX ns: <http://smartM3Lab/Ontology.owl#>
                      SELECT ?s ?o
                      WHERE { ns:""" + gamesession + """ ns:numberOfPlayers ?o}          
                      """
 
-                result = self.node.execute_query(query)
+                result = self.node.execute_sparql_query(query)
                 for i in result:
                     for j in i:
                         for k in j:
@@ -393,8 +425,14 @@ class MM3Client:
 
         print colored("MM3Client> ", 'red', attrs=['bold']) + "cleaning the sib..."
         # removing all the triples with the loser as the subject
-        query = """SELECT ?p ?o WHERE { ns:""" + self.nickname + """ ?p ?o }"""
-        s_result = self.node.execute_query(query)
+        query = """
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX ns: <http://smartM3Lab/Ontology.owl#>
+SELECT ?p ?o WHERE { ns:""" + self.nickname + """ ?p ?o }"""
+        s_result = self.node.execute_sparql_query(query)
             
         s_triples = []
         for c in s_result:
@@ -403,9 +441,15 @@ class MM3Client:
                 self.node.remove(s_triples)
 
         # removing all the triples with the loser as the object
-        query = """SELECT ?s ?p WHERE { ?s ?p ns:""" + self.nickname + """}"""
+        query = """
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX ns: <http://smartM3Lab/Ontology.owl#>
+SELECT ?s ?p WHERE { ?s ?p ns:""" + self.nickname + """}"""
         if self.node is not None:
-            o_result = self.node.execute_query(query)
+            o_result = self.node.execute_sparql_query(query)
         else:
             o_result = []
             

@@ -38,10 +38,15 @@ if len(game_session_list)>0:
     gs_id = []
     for i in game_session_list:
         query2 = """
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX ns: <http://smartM3Lab/Ontology.owl#>
         SELECT ?p
         WHERE {ns:""" + i + """ ns:numberOfPlayers ?p}
         """
-        res = c.node.execute_query(query2)
+        res = c.node.execute_sparql_query(query2)
         print colored("Client> ", "yellow", attrs=["bold"]) + "write " + str(index) + " for the game session " + colored(i, "cyan", attrs=["bold"]) + " (users: " + str(res[0][0][2]) + ")" 
         gs_id.append(str(index))
         index += 1
