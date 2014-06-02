@@ -57,6 +57,9 @@ hitch = {"BirthdayAperitif": {"action":"card_action_payall", "param":10},
 #                                                        #
 ##########################################################
 def rolldice(self):
+
+    print "I'm in rolldice"
+
     player = self.server.current_player
     player_id = self.server.current_player_id
      
@@ -103,6 +106,8 @@ def rolldice(self):
 ##########################################################  
 def switch_turn(self):
 
+    print "I'm in switch_turn"
+
     # Get current player
     old_player = self.server.current_player
 
@@ -145,6 +150,9 @@ def switch_turn(self):
 #                                                        #
 ##########################################################
 def buy(self):
+
+    print "I'm in buy"
+
     current_player = self.server.current_player
     
     # Get current balance of current player
@@ -202,6 +210,9 @@ def buy(self):
 #                                                        #
 ##########################################################
 def build(self):
+
+    print "I'm in build"
+
     current_player = self.server.current_player
     
     # Get current balance of current player
@@ -283,6 +294,9 @@ def build(self):
 #                                                        #
 ##########################################################
 def pay_to_owner(self):
+
+    print "I'm in pay_to_owner"
+
     current_player = self.server.current_player
         
     # Get current balance of current player
@@ -402,6 +416,9 @@ def pay_to_owner(self):
 #                                                        #
 ##########################################################
 def earn(self, gain):
+
+    print "I'm in earn"
+
     current_player = self.server.current_player
 
     # Get current balance of current player
@@ -431,6 +448,9 @@ def earn(self, gain):
 #                                                        #
 ##########################################################
 def pay(self):
+
+    print "I'm in pay"
+
     current_player = self.server.current_player
     # Get current balance of current player
     old_cash_balance = get_cash_balance(self.server.node, current_player)    
@@ -464,6 +484,9 @@ def pay(self):
 #                                                        #
 ##########################################################
 def update_commands(self, player, box_name, new_position):
+
+    print "I'm in update_commands"
+
     # Insert Possible Commands
     
     # if box_name is a street/society/station then actions (to insert
@@ -662,6 +685,8 @@ SELECT ?o
 ##########################################################
 
 def takecard(self, card_type):
+
+    print "I'm in takecard"
 
     if (card_type == "hitch"):
         if self.server.nexthitch is None:
