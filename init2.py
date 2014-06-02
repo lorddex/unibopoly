@@ -1,0 +1,1542 @@
+#!/usr/bin/python
+
+# requirements
+import sys
+from smart_m3.m3_kp import *
+from sib.SIBLib import *
+
+# args
+if (len(sys.argv) < 3):
+    print "Wrong number of arguments"
+    sys.exit()
+else:
+    ip = sys.argv[1]
+    port = int(sys.argv[2])
+
+# connection
+a = SibLib(ip, port)
+a.join_sib()
+
+# triples
+t = []
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#StazioneBorgoPanigale'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/2002/07/owl#NamedIndividual')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#StazioneBorgoPanigale'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://smartM3Lab/Ontology.owl#Station')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#StazioneBorgoPanigale'), 
+        URI('http://://smartM3Lab/Ontology.owl#purchaseCost'), 
+        Literal('500')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#StazioneBorgoPanigale'), 
+        URI('http://://smartM3Lab/Ontology.owl#tollCost'), 
+        Literal('250')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#StazioneBorgoPanigale'), 
+        URI('http://://smartM3Lab/Ontology.owl#boxID'), 
+        Literal('15')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#ViaDellArchiginnasio'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/2002/07/owl#NamedIndividual')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#ViaDellArchiginnasio'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://smartM3Lab/Ontology.owl#Street')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#ViaDellArchiginnasio'), 
+        URI('http://://smartM3Lab/Ontology.owl#purchaseCost'), 
+        Literal('400')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#ViaDellArchiginnasio'), 
+        URI('http://://smartM3Lab/Ontology.owl#tollCost'), 
+        Literal('200')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#ViaDellArchiginnasio'), 
+        URI('http://://smartM3Lab/Ontology.owl#boxColor'), 
+        Literal('pink')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#ViaDellArchiginnasio'), 
+        URI('http://://smartM3Lab/Ontology.owl#boxID'), 
+        Literal('33')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#TakeHitchCardCommand'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/2002/07/owl#NamedIndividual')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#TakeHitchCardCommand'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://smartM3Lab/Ontology.owl#CommandType')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#TakeProbCardCommand'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/2002/07/owl#NamedIndividual')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#TakeProbCardCommand'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://smartM3Lab/Ontology.owl#CommandType')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#HasSupportedCommand'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/2002/07/owl#ObjectProperty')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#HasSupportedCommand'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#Property')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#HasSupportedCommand'), 
+        URI('http://://www.w3.org/2000/01/rdf-schema#domain'), 
+        URI('http://://smartM3Lab/Ontology.owl#ControlSet')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#HasSupportedCommand'), 
+        URI('http://://www.w3.org/2000/01/rdf-schema#range'), 
+        URI('http://://smartM3Lab/Ontology.owl#CommandType')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#HasCommandInterface'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/2002/07/owl#ObjectProperty')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#HasCommandInterface'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#Property')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#HasCommandInterface'), 
+        URI('http://://www.w3.org/2000/01/rdf-schema#domain'), 
+        URI('http://://smartM3Lab/Ontology.owl#GameSession')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#HasCommandInterface'), 
+        URI('http://://www.w3.org/2000/01/rdf-schema#range'), 
+        URI('http://://smartM3Lab/Ontology.owl#CommandInterface')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#HasPossibleCommand'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/2002/07/owl#ObjectProperty')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#HasPossibleCommand'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#Property')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#HasPossibleCommand'), 
+        URI('http://://www.w3.org/2000/01/rdf-schema#domain'), 
+        URI('http://://smartM3Lab/Ontology.owl#Box')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#HasPossibleCommand'), 
+        URI('http://://www.w3.org/2000/01/rdf-schema#range'), 
+        URI('http://://smartM3Lab/Ontology.owl#Command')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#HasGameDescription'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/2002/07/owl#ObjectProperty')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#HasGameDescription'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#Property')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#HasGameDescription'), 
+        URI('http://://www.w3.org/2000/01/rdf-schema#domain'), 
+        URI('http://://smartM3Lab/Ontology.owl#GameSession')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#HasGameDescription'), 
+        URI('http://://www.w3.org/2000/01/rdf-schema#range'), 
+        URI('http://://smartM3Lab/Ontology.owl#GameDescription')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#VialeRisorgimento'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/2002/07/owl#NamedIndividual')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#VialeRisorgimento'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://smartM3Lab/Ontology.owl#Street')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#VialeRisorgimento'), 
+        URI('http://://smartM3Lab/Ontology.owl#purchaseCost'), 
+        Literal('220')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#VialeRisorgimento'), 
+        URI('http://://smartM3Lab/Ontology.owl#tollCost'), 
+        Literal('110')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#VialeRisorgimento'), 
+        URI('http://://smartM3Lab/Ontology.owl#boxColor'), 
+        Literal('gray')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#VialeRisorgimento'), 
+        URI('http://://smartM3Lab/Ontology.owl#boxID'), 
+        Literal('2')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#StazioneSanVitale'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/2002/07/owl#NamedIndividual')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#StazioneSanVitale'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://smartM3Lab/Ontology.owl#Station')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#StazioneSanVitale'), 
+        URI('http://://smartM3Lab/Ontology.owl#purchaseCost'), 
+        Literal('500')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#StazioneSanVitale'), 
+        URI('http://://smartM3Lab/Ontology.owl#tollCost'), 
+        Literal('250')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#StazioneSanVitale'), 
+        URI('http://://smartM3Lab/Ontology.owl#boxID'), 
+        Literal('24')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#SocietaSpazzatura'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/2002/07/owl#NamedIndividual')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#SocietaSpazzatura'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://smartM3Lab/Ontology.owl#Society')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#SocietaSpazzatura'), 
+        URI('http://://smartM3Lab/Ontology.owl#purchaseCost'), 
+        Literal('500')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#SocietaSpazzatura'), 
+        URI('http://://smartM3Lab/Ontology.owl#tollCost'), 
+        Literal('250')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#SocietaSpazzatura'), 
+        URI('http://://smartM3Lab/Ontology.owl#boxID'), 
+        Literal('35')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#PiazzaleBacchelli'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/2002/07/owl#NamedIndividual')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#PiazzaleBacchelli'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://smartM3Lab/Ontology.owl#Street')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#PiazzaleBacchelli'), 
+        URI('http://://smartM3Lab/Ontology.owl#purchaseCost'), 
+        Literal('280')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#PiazzaleBacchelli'), 
+        URI('http://://smartM3Lab/Ontology.owl#tollCost'), 
+        Literal('140')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#PiazzaleBacchelli'), 
+        URI('http://://smartM3Lab/Ontology.owl#boxColor'), 
+        Literal('yellow')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#PiazzaleBacchelli'), 
+        URI('http://://smartM3Lab/Ontology.owl#boxID'), 
+        Literal('18')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#PayToOwnerCommand'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/2002/07/owl#NamedIndividual')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#PayToOwnerCommand'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://smartM3Lab/Ontology.owl#CommandType')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#VialeBertiPichat'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/2002/07/owl#NamedIndividual')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#VialeBertiPichat'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://smartM3Lab/Ontology.owl#Street')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#VialeBertiPichat'), 
+        URI('http://://smartM3Lab/Ontology.owl#purchaseCost'), 
+        Literal('150')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#VialeBertiPichat'), 
+        URI('http://://smartM3Lab/Ontology.owl#tollCost'), 
+        Literal('70')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#VialeBertiPichat'), 
+        URI('http://://smartM3Lab/Ontology.owl#boxColor'), 
+        Literal('orange')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#VialeBertiPichat'), 
+        URI('http://://smartM3Lab/Ontology.owl#boxID'), 
+        Literal('7')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#StazioneCentrale'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/2002/07/owl#NamedIndividual')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#StazioneCentrale'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://smartM3Lab/Ontology.owl#Station')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#StazioneCentrale'), 
+        URI('http://://smartM3Lab/Ontology.owl#purchaseCost'), 
+        Literal('500')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#StazioneCentrale'), 
+        URI('http://://smartM3Lab/Ontology.owl#tollCost'), 
+        Literal('250')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#StazioneCentrale'), 
+        URI('http://://smartM3Lab/Ontology.owl#boxID'), 
+        Literal('5')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#SocietaElettrica'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/2002/07/owl#NamedIndividual')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#SocietaElettrica'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://smartM3Lab/Ontology.owl#Society')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#SocietaElettrica'), 
+        URI('http://://smartM3Lab/Ontology.owl#purchaseCost'), 
+        Literal('500')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#SocietaElettrica'), 
+        URI('http://://smartM3Lab/Ontology.owl#tollCost'), 
+        Literal('250')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#SocietaElettrica'), 
+        URI('http://://smartM3Lab/Ontology.owl#boxID'), 
+        Literal('6')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#PiazzettaMorandi'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/2002/07/owl#NamedIndividual')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#PiazzettaMorandi'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://smartM3Lab/Ontology.owl#Street')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#PiazzettaMorandi'), 
+        URI('http://://smartM3Lab/Ontology.owl#purchaseCost'), 
+        Literal('350')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#PiazzettaMorandi'), 
+        URI('http://://smartM3Lab/Ontology.owl#tollCost'), 
+        Literal('170')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#PiazzettaMorandi'), 
+        URI('http://://smartM3Lab/Ontology.owl#boxColor'), 
+        Literal('pink')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#PiazzettaMorandi'), 
+        URI('http://://smartM3Lab/Ontology.owl#boxID'), 
+        Literal('32')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#CommandInterface'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/2000/01/rdf-schema#Class')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#CommandInterface'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/2002/07/owl#Class')))
+t.append(Triple(
+        URI('http://://www.w3.org/2002/07/owl#DatatypeProperty'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/2000/01/rdf-schema#Class')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#numberOfPlayers'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/2002/07/owl#DatatypeProperty')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#numberOfPlayers'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#Property')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#numberOfPlayers'), 
+        URI('http://://www.w3.org/2000/01/rdf-schema#domain'), 
+        URI('http://://smartM3Lab/Ontology.owl#GameSession')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#RollDiceCommand'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/2002/07/owl#NamedIndividual')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#RollDiceCommand'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://smartM3Lab/Ontology.owl#CommandType')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#InteractiveGame'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/2002/07/owl#Class')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#InteractiveGame'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/2000/01/rdf-schema#Class')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#GameDescription'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/2000/01/rdf-schema#Class')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#GameDescription'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/2002/07/owl#Class')))
+t.append(Triple(
+        URI('http://://www.w3.org/2002/07/owl#NamedIndividual'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/2000/01/rdf-schema#Class')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#numberOfHouses'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/2002/07/owl#DatatypeProperty')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#numberOfHouses'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#Property')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#numberOfHouses'), 
+        URI('http://://www.w3.org/2000/01/rdf-schema#domain'), 
+        URI('http://://smartM3Lab/Ontology.owl#Street')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#numberOfHotels'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/2002/07/owl#DatatypeProperty')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#numberOfHotels'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#Property')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#numberOfHotels'), 
+        URI('http://://www.w3.org/2000/01/rdf-schema#domain'), 
+        URI('http://://smartM3Lab/Ontology.owl#Street')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#VialeFilopanti'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/2002/07/owl#NamedIndividual')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#VialeFilopanti'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://smartM3Lab/Ontology.owl#Street')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#VialeFilopanti'), 
+        URI('http://://smartM3Lab/Ontology.owl#purchaseCost'), 
+        Literal('180')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#VialeFilopanti'), 
+        URI('http://://smartM3Lab/Ontology.owl#tollCost'), 
+        Literal('90')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#VialeFilopanti'), 
+        URI('http://://smartM3Lab/Ontology.owl#boxColor'), 
+        Literal('orange')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#VialeFilopanti'), 
+        URI('http://://smartM3Lab/Ontology.owl#boxID'), 
+        Literal('8')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#StradaMaggiore'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/2002/07/owl#NamedIndividual')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#StradaMaggiore'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://smartM3Lab/Ontology.owl#Street')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#StradaMaggiore'), 
+        URI('http://://smartM3Lab/Ontology.owl#purchaseCost'), 
+        Literal('300')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#StradaMaggiore'), 
+        URI('http://://smartM3Lab/Ontology.owl#tollCost'), 
+        Literal('150')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#StradaMaggiore'), 
+        URI('http://://smartM3Lab/Ontology.owl#boxColor'), 
+        Literal('pink')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#StradaMaggiore'), 
+        URI('http://://smartM3Lab/Ontology.owl#boxID'), 
+        Literal('31')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#NothingCommand'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/2002/07/owl#NamedIndividual')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#NothingCommand'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://smartM3Lab/Ontology.owl#CommandType')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#HasGameSession'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/2002/07/owl#ObjectProperty')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#HasGameSession'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#Property')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#HasGameSession'), 
+        URI('http://://www.w3.org/2000/01/rdf-schema#domain'), 
+        URI('http://://smartM3Lab/Ontology.owl#InteractiveGame')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#HasGameSession'), 
+        URI('http://://www.w3.org/2000/01/rdf-schema#range'), 
+        URI('http://://smartM3Lab/Ontology.owl#GameSession')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#HasCommandType'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/2002/07/owl#ObjectProperty')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#HasCommandType'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#Property')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#HasCommandType'), 
+        URI('http://://www.w3.org/2000/01/rdf-schema#domain'), 
+        URI('http://://smartM3Lab/Ontology.owl#Command')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#HasCommandType'), 
+        URI('http://://www.w3.org/2000/01/rdf-schema#range'), 
+        URI('http://://smartM3Lab/Ontology.owl#CommandType')))
+t.append(Triple(
+        URI('http://://www.w3.org/2002/07/owl#ObjectProperty'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/2000/01/rdf-schema#Class')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#ViaVallescura'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/2002/07/owl#NamedIndividual')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#ViaVallescura'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://smartM3Lab/Ontology.owl#Street')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#ViaVallescura'), 
+        URI('http://://smartM3Lab/Ontology.owl#purchaseCost'), 
+        Literal('240')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#ViaVallescura'), 
+        URI('http://://smartM3Lab/Ontology.owl#tollCost'), 
+        Literal('120')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#ViaVallescura'), 
+        URI('http://://smartM3Lab/Ontology.owl#boxColor'), 
+        Literal('gray')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#ViaVallescura'), 
+        URI('http://://smartM3Lab/Ontology.owl#boxID'), 
+        Literal('4')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#ViaSanGiacomo'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/2002/07/owl#NamedIndividual')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#ViaSanGiacomo'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://smartM3Lab/Ontology.owl#Street')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#ViaSanGiacomo'), 
+        URI('http://://smartM3Lab/Ontology.owl#purchaseCost'), 
+        Literal('190')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#ViaSanGiacomo'), 
+        URI('http://://smartM3Lab/Ontology.owl#tollCost'), 
+        Literal('80')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#ViaSanGiacomo'), 
+        URI('http://://smartM3Lab/Ontology.owl#boxColor'), 
+        Literal('orange')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#ViaSanGiacomo'), 
+        URI('http://://smartM3Lab/Ontology.owl#boxID'), 
+        Literal('10')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#ViaMassarenti'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/2002/07/owl#NamedIndividual')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#ViaMassarenti'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://smartM3Lab/Ontology.owl#Street')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#ViaMassarenti'), 
+        URI('http://://smartM3Lab/Ontology.owl#purchaseCost'), 
+        Literal('160')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#ViaMassarenti'), 
+        URI('http://://smartM3Lab/Ontology.owl#tollCost'), 
+        Literal('80')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#ViaMassarenti'), 
+        URI('http://://smartM3Lab/Ontology.owl#boxColor'), 
+        Literal('green')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#ViaMassarenti'), 
+        URI('http://://smartM3Lab/Ontology.owl#boxID'), 
+        Literal('20')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#HasControlSet'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/2002/07/owl#ObjectProperty')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#HasControlSet'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#Property')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#HasControlSet'), 
+        URI('http://://www.w3.org/2000/01/rdf-schema#domain'), 
+        URI('http://://smartM3Lab/Ontology.owl#InteractiveGame')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#HasControlSet'), 
+        URI('http://://www.w3.org/2000/01/rdf-schema#range'), 
+        URI('http://://smartM3Lab/Ontology.owl#ControlSet')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#ExtractedCard'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/2002/07/owl#DatatypeProperty')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#ExtractedCard'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#Property')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#ExtractedCard'), 
+        URI('http://://www.w3.org/2000/01/rdf-schema#domain'), 
+        URI('http://://smartM3Lab/Ontology.owl#GameSession')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#purchaseCost'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/2002/07/owl#DatatypeProperty')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#purchaseCost'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#Property')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#purchaseCost'), 
+        URI('http://://www.w3.org/2000/01/rdf-schema#domain'), 
+        URI('http://://smartM3Lab/Ontology.owl#Contract')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#ViaTerracini'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/2002/07/owl#NamedIndividual')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#ViaTerracini'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://smartM3Lab/Ontology.owl#Street')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#ViaTerracini'), 
+        URI('http://://smartM3Lab/Ontology.owl#purchaseCost'), 
+        Literal('150')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#ViaTerracini'), 
+        URI('http://://smartM3Lab/Ontology.owl#tollCost'), 
+        Literal('70')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#ViaTerracini'), 
+        URI('http://://smartM3Lab/Ontology.owl#boxColor'), 
+        Literal('blue')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#ViaTerracini'), 
+        URI('http://://smartM3Lab/Ontology.owl#boxID'), 
+        Literal('37')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#ViaSaragozza'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/2002/07/owl#NamedIndividual')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#ViaSaragozza'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://smartM3Lab/Ontology.owl#Street')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#ViaSaragozza'), 
+        URI('http://://smartM3Lab/Ontology.owl#purchaseCost'), 
+        Literal('200')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#ViaSaragozza'), 
+        URI('http://://smartM3Lab/Ontology.owl#tollCost'), 
+        Literal('100')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#ViaSaragozza'), 
+        URI('http://://smartM3Lab/Ontology.owl#boxColor'), 
+        Literal('gray')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#ViaSaragozza'), 
+        URI('http://://smartM3Lab/Ontology.owl#boxID'), 
+        Literal('1')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#ViaSanVitale'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/2002/07/owl#NamedIndividual')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#ViaSanVitale'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://smartM3Lab/Ontology.owl#Street')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#ViaSanVitale'), 
+        URI('http://://smartM3Lab/Ontology.owl#purchaseCost'), 
+        Literal('200')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#ViaSanVitale'), 
+        URI('http://://smartM3Lab/Ontology.owl#tollCost'), 
+        Literal('100')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#ViaSanVitale'), 
+        URI('http://://smartM3Lab/Ontology.owl#boxColor'), 
+        Literal('green')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#ViaSanVitale'), 
+        URI('http://://smartM3Lab/Ontology.owl#boxID'), 
+        Literal('23')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#ViaFilippoRe'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/2002/07/owl#NamedIndividual')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#ViaFilippoRe'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://smartM3Lab/Ontology.owl#Street')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#ViaFilippoRe'), 
+        URI('http://://smartM3Lab/Ontology.owl#purchaseCost'), 
+        Literal('300')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#ViaFilippoRe'), 
+        URI('http://://smartM3Lab/Ontology.owl#tollCost'), 
+        Literal('150')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#ViaFilippoRe'), 
+        URI('http://://smartM3Lab/Ontology.owl#boxColor'), 
+        Literal('red')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#ViaFilippoRe'), 
+        URI('http://://smartM3Lab/Ontology.owl#boxID'), 
+        Literal('27')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#ViaBertoloni'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/2002/07/owl#NamedIndividual')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#ViaBertoloni'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://smartM3Lab/Ontology.owl#Street')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#ViaBertoloni'), 
+        URI('http://://smartM3Lab/Ontology.owl#purchaseCost'), 
+        Literal('190')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#ViaBertoloni'), 
+        URI('http://://smartM3Lab/Ontology.owl#tollCost'), 
+        Literal('90')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#ViaBertoloni'), 
+        URI('http://://smartM3Lab/Ontology.owl#boxColor'), 
+        Literal('cyan')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#ViaBertoloni'), 
+        URI('http://://smartM3Lab/Ontology.owl#boxID'), 
+        Literal('13')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#ViaBelmeloro'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/2002/07/owl#NamedIndividual')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#ViaBelmeloro'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://smartM3Lab/Ontology.owl#Street')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#ViaBelmeloro'), 
+        URI('http://://smartM3Lab/Ontology.owl#purchaseCost'), 
+        Literal('220')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#ViaBelmeloro'), 
+        URI('http://://smartM3Lab/Ontology.owl#tollCost'), 
+        Literal('110')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#ViaBelmeloro'), 
+        URI('http://://smartM3Lab/Ontology.owl#boxColor'), 
+        Literal('green')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#ViaBelmeloro'), 
+        URI('http://://smartM3Lab/Ontology.owl#boxID'), 
+        Literal('21')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#SocietaAcqua'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/2002/07/owl#NamedIndividual')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#SocietaAcqua'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://smartM3Lab/Ontology.owl#Society')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#SocietaAcqua'), 
+        URI('http://://smartM3Lab/Ontology.owl#purchaseCost'), 
+        Literal('500')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#SocietaAcqua'), 
+        URI('http://://smartM3Lab/Ontology.owl#tollCost'), 
+        Literal('250')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#SocietaAcqua'), 
+        URI('http://://smartM3Lab/Ontology.owl#boxID'), 
+        Literal('25')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#Probabilita2'), 
+        URI('http://://smartM3Lab/Ontology.owl#HasPossibleCommand'), 
+        URI('http://://smartM3Lab/Ontology.owl#TakeProbCardCommand')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#Probabilita2'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/2002/07/owl#NamedIndividual')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#Probabilita2'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://smartM3Lab/Ontology.owl#Special')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#Probabilita2'), 
+        URI('http://://smartM3Lab/Ontology.owl#boxID'), 
+        Literal('28')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#Probabilita1'), 
+        URI('http://://smartM3Lab/Ontology.owl#HasPossibleCommand'), 
+        URI('http://://smartM3Lab/Ontology.owl#TakeProbCardCommand')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#Probabilita1'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/2002/07/owl#NamedIndividual')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#Probabilita1'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://smartM3Lab/Ontology.owl#Special')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#Probabilita1'), 
+        URI('http://://smartM3Lab/Ontology.owl#boxID'), 
+        Literal('9')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#BuildCommand'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/2002/07/owl#NamedIndividual')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#BuildCommand'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://smartM3Lab/Ontology.owl#CommandType')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#Autostazione'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/2002/07/owl#NamedIndividual')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#Autostazione'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://smartM3Lab/Ontology.owl#Station')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#Autostazione'), 
+        URI('http://://smartM3Lab/Ontology.owl#purchaseCost'), 
+        Literal('500')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#Autostazione'), 
+        URI('http://://smartM3Lab/Ontology.owl#tollCost'), 
+        Literal('250')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#Autostazione'), 
+        URI('http://://smartM3Lab/Ontology.owl#boxID'), 
+        Literal('34')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#cashBalance'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/2002/07/owl#DatatypeProperty')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#cashBalance'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#Property')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#cashBalance'), 
+        URI('http://://www.w3.org/2000/01/rdf-schema#domain'), 
+        URI('http://://smartM3Lab/Ontology.owl#Person')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#ViaBarberia'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/2002/07/owl#NamedIndividual')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#ViaBarberia'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://smartM3Lab/Ontology.owl#Street')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#ViaBarberia'), 
+        URI('http://://smartM3Lab/Ontology.owl#purchaseCost'), 
+        Literal('210')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#ViaBarberia'), 
+        URI('http://://smartM3Lab/Ontology.owl#tollCost'), 
+        Literal('100')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#ViaBarberia'), 
+        URI('http://://smartM3Lab/Ontology.owl#boxColor'), 
+        Literal('blue')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#ViaBarberia'), 
+        URI('http://://smartM3Lab/Ontology.owl#boxID'), 
+        Literal('36')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#Probability'), 
+        URI('http://://www.w3.org/2000/01/rdf-schema#subClassOf'), 
+        URI('http://://smartM3Lab/Ontology.owl#Card')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#Probability'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/2002/07/owl#Class')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#Probability'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/2000/01/rdf-schema#Class')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#Imprevisto2'), 
+        URI('http://://smartM3Lab/Ontology.owl#HasPossibleCommand'), 
+        URI('http://://smartM3Lab/Ontology.owl#TakeHitchCardCommand')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#Imprevisto2'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/2002/07/owl#NamedIndividual')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#Imprevisto2'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://smartM3Lab/Ontology.owl#Special')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#Imprevisto2'), 
+        URI('http://://smartM3Lab/Ontology.owl#boxID'), 
+        Literal('22')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#Imprevisto1'), 
+        URI('http://://smartM3Lab/Ontology.owl#HasPossibleCommand'), 
+        URI('http://://smartM3Lab/Ontology.owl#TakeHitchCardCommand')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#Imprevisto1'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/2002/07/owl#NamedIndividual')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#Imprevisto1'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://smartM3Lab/Ontology.owl#Special')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#Imprevisto1'), 
+        URI('http://://smartM3Lab/Ontology.owl#boxID'), 
+        Literal('3')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#HasObserver'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/2002/07/owl#ObjectProperty')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#HasObserver'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#Property')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#HasObserver'), 
+        URI('http://://www.w3.org/2000/01/rdf-schema#domain'), 
+        URI('http://://smartM3Lab/Ontology.owl#GameSession')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#HasObserver'), 
+        URI('http://://www.w3.org/2000/01/rdf-schema#range'), 
+        URI('http://://smartM3Lab/Ontology.owl#Person')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#HasContract'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/2002/07/owl#ObjectProperty')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#HasContract'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#Property')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#HasContract'), 
+        URI('http://://www.w3.org/2000/01/rdf-schema#domain'), 
+        URI('http://://smartM3Lab/Ontology.owl#Person')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#HasContract'), 
+        URI('http://://www.w3.org/2000/01/rdf-schema#range'), 
+        URI('http://://smartM3Lab/Ontology.owl#Contract')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#GameSession'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/2000/01/rdf-schema#Class')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#GameSession'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/2002/07/owl#Class')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#CommandType'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/2002/07/owl#Class')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#CommandType'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/2000/01/rdf-schema#Class')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#Almawelcome'), 
+        URI('http://://smartM3Lab/Ontology.owl#HasPossibleCommand'), 
+        URI('http://://smartM3Lab/Ontology.owl#NothingCommand')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#Almawelcome'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/2002/07/owl#NamedIndividual')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#Almawelcome'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://smartM3Lab/Ontology.owl#Special')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#Almawelcome'), 
+        URI('http://://smartM3Lab/Ontology.owl#boxID'), 
+        Literal('11')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#ViaZamboni'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/2002/07/owl#NamedIndividual')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#ViaZamboni'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://smartM3Lab/Ontology.owl#Street')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#ViaZamboni'), 
+        URI('http://://smartM3Lab/Ontology.owl#purchaseCost'), 
+        Literal('190')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#ViaZamboni'), 
+        URI('http://://smartM3Lab/Ontology.owl#tollCost'), 
+        Literal('90')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#ViaZamboni'), 
+        URI('http://://smartM3Lab/Ontology.owl#boxColor'), 
+        Literal('red')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#ViaZamboni'), 
+        URI('http://://smartM3Lab/Ontology.owl#boxID'), 
+        Literal('29')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#ViaPupilli'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/2002/07/owl#NamedIndividual')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#ViaPupilli'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://smartM3Lab/Ontology.owl#Street')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#ViaPupilli'), 
+        URI('http://://smartM3Lab/Ontology.owl#purchaseCost'), 
+        Literal('260')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#ViaPupilli'), 
+        URI('http://://smartM3Lab/Ontology.owl#tollCost'), 
+        Literal('130')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#ViaPupilli'), 
+        URI('http://://smartM3Lab/Ontology.owl#boxColor'), 
+        Literal('yellow')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#ViaPupilli'), 
+        URI('http://://smartM3Lab/Ontology.owl#boxID'), 
+        Literal('17')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#ViaMarsala'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/2002/07/owl#NamedIndividual')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#ViaMarsala'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://smartM3Lab/Ontology.owl#Street')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#ViaMarsala'), 
+        URI('http://://smartM3Lab/Ontology.owl#purchaseCost'), 
+        Literal('200')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#ViaMarsala'), 
+        URI('http://://smartM3Lab/Ontology.owl#tollCost'), 
+        Literal('100')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#ViaMarsala'), 
+        URI('http://://smartM3Lab/Ontology.owl#boxColor'), 
+        Literal('cyan')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#ViaMarsala'), 
+        URI('http://://smartM3Lab/Ontology.owl#boxID'), 
+        Literal('12')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#ViaIrnerio'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/2002/07/owl#NamedIndividual')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#ViaIrnerio'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://smartM3Lab/Ontology.owl#Street')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#ViaIrnerio'), 
+        URI('http://://smartM3Lab/Ontology.owl#purchaseCost'), 
+        Literal('250')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#ViaIrnerio'), 
+        URI('http://://smartM3Lab/Ontology.owl#tollCost'), 
+        Literal('120')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#ViaIrnerio'), 
+        URI('http://://smartM3Lab/Ontology.owl#boxColor'), 
+        Literal('red')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#ViaIrnerio'), 
+        URI('http://://smartM3Lab/Ontology.owl#boxID'), 
+        Literal('26')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#SocietaGas'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/2002/07/owl#NamedIndividual')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#SocietaGas'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://smartM3Lab/Ontology.owl#Society')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#SocietaGas'), 
+        URI('http://://smartM3Lab/Ontology.owl#purchaseCost'), 
+        Literal('500')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#SocietaGas'), 
+        URI('http://://smartM3Lab/Ontology.owl#tollCost'), 
+        Literal('250')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#SocietaGas'), 
+        URI('http://://smartM3Lab/Ontology.owl#boxID'), 
+        Literal('16')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#Segreteria'), 
+        URI('http://://smartM3Lab/Ontology.owl#HasPossibleCommand'), 
+        URI('http://://smartM3Lab/Ontology.owl#NothingCommand')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#Segreteria'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/2002/07/owl#NamedIndividual')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#Segreteria'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://smartM3Lab/Ontology.owl#Special')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#Segreteria'), 
+        URI('http://://smartM3Lab/Ontology.owl#boxID'), 
+        Literal('19')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#PayCommand'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/2002/07/owl#NamedIndividual')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#PayCommand'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://smartM3Lab/Ontology.owl#CommandType')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#MonopolyCS'), 
+        URI('http://://smartM3Lab/Ontology.owl#HasSupportedCommand'), 
+        URI('http://://smartM3Lab/Ontology.owl#BuildCommand')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#MonopolyCS'), 
+        URI('http://://smartM3Lab/Ontology.owl#HasSupportedCommand'), 
+        URI('http://://smartM3Lab/Ontology.owl#BuyCommand')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#MonopolyCS'), 
+        URI('http://://smartM3Lab/Ontology.owl#HasSupportedCommand'), 
+        URI('http://://smartM3Lab/Ontology.owl#PayCommand')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#MonopolyCS'), 
+        URI('http://://smartM3Lab/Ontology.owl#HasSupportedCommand'), 
+        URI('http://://smartM3Lab/Ontology.owl#PayToOwnerCommand')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#MonopolyCS'), 
+        URI('http://://smartM3Lab/Ontology.owl#HasSupportedCommand'), 
+        URI('http://://smartM3Lab/Ontology.owl#RollDiceCommand')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#MonopolyCS'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/2002/07/owl#NamedIndividual')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#MonopolyCS'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://smartM3Lab/Ontology.owl#ControlSet')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#HasCommand'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/2002/07/owl#ObjectProperty')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#HasCommand'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#Property')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#HasCommand'), 
+        URI('http://://www.w3.org/2000/01/rdf-schema#domain'), 
+        URI('http://://smartM3Lab/Ontology.owl#CommandInterface')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#HasCommand'), 
+        URI('http://://www.w3.org/2000/01/rdf-schema#range'), 
+        URI('http://://smartM3Lab/Ontology.owl#Command')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#GameStatus'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/2002/07/owl#Class')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#GameStatus'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/2000/01/rdf-schema#Class')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#ControlSet'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/2002/07/owl#Class')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#ControlSet'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/2000/01/rdf-schema#Class')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#BuyCommand'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/2002/07/owl#NamedIndividual')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#BuyCommand'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://smartM3Lab/Ontology.owl#CommandType')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#HasStatus'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/2002/07/owl#ObjectProperty')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#HasStatus'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#Property')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#HasStatus'), 
+        URI('http://://www.w3.org/2000/01/rdf-schema#domain'), 
+        URI('http://://smartM3Lab/Ontology.owl#GameSession')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#HasStatus'), 
+        URI('http://://www.w3.org/2000/01/rdf-schema#range'), 
+        URI('http://://smartM3Lab/Ontology.owl#GameStatus')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#HasPlayer'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/2002/07/owl#ObjectProperty')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#HasPlayer'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#Property')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#HasPlayer'), 
+        URI('http://://www.w3.org/2000/01/rdf-schema#domain'), 
+        URI('http://://smartM3Lab/Ontology.owl#GameSession')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#HasPlayer'), 
+        URI('http://://www.w3.org/2000/01/rdf-schema#range'), 
+        URI('http://://smartM3Lab/Ontology.owl#Person')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#HasIssuer'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/2002/07/owl#ObjectProperty')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#HasIssuer'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#Property')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#HasIssuer'), 
+        URI('http://://www.w3.org/2000/01/rdf-schema#domain'), 
+        URI('http://://smartM3Lab/Ontology.owl#Command')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#HasIssuer'), 
+        URI('http://://www.w3.org/2000/01/rdf-schema#range'), 
+        URI('http://://smartM3Lab/Ontology.owl#Person')))
+t.append(Triple(
+        URI('http://://www.w3.org/2001/XMLSchema#string'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/2000/01/rdf-schema#Class')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#tollCost'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/2002/07/owl#DatatypeProperty')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#tollCost'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#Property')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#tollCost'), 
+        URI('http://://www.w3.org/2000/01/rdf-schema#domain'), 
+        URI('http://://smartM3Lab/Ontology.owl#Box')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#boxColor'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/2002/07/owl#DatatypeProperty')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#boxColor'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#Property')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#boxColor'), 
+        URI('http://://www.w3.org/2000/01/rdf-schema#domain'), 
+        URI('http://://smartM3Lab/Ontology.owl#Street')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#ViaFanin'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/2002/07/owl#NamedIndividual')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#ViaFanin'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://smartM3Lab/Ontology.owl#Street')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#ViaFanin'), 
+        URI('http://://smartM3Lab/Ontology.owl#purchaseCost'), 
+        Literal('240')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#ViaFanin'), 
+        URI('http://://smartM3Lab/Ontology.owl#tollCost'), 
+        Literal('120')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#ViaFanin'), 
+        URI('http://://smartM3Lab/Ontology.owl#boxColor'), 
+        Literal('cyan')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#ViaFanin'), 
+        URI('http://://smartM3Lab/Ontology.owl#boxID'), 
+        Literal('14')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#Monopoly'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/2002/07/owl#NamedIndividual')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#Monopoly'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://smartM3Lab/Ontology.owl#InteractiveGame')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#Monopoly'), 
+        URI('http://://smartM3Lab/Ontology.owl#HasControlSet'), 
+        URI('http://://smartM3Lab/Ontology.owl#MonopolyCS')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#Contract'), 
+        URI('http://://www.w3.org/2000/01/rdf-schema#subClassOf'), 
+        URI('http://://smartM3Lab/Ontology.owl#Box')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#Contract'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/2002/07/owl#Class')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#Contract'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/2000/01/rdf-schema#Class')))
+t.append(Triple(
+        URI('http://://www.w3.org/2002/07/owl#Ontology'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/2000/01/rdf-schema#Class')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#boxName'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/2002/07/owl#DatatypeProperty')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#boxName'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#Property')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#boxName'), 
+        URI('http://://www.w3.org/2000/01/rdf-schema#domain'), 
+        URI('http://://smartM3Lab/Ontology.owl#Box')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#boxName'), 
+        URI('http://://www.w3.org/2000/01/rdf-schema#range'), 
+        URI('http://://www.w3.org/2001/XMLSchema#string')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#Station'), 
+        URI('http://://www.w3.org/2000/01/rdf-schema#subClassOf'), 
+        URI('http://://smartM3Lab/Ontology.owl#Contract')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#Station'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/2002/07/owl#Class')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#Station'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/2000/01/rdf-schema#Class')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#Special'), 
+        URI('http://://www.w3.org/2000/01/rdf-schema#subClassOf'), 
+        URI('http://://smartM3Lab/Ontology.owl#Box')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#Special'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/2002/07/owl#Class')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#Special'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/2000/01/rdf-schema#Class')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#Society'), 
+        URI('http://://www.w3.org/2000/01/rdf-schema#subClassOf'), 
+        URI('http://://smartM3Lab/Ontology.owl#Contract')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#Society'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/2002/07/owl#Class')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#Society'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/2000/01/rdf-schema#Class')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#IsInBox'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/2002/07/owl#ObjectProperty')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#IsInBox'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#Property')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#IsInBox'), 
+        URI('http://://www.w3.org/2000/01/rdf-schema#domain'), 
+        URI('http://://smartM3Lab/Ontology.owl#Person')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#IsInBox'), 
+        URI('http://://www.w3.org/2000/01/rdf-schema#range'), 
+        URI('http://://smartM3Lab/Ontology.owl#Box')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#Command'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/2000/01/rdf-schema#Class')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#Command'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/2002/07/owl#Class')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#TurnOf'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/2002/07/owl#ObjectProperty')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#TurnOf'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#Property')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#TurnOf'), 
+        URI('http://://www.w3.org/2000/01/rdf-schema#domain'), 
+        URI('http://://smartM3Lab/Ontology.owl#GameSession')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#TurnOf'), 
+        URI('http://://www.w3.org/2000/01/rdf-schema#range'), 
+        URI('http://://smartM3Lab/Ontology.owl#Person')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#Street'), 
+        URI('http://://www.w3.org/2000/01/rdf-schema#subClassOf'), 
+        URI('http://://smartM3Lab/Ontology.owl#Contract')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#Street'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/2002/07/owl#Class')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#Street'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/2000/01/rdf-schema#Class')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#Person'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/2000/01/rdf-schema#Class')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#Person'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/2002/07/owl#Class')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#Paused'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/2002/07/owl#NamedIndividual')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#Paused'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://smartM3Lab/Ontology.owl#GameStatus')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#Active'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/2002/07/owl#NamedIndividual')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#Active'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://smartM3Lab/Ontology.owl#GameStatus')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#boxID'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/2002/07/owl#DatatypeProperty')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#boxID'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#Property')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#boxID'), 
+        URI('http://://www.w3.org/2000/01/rdf-schema#domain'), 
+        URI('http://://smartM3Lab/Ontology.owl#Box')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#Start'), 
+        URI('http://://smartM3Lab/Ontology.owl#HasPossibleCommand'), 
+        URI('http://://smartM3Lab/Ontology.owl#NothingCommand')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#Start'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/2002/07/owl#NamedIndividual')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#Start'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://smartM3Lab/Ontology.owl#Special')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#Start'), 
+        URI('http://://smartM3Lab/Ontology.owl#boxID'), 
+        Literal('0')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#Mensa'), 
+        URI('http://://smartM3Lab/Ontology.owl#HasPossibleCommand'), 
+        URI('http://://smartM3Lab/Ontology.owl#PayCommand')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#Mensa'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/2002/07/owl#NamedIndividual')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#Mensa'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://smartM3Lab/Ontology.owl#Special')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#Mensa'), 
+        URI('http://://smartM3Lab/Ontology.owl#tollCost'), 
+        Literal('10')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#Mensa'), 
+        URI('http://://smartM3Lab/Ontology.owl#boxID'), 
+        Literal('30')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#Hitch'), 
+        URI('http://://www.w3.org/2000/01/rdf-schema#subClassOf'), 
+        URI('http://://smartM3Lab/Ontology.owl#Card')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#Hitch'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/2002/07/owl#Class')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#Hitch'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/2000/01/rdf-schema#Class')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#Ended'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/2002/07/owl#NamedIndividual')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#Ended'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://smartM3Lab/Ontology.owl#GameStatus')))
+t.append(Triple(
+        URI('http://://www.w3.org/2002/07/owl#Class'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/2000/01/rdf-schema#Class')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#Card'), 
+        URI('http://://www.w3.org/2000/01/rdf-schema#subClassOf'), 
+        URI('http://://smartM3Lab/Ontology.owl#GameDescription')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#Card'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/2002/07/owl#Class')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#Card'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/2000/01/rdf-schema#Class')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#Box'), 
+        URI('http://://www.w3.org/2000/01/rdf-schema#subClassOf'), 
+        URI('http://://smartM3Lab/Ontology.owl#GameDescription')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#Box'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/2002/07/owl#Class')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#Box'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/2000/01/rdf-schema#Class')))
+t.append(Triple(
+        URI('http://://smartM3Lab/Ontology.owl#'), 
+        URI('http://://www.w3.org/1999/02/22-rdf-syntax-ns#type'), 
+        URI('http://://www.w3.org/2002/07/owl#Ontology')))
+a.insert(t)
